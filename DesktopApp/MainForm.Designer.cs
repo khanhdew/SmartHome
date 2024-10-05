@@ -1,6 +1,7 @@
-﻿namespace DesktopApp
+﻿
+namespace DesktopApp
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,12 +29,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            lBox = new ListBox();
+            SuspendLayout();
+            // 
+            // lBox
+            // 
+            lBox.FormattingEnabled = true;
+            lBox.ItemHeight = 15;
+            lBox.Location = new Point(236, 95);
+            lBox.Name = "lBox";
+            lBox.Size = new Size(320, 229);
+            lBox.TabIndex = 0;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(lBox);
+            Name = "MainForm";
+            Text = "Form1";
+            Load += Form1_Load;
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private ListBox lBox;
     }
 }
