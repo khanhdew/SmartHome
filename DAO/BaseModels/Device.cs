@@ -7,13 +7,14 @@ using Microsoft.EntityFrameworkCore;
 namespace DAO.Models
 {
     [Table("Device")]
-    public partial class Device
+    public partial class Device 
     {
         public Device()
         {
             DeviceConfigs = new HashSet<DeviceConfig>();
             TelemetryData = new HashSet<TelemetryDatum>();
         }
+        
 
         [Key]
         public int ID { get; set; }
