@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using DAO.BaseModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using DAO.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace DAO.Context
 {
-    public partial class DbContext : Microsoft.EntityFrameworkCore.DbContext
+    public partial class SmartHomeContext : IdentityDbContext<User>
     {
-        public DbContext()
+        public SmartHomeContext()
         {
         }
 
-        public DbContext(DbContextOptions<DbContext> options)
+        public SmartHomeContext(DbContextOptions<SmartHomeContext> options)
             : base(options)
         {
         }
@@ -24,7 +27,6 @@ namespace DAO.Context
         public virtual DbSet<HouseMember> HouseMembers { get; set; } = null!;
         public virtual DbSet<Room> Rooms { get; set; } = null!;
         public virtual DbSet<TelemetryDatum> TelemetryData { get; set; } = null!;
-        public virtual DbSet<User> Users { get; set; } = null!;
         public virtual DbSet<UserPreference> UserPreferences { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -38,6 +40,7 @@ namespace DAO.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<ActionHistory>(entity =>
             {
                 entity.Property(e => e.Timestamp).HasDefaultValueSql("(getdate())");
@@ -119,6 +122,15 @@ namespace DAO.Context
                     .HasConstraintName("FK__UserPrefe__UserI__6383C8BA");
             });
 
+            foreach (var item in modelBuilder.Model.GetEntityTypes())
+            {
+                var tableName = item.GetTableName();
+                if(tableName != null && tableName.StartsWith("AspNet"))
+                {
+                    item.SetTableName(tableName.Substring(6));
+                }
+            }
+            
             OnModelCreatingPartial(modelBuilder);
         }
 

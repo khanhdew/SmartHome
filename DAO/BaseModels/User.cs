@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
+using DAO.Models;
+using Microsoft.AspNetCore.Identity;
 
-namespace DAO.Models
+namespace DAO.BaseModels
 {
     [Table("User")]
-    public partial class User
+    public partial class User : IdentityUser
     {
         public User()
         {
@@ -17,23 +16,19 @@ namespace DAO.Models
             UserPreferences = new HashSet<UserPreference>();
         }
 
-        [Key]
-        public int ID { get; set; }
-        [StringLength(255)]
-        public string Username { get; set; } = null!;
-        [StringLength(255)]
-        public string Email { get; set; } = null!;
-        [StringLength(255)]
-        public string Password { get; set; } = null!;
         [StringLength(50)]
-        public string? Role { get; set; }
+        [Column(TypeName = "nvarchar")]
+        public string? DisplayName { get; set; }
 
         [InverseProperty("User")]
         public virtual ICollection<ActionHistory> ActionHistories { get; set; }
+
         [InverseProperty("User")]
         public virtual ICollection<Device> Devices { get; set; }
+
         [InverseProperty("User")]
         public virtual ICollection<HouseMember> HouseMembers { get; set; }
+
         [InverseProperty("User")]
         public virtual ICollection<UserPreference> UserPreferences { get; set; }
     }

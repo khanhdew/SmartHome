@@ -1,6 +1,8 @@
-﻿namespace Services.Models.Users;
+﻿namespace DAO.Models.Users;
 
 public enum UserRole
 {
-    SysAdmin, Admin, User
+    SysAdmin,
+    Admin,
+    User
 }

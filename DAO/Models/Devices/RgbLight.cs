@@ -1,8 +1,8 @@
-﻿using DAO.Models;
+﻿using DAO.BaseModels;
 
-namespace Services.Models.Devices;
+namespace DAO.Models.Devices;
 
-public class RgbLight:Device, IRgbLight
+public class RgbLight : Device, IRgbLight
 {
     public void TurnOn()
     {

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DAO.Exceptions.UserExceptions
 {
-    internal class UserNotFoundException : Exception
+    public class UserNotFoundException : Exception
     {
-        public UserNotFoundException(string message) : base("User not found!")
+        public UserNotFoundException(string message) : base()
         {
         }
     }

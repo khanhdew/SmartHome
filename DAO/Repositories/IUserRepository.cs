@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAO.BaseModels;
 
 namespace DAO.Repositories
 {
-    internal interface IUserRepository
+    public interface IUserRepository
     {
         User AddUser(User user);
         void DeleteUser(string username);

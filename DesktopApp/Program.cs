@@ -1,12 +1,11 @@
 using DAO.Context;
 using Microsoft.Extensions.DependencyInjection;
-using Services.Exceptions.UserExceptions;
 
 namespace DesktopApp
 {
     internal static class Program
     {
-        public static ServiceProvider ServiceProvider { get; private set; }
+        public static ServiceProvider? ServiceProvider { get; private set; }
 
         /// <summary>
         ///  The main entry point for the application.
@@ -27,7 +26,7 @@ namespace DesktopApp
         {
             // Đăng ký các dịch vụ (Service Layer) và repository (Data Access Layer)
             // services.AddScoped<IUserService, UserService>();
-            services.AddScoped<DbContext>();
+            services.AddScoped<SmartHomeContext>();
             // Đăng ký form chính
             services.AddScoped<MainForm>();
         }

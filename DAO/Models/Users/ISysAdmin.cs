@@ -1,6 +1,4 @@
-﻿using DAO.Models;
-
-namespace Services.Models.Users;
+﻿namespace DAO.Models.Users;
 
 public interface ISysAdmin : IUser
 {

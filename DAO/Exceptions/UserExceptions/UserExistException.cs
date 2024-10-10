@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DAO.Exceptions.UserExceptions
 {
-    internal class UserExistException : Exception
+    public class UserExistException : Exception
     {
-        public UserExistException(string message) : base("User already exists!")
+        public UserExistException(string message) : base()
         {
         }
     }

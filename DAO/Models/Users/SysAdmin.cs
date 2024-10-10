@@ -1,6 +1,8 @@
-﻿namespace Services.Models.Users;
+﻿using DAO.BaseModels;
 
-public class SysAdmin : BaseUser ,ISysAdmin
+namespace DAO.Models.Users;
+
+public class SysAdmin : User, ISysAdmin
 {
     public void DeleteAdminUser(string userName)
     {

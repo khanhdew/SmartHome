@@ -1,6 +1,6 @@
-﻿namespace Services.Models.Devices;
+﻿namespace DAO.Models.Devices;
 
-public interface IFan: IDevice
+public interface IFan : IDevice
 {
     void SetSpeed(double speed);
 }

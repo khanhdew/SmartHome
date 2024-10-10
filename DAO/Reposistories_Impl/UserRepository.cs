@@ -8,14 +8,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAO.BaseModels;
 
 namespace DAO.Reposistories_Impl
 {
     
-    internal class UserRepository : IUserRepository
+    public class UserRepository : IUserRepository
     {
-        private readonly DbContext _context;
-        public UserRepository(DbContext context)
+        private readonly SmartHomeContext _context;
+        public UserRepository(SmartHomeContext context)
         {
             _context = context;
         }
@@ -34,7 +35,7 @@ namespace DAO.Reposistories_Impl
 
         public void DeleteUser(string username)
         {
-            var user = _context.Users.FirstOrDefault(u => u.Username == username);
+            var user = _context.Users.FirstOrDefault(u => u.UserName == username);
             if (user == null)
             {
                 throw new UserNotFoundException("User not found");
@@ -45,7 +46,7 @@ namespace DAO.Reposistories_Impl
 
         public User GetUserByUsername(string username)
         {
-            var user = _context.Users.FirstOrDefault(u => u.Username == username);
+            var user = _context.Users.FirstOrDefault(u => u.UserName == username);
             if (user == null)
             {
                 throw new UserNotFoundException("User not found");
@@ -55,14 +56,13 @@ namespace DAO.Reposistories_Impl
 
         public User UpdateUser(User user)
         {
-            var userToUpdate = _context.Users.FirstOrDefault(u => u.Username == user.Username);
+            var userToUpdate = _context.Users.FirstOrDefault(u => u.UserName == user.UserName);
             if (userToUpdate == null)
             {
                 throw new UserNotFoundException("User not found!");
             }
-            userToUpdate.Password = user.Password;
+            userToUpdate.PasswordHash = user.PasswordHash;
             userToUpdate.Email = user.Email;
-            userToUpdate.Role = user.Role;
             _context.Users.Update(userToUpdate);
             _context.SaveChanges();
             return userToUpdate;

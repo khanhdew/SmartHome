@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
+using DAO.Models;
 
-namespace DAO.Models
+namespace DAO.BaseModels
 {
     [Table("ActionHistory")]
     public partial class ActionHistory
     {
         [Key]
         public int ID { get; set; }
-        public int? UserID { get; set; }
+        public string? UserID { get; set; }
         [StringLength(50)]
         public string? EntityType { get; set; }
         public int? EntityID { get; set; }

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
+using DAO.Models;
 
-namespace DAO.Models
+namespace DAO.BaseModels
 {
     [Table("Device")]
     public partial class Device 
@@ -24,7 +22,7 @@ namespace DAO.Models
         public string? Type { get; set; }
         [StringLength(255)]
         public string? DeviceToken { get; set; }
-        public int? UserID { get; set; }
+        public string? UserID { get; set; }
         public int? RoomID { get; set; }
         [StringLength(50)]
         public string? Status { get; set; }
