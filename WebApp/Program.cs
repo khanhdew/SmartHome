@@ -25,7 +25,15 @@ builder.Services.AddScoped<UserManager<User>>(); // Đăng ký UserManager
 
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<SmartHomeContext>()
+    .AddDefaultUI()
     .AddDefaultTokenProviders();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Login";
+    options.LogoutPath = "/Logout";
+
+});
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -52,12 +60,7 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.SignIn.RequireConfirmedPhoneNumber = false;     // Xác thực số điện thoại
 });
 
-builder.Services.ConfigureApplicationCookie(options =>
-{
-    options.LoginPath = "/Login";
-    options.LogoutPath = "/Logout";
-    options.AccessDeniedPath = "/";
-});
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -11,13 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Configuration", "Configuration\Configuration.csproj", "{00F34C14-FE45-4429-8038-F8D89C63EE6A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesktopApp", "DesktopApp\DesktopApp.csproj", "{6E6F5106-68E6-4D99-AA37-638BEE1F743B}"
-	ProjectSection(ProjectDependencies) = postProject
-		{00F34C14-FE45-4429-8038-F8D89C63EE6A} = {00F34C14-FE45-4429-8038-F8D89C63EE6A}
-		{383BD891-FA38-4A17-99A0-0824832B96A0} = {383BD891-FA38-4A17-99A0-0824832B96A0}
-		{EDD0652C-92F8-4792-9B32-CDE51134E0EE} = {EDD0652C-92F8-4792-9B32-CDE51134E0EE}
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,10 +33,6 @@ Global
 		{00F34C14-FE45-4429-8038-F8D89C63EE6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00F34C14-FE45-4429-8038-F8D89C63EE6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00F34C14-FE45-4429-8038-F8D89C63EE6A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6E6F5106-68E6-4D99-AA37-638BEE1F743B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E6F5106-68E6-4D99-AA37-638BEE1F743B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E6F5106-68E6-4D99-AA37-638BEE1F743B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E6F5106-68E6-4D99-AA37-638BEE1F743B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
