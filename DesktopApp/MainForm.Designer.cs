@@ -28,12 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "MainForm";
+            txtPassWord = new Krypton.Toolkit.KryptonTextBox();
+            Panel = new Krypton.Toolkit.KryptonPanel();
+            ((System.ComponentModel.ISupportInitialize)Panel).BeginInit();
+            SuspendLayout();
+            // 
+            // txtPassWord
+            // 
+            txtPassWord.Location = new Point(142, 441);
+            txtPassWord.Name = "txtPassWord";
+            txtPassWord.PasswordChar = '*';
+            txtPassWord.Size = new Size(419, 27);
+            txtPassWord.TabIndex = 3;
+            // 
+            // Panel
+            // 
+            Panel.Dock = DockStyle.Fill;
+            Panel.Location = new Point(0, 0);
+            Panel.Name = "Panel";
+            Panel.Size = new Size(1275, 733);
+            Panel.StateCommon.Color1 = Color.White;
+            Panel.TabIndex = 0;
+            // 
+            // MainForm
+            // 
+            AutoScaleMode = AutoScaleMode.Inherit;
+            ClientSize = new Size(1275, 733);
+            Controls.Add(Panel);
+            Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            Name = "MainForm";
+            Text = "MainForm";
+            Load += MainForm_Load;
+            ((System.ComponentModel.ISupportInitialize)Panel).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+        private Krypton.Toolkit.KryptonTextBox txtPassWord;
+        private Krypton.Toolkit.KryptonPanel PanelLogin;
+        private Krypton.Toolkit.KryptonPanel Panel;
     }
 }
