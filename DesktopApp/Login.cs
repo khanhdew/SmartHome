@@ -15,17 +15,39 @@ namespace DesktopApp
         public Login()
         {
             InitializeComponent();
+
         }
-        public event EventHandler LinkClicked;
-        protected virtual void OnLinkClicked(EventArgs e)
+        public event EventHandler? ClickForPassWord;
+        public event EventHandler? Login_Click;
+        public event EventHandler? Signup_Click;
+        private void OnLinkClicked(EventArgs e)
         {
-            LinkClicked?.Invoke(this, e); // Kích hoạt sự kiện
+            ClickForPassWord?.Invoke(this, e);
         }
-        private void lblinkSignup_LinkClicked(object sender, EventArgs e)
+
+        private void OnLoginClicked(EventArgs e)
+        {
+            Login_Click?.Invoke(this, e);
+        }
+
+        private void OnSignupClicked(EventArgs e)
+        {
+            Signup_Click?.Invoke(this, e);
+        }
+
+        private void quenPassWord_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             OnLinkClicked(EventArgs.Empty);
-           
         }
-      
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            OnLoginClicked(EventArgs.Empty);
+        }
+
+        private void btnSignup_Click(object sender, EventArgs e)
+        {
+            OnSignupClicked(EventArgs.Empty);
+        }
     }
 }

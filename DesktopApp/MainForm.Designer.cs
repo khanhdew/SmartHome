@@ -46,14 +46,14 @@
             Panel.Dock = DockStyle.Fill;
             Panel.Location = new Point(0, 0);
             Panel.Name = "Panel";
-            Panel.Size = new Size(1275, 733);
+            Panel.Size = new Size(1282, 683);
             Panel.StateCommon.Color1 = Color.White;
             Panel.TabIndex = 0;
             // 
             // MainForm
             // 
             AutoScaleMode = AutoScaleMode.Inherit;
-            ClientSize = new Size(1275, 733);
+            ClientSize = new Size(1282, 683);
             Controls.Add(Panel);
             Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.FixedSingle;
