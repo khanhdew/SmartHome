@@ -29,226 +29,353 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignIn));
-            lbSignin = new Krypton.Toolkit.KryptonLinkLabel();
-            kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            kryptonButton1 = new Krypton.Toolkit.KryptonButton();
-            checkAccept2 = new Krypton.Toolkit.KryptonCheckBox();
-            checkAccept1 = new Krypton.Toolkit.KryptonCheckBox();
-            txtDKpassword = new Krypton.Toolkit.KryptonTextBox();
-            kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
-            txtDKEmail = new Krypton.Toolkit.KryptonMaskedTextBox();
+            btnSignIn = new Krypton.Toolkit.KryptonButton();
+            kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
+            panel4 = new Panel();
+            kryptonPictureBox2 = new Krypton.Toolkit.KryptonPictureBox();
+            txtDKPassword = new Krypton.Toolkit.KryptonTextBox();
             kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
-            txtLastName = new Krypton.Toolkit.KryptonMaskedTextBox();
-            txtFirstName = new Krypton.Toolkit.KryptonMaskedTextBox();
-            kryptonLabel10 = new Krypton.Toolkit.KryptonLabel();
-            kryptonLabel11 = new Krypton.Toolkit.KryptonLabel();
-            txtDKlaipass = new Krypton.Toolkit.KryptonTextBox();
-            kryptonLabel12 = new Krypton.Toolkit.KryptonLabel();
+            panel3 = new Panel();
+            panel2 = new Panel();
+            panel1 = new Panel();
             kryptonPictureBox1 = new Krypton.Toolkit.KryptonPictureBox();
+            txtDKEmail = new Krypton.Toolkit.KryptonTextBox();
+            kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel6 = new Krypton.Toolkit.KryptonLabel();
+            kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            btnSignup = new Krypton.Toolkit.KryptonButton();
+            panel5 = new Panel();
+            panel6 = new Panel();
+            kryptonPictureBox3 = new Krypton.Toolkit.KryptonPictureBox();
+            txtDKLaiPassword = new Krypton.Toolkit.KryptonTextBox();
+            kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
+            ((System.ComponentModel.ISupportInitialize)kryptonPictureBox2).BeginInit();
+            panel3.SuspendLayout();
+            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
+            panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)kryptonPictureBox3).BeginInit();
             SuspendLayout();
             // 
-            // lbSignin
+            // btnSignIn
             // 
-            lbSignin.Location = new Point(273, 707);
-            lbSignin.Name = "lbSignin";
-            lbSignin.OverrideVisited.ShortText.Color1 = Color.White;
-            lbSignin.Size = new Size(58, 24);
-            lbSignin.StateNormal.ShortText.Color1 = Color.Turquoise;
-            lbSignin.StateNormal.ShortText.Color2 = Color.White;
-            lbSignin.TabIndex = 37;
-            lbSignin.Values.Text = "Sign In";
-            lbSignin.Click += LbSignIn_LinkClicked;
+            btnSignIn.Location = new Point(100, 563);
+            btnSignIn.Name = "btnSignIn";
+            btnSignIn.Size = new Size(155, 48);
+            btnSignIn.StateCommon.Border.Color1 = Color.FromArgb(255, 192, 192);
+            btnSignIn.StateCommon.Border.Color2 = Color.FromArgb(255, 192, 192);
+            btnSignIn.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            btnSignIn.StateCommon.Border.Rounding = 10F;
+            btnSignIn.StateNormal.Back.Color1 = Color.Red;
+            btnSignIn.StateNormal.Back.Color2 = Color.Red;
+            btnSignIn.StateNormal.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            btnSignIn.StateNormal.Border.Rounding = 10F;
+            btnSignIn.StateNormal.Content.ShortText.Color1 = Color.White;
+            btnSignIn.StateNormal.Content.ShortText.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSignIn.TabIndex = 83;
+            btnSignIn.Values.Text = "Sign In";
+            btnSignIn.Click += btnSignIn_Click;
             // 
-            // kryptonLabel1
+            // kryptonLabel4
             // 
-            kryptonLabel1.Location = new Point(49, 707);
-            kryptonLabel1.Name = "kryptonLabel1";
-            kryptonLabel1.Size = new Size(215, 24);
-            kryptonLabel1.StateCommon.ShortText.Color1 = Color.White;
-            kryptonLabel1.StateCommon.ShortText.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            kryptonLabel1.TabIndex = 36;
-            kryptonLabel1.Values.Text = "Already have an account?";
+            kryptonLabel4.Location = new Point(321, 417);
+            kryptonLabel4.Name = "kryptonLabel4";
+            kryptonLabel4.Size = new Size(6, 2);
+            kryptonLabel4.StateNormal.ShortText.Color1 = Color.White;
+            kryptonLabel4.StateNormal.ShortText.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            kryptonLabel4.TabIndex = 82;
+            kryptonLabel4.Values.Text = "";
             // 
-            // kryptonButton1
+            // panel4
             // 
-            kryptonButton1.Location = new Point(49, 632);
-            kryptonButton1.Name = "kryptonButton1";
-            kryptonButton1.Size = new Size(587, 34);
-            kryptonButton1.StateCommon.Back.Color1 = Color.FromArgb(255, 128, 0);
-            kryptonButton1.StateCommon.Back.Color2 = Color.FromArgb(255, 128, 0);
-            kryptonButton1.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
-            kryptonButton1.StateCommon.Content.ShortText.Color1 = Color.White;
-            kryptonButton1.StateCommon.Content.ShortText.Font = new Font("Arial", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            kryptonButton1.TabIndex = 35;
-            kryptonButton1.Values.ImageTransparentColor = Color.White;
-            kryptonButton1.Values.Text = "Sign up";
+            panel4.BackColor = Color.White;
+            panel4.Location = new Point(84, 93);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(310, 1);
+            panel4.TabIndex = 69;
             // 
-            // checkAccept2
+            // kryptonPictureBox2
             // 
-            checkAccept2.Location = new Point(122, 555);
-            checkAccept2.Name = "checkAccept2";
-            checkAccept2.Size = new Size(169, 21);
-            checkAccept2.StateCommon.ShortText.Color1 = Color.White;
-            checkAccept2.StateCommon.ShortText.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            checkAccept2.TabIndex = 34;
-            checkAccept2.Values.Text = "Accept Terms of Use";
+            kryptonPictureBox2.Image = (Image)resources.GetObject("kryptonPictureBox2.Image");
+            kryptonPictureBox2.InitialImage = null;
+            kryptonPictureBox2.Location = new Point(18, 46);
+            kryptonPictureBox2.Name = "kryptonPictureBox2";
+            kryptonPictureBox2.Size = new Size(56, 45);
+            kryptonPictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
+            kryptonPictureBox2.TabIndex = 68;
+            kryptonPictureBox2.TabStop = false;
             // 
-            // checkAccept1
+            // txtDKPassword
             // 
-            checkAccept1.Location = new Point(122, 521);
-            checkAccept1.Name = "checkAccept1";
-            checkAccept1.Size = new Size(172, 21);
-            checkAccept1.StateCommon.ShortText.Color1 = Color.White;
-            checkAccept1.StateCommon.ShortText.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            checkAccept1.TabIndex = 33;
-            checkAccept1.Values.Text = "Accept Privacy Policy";
-            // 
-            // txtDKpassword
-            // 
-            txtDKpassword.Location = new Point(122, 408);
-            txtDKpassword.Name = "txtDKpassword";
-            txtDKpassword.PasswordChar = '*';
-            txtDKpassword.Size = new Size(471, 27);
-            txtDKpassword.TabIndex = 32;
-            // 
-            // kryptonLabel2
-            // 
-            kryptonLabel2.Location = new Point(53, 401);
-            kryptonLabel2.Name = "kryptonLabel2";
-            kryptonLabel2.Size = new Size(45, 35);
-            kryptonLabel2.TabIndex = 31;
-            kryptonLabel2.Values.Image = (Image)resources.GetObject("kryptonLabel2.Values.Image");
-            kryptonLabel2.Values.Text = "\r\n";
-            // 
-            // txtDKEmail
-            // 
-            txtDKEmail.Location = new Point(122, 356);
-            txtDKEmail.Name = "txtDKEmail";
-            txtDKEmail.Size = new Size(471, 27);
-            txtDKEmail.TabIndex = 30;
+            txtDKPassword.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txtDKPassword.InputControlStyle = Krypton.Toolkit.InputControlStyle.Ribbon;
+            txtDKPassword.Location = new Point(84, 50);
+            txtDKPassword.Multiline = true;
+            txtDKPassword.Name = "txtDKPassword";
+            txtDKPassword.PasswordChar = '*';
+            txtDKPassword.Size = new Size(310, 41);
+            txtDKPassword.StateCommon.Back.Color1 = Color.FromArgb(0, 29, 53);
+            txtDKPassword.StateCommon.Border.Color1 = Color.FromArgb(0, 29, 53);
+            txtDKPassword.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            txtDKPassword.StateCommon.Border.Rounding = 3F;
+            txtDKPassword.StateCommon.Content.Color1 = Color.White;
+            txtDKPassword.StateCommon.Content.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            txtDKPassword.StateNormal.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            txtDKPassword.StateNormal.Border.Rounding = 3F;
+            txtDKPassword.StateNormal.Content.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            txtDKPassword.TabIndex = 67;
             // 
             // kryptonLabel3
             // 
-            kryptonLabel3.Location = new Point(53, 356);
+            kryptonLabel3.Location = new Point(84, 20);
             kryptonLabel3.Name = "kryptonLabel3";
-            kryptonLabel3.Size = new Size(39, 35);
-            kryptonLabel3.TabIndex = 29;
-            kryptonLabel3.Values.Image = (Image)resources.GetObject("kryptonLabel3.Values.Image");
-            kryptonLabel3.Values.ImageTransparentColor = Color.White;
-            kryptonLabel3.Values.Text = "";
+            kryptonLabel3.Size = new Size(98, 24);
+            kryptonLabel3.StateNormal.ShortText.Color1 = Color.White;
+            kryptonLabel3.StateNormal.ShortText.Color2 = Color.White;
+            kryptonLabel3.StateNormal.ShortText.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonLabel3.TabIndex = 66;
+            kryptonLabel3.Values.Text = "Pass Word";
             // 
-            // txtLastName
+            // panel3
             // 
-            txtLastName.Location = new Point(381, 305);
-            txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(213, 27);
-            txtLastName.TabIndex = 28;
+            panel3.Controls.Add(panel4);
+            panel3.Controls.Add(kryptonPictureBox2);
+            panel3.Controls.Add(txtDKPassword);
+            panel3.Controls.Add(kryptonLabel3);
+            panel3.Location = new Point(53, 274);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(428, 108);
+            panel3.TabIndex = 80;
             // 
-            // txtFirstName
+            // panel2
             // 
-            txtFirstName.Location = new Point(122, 305);
-            txtFirstName.Name = "txtFirstName";
-            txtFirstName.Size = new Size(204, 27);
-            txtFirstName.TabIndex = 27;
+            panel2.BackColor = Color.White;
+            panel2.Location = new Point(84, 93);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(310, 1);
+            panel2.TabIndex = 69;
             // 
-            // kryptonLabel10
+            // panel1
             // 
-            kryptonLabel10.Location = new Point(381, 269);
-            kryptonLabel10.Name = "kryptonLabel10";
-            kryptonLabel10.Size = new Size(108, 24);
-            kryptonLabel10.StateCommon.ShortText.Color1 = Color.White;
-            kryptonLabel10.StateCommon.ShortText.ColorAlign = Krypton.Toolkit.PaletteRectangleAlign.Control;
-            kryptonLabel10.StateCommon.ShortText.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            kryptonLabel10.TabIndex = 26;
-            kryptonLabel10.Values.Text = "Last Name*\r\n";
-            // 
-            // kryptonLabel11
-            // 
-            kryptonLabel11.Location = new Point(122, 269);
-            kryptonLabel11.Name = "kryptonLabel11";
-            kryptonLabel11.Size = new Size(109, 24);
-            kryptonLabel11.StateCommon.ShortText.Color1 = Color.White;
-            kryptonLabel11.StateCommon.ShortText.ColorAlign = Krypton.Toolkit.PaletteRectangleAlign.Control;
-            kryptonLabel11.StateCommon.ShortText.Font = new Font("Arial", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            kryptonLabel11.TabIndex = 25;
-            kryptonLabel11.Values.Text = "First Name*\r\n";
-            // 
-            // txtDKlaipass
-            // 
-            txtDKlaipass.Location = new Point(122, 462);
-            txtDKlaipass.Name = "txtDKlaipass";
-            txtDKlaipass.PasswordChar = '*';
-            txtDKlaipass.Size = new Size(471, 27);
-            txtDKlaipass.TabIndex = 24;
-            // 
-            // kryptonLabel12
-            // 
-            kryptonLabel12.Location = new Point(53, 454);
-            kryptonLabel12.Name = "kryptonLabel12";
-            kryptonLabel12.Size = new Size(45, 35);
-            kryptonLabel12.TabIndex = 23;
-            kryptonLabel12.Values.Image = (Image)resources.GetObject("kryptonLabel12.Values.Image");
-            kryptonLabel12.Values.Text = "\r\n";
+            panel1.Controls.Add(panel2);
+            panel1.Controls.Add(kryptonPictureBox1);
+            panel1.Controls.Add(txtDKEmail);
+            panel1.Controls.Add(kryptonLabel2);
+            panel1.Location = new Point(53, 160);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(428, 108);
+            panel1.TabIndex = 79;
             // 
             // kryptonPictureBox1
             // 
-            kryptonPictureBox1.ErrorImage = null;
             kryptonPictureBox1.Image = (Image)resources.GetObject("kryptonPictureBox1.Image");
-            kryptonPictureBox1.Location = new Point(20, 54);
+            kryptonPictureBox1.InitialImage = null;
+            kryptonPictureBox1.Location = new Point(18, 46);
             kryptonPictureBox1.Name = "kryptonPictureBox1";
-            kryptonPictureBox1.Size = new Size(641, 124);
+            kryptonPictureBox1.Size = new Size(56, 45);
             kryptonPictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-            kryptonPictureBox1.TabIndex = 22;
+            kryptonPictureBox1.TabIndex = 68;
             kryptonPictureBox1.TabStop = false;
+            // 
+            // txtDKEmail
+            // 
+            txtDKEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txtDKEmail.InputControlStyle = Krypton.Toolkit.InputControlStyle.Ribbon;
+            txtDKEmail.Location = new Point(84, 50);
+            txtDKEmail.Multiline = true;
+            txtDKEmail.Name = "txtDKEmail";
+            txtDKEmail.Size = new Size(310, 44);
+            txtDKEmail.StateCommon.Back.Color1 = Color.FromArgb(0, 29, 53);
+            txtDKEmail.StateCommon.Border.Color1 = Color.FromArgb(0, 29, 53);
+            txtDKEmail.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            txtDKEmail.StateCommon.Border.Rounding = 3F;
+            txtDKEmail.StateCommon.Content.Color1 = Color.White;
+            txtDKEmail.StateCommon.Content.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            txtDKEmail.StateNormal.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            txtDKEmail.StateNormal.Border.Rounding = 3F;
+            txtDKEmail.StateNormal.Content.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            txtDKEmail.TabIndex = 67;
+            txtDKEmail.Text = "(Email)";
+            // 
+            // kryptonLabel2
+            // 
+            kryptonLabel2.Location = new Point(84, 20);
+            kryptonLabel2.Name = "kryptonLabel2";
+            kryptonLabel2.Size = new Size(101, 24);
+            kryptonLabel2.StateNormal.ShortText.Color1 = Color.White;
+            kryptonLabel2.StateNormal.ShortText.Color2 = Color.White;
+            kryptonLabel2.StateNormal.ShortText.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonLabel2.TabIndex = 66;
+            kryptonLabel2.Values.Text = "User Name";
+            // 
+            // kryptonLabel1
+            // 
+            kryptonLabel1.Location = new Point(234, 87);
+            kryptonLabel1.Name = "kryptonLabel1";
+            kryptonLabel1.Size = new Size(104, 31);
+            kryptonLabel1.StateNormal.ShortText.Color1 = Color.White;
+            kryptonLabel1.StateNormal.ShortText.Color2 = Color.White;
+            kryptonLabel1.StateNormal.ShortText.Font = new Font("Arial", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            kryptonLabel1.TabIndex = 78;
+            kryptonLabel1.Values.Text = "Đăng Kí";
+            // 
+            // kryptonLabel6
+            // 
+            kryptonLabel6.Location = new Point(55, 697);
+            kryptonLabel6.Name = "kryptonLabel6";
+            kryptonLabel6.Size = new Size(207, 24);
+            kryptonLabel6.StateCommon.ShortText.Color1 = Color.White;
+            kryptonLabel6.StateCommon.ShortText.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonLabel6.TabIndex = 76;
+            kryptonLabel6.Values.Text = "Do not have an account?";
+            // 
+            // kryptonPanel1
+            // 
+            kryptonPanel1.Dock = DockStyle.Right;
+            kryptonPanel1.Location = new Point(561, 0);
+            kryptonPanel1.Name = "kryptonPanel1";
+            kryptonPanel1.Size = new Size(728, 685);
+            kryptonPanel1.StateCommon.Color1 = Color.White;
+            kryptonPanel1.StateNormal.Image = (Image)resources.GetObject("kryptonPanel1.StateNormal.Image");
+            kryptonPanel1.StateNormal.ImageAlign = Krypton.Toolkit.PaletteRectangleAlign.Local;
+            kryptonPanel1.StateNormal.ImageStyle = Krypton.Toolkit.PaletteImageStyle.CenterMiddle;
+            kryptonPanel1.TabIndex = 77;
+            // 
+            // btnSignup
+            // 
+            btnSignup.Location = new Point(279, 563);
+            btnSignup.Name = "btnSignup";
+            btnSignup.Size = new Size(155, 48);
+            btnSignup.StateCommon.Border.Color1 = Color.FromArgb(255, 192, 192);
+            btnSignup.StateCommon.Border.Color2 = Color.FromArgb(255, 192, 192);
+            btnSignup.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            btnSignup.StateCommon.Border.Rounding = 10F;
+            btnSignup.StateNormal.Back.Color1 = Color.Red;
+            btnSignup.StateNormal.Back.Color2 = Color.Red;
+            btnSignup.StateNormal.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            btnSignup.StateNormal.Border.Rounding = 10F;
+            btnSignup.StateNormal.Content.ShortText.Color1 = Color.White;
+            btnSignup.StateNormal.Content.ShortText.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSignup.TabIndex = 85;
+            btnSignup.Values.Text = "Sign up";
+            btnSignup.Click += btnSignup_Click;
+            // 
+            // panel5
+            // 
+            panel5.Controls.Add(panel6);
+            panel5.Controls.Add(kryptonPictureBox3);
+            panel5.Controls.Add(txtDKLaiPassword);
+            panel5.Controls.Add(kryptonLabel5);
+            panel5.Location = new Point(53, 398);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(428, 108);
+            panel5.TabIndex = 86;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.White;
+            panel6.Location = new Point(84, 93);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(310, 1);
+            panel6.TabIndex = 69;
+            // 
+            // kryptonPictureBox3
+            // 
+            kryptonPictureBox3.Image = (Image)resources.GetObject("kryptonPictureBox3.Image");
+            kryptonPictureBox3.InitialImage = null;
+            kryptonPictureBox3.Location = new Point(18, 46);
+            kryptonPictureBox3.Name = "kryptonPictureBox3";
+            kryptonPictureBox3.Size = new Size(56, 45);
+            kryptonPictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
+            kryptonPictureBox3.TabIndex = 68;
+            kryptonPictureBox3.TabStop = false;
+            // 
+            // txtDKLaiPassword
+            // 
+            txtDKLaiPassword.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txtDKLaiPassword.InputControlStyle = Krypton.Toolkit.InputControlStyle.Ribbon;
+            txtDKLaiPassword.Location = new Point(84, 50);
+            txtDKLaiPassword.Multiline = true;
+            txtDKLaiPassword.Name = "txtDKLaiPassword";
+            txtDKLaiPassword.PasswordChar = '*';
+            txtDKLaiPassword.Size = new Size(322, 41);
+            txtDKLaiPassword.StateCommon.Back.Color1 = Color.FromArgb(0, 29, 53);
+            txtDKLaiPassword.StateCommon.Border.Color1 = Color.FromArgb(0, 29, 53);
+            txtDKLaiPassword.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            txtDKLaiPassword.StateCommon.Border.Rounding = 3F;
+            txtDKLaiPassword.StateCommon.Content.Color1 = Color.White;
+            txtDKLaiPassword.StateCommon.Content.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            txtDKLaiPassword.StateNormal.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom | Krypton.Toolkit.PaletteDrawBorders.Left | Krypton.Toolkit.PaletteDrawBorders.Right;
+            txtDKLaiPassword.StateNormal.Border.Rounding = 3F;
+            txtDKLaiPassword.StateNormal.Content.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            txtDKLaiPassword.TabIndex = 67;
+            // 
+            // kryptonLabel5
+            // 
+            kryptonLabel5.Location = new Point(84, 20);
+            kryptonLabel5.Name = "kryptonLabel5";
+            kryptonLabel5.Size = new Size(187, 24);
+            kryptonLabel5.StateNormal.ShortText.Color1 = Color.White;
+            kryptonLabel5.StateNormal.ShortText.Color2 = Color.White;
+            kryptonLabel5.StateNormal.ShortText.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            kryptonLabel5.TabIndex = 66;
+            kryptonLabel5.Values.Text = "Reapet your password";
             // 
             // SignIn
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoScroll = true;
-            BackColor = Color.MediumSeaGreen;
-            Controls.Add(lbSignin);
+            BackColor = Color.FromArgb(0, 29, 53);
+            Controls.Add(panel5);
+            Controls.Add(btnSignup);
+            Controls.Add(btnSignIn);
+            Controls.Add(kryptonLabel4);
+            Controls.Add(panel3);
+            Controls.Add(panel1);
             Controls.Add(kryptonLabel1);
-            Controls.Add(kryptonButton1);
-            Controls.Add(checkAccept2);
-            Controls.Add(checkAccept1);
-            Controls.Add(txtDKpassword);
-            Controls.Add(kryptonLabel2);
-            Controls.Add(txtDKEmail);
-            Controls.Add(kryptonLabel3);
-            Controls.Add(txtLastName);
-            Controls.Add(txtFirstName);
-            Controls.Add(kryptonLabel10);
-            Controls.Add(kryptonLabel11);
-            Controls.Add(txtDKlaipass);
-            Controls.Add(kryptonLabel12);
-            Controls.Add(kryptonPictureBox1);
+            Controls.Add(kryptonLabel6);
+            Controls.Add(kryptonPanel1);
             Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "SignIn";
-            Size = new Size(693, 789);
+            Size = new Size(1289, 685);
+            ((System.ComponentModel.ISupportInitialize)kryptonPictureBox2).EndInit();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel1).EndInit();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)kryptonPictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Krypton.Toolkit.KryptonLinkLabel lbSignin;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel1;
-        private Krypton.Toolkit.KryptonButton kryptonButton1;
-        private Krypton.Toolkit.KryptonCheckBox checkAccept2;
-        private Krypton.Toolkit.KryptonCheckBox checkAccept1;
-        private Krypton.Toolkit.KryptonTextBox txtDKpassword;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel2;
-        private Krypton.Toolkit.KryptonMaskedTextBox txtDKEmail;
+        private Krypton.Toolkit.KryptonButton btnSignIn;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel4;
+        private Panel panel4;
+        private Krypton.Toolkit.KryptonPictureBox kryptonPictureBox2;
         private Krypton.Toolkit.KryptonLabel kryptonLabel3;
-        private Krypton.Toolkit.KryptonMaskedTextBox txtLastName;
-        private Krypton.Toolkit.KryptonMaskedTextBox txtFirstName;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel10;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel11;
-        private Krypton.Toolkit.KryptonTextBox txtDKlaipass;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel12;
+        private Panel panel3;
+        private Panel panel2;
+        private Panel panel1;
         private Krypton.Toolkit.KryptonPictureBox kryptonPictureBox1;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel2;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel1;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel6;
+        private Krypton.Toolkit.KryptonPanel kryptonPanel1;
+        private Krypton.Toolkit.KryptonButton btnSignup;
+        private Panel panel5;
+        private Panel panel6;
+        private Krypton.Toolkit.KryptonPictureBox kryptonPictureBox3;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel5;
+        public Krypton.Toolkit.KryptonTextBox txtDKPassword;
+        public Krypton.Toolkit.KryptonTextBox txtDKEmail;
+        public Krypton.Toolkit.KryptonTextBox txtDKLaiPassword;
     }
 }
