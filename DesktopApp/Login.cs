@@ -38,15 +38,7 @@ namespace DesktopApp
         private void quenPassWord_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             OnLinkClicked(EventArgs.Empty);
-<<<<<<< HEAD
 
-        }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-
-        }
-=======
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -58,6 +50,5 @@ namespace DesktopApp
         {
             OnSignupClicked(EventArgs.Empty);
         }
->>>>>>> df3af0565a0b1ce6a5feaa17e90a6e5765382270
     }
 }
