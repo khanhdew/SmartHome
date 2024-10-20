@@ -24,8 +24,12 @@ namespace DesktopApp
         private void lblinkSignup_LinkClicked(object sender, EventArgs e)
         {
             OnLinkClicked(EventArgs.Empty);
-           
+
         }
-      
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

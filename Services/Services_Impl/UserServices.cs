@@ -14,25 +14,6 @@ public class UserServices : IUserServices
     {
         _userRepository = userRepository;
     }
-    public User Register(string username, string password, string email)
-    {
-        User user = new UserFactory().CreateUser(UserRole.User, username, password, email);
-        try
-        {
-            _userRepository.AddUser(user);
-        }
-        catch (UserExistException e)
-        {
-            throw new UserExistException("User already exists");
-        }
-        return user;
-    }
-
-    public string Login(string username, string password)
-    {
-        throw new NotImplementedException();
-    }
-
     public User EditUser(User user)
     {
         var userToUpdate = _userRepository.GetUserByUsername(user.UserName);
