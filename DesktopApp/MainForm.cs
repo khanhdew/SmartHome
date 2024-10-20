@@ -12,9 +12,12 @@ namespace DesktopApp
 {
     public partial class MainForm : Form
     {
+        Login loginControl = new Login();
+        SignIn signInControl = new SignIn();
         public MainForm()
         {
             InitializeComponent();
+            
 
         }
 
@@ -23,49 +26,74 @@ namespace DesktopApp
             ShowLoginPanel();
         }
 
-        private void lblinkSignup_LinkClicked(object sender, EventArgs e)
-        {
-            ShowSignInPanel();
-        }
-
+        // Đăng nhập
         private void ShowLoginPanel()
         {
             Panel.Controls.Clear();
-            Login loginControl = new Login();
-            SetControlSizeAndPosition(loginControl, 0.57, 1);
-            loginControl.LinkClicked += Login_LinkClicked;
+
+            // Hủy đăng ký sự kiện trước khi đăng ký lại
+            loginControl.ClickForPassWord -= OnClickForPassWord;
+            loginControl.Login_Click -= btnLogin;
+            loginControl.Signup_Click -= btnSignup_Click;
+            // Đăng ký sự kiện cho loginControl
+            loginControl.ClickForPassWord += OnClickForPassWord;
+            loginControl.Login_Click += btnLogin;
+            loginControl.Signup_Click += btnSignup_Click;
             Panel.Controls.Add(loginControl);
        
         
          }
-
-        private void ShowSignInPanel()
-        {
-            Panel.Controls.Clear();
-            SignIn signInControl = new SignIn();
-            signInControl.LinkClicked += SignInControl_LinkClicked;
-            SetControlSizeAndPosition(signInControl, 0.56, 1.05);
-            Panel.Controls.Add(signInControl);
-            
-        }
-
-        private void SignInControl_LinkClicked(object sender, EventArgs e)
-        {
-            ShowLoginPanel();
-        }
-        private void Login_LinkClicked(object sender, EventArgs e)
+        // nút đăng kí
+        private void btnSignup_Click(object sender, EventArgs e)
         {
             ShowSignInPanel();
         }
-
-        private void SetControlSizeAndPosition(Control control, double widthPercent, double heightPercent)
+        // nút quên mật khẩu
+        private void OnClickForPassWord(object sender, EventArgs e)
         {
-            control.Width = (int)(Panel.Width * widthPercent);
-            control.Height = (int)(Panel.Height * heightPercent);
-            control.Location = new Point(
-                (Panel.Width - control.Width) / 2,
-                (Panel.Height - control.Height) / 2
-            );
+            ShowSignInPanel();
         }
+        // nút login 
+        private void btnLogin(object sender, EventArgs e)
+        {
+            string username = loginControl.txtEmail.Text;
+            string password = loginControl.txtPassword.Text;
+
+            MessageBox.Show("tài khoản mk vừa nhập là : "+ username + "\n "+password);
+        }
+
+
+        // Đăng kí
+
+        private void ShowSignInPanel()
+        {
+
+            Panel.Controls.Clear();
+            // Hủy đăng ký sự kiện trước khi đăng ký lại
+            signInControl.SignInClicked -= OnSignInClicked;
+            signInControl.SignUpClicked -= btnSignUp;
+
+            // Đăng ký sự kiện cho signInControl
+            signInControl.SignInClicked += OnSignInClicked;
+            signInControl.SignUpClicked += btnSignUp;
+            Panel.Controls.Add(signInControl);
+            
+        }
+        private void OnSignInClicked(object sender, EventArgs e)
+        {
+            ShowLoginPanel();
+        }
+        // nút đăng nhập
+        private void btnSignUp(object sender, EventArgs e)
+        {
+           
+            string username = signInControl.txtDKEmail.Text;
+            string password = signInControl.txtDKPassword.Text;
+            string repassword = signInControl.txtDKLaiPassword.Text;
+            MessageBox.Show("tài khoản mk vừa nhập là : " + username + "\n " + password + "\n " + repassword);
+        }
+
+
+
     }
 }

@@ -16,18 +16,29 @@ namespace DesktopApp
         {
             InitializeComponent();
         }
-       
-        // Tạo sự kiện cho UserControl
-        public event EventHandler LinkClicked;
 
-        protected virtual void OnLinkClicked(EventArgs e)
+        // Tạo sự kiện cho UserControl
+        public event EventHandler SignUpClicked;
+        public event EventHandler SignInClicked;
+
+        protected virtual void OnSignUpClicked(EventArgs e)
         {
-            LinkClicked?.Invoke(this, e); // Kích hoạt sự kiện
+            SignUpClicked?.Invoke(this, e); // Kích hoạt sự kiện
         }
 
-        private void LbSignIn_LinkClicked(object sender, EventArgs e)
+        protected virtual void OnSignInClicked(EventArgs e)
         {
-            OnLinkClicked(EventArgs.Empty);
+            SignInClicked?.Invoke(this, e); // Kích hoạt sự kiện
+        }
+
+        private void btnSignup_Click(object sender, EventArgs e)
+        {
+            OnSignUpClicked(EventArgs.Empty);
+        }
+
+        private void btnSignIn_Click(object sender, EventArgs e)
+        {
+            OnSignInClicked(EventArgs.Empty);
         }
     }
 }
