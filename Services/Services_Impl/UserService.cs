@@ -7,10 +7,10 @@ using User = DAO.BaseModels.User;
 
 namespace Services.Services_Impl;
 
-public class UserServices : IUserServices
+public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
-    public UserServices(IUserRepository userRepository)
+    public UserService(IUserRepository userRepository)
     {
         _userRepository = userRepository;
     }
@@ -24,5 +24,10 @@ public class UserServices : IUserServices
         userToUpdate = user;
         _userRepository.UpdateUser(userToUpdate);
         return userToUpdate;
+    }
+
+    public User GetUserByUsername(string username)
+    {
+        return _userRepository.GetUserByUsername(username);
     }
 }

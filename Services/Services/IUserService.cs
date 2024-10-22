@@ -2,7 +2,8 @@
 
 namespace Services.Services;
 
-public interface IUserServices
+public interface IUserService
 {
     User EditUser(User user);
+    User GetUserByUsername(string username);
 }

@@ -19,7 +19,6 @@ public class HouseService: IHouseService
             Location = address
         };
         _houseRepository.AddHouse(house);
-        
         return house;
     }
 
@@ -36,14 +35,14 @@ public class HouseService: IHouseService
         return houseToUpdate;
     }
 
-    public House GetHouseByUserId(string userId)
+    public IEnumerable<House> GetHousesByUserId(string userId)
     {
-        throw new NotImplementedException();
+        return _houseRepository.GetHouseByUserID(userId);
     }
 
     public IEnumerable<Room> GetRooms(int houseId)
     {
-        throw new NotImplementedException();
+        return _houseRepository.GetRoomsByHouseId(houseId);
     }
 
     public Room GetRoom(int roomId)
@@ -51,23 +50,23 @@ public class HouseService: IHouseService
         throw new NotImplementedException();
     }
 
-    public Room AddRoomToHouse(int houseId, string name)
+    public Room AddRoomToHouse(int houseId, Room room)
     {
-        throw new NotImplementedException();
+        return _houseRepository.AddRoomToHouse(houseId, room);
     }
 
     public void RemoveRoomFromHouse(int houseId, int roomId)
     {
-        throw new NotImplementedException();
+        _houseRepository.RemoveRoomFromHouse(houseId, roomId);
     }
 
     public void AddHouseMember(string userId, int houseId)
     {
-        throw new NotImplementedException();
+        _houseRepository.AddHouseMember(userId, houseId);
     }
 
     public void RemoveHouseMember(string userId, int houseId)
     {
-        throw new NotImplementedException();
+        _houseRepository.RemoveHouseMember(userId, houseId);
     }
 }

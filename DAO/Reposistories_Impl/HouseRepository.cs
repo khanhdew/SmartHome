@@ -46,21 +46,37 @@ namespace DAO.Reposistories_Impl
         {
             try
             {
+                var house = _context.Houses.FirstOrDefault(h => h.ID == houseId);
+                if (house == null)
+                {
+                    throw new Exception("House not found");
+                }
+
+                var user = _context.Users.FirstOrDefault(u => u.Id == userId);
+                if (user == null)
+                {
+                    throw new Exception("User not found");
+                }
+
                 var houseMember = new HouseMember
                 {
                     UserID = userId,
-                    HouseID = houseId
+                    HouseID = houseId,
+                    House = house,
+                    User = user
                 };
+
                 _context.HouseMembers.Add(houseMember);
                 _context.SaveChanges();
             }
             catch (Exception e)
             {
+                Console.WriteLine(e);
                 throw new Exception("Error while adding house member");
             }
         }
 
-        public void AddRoomToHouse(int houseId, Room room)
+        public Room AddRoomToHouse(int houseId, Room room)
         {
             try
             {
@@ -71,6 +87,7 @@ namespace DAO.Reposistories_Impl
                 }
                 house.Rooms.Add(room);
                 _context.SaveChanges();
+                return room;
             }
             catch (Exception e)
             {
@@ -149,8 +166,17 @@ namespace DAO.Reposistories_Impl
             {
                 throw new Exception("House not found!");
             }
-            houseToUpdate = house;
-            _context.Houses.Update(houseToUpdate);
+            // Update only the modified properties
+            // no update for id, null properties
+            var properties = house.GetType().GetProperties();
+            foreach (var property in properties)
+            {
+                if (property.Name == "ID" || property.GetValue(house) == null)
+                {
+                    continue;
+                }
+                property.SetValue(houseToUpdate, property.GetValue(house));
+            }
             _context.SaveChanges();
             return houseToUpdate;
         }

@@ -17,7 +17,7 @@ namespace DAO.Repositories
         House GetHouseById(int houseId);
         void AddHouseMember(string userId, int houseId);
         void RemoveHouseMember(string userId, int houseId);
-        void AddRoomToHouse(int houseId, Room room);
+        Room AddRoomToHouse(int houseId, Room room);
         void RemoveRoomFromHouse(int houseId, int roomId);
 
         IEnumerable<Room> GetRoomsByHouseId(int houseId);
