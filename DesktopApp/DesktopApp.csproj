@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FontAwesome.Sharp" Version="6.6.0" />
+    <PackageReference Include="FontAwesome.Sharp.Pro" Version="6.6.0" />
     <PackageReference Include="Krypton.Docking" Version="85.24.7.204" />
     <PackageReference Include="Krypton.Navigator" Version="85.24.8.239" />
     <PackageReference Include="Krypton.Toolkit" Version="85.24.8.239" />

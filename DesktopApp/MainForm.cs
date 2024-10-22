@@ -17,7 +17,7 @@ namespace DesktopApp
         public MainForm()
         {
             InitializeComponent();
-            
+           
 
         }
 
@@ -39,6 +39,11 @@ namespace DesktopApp
             loginControl.ClickForPassWord += OnClickForPassWord;
             loginControl.Login_Click += btnLogin;
             loginControl.Signup_Click += btnSignup_Click;
+
+            // Thiết lập thuộc tính Anchor và Dock để ngăn thay đổi kích thước
+            loginControl.Anchor = AnchorStyles.None;
+            loginControl.Dock = DockStyle.Fill;
+
             Panel.Controls.Add(loginControl);
        
         
@@ -60,6 +65,7 @@ namespace DesktopApp
             string password = loginControl.txtPassword.Text;
 
             MessageBox.Show("tài khoản mk vừa nhập là : "+ username + "\n "+password);
+            ShowDashBroadPanel();
         }
 
 
@@ -93,7 +99,14 @@ namespace DesktopApp
             MessageBox.Show("tài khoản mk vừa nhập là : " + username + "\n " + password + "\n " + repassword);
         }
 
-
+        // dashboard
+        private void ShowDashBroadPanel()
+        {
+            Panel.Controls.Clear();
+            DashBroad dashBroad = new DashBroad();
+            dashBroad.Dock = DockStyle.Fill;
+            Panel.Controls.Add(dashBroad);
+        }
 
     }
 }
