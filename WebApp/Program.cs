@@ -19,7 +19,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<SmartHomeContext>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IUserServices, UserServices>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<SignInManager<User>>(); // Đăng ký SignInManager
 builder.Services.AddScoped<UserManager<User>>(); // Đăng ký UserManager
 

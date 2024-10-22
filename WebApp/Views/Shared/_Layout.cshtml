@@ -1,4 +1,8 @@
-﻿
+﻿@using Microsoft.AspNetCore.Identity
+@using DAO.BaseModels
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +31,23 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
+                    @{
+                        if (SignInManager.IsSignedIn(User))
+                        {
+                            // User is authenticated show logout button
+                            // Show user email
+                            <span class="text-dark">Hello @UserManager.GetUserName(User)!</span>
+                            <a class="btn btn-outline-primary" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                        }
+                        else
+                        {
+                            // User is not authenticated show login button
+                            <a class="btn btn-outline-primary" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                        }
+
+                    }
                 </div>
+              
             </div>
         </nav>
     </header>

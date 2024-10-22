@@ -53,11 +53,12 @@
             ((System.ComponentModel.ISupportInitialize)kryptonPictureBox2).BeginInit();
             SuspendLayout();
             // 
+
             // kryptonLabel6
             // 
             kryptonLabel6.Location = new Point(79, 733);
             kryptonLabel6.Name = "kryptonLabel6";
-            kryptonLabel6.Size = new Size(207, 24);
+            kryptonLabel6.Size = new Size(167, 19);
             kryptonLabel6.StateCommon.ShortText.Color1 = Color.White;
             kryptonLabel6.StateCommon.ShortText.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonLabel6.TabIndex = 62;
@@ -76,6 +77,7 @@
             // 
             // kryptonLabel1
             // 
+
             kryptonLabel1.Location = new Point(220, 120);
             kryptonLabel1.Name = "kryptonLabel1";
             kryptonLabel1.Size = new Size(79, 31);
@@ -87,6 +89,7 @@
             // 
             // kryptonLabel2
             // 
+
             kryptonLabel2.Location = new Point(84, 20);
             kryptonLabel2.Name = "kryptonLabel2";
             kryptonLabel2.Size = new Size(87, 24);
@@ -167,6 +170,7 @@
             // kryptonPictureBox2
             // 
             kryptonPictureBox2.Image = (Image)resources.GetObject("kryptonPictureBox2.Image");
+
             kryptonPictureBox2.InitialImage = null;
             kryptonPictureBox2.Location = new Point(18, 46);
             kryptonPictureBox2.Name = "kryptonPictureBox2";
@@ -177,6 +181,7 @@
             // 
             // txtPassword
             // 
+
             txtPassword.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txtPassword.InputControlStyle = Krypton.Toolkit.InputControlStyle.Ribbon;
             txtPassword.Location = new Point(84, 50);
@@ -195,9 +200,7 @@
             txtPassword.StateNormal.Content.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             txtPassword.TabIndex = 67;
             txtPassword.Text = "Password";
-            // 
-            // kryptonLabel3
-            // 
+
             kryptonLabel3.Location = new Point(84, 20);
             kryptonLabel3.Name = "kryptonLabel3";
             kryptonLabel3.Size = new Size(83, 24);
@@ -276,6 +279,7 @@
             Controls.Add(btnSignup);
             Controls.Add(kryptonLabel4);
             Controls.Add(btnLogin);
+
             Controls.Add(panel3);
             Controls.Add(panel1);
             Controls.Add(kryptonLabel1);

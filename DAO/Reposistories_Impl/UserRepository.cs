@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAO.BaseModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAO.Reposistories_Impl
 {
@@ -59,11 +60,20 @@ namespace DAO.Reposistories_Impl
             var userToUpdate = _context.Users.FirstOrDefault(u => u.UserName == user.UserName);
             if (userToUpdate == null)
             {
-                throw new UserNotFoundException("User not found!");
+                throw new UserNotFoundException("User not found");
             }
-            userToUpdate.PasswordHash = user.PasswordHash;
-            userToUpdate.Email = user.Email;
-            _context.Users.Update(userToUpdate);
+
+            // Update only the modified properties
+            // no update for id, username, null properties
+            var properties = user.GetType().GetProperties();
+            foreach (var property in properties)
+            {
+                if (property.Name == "Id" || property.Name == "UserName" || property.GetValue(user) == null )
+                {
+                    continue;
+                }
+                property.SetValue(userToUpdate, property.GetValue(user));
+            }
             _context.SaveChanges();
             return userToUpdate;
         }

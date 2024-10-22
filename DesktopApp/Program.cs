@@ -1,4 +1,6 @@
+using DAO.BaseModels;
 using DAO.Context;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DesktopApp
@@ -26,9 +28,17 @@ namespace DesktopApp
         {
             // Đăng ký các dịch vụ (Service Layer) và repository (Data Access Layer)
             // services.AddScoped<IUserService, UserService>();
+            services.AddLogging();
             services.AddScoped<SmartHomeContext>();
+            services.AddScoped<SignInManager<User>>();
+            services.AddScoped<UserManager<User>>();
+
+            
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<SmartHomeContext>()
+                .AddDefaultTokenProviders();
             // Đăng ký form chính
-            services.AddScoped<MainForm>();
+            services.AddTransient<MainForm>();
         }
     }
 }
