@@ -66,7 +66,7 @@
             // 
             // kryptonPanel1
             // 
-
+            kryptonPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             kryptonPanel1.Dock = DockStyle.Right;
             kryptonPanel1.Location = new Point(533, 0);
             kryptonPanel1.Name = "kryptonPanel1";

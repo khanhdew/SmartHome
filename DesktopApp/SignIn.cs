@@ -15,6 +15,7 @@ namespace DesktopApp
         public SignIn()
         {
             InitializeComponent();
+            this.Dock = DockStyle.Fill;
         }
 
         // Tạo sự kiện cho UserControl

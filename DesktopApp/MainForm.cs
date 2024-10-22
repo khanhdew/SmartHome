@@ -42,6 +42,13 @@ namespace DesktopApp
 
             // Đăng ký sự kiện cho loginControl
             loginControl.ClickForPassWord += OnClickForPassWord;
+
+
+            // Thiết lập thuộc tính Anchor và Dock để ngăn thay đổi kích thước
+            loginControl.Anchor = AnchorStyles.None;
+            loginControl.Dock = DockStyle.Fill;
+
+
             loginControl.Login_Click += async (s, ev) => await BtnLogin_Click(s, ev);
             loginControl.Signup_Click += BtnSignup_Click;
             Panel.Controls.Add(loginControl);
@@ -65,6 +72,8 @@ namespace DesktopApp
             string username = loginControl.txtEmail.Text;
             string password = loginControl.txtPassword.Text;
 
+
+            ShowDashBroadPanel();
             var user = await _userManager.FindByNameAsync(username);
             if (user != null)
             {
@@ -127,5 +136,15 @@ namespace DesktopApp
                 MessageBox.Show("Mat khau khong trung khop");
             }
         }
+
+        // dashboard
+        private void ShowDashBroadPanel()
+        {
+            Panel.Controls.Clear();
+            DashBroad dashBroad = new DashBroad();
+            dashBroad.Dock = DockStyle.Fill;
+            Panel.Controls.Add(dashBroad);
+        }
+
     }
 }

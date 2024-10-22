@@ -15,7 +15,7 @@ namespace DesktopApp
         public Login()
         {
             InitializeComponent();
-
+            this.Dock = DockStyle.Fill;
         }
         public event EventHandler? ClickForPassWord;
         public event EventHandler? Login_Click;
@@ -35,12 +35,6 @@ namespace DesktopApp
             Signup_Click?.Invoke(this, e);
         }
 
-        private void quenPassWord_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            OnLinkClicked(EventArgs.Empty);
-
-        }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             OnLoginClicked(EventArgs.Empty);
@@ -50,5 +44,12 @@ namespace DesktopApp
         {
             OnSignupClicked(EventArgs.Empty);
         }
+
+        private void quenPassWord_LinkClicked(object sender, EventArgs e)
+        {
+            OnLinkClicked(EventArgs.Empty);
+        }
+
+        }
     }
-}
+
