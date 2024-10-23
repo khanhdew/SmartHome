@@ -78,7 +78,7 @@ namespace DesktopApp
             if (user != null)
             {
                 var result = await _userManager.CheckPasswordAsync(user, password);
-                MessageBox.Show("Dang nhap " + result);
+                MessageBox.Show("Dang nhap " + result );
             }
             else
             {
