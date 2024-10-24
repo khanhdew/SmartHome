@@ -24,18 +24,17 @@ Layout = null;
             </div>
             <span>or use your email for registration</span>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
             <div class="form-group">
-                @Html.EditorFor(m => m.RegisterModel.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
-                <span asp-validation-for="RegisterModel.Email" class="text-danger"></span>
+                    <input asp-for="RegisterModel.Email" type="email" placeholder="Email" class="form-control" />
+                    <span asp-validation-for="RegisterModel.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                @Html.EditorFor(m => m.RegisterModel.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password" } })
-                <span asp-validation-for="RegisterModel.Password" class="text-danger"></span>
+                    <input asp-for="RegisterModel.Password" type="password" placeholder="Password" class="form-control" />
+                    <span asp-validation-for="RegisterModel.Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                @Html.EditorFor(m => m.RegisterModel.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm Password" } })
-                <span asp-validation-for="RegisterModel.ConfirmPassword" class="text-danger"></span>
+                    <input asp-for="RegisterModel.ConfirmPassword" type="password" placeholder="Confirm password" class="form-control" />
+                    <span asp-validation-for="RegisterModel.ConfirmPassword" class="text-danger"></span>
             </div>
             <button type="submit">Register</button>
         </form>
@@ -51,16 +50,16 @@ Layout = null;
             <span>or use your account</span>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                @Html.EditorFor(m => m.LoginModel.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
-                @* <span asp-validation-for="LoginModel.Email" class="text-danger"></span> *@
+                <input asp-for="LoginModel.Email" type="email" placeholder="Email" class="form-control" />
+                <span asp-validation-for="LoginModel.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                @Html.EditorFor(m => m.LoginModel.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password" } })
-                @* <span asp-validation-for="LoginModel.Password" class="text-danger"></span> *@
+                <input asp-for="LoginModel.Password" type="password" placeholder="Password" class="form-control" />
+                <span asp-validation-for="LoginModel.Password" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <div class="form-check checkbox-container">
-                    @Html.CheckBoxFor( m => m.LoginModel.RememberMe, new { @class = "form-check-input" })
+                    <input asp-for="LoginModel.RememberMe" class="form-check-input" />
                     <label asp-for="LoginModel.RememberMe" class="form-check-label"></label>
                 </div>
             </div>
