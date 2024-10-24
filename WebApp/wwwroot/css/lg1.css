@@ -1,13 +1,13 @@
 ﻿* {
     box-sizing: border-box;
 }
-
 /*body*/
 body {
-    background-image: url('smarthome\ 01.jpg');
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    background-position: center; 
+    background-image: url('../pic/background.jpeg'),linear-gradient(rgba(104, 202, 255, 0.5), rgba(0, 0, 0, 0.5));
+    background-size: cover;
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,6 +16,7 @@ body {
     height: 100vh;
     margin: -20px 0 50px;
 }
+
 
 h1 {
     font-weight: bold;
@@ -47,8 +48,8 @@ a {
 
 button {
     border-radius: 20px;
-    border: 1px solid #FF4B2B;
-    background-color: #FF4B2B;
+    border: 1px solid #876D8A;
+    background-color: #876D8A;
     color: #FFFFFF;
     font-size: 12px;
     font-weight: bold;
@@ -98,7 +99,7 @@ input {
 
     .checkbox-container input[type="checkbox"] {
         margin-right: 8px;
-        accent-color: #FF4B2B;
+        accent-color: #876D8A;
         width: 16px;
         height: 16px;
     }
@@ -120,8 +121,8 @@ input {
     }
 
         .checkbox-container input[type="checkbox"]:checked {
-            background-color: #FF4B2B;
-            border-color: #FF4B2B;
+            background-color: #876D8A;
+            border-color: #876D8A;
         }
 
             .checkbox-container input[type="checkbox"]:checked:after {
@@ -203,9 +204,9 @@ input {
 }
 
 .overlay {
-    background: #FF416C;
-    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-    background: linear-gradient(to right, #FF4B2B, #FF416C);
+    background: #2382A2;
+    background: -webkit-linear-gradient(to right, #2382A2, #E85E82);
+    background: linear-gradient(to right, #2382A2, #E85E82);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
