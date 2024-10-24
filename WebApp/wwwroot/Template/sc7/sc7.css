@@ -51,9 +51,9 @@ body {
 	width: 280px;
 	height: 100%;
 	background: var(--light);
-	background-image: url('pic/sm3.jpg'); /* Thay đổi đường dẫn đến ảnh */
-    background-size: cover; /* Đảm bảo ảnh bao phủ toàn bộ sidebar */
-    background-position: center; /* Căn giữa ảnh */
+	background-image: url('pic/sm3.jpg'); 
+    background-size: cover; 
+    background-position: center;
 	z-index: 2000;
 	font-family: var(--lato);
 	transition: .3s ease;
@@ -364,10 +364,6 @@ body {
 
 /* NAVBAR */
 
-
-
-
-
 /* MAIN */
 #content main {
 	width: 100%;
@@ -405,10 +401,30 @@ body {
 #content main .box-info li .text h3{
 	color: var(--dark);	
 }
-/* Đặt vị trí nút "Sửa" và "Xóa" ở góc dưới bên phải */
+.addBtn {
+	position: fixed;
+	bottom: 30px;
+	right: 30px; 
+	border: none; 
+	border-radius: 50%;
+	width: 60px; 
+	height: 60px; 
+	display: flex; 
+	justify-content: center; 
+	align-items: center;
+	font-size: 24px;
+	cursor: pointer; 
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+	transition: background-color 0.3s ease; 
+}
+
+.addBtn:hover {
+	background-color: var(--blue); 
+}
+
 #content main .box-info li .text {
     position: relative;
-    padding-bottom: 50px; /* Để tạo khoảng trống cho các nút */
+    padding-bottom: 50px; 
 }
 
 #content main .box-info li .text button {
@@ -422,14 +438,12 @@ body {
     font-size: 14px;
 }
 
-/* Đặt khoảng cách giữa hai nút */
 #content main .box-info li .text button:first-of-type {
-    right: 80px; /* Đẩy nút "Sửa" ra xa hơn để không chồng lên nút "Xóa" */
+    right: 80px; 
     background-color: var(--blue);
     color: var(--light);
 }
 
-/* Thiết kế cho nút "Xóa" */
 #content main .box-info li .text button:last-of-type {
     background-color: var(--red);
     color: var(--light);
@@ -499,39 +513,35 @@ body {
 
 @media screen and (max-width: 768px) {
     #content main .box-info {
-        grid-template-columns: repeat(2, 1fr); /* 2 cột khi màn hình nhỏ hơn 768px */
+        grid-template-columns: repeat(2, 1fr); 
     }
 }
 
 @media screen and (max-width: 576px) {
     #content main .box-info {
-        grid-template-columns: 1fr; /* 1 cột khi màn hình nhỏ hơn 480px */
+        grid-template-columns: 1fr; 
     }
 }
 
-
-
-
-
 .modal {
-    display: none; /* Ẩn modal theo mặc định */
-    position: fixed; /* Đặt modal ở vị trí cố định */
-    z-index: 1000; /* Đảm bảo modal hiển thị trên tất cả các thành phần khác */
+    display: none;
+    position: fixed; 
+    z-index: 1000; 
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Nền mờ */
+    background-color: rgba(0, 0, 0, 0.5); 
 }
 
 .modal-content {
     background-color: #fff;
-    margin: 15% auto; /* Căn giữa modal */
+    margin: 15% auto; 
     padding: 20px;
     border: 1px solid #888;
-    width: 400px; /* Chiều rộng modal */
-    border-radius: 8px; /* Bo góc cho modal */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tạo bóng cho modal */
+    width: 400px; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
 .close {
@@ -550,24 +560,4 @@ body {
 
 
 
-/* Định dạng cho nút "Thêm" */
-.addBtn {
-    position: right; /* Đặt nút ở vị trí cố định */
-    bottom: 30px; /* Cách đáy màn hình 30px */
-    right: 30px; /* Cách bên phải màn hình 30px */
-    border: none; /* Không có viền */
-    border-radius: 50%; /* Bo tròn cho nút */
-    width: 60px; /* Đặt chiều rộng cho nút */
-    height: 60px; /* Đặt chiều cao cho nút */
-    display: flex; /* Sử dụng flexbox để căn giữa nội dung */
-    justify-content: center; /* Căn giữa nội dung theo chiều ngang */
-    align-items: center; /* Căn giữa nội dung theo chiều dọc */
-    font-size: 24px; /* Kích thước chữ trong nút */
-    cursor: pointer; /* Hiển thị con trỏ khi di chuột qua nút */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tạo bóng cho nút */
-    transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu nền khi hover */
-}
 
-.addBtn:hover {
-    background-color: var(--blue); /* Thay đổi màu nền khi hover */
-}
