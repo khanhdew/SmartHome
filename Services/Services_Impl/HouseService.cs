@@ -60,9 +60,9 @@ public class HouseService: IHouseService
         _houseRepository.RemoveRoomFromHouse(houseId, roomId);
     }
 
-    public void AddHouseMember(string userId, int houseId)
+    public void AddHouseMember(string userId, int houseId, string role)
     {
-        _houseRepository.AddHouseMember(userId, houseId);
+        _houseRepository.AddHouseMember(userId, houseId, role);
     }
 
     public void RemoveHouseMember(string userId, int houseId)

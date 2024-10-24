@@ -82,7 +82,7 @@ namespace DAO.Context
             {
                 entity.HasOne(d => d.House)
                     .WithMany(p => p.HouseMembers)
-                    .HasForeignKey((System.Linq.Expressions.Expression<Func<HouseMember, object?>>)(d => (object?)d.ID))
+                    .HasForeignKey((System.Linq.Expressions.Expression<Func<HouseMember, object?>>)(d => (object?)d.HouseID))
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK__HouseMemb__House__4E88ABD4");
 
@@ -91,6 +91,7 @@ namespace DAO.Context
                     .HasForeignKey(d => d.UserID)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK__HouseMemb__UserI__4D94879B");
+                
             }));
 
             modelBuilder.Entity<Room>(entity =>

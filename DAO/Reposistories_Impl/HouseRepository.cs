@@ -42,7 +42,7 @@ namespace DAO.Reposistories_Impl
             return house;
         }
 
-        public void AddHouseMember(string userId, int houseId)
+        public void AddHouseMember(string userId, int houseId, string role)
         {
             try
             {
@@ -62,6 +62,7 @@ namespace DAO.Reposistories_Impl
                 {
                     UserID = userId,
                     HouseID = houseId,
+                    Role = role,
                     House = house,
                     User = user
                 };
