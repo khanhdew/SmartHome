@@ -31,5 +31,11 @@ namespace DAO.BaseModels
 
         [InverseProperty("User")]
         public virtual ICollection<UserPreference> UserPreferences { get; set; }
+
+        public override string ToString()
+        {
+            Console.WriteLine("Name: " + DisplayName, "Email: " + Email);
+            return base.ToString();
+        }
     }
 }

@@ -1,0 +1,12 @@
+﻿namespace Services.Thingsboard_Services.BaseModel;
+
+public class Account
+{
+    public string username { get; set; }
+    public string password { get; set; }
+    public Account(string username, string password)
+    {
+        this.username = username;
+        this.password = password;
+    }
+}

@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using DAO.Models;
+using DAO.Models.Devices;
 
 namespace DAO.BaseModels
 {
     [Table("Device")]
-    public partial class Device 
+    public partial class Device : IDevice
     {
         public Device()
         {
@@ -19,7 +20,8 @@ namespace DAO.BaseModels
         [StringLength(255)]
         public string? Name { get; set; }
         [StringLength(50)]
-        public string? Type { get; set; }
+        [Column(TypeName = "nvarchar(50)")]
+        public DeviceType? Type { get; set; }
         [StringLength(255)]
         public string? DeviceToken { get; set; }
         public string? UserID { get; set; }
@@ -37,5 +39,21 @@ namespace DAO.BaseModels
         public virtual ICollection<DeviceConfig> DeviceConfigs { get; set; }
         [InverseProperty("Device")]
         public virtual ICollection<TelemetryDatum> TelemetryData { get; set; }
+
+        public override string ToString()
+        {
+            Console.WriteLine("Name: " + Name, "Type: " + Type, "DeviceToken: " + DeviceToken, "UserID: " + UserID, "RoomID: " + RoomID, "Status: " + Status);
+            return base.ToString();
+        }
+
+        public void TurnOn()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TurnOff()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

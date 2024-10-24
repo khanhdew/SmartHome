@@ -60,13 +60,18 @@ public class HouseService: IHouseService
         _houseRepository.RemoveRoomFromHouse(houseId, roomId);
     }
 
-    public void AddHouseMember(string userId, int houseId, string role)
+    public HouseMember AddHouseMember(string userId, int houseId, string role)
     {
-        _houseRepository.AddHouseMember(userId, houseId, role);
+        return _houseRepository.AddHouseMember(userId, houseId, role);
     }
 
     public void RemoveHouseMember(string userId, int houseId)
     {
         _houseRepository.RemoveHouseMember(userId, houseId);
+    }
+
+    public IEnumerable<User?> GetHouseMembers(int houseId)
+    {
+        return _houseRepository.GetHouseMembers(houseId);
     }
 }

@@ -15,11 +15,11 @@ namespace DAO.Repositories
         IEnumerable<House> GetHouseByUserID(string userId);
         IEnumerable<House> GetAllHouses();
         House GetHouseById(int houseId);
-        void AddHouseMember(string userId, int houseId, string role);
+        HouseMember AddHouseMember(string userId, int houseId, string role);
+        IEnumerable<User?> GetHouseMembers(int houseId);
         void RemoveHouseMember(string userId, int houseId);
         Room AddRoomToHouse(int houseId, Room room);
         void RemoveRoomFromHouse(int houseId, int roomId);
-
         IEnumerable<Room> GetRoomsByHouseId(int houseId);
     }
 }

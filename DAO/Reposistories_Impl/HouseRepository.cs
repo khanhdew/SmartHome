@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAO.Reposistories_Impl
 {
@@ -42,7 +43,7 @@ namespace DAO.Reposistories_Impl
             return house;
         }
 
-        public void AddHouseMember(string userId, int houseId, string role)
+        public HouseMember AddHouseMember(string userId, int houseId, string role)
         {
             try
             {
@@ -57,24 +58,43 @@ namespace DAO.Reposistories_Impl
                 {
                     throw new Exception("User not found");
                 }
+                
+                // Check if the user is already a member of the house
+                var houseMember = _context.HouseMembers.FirstOrDefault(hm => hm.UserID == userId && hm.HouseID == houseId);
+                if (houseMember != null)
+                {
+                    throw new Exception("User is already a member of the house");
+                }
 
-                var houseMember = new HouseMember
+                houseMember = new HouseMember()
                 {
                     UserID = userId,
                     HouseID = houseId,
                     Role = role,
-                    House = house,
-                    User = user
+                    User = user,
+                    House = house
                 };
-
                 _context.HouseMembers.Add(houseMember);
                 _context.SaveChanges();
+                return houseMember;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 throw new Exception("Error while adding house member");
             }
+        }
+
+        public IEnumerable<User?> GetHouseMembers(int houseId)
+        {
+            // Get all house members
+            var houseMembers = _context.HouseMembers.Where(hm => hm.HouseID == houseId).ToList();
+            List<User?> result = new List<User?>();
+            foreach (var houseMember in houseMembers)
+            {
+                result.Add(_context.Users.FirstOrDefault(u => u.Id == houseMember.UserID));
+            }
+            return result;
         }
 
         public Room AddRoomToHouse(int houseId, Room room)
@@ -85,6 +105,12 @@ namespace DAO.Reposistories_Impl
                 if (house == null)
                 {
                     throw new Exception("House not found");
+                }
+                // Check if the room is already in the house
+                var roomInHouse = house.Rooms.FirstOrDefault(r => r.ID == room.ID);
+                if (roomInHouse != null)
+                {
+                    throw new Exception("Room is already in the house");
                 }
                 house.Rooms.Add(room);
                 _context.SaveChanges();
@@ -103,7 +129,13 @@ namespace DAO.Reposistories_Impl
             {
                 throw new Exception("House not found");
             }
-            _context.Houses.Remove(house);
+            // change house's user to null
+            var houseMembers = _context.HouseMembers.Where(hm => hm.HouseID == houseId).ToList();
+            foreach (var houseMember in houseMembers)
+            {
+                houseMember.HouseID = null;
+                _context.HouseMembers.Update(houseMember);
+            }
             _context.SaveChanges();
         }
 
@@ -125,7 +157,9 @@ namespace DAO.Reposistories_Impl
 
         public IEnumerable<Room> GetRoomsByHouseId(int houseId)
         {
-            var house = _context.Houses.FirstOrDefault(h => h.ID == houseId);
+            var house = _context.Houses
+                .Include(h => h.Rooms)
+                .FirstOrDefault(h => h.ID == houseId);
             if (house == null)
             {
                 throw new Exception("House not found");
@@ -146,7 +180,9 @@ namespace DAO.Reposistories_Impl
 
         public void RemoveRoomFromHouse(int houseId, int roomId)
         {
-            var house = _context.Houses.FirstOrDefault(h => h.ID == houseId);
+            var house = _context.Houses
+                .Include(h => h.Rooms)
+                .FirstOrDefault(h => h.ID == houseId);
             if (house == null)
             {
                 throw new Exception("House not found");
@@ -156,7 +192,9 @@ namespace DAO.Reposistories_Impl
             {
                 throw new Exception("Room not found");
             }
-            house.Rooms.Remove(room);
+            // Change the room's house to null
+            room.HouseID = null;
+            _context.Rooms.Update(room);
             _context.SaveChanges();
         }
 

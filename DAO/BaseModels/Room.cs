@@ -24,5 +24,11 @@ namespace DAO.BaseModels
         public virtual House? House { get; set; }
         [InverseProperty("Room")]
         public virtual ICollection<Device> Devices { get; set; }
+
+        public override string ToString()
+        {
+            Console.WriteLine("Name: " + Name, "Detail: " + Detail);
+            return base.ToString();
+        }
     }
 }

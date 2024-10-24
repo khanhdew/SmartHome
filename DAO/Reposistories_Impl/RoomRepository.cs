@@ -6,50 +6,159 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAO.Models;
+using DAO.Models.Devices;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAO.Reposistories_Impl
 {
     public class RoomRepository : IRoomRepository
     {
         private readonly SmartHomeContext _context;
+        private readonly IDeviceRepository _deviceRepository;
 
-        public RoomRepository(SmartHomeContext context)
+        public RoomRepository(SmartHomeContext context, IDeviceRepository deviceRepository)
         {
             _context = context;
+            _deviceRepository = deviceRepository;
         }
-        public void AddDeviceToRoom(int roomId, Device device)
+
+        public IDevice AddDeviceToRoom(int roomId, Device device)
         {
-            throw new NotImplementedException();
+            // check if device already exists
+            var deviceInDb = _context.Devices.FirstOrDefault(d => d.ID == device.ID);
+            var room = _context.Rooms.FirstOrDefault(r => r.ID == roomId);
+            if (room == null)
+            {
+                throw new Exception("Room not found");
+            }
+
+            if (deviceInDb != null)
+            {
+                deviceInDb.RoomID = roomId;
+                deviceInDb.Room = room;
+                // deviceInDb.Name = device.Type.ToString() + " " + room.Name;
+                deviceInDb.Type = device.Type;
+                _deviceRepository.UpdateDevice(deviceInDb);
+                _context.SaveChanges();
+                return deviceInDb;
+            }
+
+            deviceInDb = _deviceRepository.AddDevice(device);
+            deviceInDb.RoomID = roomId;
+            deviceInDb.Room = room;
+            deviceInDb.Name = device.Type.ToString() + " " + room.Name;
+            _context.SaveChanges();
+            return deviceInDb;
         }
 
         public Room AddRoom(Room room)
         {
-            throw new NotImplementedException();
+            try
+            {
+                // check if room already exists
+                var roomInDb = _context.Rooms.FirstOrDefault(r => r.Name == room.Name);
+                if (roomInDb != null)
+                {
+                    throw new Exception("Room already exists");
+                }
+
+                _context.Rooms.Add(room);
+                _context.SaveChanges();
+                return room;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error while adding room");
+            }
         }
 
         public void DeleteRoom(int roomId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var room = _context.Rooms.Include(r => r.Devices).FirstOrDefault(r => r.ID == roomId);
+                if (room == null)
+                {
+                    throw new Exception("Room not found");
+                }
+                
+                foreach (var roomDevice in room.Devices)
+                {
+                    roomDevice.RoomID = null;
+                    roomDevice.Room = null;
+                }
+                _context.Rooms.Remove(room);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error while deleting room");
+            }
         }
 
-        public IEnumerable<Device> GetDevicesByRoomId(int roomId)
+        public IEnumerable<IDevice> GetDevicesByRoomId(int roomId)
         {
-            throw new NotImplementedException();
+            var devices = _context.Devices.Where(d => d.RoomID == roomId).ToList();
+            var specificDevices = new List<IDevice>();
+
+            foreach (var device in devices)
+            {
+                var specificDevice = DeviceFactory.CreateDevice((DeviceType)device.Type!, device.Name);
+                specificDevices.Add(specificDevice);
+            }
+
+            return specificDevices;
         }
 
         public Room GetRoomById(int roomId)
         {
-            throw new NotImplementedException();
+            var room = _context.Rooms.FirstOrDefault(r => r.ID == roomId);
+            return room;
         }
 
         public void RemoveDeviceFromRoom(int roomId, int deviceId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var device = _context.Devices.FirstOrDefault(d => d.ID == deviceId);
+                if (device == null)
+                {
+                    throw new Exception("Device not found");
+                }
+
+                device.RoomID = null;
+                device.Room = null;
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error while removing device from room");
+            }
         }
 
         public Room UpdateRoom(Room room)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var roomToUpdate = _context.Rooms.FirstOrDefault(r => r.ID == room.ID);
+                if (roomToUpdate == null)
+                {
+                    throw new Exception("Room not found");
+                }
+
+                roomToUpdate.Name = room.Name;
+                roomToUpdate.HouseID = room.HouseID;
+                roomToUpdate.Detail = room.Detail;
+                _context.Rooms.Update(roomToUpdate);
+                _context.SaveChanges();
+                return roomToUpdate;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw new Exception("Error while updating room");
+            }
         }
     }
 }
