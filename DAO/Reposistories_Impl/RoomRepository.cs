@@ -44,7 +44,7 @@ namespace DAO.Reposistories_Impl
                 return deviceInDb;
             }
 
-            deviceInDb = _deviceRepository.AddDevice(device);
+            deviceInDb = (Device)_deviceRepository.AddDevice(device);
             deviceInDb.RoomID = roomId;
             deviceInDb.Room = room;
             deviceInDb.Name = device.Type.ToString() + " " + room.Name;

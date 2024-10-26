@@ -10,9 +10,9 @@ namespace DAO.Repositories
 {
     public interface IDeviceRepository
     {
-        Device AddDevice(Device device);
+        IDevice AddDevice(Device device);
         void DeleteDevice(int deviceId);
-        Device UpdateDevice(Device device);
+        IDevice UpdateDevice(Device device);
         IDevice GetDeviceById(int deviceId);
         IEnumerable<IDevice> GetDevicesByUserId(string userId);
         TelemetryDatum AddTelemetryDatum(TelemetryDatum telemetryDatum);

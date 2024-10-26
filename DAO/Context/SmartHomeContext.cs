@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using DAO.BaseModels;
+﻿using DAO.BaseModels;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using DAO.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace DAO.Context

@@ -1,11 +1,14 @@
 ﻿using DAO.BaseModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Services.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,11 +21,13 @@ namespace DesktopApp
         SignIn signInControl = new SignIn();
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
-        public MainForm(UserManager<User> userManager, SignInManager<User> signInManager)
+        private readonly IUserService _userService;
+        public MainForm(UserManager<User> userManager, SignInManager<User> signInManager, IUserService userService)
         {
             InitializeComponent();
             _userManager = userManager;
             _signInManager = signInManager;
+            _userService = userService;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -72,13 +77,25 @@ namespace DesktopApp
             string username = loginControl.txtEmail.Text;
             string password = loginControl.txtPassword.Text;
 
-
-            ShowDashBroadPanel();
             var user = await _userManager.FindByNameAsync(username);
             if (user != null)
             {
                 var result = await _userManager.CheckPasswordAsync(user, password);
-                MessageBox.Show("Dang nhap " + result );
+                if (result)
+                {
+                    // Set the HttpContext with the authenticated user
+                    _userService.SetHttpContext(new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
+                    {
+                new Claim(ClaimTypes.NameIdentifier, user.Id)
+                    }, "CustomAuthType")));
+
+                    ShowDashBroadPanel();
+                    MessageBox.Show("Login successful");
+                }
+                else
+                {
+                    MessageBox.Show("Invalid password");
+                }
             }
             else
             {
@@ -144,7 +161,8 @@ namespace DesktopApp
             DashBroad dashBroad = new DashBroad();
             dashBroad.Dock = DockStyle.Fill;
             Panel.Controls.Add(dashBroad);
+            dashBroad.iconButton8.Text = _userService.GetLoggedInUser().Email;
         }
-
+        
     }
 }

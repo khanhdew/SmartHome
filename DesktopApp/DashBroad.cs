@@ -13,7 +13,7 @@ namespace DesktopApp
     public partial class DashBroad : UserControl
     {
         public DashBroad()
-        {
+        { 
             InitializeComponent();
            ColaspMenu();
 

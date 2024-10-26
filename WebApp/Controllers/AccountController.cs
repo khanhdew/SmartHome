@@ -24,6 +24,7 @@ namespace WebApp.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
+                // Console.WriteLine(User.Identity.Name);
                 return RedirectToAction("Index", "Home");
             }
             return View(new AccountViewModel());

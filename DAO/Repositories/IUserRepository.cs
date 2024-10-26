@@ -14,5 +14,6 @@ namespace DAO.Repositories
         void DeleteUser(string username);
         User UpdateUser(User user);
         User GetUserByUsername(string username);
+        User GetLoggedInUser();
     }
 }

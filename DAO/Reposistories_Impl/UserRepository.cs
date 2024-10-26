@@ -1,15 +1,8 @@
 ﻿using DAO.Context;
 using DAO.Exceptions.UserExceptions;
-using DAO.Models;
 using DAO.Repositories;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DAO.BaseModels;
-using Microsoft.EntityFrameworkCore;
 
 namespace DAO.Reposistories_Impl
 {
@@ -53,6 +46,11 @@ namespace DAO.Reposistories_Impl
                 throw new UserNotFoundException("User not found");
             }
             return user;
+        }
+
+        public User GetLoggedInUser()
+        {
+            throw new NotImplementedException();
         }
 
         public User UpdateUser(User user)

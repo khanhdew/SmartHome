@@ -1,4 +1,5 @@
 ﻿using DAO.BaseModels;
+using DAO.Models.Devices;
 using DAO.Repositories;
 using Services.Services;
 
@@ -12,14 +13,32 @@ public class DeviceService : IDeviceService
     {
         _deviceRepository = deviceRepository;
     }
-    public Device CreateDevice(Device device)
+    public IDevice CreateDevice(Device device)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var deviceCreated = _deviceRepository.AddDevice(device);
+            return deviceCreated;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
-    public Device EditDevice(Device device)
+    public IDevice EditDevice(Device device)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var deviceEdited = _deviceRepository.UpdateDevice(device);
+            return deviceEdited;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
     public IEnumerable<Device> GetDevicesByHouseId(int houseId)
@@ -27,9 +46,9 @@ public class DeviceService : IDeviceService
         throw new NotImplementedException();
     }
 
-    public Device GetDeviceById(int deviceId)
+    public IDevice GetDeviceById(int deviceId)
     {
-        throw new NotImplementedException();
+        return _deviceRepository.GetDeviceById(deviceId);
     }
 
     public void DeleteDevice(int deviceId)
@@ -39,7 +58,15 @@ public class DeviceService : IDeviceService
 
     public TelemetryDatum AddTelemetryDatum(TelemetryDatum telemetryDatum)
     {
-        throw new NotImplementedException();
+        try
+        {
+            return _deviceRepository.AddTelemetryDatum(telemetryDatum);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
     public IEnumerable<TelemetryDatum> GetTelemetryDataByDeviceId(int deviceId)

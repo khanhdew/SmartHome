@@ -1,6 +1,6 @@
 ﻿namespace Services.Thingsboard_Services.BaseModel;
 
-public class Token
+public abstract class Token
 {
     public string jwt_token { get; set; }
     public string refresh_token { get; set; }
