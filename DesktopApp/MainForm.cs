@@ -15,7 +15,7 @@ namespace DesktopApp
     public partial class MainForm : Form
     {
         Login loginControl = new Login();
-        SignIn signInControl = new SignIn();
+        SignUp signUpControl = new SignUp();
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
         public MainForm(UserManager<User> userManager, SignInManager<User> signInManager)
@@ -38,7 +38,7 @@ namespace DesktopApp
             // Hủy đăng ký sự kiện trước khi đăng ký lại
             loginControl.ClickForPassWord -= OnClickForPassWord;
             loginControl.Login_Click -= async (s, ev) => await BtnLogin_Click(s, ev);
-            loginControl.Signup_Click -= BtnSignup_Click;
+            loginControl.Signup_Click -= LbSignup_Click;
 
             // Đăng ký sự kiện cho loginControl
             loginControl.ClickForPassWord += OnClickForPassWord;
@@ -50,12 +50,12 @@ namespace DesktopApp
 
 
             loginControl.Login_Click += async (s, ev) => await BtnLogin_Click(s, ev);
-            loginControl.Signup_Click += BtnSignup_Click;
+            loginControl.Signup_Click += LbSignup_Click;
             Panel.Controls.Add(loginControl);
         }
 
         // nút đăng kí
-        private void BtnSignup_Click(object sender, EventArgs e)
+        private void LbSignup_Click(object sender, EventArgs e)
         {
             ShowSignInPanel();
         }
@@ -78,7 +78,8 @@ namespace DesktopApp
             if (user != null)
             {
                 var result = await _userManager.CheckPasswordAsync(user, password);
-                MessageBox.Show("Dang nhap " + result);
+                ShowDashBroadPanel();
+                return;
             }
             else
             {
@@ -91,18 +92,18 @@ namespace DesktopApp
         {
             Panel.Controls.Clear();
             // Hủy đăng ký sự kiện trước khi đăng ký lại
-            signInControl.SignInClicked -= OnSignInClicked;
-            signInControl.SignUpClicked -= async (s, ev) => await BtnSignUp_Click(s, ev);
+            signUpControl.SignInClicked -= OnSignUpClicked;
+            signUpControl.SignUpClicked -= async (s, ev) => await BtnSignUp_Click(s, ev);
 
             // Đăng ký sự kiện cho signInControl
-            signInControl.SignInClicked += OnSignInClicked;
-            signInControl.SignUpClicked += async (s, ev) => await BtnSignUp_Click(s, ev);
+            signUpControl.SignInClicked += OnSignUpClicked;
+            signUpControl.SignUpClicked += async (s, ev) => await BtnSignUp_Click(s, ev);
             // check if user is authenticated
 
-            Panel.Controls.Add(signInControl);
+            Panel.Controls.Add(signUpControl);
         }
 
-        private void OnSignInClicked(object sender, EventArgs e)
+        private void OnSignUpClicked(object sender, EventArgs e)
         {
             ShowLoginPanel();
         }
@@ -110,9 +111,9 @@ namespace DesktopApp
         // nút đăng nhập
         private async Task BtnSignUp_Click(object sender, EventArgs e)
         {
-            string username = signInControl.txtDKEmail.Text;
-            string password = signInControl.txtDKPassword.Text;
-            string repassword = signInControl.txtDKLaiPassword.Text;
+            string username = signUpControl.txtDKEmail.Text;
+            string password = signUpControl.txtDKPassword.Text;
+            string repassword = signUpControl.txtDKLaiPassword.Text;
             // create user
             if (password == repassword)
             {
@@ -124,7 +125,8 @@ namespace DesktopApp
                 var result = await _userManager.CreateAsync(user, password);
                 if (result.Succeeded)
                 {
-                    MessageBox.Show("Dang ki thanh cong");
+                    ShowDashBroadPanel();
+                    return;
                 }
                 else
                 {

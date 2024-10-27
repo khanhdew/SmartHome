@@ -40,16 +40,17 @@ namespace DesktopApp
             OnLoginClicked(EventArgs.Empty);
         }
 
-        private void btnSignup_Click(object sender, EventArgs e)
-        {
-            OnSignupClicked(EventArgs.Empty);
-        }
+
 
         private void quenPassWord_LinkClicked(object sender, EventArgs e)
         {
             OnLinkClicked(EventArgs.Empty);
         }
 
+        private void lbSignUp_Click(object sender, EventArgs e)
+        {
+            OnSignupClicked(EventArgs.Empty);
         }
     }
+}
 

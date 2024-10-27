@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DesktopApp
 {
-    public partial class SignIn : UserControl
+    public partial class SignUp : UserControl
     {
-        public SignIn()
+        public SignUp()
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
@@ -37,7 +37,7 @@ namespace DesktopApp
             OnSignUpClicked(EventArgs.Empty);
         }
 
-        private void btnSignIn_Click(object sender, EventArgs e)
+        private void LbSignIn_Click(object sender, EventArgs e)
         {
             OnSignInClicked(EventArgs.Empty);
         }
