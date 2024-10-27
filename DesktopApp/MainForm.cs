@@ -18,7 +18,7 @@ namespace DesktopApp
     public partial class MainForm : Form
     {
         Login loginControl = new Login();
-        SignIn signInControl = new SignIn();
+        SignUp signUpControl = new SignUp();
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
         private readonly IUserService _userService;
@@ -83,14 +83,14 @@ namespace DesktopApp
                 var result = await _userManager.CheckPasswordAsync(user, password);
                 if (result)
                 {
-                    // Set the HttpContext with the authenticated user
-                    _userService.SetHttpContext(new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
-                    {
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
-                    }, "CustomAuthType")));
+                //    // Set the HttpContext with the authenticated user
+                //    _userService.SetHttpContext(new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
+                //    {
+                //new Claim(ClaimTypes.NameIdentifier, user.Id)
+                //    }, "CustomAuthType")));
 
                     ShowDashBroadPanel();
-                    MessageBox.Show("Login successful");
+                   
                 }
                 else
                 {
@@ -141,7 +141,7 @@ namespace DesktopApp
                 var result = await _userManager.CreateAsync(user, password);
                 if (result.Succeeded)
                 {
-                    MessageBox.Show("Dang ki thanh cong");
+                    ShowDashBroadPanel();
                 }
                 else
                 {
@@ -161,7 +161,7 @@ namespace DesktopApp
             DashBroad dashBroad = new DashBroad();
             dashBroad.Dock = DockStyle.Fill;
             Panel.Controls.Add(dashBroad);
-            dashBroad.iconButton8.Text = _userService.GetLoggedInUser().Email;
+           
         }
         
     }

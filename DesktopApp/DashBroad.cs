@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAO.BaseModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace DesktopApp
 {
     public partial class DashBroad : UserControl
     {
+        public User user;
         public DashBroad()
         { 
             InitializeComponent();
@@ -52,5 +54,6 @@ namespace DesktopApp
                 }
             }
         }
+        
     }
 }
