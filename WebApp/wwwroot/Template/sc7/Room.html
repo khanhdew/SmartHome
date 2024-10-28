@@ -6,7 +6,7 @@
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="sc7.css">
 
-	<title>WebApp</title>
+	<title>SmartHome-Room</title>
 </head>
 <body>
 
@@ -15,7 +15,7 @@
 	<section id="sidebar">
 		<a href="#" class="brand">
 			<i class='bx bx-shape-polygon'></i>
-			<span class="text">WebApp</span>
+			<span class="text">SmartHome</span>
 		</a>
 		<ul class="side-menu top">
 			<li>
@@ -72,8 +72,8 @@
 			</div>
 			<div id="account-menu" class="account-menu">
 				<ul>
-					<li><a href="#">Account</a></li>
-					<li><a href="#">Log out</a></li>
+					<li><a href="#"><i class='bx bx-user'>Account</i></a></li>
+					<li><a href="#"><i class='bx bx-log-in'>Log out</i></a></li>
 				</ul>
 			</div>
 		</nav>
@@ -83,27 +83,47 @@
 		<!-- MAIN -->
 		<main>
 
-			<ul class="box-info">
+			<button id="addBtn" class="addBtn">
+				<i class='bx bxs-message-alt-add'></i>
+			</button> 
+    
+			<div id="addModal" class="modal">
+				<div class="modal-content">
+					<span class="close">&times;</span>
+					<h2>Thêm mới</h2>
+					<form id="addForm">
+						<label for="Name">Tên:</label>
+						<input type="text" id="Name" name="Name" required>
+						<br>
+						<label for="Info">Thông tin:</label>
+						<textarea id="Info" name="Info" rows="4" required></textarea>
+						<br>
+						<button type="submit">Lưu</button>
+					</form>
+				</div>
+			</div>
+
+    		<ul class="box-info" id="boxInfoList">
 				<li>
 					<span class="text">
-						<h3>Room 1</h3>
-						<p>Thông tin chung</p>
+						<h3>Living room</h3>
+						<p>House 1</p>
 						<button>Sửa</button>
 						<button>Xóa</button>
 					</span>
 				</li>
 				<li>
 					<span class="text">
-						<h3>Room 2</h3>
-						<p>Thông tin chung</p>
+						<h3>Living room</h3>
+						<p>House 2</p>
 						<button>Sửa</button>
 						<button>Xóa</button>
 					</span>
 				</li>
 				<li>
 					<span class="text">
-						<h3>Room 3</h3>
-						<p>Thông tin chung</p>
+						<h3>Living room</h3>
+						<p>House 3</p>
 						<button>Sửa</button>
 						<button>Xóa</button>
 					</span>
