@@ -1,12 +1,20 @@
-﻿namespace Services.Thingsboard_Services.BaseModel;
+﻿using System.Text.Json.Serialization;
 
-public abstract class Token
+namespace Services.Thingsboard_Services.BaseModel;
+
+public class Token
 {
-    public string jwt_token { get; set; }
-    public string refresh_token { get; set; }
-    public Token(string jwt_token, string refresh_token)
+    public string token { get; set; }
+    public string refreshToken { get; set; }
+    [JsonConstructor]
+    public Token(string token, string refreshToken)
     {
-        this.jwt_token = jwt_token;
-        this.refresh_token = refresh_token;
+        this.token = token;
+        this.refreshToken = refreshToken;
+    }
+
+    public override string ToString()
+    {
+        return token + "\n" + refreshToken;
     }
 }

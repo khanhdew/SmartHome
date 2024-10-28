@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Net.Http.Headers;
+using System.Text;
 using System.Text.Json;
 
 namespace Services.Thingsboard_Services.BaseModel;
@@ -15,23 +16,72 @@ public class Request<T>
         Token = token;
     }
 
-    public Response<T>? Post()
+    public T? Post()
+    {
+        try
+        {
+            using HttpClient client = new HttpClient();
+        
+            if (Token != null)
+            {
+                client.DefaultRequestHeaders.Add("X-Authorization", "Bearer " + Token.token);
+            }
+
+            var content = new StringContent(Body, Encoding.UTF8, "application/json");
+            var response = client.PostAsync(Url, content).Result;
+
+            // Kiểm tra trạng thái phản hồi
+            if (!response.IsSuccessStatusCode)
+            {
+                Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                return default;
+            }
+
+            var responseString = response.Content.ReadAsStringAsync().Result;
+
+            // Deserialize JSON thành đối tượng loại T
+            return JsonSerializer.Deserialize<T>(responseString);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Deserialization Error: {ex.Message}");
+            return default;
+        }
+    }
+
+    
+    public async Task<T?> GetAsync()
     {
         using HttpClient client = new HttpClient();
-        client.DefaultRequestHeaders.Add("X-Authorization", "Bearer" + Token.jwt_token);
-        client.DefaultRequestHeaders.Add("Content-Type", "application/json");
+
+        if (Token != null)
+        {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token.token);
+        }
+
         client.DefaultRequestHeaders.Add("Accept", "application/json");
-        return JsonSerializer.Deserialize<Response<T>>(client.PostAsync(Url, new StringContent(Body, Encoding.UTF8, "application/json")).Result.Content.ReadAsStringAsync().Result);
+
+        try
+        {
+            var response = await client.GetAsync(Url);
+            response.EnsureSuccessStatusCode(); // Kiểm tra mã trạng thái HTTP
+
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<T>(jsonResponse);
+        }
+        catch (HttpRequestException ex)
+        {
+            // Xử lý lỗi kết nối tại đây
+            Console.WriteLine($"Request error: {ex.Message}");
+            return default; // Hoặc ném ngoại lệ tùy theo nhu cầu của bạn
+        }
+        catch (JsonException ex)
+        {
+            // Xử lý lỗi deserialize tại đây
+            Console.WriteLine($"JSON deserialization error: {ex.Message}");
+            return default; // Hoặc ném ngoại lệ tùy theo nhu cầu của bạn
+        }
     }
-    
-    public Response<T>? Get()
-    {
-        using HttpClient client = new HttpClient();
-        client.DefaultRequestHeaders.Add("X-Authorization", "Bearer "+ Token.jwt_token );
-        client.DefaultRequestHeaders.Add("Content-Type", "application/json");
-        client.DefaultRequestHeaders.Add("Accept", "application/json");
-        return JsonSerializer.Deserialize<Response<T>>(client.GetAsync(Url).Result.Content.ReadAsStringAsync().Result);
-    }
-    
-    
 }
+    
+    

@@ -2,22 +2,26 @@
 using DAO.Models.Devices;
 using DAO.Repositories;
 using Services.Services;
+using Services.Thingsboard_Services;
 
 namespace Services.Services_Impl;
 
 public class DeviceService : IDeviceService
 {
     private readonly IDeviceRepository _deviceRepository;
+    private readonly IThingsboardService _thingsboardService;
     
-    public DeviceService(IDeviceRepository deviceRepository)
+    public DeviceService(IDeviceRepository deviceRepository, IThingsboardService thingsboardService)
     {
         _deviceRepository = deviceRepository;
+        _thingsboardService = thingsboardService;
     }
     public IDevice CreateDevice(Device device)
     {
         try
         {
             var deviceCreated = _deviceRepository.AddDevice(device);
+            _thingsboardService.CreateDevice(device);
             return deviceCreated;
         }
         catch (Exception e)

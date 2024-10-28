@@ -26,8 +26,6 @@ builder.Services.AddScoped<UserManager<User>>(); // Đăng ký UserManager
 builder.Services.AddScoped<IHouseRepository, HouseRepository>();
 builder.Services.AddScoped<IHouseService, HouseService>();
 
-
-
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<SmartHomeContext>()
     .AddDefaultTokenProviders();

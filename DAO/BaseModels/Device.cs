@@ -13,7 +13,6 @@ namespace DAO.BaseModels
             DeviceConfigs = new HashSet<DeviceConfig>();
             TelemetryData = new HashSet<TelemetryDatum>();
         }
-        
 
         [Key]
         public int ID { get; set; }
@@ -28,6 +27,7 @@ namespace DAO.BaseModels
         public int? RoomID { get; set; }
         [StringLength(50)]
         public string? Status { get; set; }
+        public string? TbDeviceId { get; set; }
 
         [ForeignKey("RoomID")]
         [InverseProperty("Devices")]
