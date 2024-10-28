@@ -37,7 +37,7 @@ namespace DesktopApp
             OnSignUpClicked(EventArgs.Empty);
         }
 
-        private void btnSignIn_Click(object sender, EventArgs e)
+        private void lbSignIn_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             OnSignInClicked(EventArgs.Empty);
         }
