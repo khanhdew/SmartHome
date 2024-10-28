@@ -15,5 +15,10 @@ namespace DAO.BaseModels
         [ForeignKey("DeviceID")]
         [InverseProperty("TelemetryData")]
         public virtual Device? Device { get; set; }
+
+        public override string ToString()
+        {
+            return $"Device ID: {DeviceID}, Body: {Body}";
+        }
     }
 }

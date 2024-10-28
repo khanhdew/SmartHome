@@ -11,7 +11,7 @@ public interface IHouseService
     public Room GetRoom(int roomId);
     public Room AddRoomToHouse(int houseId, Room room);
     public void RemoveRoomFromHouse(int houseId, int roomId);
-    public void AddHouseMember(string userId, int houseId, string role);
+    public HouseMember AddHouseMember(string userId, int houseId, string role);
     public void RemoveHouseMember(string userId, int houseId);
-    
+    public IEnumerable<User?> GetHouseMembers(int houseId);
 }

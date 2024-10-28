@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAO.Models.Devices;
 
 namespace DAO.Repositories
 {
@@ -13,9 +14,9 @@ namespace DAO.Repositories
         void DeleteRoom(int roomId);
         Room UpdateRoom(Room room);
         Room GetRoomById(int roomId);
-        void AddDeviceToRoom(int roomId, Device device);
+        IDevice AddDeviceToRoom(int roomId, Device device);
         void RemoveDeviceFromRoom(int roomId, int deviceId);
-        IEnumerable<Device> GetDevicesByRoomId(int roomId);
+        IEnumerable<IDevice> GetDevicesByRoomId(int roomId);
 
     }
 }

@@ -3,10 +3,233 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAO.BaseModels;
+using DAO.Context;
+using DAO.Models;
+using DAO.Models.Devices;
+using DAO.Repositories;
 
 namespace DAO.Reposistories_Impl
 {
-    public class DeviceRepository
+    public class DeviceRepository : IDeviceRepository
     {
+        private readonly SmartHomeContext _context;
+        
+        public DeviceRepository(SmartHomeContext context)
+        {
+            _context = context;
+        }
+        
+        public IDevice AddDevice(Device device)
+        {
+            try
+            {
+                // check if device already exists
+                var deviceInDb = _context.Devices.FirstOrDefault(d => d.ID == device.ID);
+                if (deviceInDb != null)
+                {
+                    throw new Exception("Device already exists");
+                }
+                _context.Devices.Add(device);
+                _context.SaveChanges();
+                return device;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error while adding device");
+            }
+        }
+
+        public void DeleteDevice(int id)
+        {
+            try
+            {
+                var device = _context.Devices.FirstOrDefault(d => d.ID == id);
+                if (device == null)
+                {
+                    throw new Exception("Device not found");
+                }
+
+                _context.Devices.Remove(device);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public IDevice UpdateDevice(Device device)
+        {
+            try
+            {
+                var deviceToUpdate = _context.Devices.FirstOrDefault(d => d.ID == device.ID);
+                if (deviceToUpdate == null)
+                {
+                    throw new Exception("Device not found");
+                }
+
+                deviceToUpdate = device;
+                _context.SaveChanges();
+                return deviceToUpdate;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+        
+        public IDevice GetDeviceById(int deviceId)
+        {
+            try
+            {
+                var device = _context.Devices.FirstOrDefault(d => d.ID == deviceId);
+                if (device == null)
+                {
+                    throw new Exception("Device not found");
+                }
+
+                return device;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public IEnumerable<IDevice> GetDevicesByUserId(string userId)
+        {
+            
+            try
+            {
+                var user = _context.Users.FirstOrDefault(u => u.Id == userId);
+                if (user == null)
+                {
+                    throw new Exception("User not found");
+                }
+
+                var devices = _context.Devices.Where(d => d.UserID == user.Id).ToList();
+                var specificDevices = new List<IDevice>();
+
+                foreach (var device in devices)
+                {
+                    var specificDevice = DeviceFactory.CreateDevice((DeviceType)device.Type!, device.Name);
+                    specificDevices.Add(specificDevice);
+                }
+                return specificDevices;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public TelemetryDatum AddTelemetryDatum(TelemetryDatum telemetryDatum)
+        {
+            // check if device exists
+            var device = _context.Devices.FirstOrDefault(d => d.ID == telemetryDatum.DeviceID);
+            if (device == null)
+            {
+                throw new Exception("Device not found");
+            }
+            _context.TelemetryData.Add(telemetryDatum);
+            _context.SaveChanges();
+            return telemetryDatum;
+        }
+
+        public IEnumerable<TelemetryDatum> GetTelemetryDataByDeviceId(int deviceId)
+        {
+            try
+            {
+                var device = _context.Devices.FirstOrDefault(d => d.ID == deviceId);
+                if (device == null)
+                {
+                    throw new Exception("Device not found");
+                }
+
+                return _context.TelemetryData.Where(t => t.DeviceID == device.ID).ToList();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public DeviceConfig AddDeviceConfig(DeviceConfig deviceConfig)
+        {
+            try
+            {
+                // check if device exists
+                var device = _context.Devices.FirstOrDefault(d => d.ID == deviceConfig.DeviceID);
+                if (device == null)
+                {
+                    throw new Exception("Device not found");
+                }
+                _context.DeviceConfigs.Add(deviceConfig);
+                _context.SaveChanges();
+                return deviceConfig;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public DeviceConfig GetDeviceConfigByDeviceId(string deviceId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DeviceConfig GetDeviceConfigByDeviceId(int deviceId)
+        {
+            try
+            {
+                var device = _context.Devices.FirstOrDefault(d => d.ID == deviceId);
+                if (device == null)
+                {
+                    throw new Exception("Device not found");
+                }
+
+                return _context.DeviceConfigs.FirstOrDefault(dc => dc.DeviceID == device.ID);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public DeviceConfig UpdateDeviceConfig(DeviceConfig deviceConfig)
+        {
+            try
+            {
+                var device = _context.Devices.FirstOrDefault(d => d.ID == deviceConfig.DeviceID);
+                if (device == null)
+                {
+                    throw new Exception("Device not found");
+                }
+
+                var deviceConfigToUpdate = _context.DeviceConfigs.FirstOrDefault(dc => dc.DeviceID == device.ID);
+                if (deviceConfigToUpdate == null)
+                {
+                    throw new Exception("Device config not found");
+                }
+
+                deviceConfigToUpdate = deviceConfig;
+                _context.SaveChanges();
+                return deviceConfigToUpdate;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
     }
 }

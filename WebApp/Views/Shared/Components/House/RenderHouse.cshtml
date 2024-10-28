@@ -1,0 +1,10 @@
+﻿@model IEnumerable<DAO.BaseModels.House>
+<ul class="nav">
+	@foreach (var m in Model)
+	{
+		<li class="nav-item">
+			<a asp-controller="House" asp-action="Index"
+			   asp-route-mid="@m.ID" class="nav-link">@m.Name</a>
+		</li>
+	}
+</ul>

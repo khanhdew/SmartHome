@@ -1,0 +1,65 @@
+﻿@model IEnumerable<DAO.BaseModels.House>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+@model IEnumerable<DAO.BaseModels.House>
+<div class="ms-2 mx-2">
+    <button id="addBtn" class="addBtn">
+        <i class='bx bxs-message-alt-add'></i>
+    </button> 
+    <!-- Create Modal -->
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Thêm mới</h2>
+            <form asp-action="Create" method="post">
+                <label for="Name">Tên:</label>
+                <input type="text" id="Name" name="Name" required>
+                <br>
+                <label for="Address">Địa chỉ:</label>
+                <textarea id="Location" name="Location" rows="4" required></textarea>
+                <br>
+                <button type="submit">Lưu</button>
+            </form>
+        </div>
+    </div>
+
+    <ul class="box-info" id="boxInfoList">
+        @foreach (var item in Model)
+        {
+            <li>
+                <div class="box-info-item">
+                    <h3>@item.Name</h3>
+                    <p>@item.Location</p>
+                    <!-- Edit Button -->
+                    <button class="editBtn" data-id="@item.ID">
+                        <i class="bx bxs-edit"></i> 
+                    </button>
+                    <button class="deleteBtn" data-id = "@item.ID">
+                        <i class="bx bxs-trash"></i>
+                    </button>
+                </div>
+            </li>
+        }
+    </ul>
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Chỉnh sửa</h2>
+            <form id="editForm" asp-action="Edit" method="post">
+                <input type="hidden" id="editId" name="ID" />
+                <label for="Name">Tên:</label>
+                <input type="text" id="editName" name="Name" required>
+                <br>
+                <label for="Location">Địa chỉ:</label>
+                <textarea id="editLocation" name="Location" rows="4" required></textarea>
+                <br>
+                <button type="submit">Lưu</button>
+            </form>
+        </div>
+    </div>
+    <a asp-action = "Create" class="btn btn-primary"></a>
+</div>

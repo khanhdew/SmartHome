@@ -2,18 +2,18 @@
 
 namespace DAO.Models;
 
-internal class DeviceFactory
+public class DeviceFactory
 {
-    public IDevice CreateDevice(DeviceType deviceType, string name)
+    public static IDevice CreateDevice(DeviceType deviceType, string name)
     {
         switch (deviceType)
         {
             case DeviceType.Light:
-                return new Light { Name = name, Type = "Light", DeviceToken = GenerateDeviceToken() };
+                return new Light { Name = name, Type = DeviceType.Light, DeviceToken = GenerateDeviceToken() };
             case DeviceType.RgbLight:
-                return new RgbLight { Name = name, Type = "RgbLight", DeviceToken = GenerateDeviceToken() };
+                return new RgbLight { Name = name, Type = DeviceType.RgbLight, DeviceToken = GenerateDeviceToken() };
             case DeviceType.Fan:
-                return new Fan { Name = name, Type = "Fan", DeviceToken = GenerateDeviceToken() };
+                return new Fan { Name = name, Type = DeviceType.Fan, DeviceToken = GenerateDeviceToken() };
             default:
                 throw new ArgumentException("Invalid device type");
         }
