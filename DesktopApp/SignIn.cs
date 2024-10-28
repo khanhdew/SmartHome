@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DesktopApp
 {
-    public partial class SignIn : UserControl
+    public partial class SignUp : UserControl
     {
-        public SignIn()
+        public SignUp()
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;

@@ -1,6 +1,6 @@
 ﻿namespace DesktopApp
 {
-    partial class SignIn
+    partial class SignUp
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignIn));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUp));
             btnSignIn = new Krypton.Toolkit.KryptonButton();
             kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
             panel4 = new Panel();
@@ -323,7 +323,7 @@
             kryptonLabel5.TabIndex = 66;
             kryptonLabel5.Values.Text = "Reapet your password";
             // 
-            // SignIn
+            // SignUp
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -338,7 +338,7 @@
             Controls.Add(kryptonLabel6);
             Controls.Add(kryptonPanel1);
             Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            Name = "SignIn";
+            Name = "SignUp";
             Size = new Size(1289, 685);
             ((System.ComponentModel.ISupportInitialize)kryptonPictureBox2).EndInit();
             panel3.ResumeLayout(false);

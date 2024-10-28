@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<DAO.BaseModels.House>
+
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/MyLayout.cshtml";
 }
@@ -6,7 +8,7 @@
 <div class="ms-2 mx-2">
     <button id="addBtn" class="addBtn">
         <i class='bx bxs-message-alt-add'></i>
-    </button>
+    </button> 
     <!-- Create Modal -->
     <div id="addModal" class="modal">
         <div class="modal-content">

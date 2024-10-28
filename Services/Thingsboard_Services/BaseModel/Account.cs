@@ -2,11 +2,13 @@
 
 public class Account
 {
-    public string username { get; set; }
-    public string password { get; set; }
-    public Account(string username, string password)
+    public string Id { get; set; }
+    public string Username { get; set; }
+    public string Password { get; set; }
+    public Account(string username, string password, string id)
     {
-        this.username = username;
-        this.password = password;
+        Username = username;
+        Password = password;
+        Id = id;
     }
 }

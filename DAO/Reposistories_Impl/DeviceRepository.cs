@@ -20,7 +20,7 @@ namespace DAO.Reposistories_Impl
             _context = context;
         }
         
-        public Device AddDevice(Device device)
+        public IDevice AddDevice(Device device)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace DAO.Reposistories_Impl
             }
         }
 
-        public Device UpdateDevice(Device device)
+        public IDevice UpdateDevice(Device device)
         {
             try
             {

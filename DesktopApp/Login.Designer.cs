@@ -58,7 +58,11 @@
             // 
             kryptonLabel6.Location = new Point(79, 733);
             kryptonLabel6.Name = "kryptonLabel6";
+<<<<<<< Updated upstream
             kryptonLabel6.Size = new Size(167, 19);
+=======
+            kryptonLabel6.Size = new Size(6, 2);
+>>>>>>> Stashed changes
             kryptonLabel6.StateCommon.ShortText.Color1 = Color.White;
             kryptonLabel6.StateCommon.ShortText.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonLabel6.TabIndex = 62;
@@ -116,7 +120,11 @@
             txtEmail.StateNormal.Border.Rounding = 3F;
             txtEmail.StateNormal.Content.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             txtEmail.TabIndex = 67;
+<<<<<<< Updated upstream
             txtEmail.Text = "UserName (Email)";
+=======
+            txtEmail.Text = "cuong@gmail.com";
+>>>>>>> Stashed changes
             // 
             // panel1
             // 
@@ -199,8 +207,15 @@
             txtPassword.StateNormal.Border.Rounding = 3F;
             txtPassword.StateNormal.Content.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             txtPassword.TabIndex = 67;
+<<<<<<< Updated upstream
             txtPassword.Text = "Password";
 
+=======
+            txtPassword.Text = "123456aA@";
+            // 
+            // kryptonLabel3
+            // 
+>>>>>>> Stashed changes
             kryptonLabel3.Location = new Point(84, 20);
             kryptonLabel3.Name = "kryptonLabel3";
             kryptonLabel3.Size = new Size(83, 24);

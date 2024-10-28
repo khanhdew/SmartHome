@@ -16,8 +16,4 @@
     <ProjectReference Include="..\Configuration\Configuration.csproj" />
     <ProjectReference Include="..\DAO\DAO.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Thingsboard_Services\Device\" />
-  </ItemGroup>
 </Project>

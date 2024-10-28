@@ -1,11 +1,14 @@
 ﻿using DAO.BaseModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Services.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,14 +18,16 @@ namespace DesktopApp
     public partial class MainForm : Form
     {
         Login loginControl = new Login();
-        SignIn signInControl = new SignIn();
+        SignUp signUpControl = new SignUp();
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
-        public MainForm(UserManager<User> userManager, SignInManager<User> signInManager)
+        private readonly IUserService _userService;
+        public MainForm(UserManager<User> userManager, SignInManager<User> signInManager, IUserService userService)
         {
             InitializeComponent();
             _userManager = userManager;
             _signInManager = signInManager;
+            _userService = userService;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -72,13 +77,25 @@ namespace DesktopApp
             string username = loginControl.txtEmail.Text;
             string password = loginControl.txtPassword.Text;
 
-
-            ShowDashBroadPanel();
             var user = await _userManager.FindByNameAsync(username);
             if (user != null)
             {
                 var result = await _userManager.CheckPasswordAsync(user, password);
-                MessageBox.Show("Dang nhap " + result );
+                if (result)
+                {
+                //    // Set the HttpContext with the authenticated user
+                //    _userService.SetHttpContext(new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
+                //    {
+                //new Claim(ClaimTypes.NameIdentifier, user.Id)
+                //    }, "CustomAuthType")));
+
+                    ShowDashBroadPanel();
+                   
+                }
+                else
+                {
+                    MessageBox.Show("Invalid password");
+                }
             }
             else
             {
@@ -124,7 +141,7 @@ namespace DesktopApp
                 var result = await _userManager.CreateAsync(user, password);
                 if (result.Succeeded)
                 {
-                    MessageBox.Show("Dang ki thanh cong");
+                    ShowDashBroadPanel();
                 }
                 else
                 {
@@ -144,7 +161,8 @@ namespace DesktopApp
             DashBroad dashBroad = new DashBroad();
             dashBroad.Dock = DockStyle.Fill;
             Panel.Controls.Add(dashBroad);
+           
         }
-
+        
     }
 }
