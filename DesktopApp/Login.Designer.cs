@@ -61,6 +61,9 @@
             kryptonLabel6.Location = new Point(79, 733);
             kryptonLabel6.Name = "kryptonLabel6";
             kryptonLabel6.Size = new Size(207, 24);
+
+            kryptonLabel6.Size = new Size(6, 2);
+
             kryptonLabel6.StateCommon.ShortText.Color1 = Color.White;
             kryptonLabel6.StateCommon.ShortText.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             kryptonLabel6.TabIndex = 62;
@@ -117,6 +120,9 @@
             txtEmail.StateNormal.Border.Rounding = 3F;
             txtEmail.StateNormal.Content.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             txtEmail.TabIndex = 67;
+
+            txtEmail.Text = "cuong@gmail.com";
+
             // 
             // panel1
             // 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +15,7 @@ namespace DesktopApp
         public DashBroad()
         {
             InitializeComponent();
-           ColaspMenu();
+            ColaspMenu();
 
         }
 
@@ -30,7 +30,7 @@ namespace DesktopApp
                 PanelMenu.Width = 100;
                 AnhLogo.Visible = false;
                 btnMenu.Dock = DockStyle.Top;
-             
+
                 foreach (Button menuButton in PanelMenu.Controls.OfType<Button>())
                 {
                     menuButton.Text = "";
@@ -43,7 +43,7 @@ namespace DesktopApp
                 PanelMenu.Width = 250;
                 AnhLogo.Visible = true;
                 btnMenu.Dock = DockStyle.Top;
-                
+
                 foreach (Button menuButton in PanelMenu.Controls.OfType<Button>())
                 {
                     menuButton.Text = "  " + menuButton.Tag.ToString();

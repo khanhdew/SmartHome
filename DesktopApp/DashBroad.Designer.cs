@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashBroad));
             PanelMenu = new Krypton.Toolkit.KryptonPanel();
+            menuDevice = new FontAwesome.Sharp.IconButton();
+            menuRoom = new FontAwesome.Sharp.IconButton();
             iconButton6 = new FontAwesome.Sharp.IconButton();
             iconButton7 = new FontAwesome.Sharp.IconButton();
             menuHome = new FontAwesome.Sharp.IconButton();
@@ -37,16 +40,14 @@
             btnMenu = new FontAwesome.Sharp.IconButton();
             AnhLogo = new PictureBox();
             PanelTitleBar = new Krypton.Toolkit.KryptonPanel();
+            DashMode = new FontAwesome.Sharp.IconButton();
             iconButton8 = new FontAwesome.Sharp.IconButton();
             iconButton9 = new FontAwesome.Sharp.IconButton();
             label1 = new Label();
             PanelMain = new Krypton.Toolkit.KryptonPanel();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
-            panel1 = new Panel();
-            DashMode = new FontAwesome.Sharp.IconButton();
-            addHouse = new FontAwesome.Sharp.IconButton();
-            flChuaHouse = new FlowLayoutPanel();
+            MenuBaCham = new ContextMenuStrip(components);
+            Account = new FontAwesome.Sharp.IconMenuItem();
+            Logout = new FontAwesome.Sharp.IconMenuItem();
             ((System.ComponentModel.ISupportInitialize)PanelMenu).BeginInit();
             PanelMenu.SuspendLayout();
             panel2.SuspendLayout();
@@ -54,14 +55,13 @@
             ((System.ComponentModel.ISupportInitialize)PanelTitleBar).BeginInit();
             PanelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PanelMain).BeginInit();
-            PanelMain.SuspendLayout();
-            panel1.SuspendLayout();
+            MenuBaCham.SuspendLayout();
             SuspendLayout();
             // 
             // PanelMenu
             // 
-            PanelMenu.Controls.Add(iconButton2);
-            PanelMenu.Controls.Add(iconButton1);
+            PanelMenu.Controls.Add(menuDevice);
+            PanelMenu.Controls.Add(menuRoom);
             PanelMenu.Controls.Add(iconButton6);
             PanelMenu.Controls.Add(iconButton7);
             PanelMenu.Controls.Add(menuHome);
@@ -73,13 +73,61 @@
             PanelMenu.StateNormal.Color1 = Color.FromArgb(97, 102, 246);
             PanelMenu.TabIndex = 1;
             // 
+            // menuDevice
+            // 
+            menuDevice.BackColor = Color.FromArgb(97, 102, 246);
+            menuDevice.Dock = DockStyle.Top;
+            menuDevice.FlatAppearance.BorderSize = 0;
+            menuDevice.FlatStyle = FlatStyle.Flat;
+            menuDevice.Font = new Font("Cascadia Code SemiBold", 4.2F, FontStyle.Bold, GraphicsUnit.Millimeter);
+            menuDevice.ForeColor = Color.White;
+            menuDevice.IconChar = FontAwesome.Sharp.IconChar.Computer;
+            menuDevice.IconColor = Color.White;
+            menuDevice.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            menuDevice.IconSize = 33;
+            menuDevice.ImageAlign = ContentAlignment.MiddleLeft;
+            menuDevice.Location = new Point(0, 189);
+            menuDevice.Name = "menuDevice";
+            menuDevice.Padding = new Padding(10, 0, 0, 0);
+            menuDevice.Size = new Size(218, 65);
+            menuDevice.TabIndex = 11;
+            menuDevice.Tag = "Device";
+            menuDevice.Text = "Device";
+            menuDevice.TextImageRelation = TextImageRelation.ImageBeforeText;
+            menuDevice.UseVisualStyleBackColor = false;
+            menuDevice.Click += menuDevice_Click;
+            // 
+            // menuRoom
+            // 
+            menuRoom.BackColor = Color.FromArgb(97, 102, 246);
+            menuRoom.Dock = DockStyle.Top;
+            menuRoom.FlatAppearance.BorderSize = 0;
+            menuRoom.FlatStyle = FlatStyle.Flat;
+            menuRoom.Font = new Font("Cascadia Code SemiBold", 4.2F, FontStyle.Bold, GraphicsUnit.Millimeter);
+            menuRoom.ForeColor = Color.White;
+            menuRoom.IconChar = FontAwesome.Sharp.IconChar.Hotel;
+            menuRoom.IconColor = Color.White;
+            menuRoom.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            menuRoom.IconSize = 33;
+            menuRoom.ImageAlign = ContentAlignment.MiddleLeft;
+            menuRoom.Location = new Point(0, 124);
+            menuRoom.Name = "menuRoom";
+            menuRoom.Padding = new Padding(10, 0, 0, 0);
+            menuRoom.Size = new Size(218, 65);
+            menuRoom.TabIndex = 10;
+            menuRoom.Tag = "Room";
+            menuRoom.Text = "Room";
+            menuRoom.TextImageRelation = TextImageRelation.ImageBeforeText;
+            menuRoom.UseVisualStyleBackColor = false;
+            menuRoom.Click += menuRoom_Click;
+            // 
             // iconButton6
             // 
             iconButton6.BackColor = Color.FromArgb(97, 102, 246);
             iconButton6.Dock = DockStyle.Bottom;
             iconButton6.FlatAppearance.BorderSize = 0;
             iconButton6.FlatStyle = FlatStyle.Flat;
-            iconButton6.Font = new Font("Cascadia Code SemiBold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButton6.Font = new Font("Cascadia Code SemiBold", 4.2F, FontStyle.Bold, GraphicsUnit.Millimeter);
             iconButton6.ForeColor = Color.White;
             iconButton6.IconChar = FontAwesome.Sharp.IconChar.Cog;
             iconButton6.IconColor = Color.White;
@@ -102,7 +150,7 @@
             iconButton7.Dock = DockStyle.Bottom;
             iconButton7.FlatAppearance.BorderSize = 0;
             iconButton7.FlatStyle = FlatStyle.Flat;
-            iconButton7.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButton7.Font = new Font("Cascadia Code SemiBold", 4.2F, FontStyle.Bold, GraphicsUnit.Millimeter);
             iconButton7.ForeColor = Color.White;
             iconButton7.IconChar = FontAwesome.Sharp.IconChar.SignOut;
             iconButton7.IconColor = Color.White;
@@ -142,6 +190,7 @@
             menuHome.Text = "House";
             menuHome.TextImageRelation = TextImageRelation.ImageBeforeText;
             menuHome.UseVisualStyleBackColor = false;
+            menuHome.Click += menuHome_Click;
             // 
             // panel2
             // 
@@ -198,6 +247,25 @@
             PanelTitleBar.StateNormal.Color2 = Color.FromArgb(0, 105, 91);
             PanelTitleBar.TabIndex = 2;
             // 
+            // DashMode
+            // 
+            DashMode.AutoSize = true;
+            DashMode.BackColor = Color.FromArgb(0, 29, 53);
+            DashMode.Dock = DockStyle.Right;
+            DashMode.FlatAppearance.BorderColor = Color.White;
+            DashMode.FlatAppearance.BorderSize = 0;
+            DashMode.FlatAppearance.MouseDownBackColor = Color.Black;
+            DashMode.FlatStyle = FlatStyle.Flat;
+            DashMode.ForeColor = Color.Transparent;
+            DashMode.IconChar = FontAwesome.Sharp.IconChar.ToggleOn;
+            DashMode.IconColor = Color.White;
+            DashMode.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            DashMode.Location = new Point(774, 0);
+            DashMode.Name = "DashMode";
+            DashMode.Size = new Size(56, 59);
+            DashMode.TabIndex = 0;
+            DashMode.UseVisualStyleBackColor = false;
+            // 
             // iconButton8
             // 
             iconButton8.BackColor = Color.FromArgb(0, 105, 91);
@@ -233,6 +301,7 @@
             iconButton9.Size = new Size(43, 59);
             iconButton9.TabIndex = 2;
             iconButton9.UseVisualStyleBackColor = false;
+            iconButton9.Click += iconButton9_Click;
             // 
             // label1
             // 
@@ -249,8 +318,6 @@
             // 
             // PanelMain
             // 
-            PanelMain.Controls.Add(flChuaHouse);
-            PanelMain.Controls.Add(panel1);
             PanelMain.Dock = DockStyle.Fill;
             PanelMain.Location = new Point(218, 59);
             PanelMain.Name = "PanelMain";
@@ -258,110 +325,33 @@
             PanelMain.StateNormal.Color1 = Color.FromArgb(244, 244, 254);
             PanelMain.TabIndex = 3;
             // 
-            // iconButton1
+            // MenuBaCham
             // 
-            iconButton1.BackColor = Color.FromArgb(97, 102, 246);
-            iconButton1.Dock = DockStyle.Top;
-            iconButton1.FlatAppearance.BorderSize = 0;
-            iconButton1.FlatStyle = FlatStyle.Flat;
-            iconButton1.Font = new Font("Cascadia Code SemiBold", 4.2F, FontStyle.Bold, GraphicsUnit.Millimeter);
-            iconButton1.ForeColor = Color.White;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.Hotel;
-            iconButton1.IconColor = Color.White;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.IconSize = 33;
-            iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton1.Location = new Point(0, 124);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Padding = new Padding(10, 0, 0, 0);
-            iconButton1.Size = new Size(218, 65);
-            iconButton1.TabIndex = 10;
-            iconButton1.Tag = "Room";
-            iconButton1.Text = "Room";
-            iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton1.UseVisualStyleBackColor = false;
+            MenuBaCham.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            MenuBaCham.ImageScalingSize = new Size(20, 20);
+            MenuBaCham.Items.AddRange(new ToolStripItem[] { Account, Logout });
+            MenuBaCham.Name = "contextMenuStrip1";
+            MenuBaCham.Size = new Size(215, 88);
             // 
-            // iconButton2
+            // Account
             // 
-            iconButton2.BackColor = Color.FromArgb(97, 102, 246);
-            iconButton2.Dock = DockStyle.Top;
-            iconButton2.FlatAppearance.BorderSize = 0;
-            iconButton2.FlatStyle = FlatStyle.Flat;
-            iconButton2.Font = new Font("Cascadia Code SemiBold", 4.2F, FontStyle.Bold, GraphicsUnit.Millimeter);
-            iconButton2.ForeColor = Color.White;
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.Computer;
-            iconButton2.IconColor = Color.White;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.IconSize = 33;
-            iconButton2.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton2.Location = new Point(0, 189);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Padding = new Padding(10, 0, 0, 0);
-            iconButton2.Size = new Size(218, 65);
-            iconButton2.TabIndex = 11;
-            iconButton2.Tag = "Device";
-            iconButton2.Text = "Device";
-            iconButton2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton2.UseVisualStyleBackColor = false;
+            Account.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            Account.IconChar = FontAwesome.Sharp.IconChar.Portrait;
+            Account.IconColor = Color.Black;
+            Account.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            Account.Name = "Account";
+            Account.Size = new Size(214, 28);
+            Account.Text = "Account";
             // 
-            // panel1
+            // Logout
             // 
-            panel1.BackColor = Color.Transparent;
-            panel1.Controls.Add(addHouse);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1082, 65);
-            panel1.TabIndex = 0;
-            // 
-            // DashMode
-            // 
-            DashMode.AutoSize = true;
-            DashMode.BackColor = Color.FromArgb(0, 29, 53);
-            DashMode.Dock = DockStyle.Right;
-            DashMode.FlatAppearance.BorderColor = Color.White;
-            DashMode.FlatAppearance.BorderSize = 0;
-            DashMode.FlatAppearance.MouseDownBackColor = Color.Black;
-            DashMode.FlatStyle = FlatStyle.Flat;
-            DashMode.ForeColor = Color.Transparent;
-            DashMode.IconChar = FontAwesome.Sharp.IconChar.ToggleOn;
-            DashMode.IconColor = Color.White;
-            DashMode.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            DashMode.Location = new Point(774, 0);
-            DashMode.Name = "DashMode";
-            DashMode.Size = new Size(56, 59);
-            DashMode.TabIndex = 0;
-            DashMode.UseVisualStyleBackColor = false;
-            // 
-            // addHouse
-            // 
-            addHouse.AutoSize = true;
-            addHouse.BackColor = Color.White;
-            addHouse.Dock = DockStyle.Left;
-            addHouse.FlatAppearance.BorderColor = Color.White;
-            addHouse.FlatAppearance.BorderSize = 0;
-            addHouse.FlatAppearance.MouseDownBackColor = Color.Black;
-            addHouse.FlatStyle = FlatStyle.Flat;
-            addHouse.ForeColor = Color.White;
-            addHouse.IconChar = FontAwesome.Sharp.IconChar.Arrows;
-            addHouse.IconColor = Color.Black;
-            addHouse.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            addHouse.Location = new Point(0, 0);
-            addHouse.Name = "addHouse";
-            addHouse.Rotation = 4D;
-            addHouse.Size = new Size(78, 65);
-            addHouse.TabIndex = 1;
-            addHouse.UseVisualStyleBackColor = false;
-            // 
-            // flChuaHouse
-            // 
-            flChuaHouse.AutoScroll = true;
-            flChuaHouse.BackColor = Color.Transparent;
-            flChuaHouse.Dock = DockStyle.Fill;
-            flChuaHouse.Location = new Point(0, 65);
-            flChuaHouse.Name = "flChuaHouse";
-            flChuaHouse.Size = new Size(1082, 606);
-            flChuaHouse.TabIndex = 1;
+            Logout.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            Logout.IconChar = FontAwesome.Sharp.IconChar.None;
+            Logout.IconColor = Color.Black;
+            Logout.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            Logout.Name = "Logout";
+            Logout.Size = new Size(214, 28);
+            Logout.Text = "Logout";
             // 
             // DashBroad
             // 
@@ -381,9 +371,7 @@
             PanelTitleBar.ResumeLayout(false);
             PanelTitleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PanelMain).EndInit();
-            PanelMain.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            MenuBaCham.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -400,11 +388,11 @@
         private Label label1;
         private FontAwesome.Sharp.IconButton iconButton8;
         private FontAwesome.Sharp.IconButton iconButton9;
-        private FontAwesome.Sharp.IconButton iconButton2;
-        private FontAwesome.Sharp.IconButton iconButton1;
-        private Panel panel1;
+        private FontAwesome.Sharp.IconButton menuDevice;
+        private FontAwesome.Sharp.IconButton menuRoom;
         private FontAwesome.Sharp.IconButton DashMode;
-        private FontAwesome.Sharp.IconButton addHouse;
-        private FlowLayoutPanel flChuaHouse;
+        private ContextMenuStrip MenuBaCham;
+        private FontAwesome.Sharp.IconMenuItem Account;
+        private FontAwesome.Sharp.IconMenuItem Logout;
     }
 }
