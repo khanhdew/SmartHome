@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Services.Services_Impl;
 using Services.Services;
 using Microsoft.EntityFrameworkCore;
+using Services.Thingsboard_Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("SmartHomeContextConnection") ?? throw new InvalidOperationException("Connection string 'SmartHomeContextConnection' not found.");
@@ -25,6 +26,11 @@ builder.Services.AddScoped<UserManager<User>>(); // Đăng ký UserManager
 
 builder.Services.AddScoped<IHouseRepository, HouseRepository>();
 builder.Services.AddScoped<IHouseService, HouseService>();
+builder.Services.AddScoped<IRoomRepository, RoomRepository>();
+builder.Services.AddScoped<IRoomService, RoomService>();
+builder.Services.AddScoped<IDeviceRepository, DeviceRepository>();
+builder.Services.AddScoped<IDeviceService, DeviceService>();
+builder.Services.AddScoped<IThingsboardService, ThingsboardService>();
 
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<SmartHomeContext>()

@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="~/sc7.css">
+    <link rel="stylesheet" href="~/css/house.css">
     <title>@ViewBag.Title - WebApp</title>
 </head>
 <body>
@@ -17,11 +18,13 @@
         <partial name="_Navbar" />
         <!-- MAIN CONTENT AREA -->
         <main>
-            @RenderBody()
+            <div id="renderBodyContent">
+                @RenderBody()
+            </div>
         </main>
     </section>
+    <script src="~/js/house.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     @RenderSection("Scripts", required: false)
-    <link rel="stylesheet" href="~/Template/sc7/sc7.css" />
-    <script src="~/Template/sc7/sc7.js"></script>
 </body>
 </html>

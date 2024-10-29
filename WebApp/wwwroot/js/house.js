@@ -1,4 +1,4 @@
-// Quản lý các mục bên trong sidebar
+﻿// Quản lý các mục bên trong sidebar
 const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 const menuBar = document.querySelector('#content nav .bx.bx-menu');
 const sidebar = document.getElementById('sidebar');
@@ -86,6 +86,8 @@ window.addEventListener('click', (event) => {
     }
 });
 
+
+
 //nút sửa xóa
 
 // Biến để theo dõi mục hiện tại đang được sửa
@@ -127,7 +129,6 @@ addForm.addEventListener('submit', (event) => {
     addModal.style.display = 'none';
     addForm.reset();
 });
-
 document.addEventListener('DOMContentLoaded', function () {
     const editButtons = document.querySelectorAll('.editBtn');
     const editModal = document.getElementById('editModal');
@@ -155,9 +156,13 @@ document.addEventListener('DOMContentLoaded', function () {
             editModal.style.display = 'none';
         });
     });
+
+    window.addEventListener('click', function (event) {
+        if (event.target == editModal) {
+            editModal.style.display = 'none';
+        }
+    });
 });
-
-
 
 //Fan
 

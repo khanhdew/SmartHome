@@ -1,29 +1,35 @@
-﻿<section id="sidebar">
+﻿@{
+var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+}
+<section id="sidebar">
     <a href="#" class="brand">
         <i class='bx bx-shape-polygon'></i>
         <span class="text">WebApp</span>
     </a>
     <ul class="side-menu top">
-        <li class="active">
-            <a href="Yourhouse.html">
+        <li class="@(currentController == "House" ? "active" : "")">
+            <a href="@Url.Action("Index", "House")">
                 <i class='bx bxs-home-heart'></i>
-                <span class="text">Your house</span>
+                <span class="text">House</span>
             </a>
         </li>
-        <li>
-            <a href="Room.html">
+        
+        <li class="@(currentController == "Room" ? "active" : "")">
+            
+            <a href="@Url.Action("Index", "Room")">
                 <i class='bx bxs-building'></i>
                 <span class="text">Room</span>
             </a>
         </li>
-        <li>
-            <a href="Device.html">
+        <li class="@(currentController == "Device" ? "active" : "")">
+            <a href="@Url.Action("Index", "Device")">
                 <i class='bx bxs-devices'></i>
                 <span class="text">Device</span>
             </a>
         </li>
-        <li>
-            <a href="Setting.html">
+        <li class="@(currentController == "User" ? "active" : "")">
+            <a href="@Url.Action("Index", "User")">
                 <i class='bx bxs-cog'></i>
                 <span class="text">Settings</span>
             </a>

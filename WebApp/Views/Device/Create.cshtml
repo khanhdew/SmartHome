@@ -1,0 +1,26 @@
+﻿@if (ViewBag.HouseId != null)
+{
+    <button id="addBtn" class="addBtn">
+        <i class='bx bxs-message-alt-add'></i>
+    </button>
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Thêm mới</h2>
+            <form asp-action="Create" method="post">
+                <input type="hidden" name="houseId" value="@ViewBag.HouseId" />
+                <div class="form-group">
+                    <label for="Name">Tên:</label>
+                    <input type="text" id="Name" name="name" required />
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="Detail">Thông tin:</label>
+                    <textarea id="Location" name="detail" rows="4" required></textarea>
+                </div>
+                <br>
+                <button type="submit">Lưu</button>
+            </form>
+        </div>
+    </div>
+}

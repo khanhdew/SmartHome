@@ -19,12 +19,8 @@ namespace WebApp.Controllers
         }
         public IActionResult Index()
         {
-            var houses = _houseService.GetHousesByUserId("");
+            var houses = _houseService.GetHousesByUserId(_userService.GetCurrentUserId());
             return View(houses);
-        }
-        public IActionResult Create()
-        {
-            return PartialView("Create");
         }
 
         [HttpPost]
@@ -34,16 +30,14 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 var newHouse = _houseService.CreateHouse(name, location);
-
+                _houseService.AddHouseMember(_userService.GetCurrentUserId(),newHouse.ID, "Owner");
                 return RedirectToAction("Index");
             }
             return PartialView("Create");
         }
         public IActionResult Edit(int id)
         {
-            var house = _houseService.GetHousesByUserId("");
-            if (house == null) return NotFound();
-            return PartialView("Edit", house);
+            return View("Edit", _houseService.GetHouseById(id));
         }
 
         [HttpPost]
@@ -55,7 +49,7 @@ namespace WebApp.Controllers
                 _houseService.EditHouse(house);
                 return RedirectToAction("Index");
             }
-            return PartialView("Edit", house);
+            return View("Edit", house);
         }
 
     }

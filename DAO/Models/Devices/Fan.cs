@@ -2,7 +2,7 @@
 
 namespace DAO.Models.Devices;
 
-internal class Fan : Device, IFan
+public class Fan : Device, IFan
 {
     public void TurnOn()
     {

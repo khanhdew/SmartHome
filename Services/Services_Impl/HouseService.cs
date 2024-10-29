@@ -35,6 +35,11 @@ public class HouseService: IHouseService
         return houseToUpdate;
     }
 
+    public House GetHouseById(int houseId)
+    {
+        return _houseRepository.GetHouseById(houseId);
+    }
+
     public IEnumerable<House> GetHousesByUserId(string userId)
     {
         return _houseRepository.GetHouseByUserID(userId);

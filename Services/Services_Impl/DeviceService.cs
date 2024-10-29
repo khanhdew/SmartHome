@@ -1,4 +1,5 @@
-﻿using DAO.BaseModels;
+﻿using System.Text.Json;
+using DAO.BaseModels;
 using DAO.Models.Devices;
 using DAO.Repositories;
 using Services.Services;
@@ -20,8 +21,12 @@ public class DeviceService : IDeviceService
     {
         try
         {
-            var deviceCreated = _deviceRepository.AddDevice(device);
-            _thingsboardService.CreateDevice(device);
+            var deviceCreated =(Device) _deviceRepository.AddDevice(device);
+            var tbDevice = _thingsboardService.CreateDevice(device);
+            var root = JsonDocument.Parse(tbDevice.ToString()).RootElement;
+            deviceCreated.TbDeviceId = root.GetProperty("id").GetProperty("id").GetString();
+            Console.WriteLine(tbDevice.ToString());
+            _deviceRepository.UpdateDevice(deviceCreated);
             return deviceCreated;
         }
         catch (Exception e)
@@ -53,6 +58,11 @@ public class DeviceService : IDeviceService
     public IDevice GetDeviceById(int deviceId)
     {
         return _deviceRepository.GetDeviceById(deviceId);
+    }
+
+    public IEnumerable<IDevice> GetDevicesByUserId(string userId)
+    {
+        return _deviceRepository.GetDevicesByUserId(userId);
     }
 
     public void DeleteDevice(int deviceId)

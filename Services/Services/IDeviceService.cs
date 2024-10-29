@@ -8,6 +8,7 @@ public interface IDeviceService
     public IDevice CreateDevice(Device device);
     public IDevice EditDevice(Device device);
     public IDevice GetDeviceById(int deviceId);
+    public IEnumerable<IDevice> GetDevicesByUserId(string userId);
     public void DeleteDevice(int deviceId);
     public TelemetryDatum AddTelemetryDatum(TelemetryDatum telemetryDatum);
     public IEnumerable<TelemetryDatum> GetTelemetryDataByDeviceId(int deviceId);

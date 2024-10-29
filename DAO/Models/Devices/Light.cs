@@ -2,7 +2,7 @@
 
 namespace DAO.Models.Devices;
 
-internal class Light : Device, ILight
+public class Light : Device, ILight
 {
     public int? Dim { get; set; }
 
