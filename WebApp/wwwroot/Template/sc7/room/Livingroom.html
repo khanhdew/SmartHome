@@ -4,9 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-	<link rel="stylesheet" href="sc7.css">
+	<link rel="stylesheet" href="room.css">
 
-	<title>SmartHome-Room</title>
+	<title>SmartHome-Device</title>
 </head>
 <body>
 
@@ -24,13 +24,13 @@
 					<span class="text">Your house</span>
 				</a>
 			</li>
-			<li class="active">
+			<li>
 				<a href="Room.html">
 					<i class='bx bxs-building'></i>
 					<span class="text">Room</span>
 				</a>
 			</li>
-			<li>
+			<li class="active">
 				<a href="Device.html">
 					<i class='bx bxs-devices'></i>
 					<span class="text">Device</span>
@@ -64,7 +64,7 @@
 			</a>
 			<div class="profile-btn-wrapper">
 				<a href="#" class="profile">
-					<img src="pic/profile.jpg">
+					<img src="pic2/profile.jpg">
 				</a>
 				<button id="account-btn" class="account-btn">
 					<i class='bx bxs-down-arrow'></i>
@@ -86,7 +86,6 @@
 			<button id="addBtn" class="addBtn">
 				<i class='bx bxs-message-alt-add'></i>
 			</button> 
-    
 			<div id="addModal" class="modal">
 				<div class="modal-content">
 					<span class="close">&times;</span>
@@ -104,42 +103,63 @@
 			</div>
 
     		<ul class="box-info" id="boxInfoList">
-				<li class="active">
-					<span class="text">
-						<a href="room/Livingroom.html">
-						<h3>Livingroom</h3>
-						<p>House 1</p>
-						</a>
-						<button>Sửa</button>
-						<button>Xóa</button>
+				<li>
+					<span class="textlight">
+						<div class="text 1">
+							<h3>Light</h3>
+							<div class="lamp-wrapper-main">
+								<div class="lamp-rope"></div>
+								<div class="lamp-inner">
+									<div class="lamp-main lamp-bottom"></div>
+									<div class="lamp-blub"></div>
+								</div>
+							</div>
+							<form oninput="document.body.setAttribute('data-light', slider.value)" class="lamp-input">
+								<label for="slider" class="slider-label">Độ sáng:</label>
+								<div class="slider-container">
+									<div class="icon-sun">
+										<i class='bx bxs-sun'></i>
+									</div>
+									<input type="range" id="slider" value="0" min="0" max="10" class="slider">
+								</div>
+							</form>
+						</div>
 					</span>
 				</li>
-				<li class="active">
-					<span class="text">
-						<a href="room/Bedroom.html">
-						<h3>Bedroom</h3>
-						<p>House 1</p>
-						</a>
-						<button>Sửa</button>
-						<button>Xóa</button>
+				<li>
+					<span class="textfan">
+						<div class="text 2">
+							<h3>Fan</h3>
+							<div class="part">
+								<div class="box">
+									<img src="https://cdn-icons-png.flaticon.com/512/95/95252.png" width="100%" height="100%">
+									<div class="box1"></div>
+								</div>
+							</div>
+							<form class="fan-input">
+								<div class="on"><img src="pic2/power.png" width="100%"></div>
+								<div class="off"><img src="pic2/power-button.png" width="100%"></div>
+								
+							</form>
+						</div>
 					</span>
 				</li>
-				<li class="active">
+				
+				
+				<li>
 					<span class="text">
-						<a href="room/Diningroom.html">
-						<h3>Diningroom</h3>
-						<p>House 1</p>
-						</a>
+						<h3>Aircon</h3>
+						<p>Thông tin chung</p>
 						<button>Sửa</button>
 						<button>Xóa</button>
 					</span>
 				</li>
 			</ul>
-			
 		</main>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
-	<script src="sc7.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="room.js"></script>
 </body>
 </html>

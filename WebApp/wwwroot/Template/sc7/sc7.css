@@ -919,32 +919,21 @@ body[data-light="10"] .lamp-lamp-shadow {
 
 /* quạt */
 
-/* Phần hình ảnh bật/tắt của quạt */
 .on, .off {
 	position: absolute;
 	border-radius: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	top: 80%;
+	top: 70%;
 	width: 40px;
 	height: 40px;
 }
 
-.on {
-	box-shadow: 0px 0px 20px 5px green;
-}
 
-.off {
-	display: none;
-	box-shadow: 0px 0px 10px rgb(206, 57, 57);
-}
 .textfan .on img:hover, .textfan .off img:hover {
     transform: scale(1.1);
 }
 
-
-
-/* Thiết kế phần quạt */
 .textfan .part {
     margin-top: 90px;
     position: relative;
@@ -958,7 +947,6 @@ body[data-light="10"] .lamp-lamp-shadow {
     transform: translate(-50%, -50%);
 }
 
-/* Thiết kế phần quạt và hiệu ứng quay */
 .textfan .part .box {
     width: 100px;
     height: 100px;
@@ -988,6 +976,97 @@ body[data-light="10"] .lamp-lamp-shadow {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+.speed-button {
+    width: 40px;
+    height: 40px;
+	margin-right: 500px;
+    color: var(--light);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
 
+.toggle-btn {
+	margin-right: 50px;
+    background-color: #4CAF50; 
+    color: white;
+    border-radius: 5px;
+	border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-btn:hover {
+    background-color: #45a049; 
+}
+
+.textrgb {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.rgb-light {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin: 10px 0;
+}
+
+.rgb-color {
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.rgb-input {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.color-label {
+    margin-bottom: 5px;
+	color: var(--dark);
+}
+
+
+
+
+
+.modal {
+    display: none; /* Ẩn modal ban đầu */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close {
+    cursor: pointer;
+    float: right;
+    font-size: 24px;
+}
 

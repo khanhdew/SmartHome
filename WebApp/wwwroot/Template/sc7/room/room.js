@@ -85,6 +85,7 @@ window.addEventListener('click', (event) => {
         addModal.style.display = 'none';
     }
 });
+
 // lưu thông tin
 addForm.addEventListener('submit', (event) => {
     event.preventDefault(); 
@@ -106,24 +107,12 @@ addForm.addEventListener('submit', (event) => {
 
     addForm.reset();
 });
-//sua
-const sua=document.getElementById("edit");
-const suaBtnForm=document.getElementById("suaBtnForm");
-const addForm2=document.getElementById('EditAll');
 
-sua.addEventListener('click',()=>{
-    suaBtnForm.style.display='block';
-})
-closeModal.addEventListener('click', () => {
-    addModal.style.display = 'none'; 
-});
-window.addEventListener('click',(event2)=>{
-    if(event2.target==suaBtnForm){
-        suaBtnForm.display='none';
-    }
-})
 
-//nút xóa
+//nút sửa xóa
+
+// Biến để theo dõi mục hiện tại đang được sửa
+let currentItemToEdit = null;
 
 // Xử lý sự kiện khi nhấn nút Sửa và Xóa
 document.addEventListener('click', function (event) {
@@ -131,10 +120,36 @@ document.addEventListener('click', function (event) {
         // Xóa mục
         const itemToDelete = event.target.closest('li');
         itemToDelete.remove();
-    } 
+    } else if (event.target.textContent === 'Sửa') {
+        // Lưu mục hiện tại để sửa
+        currentItemToEdit = event.target.closest('li');
+        const name = currentItemToEdit.querySelector('h3').textContent;
+        const info = currentItemToEdit.querySelector('p').textContent;
+
+        // Hiển thị modal và đặt các giá trị vào các trường input
+        addModal.style.display = 'block';
+        document.getElementById('Name').value = name;
+        document.getElementById('Info').value = info;
+    }
 });
 
-//nút sửa
+// Cập nhật dữ liệu khi người dùng nhấn "Lưu"
+addForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    if (currentItemToEdit) {
+        // Cập nhật thông tin của mục đang sửa
+        currentItemToEdit.querySelector('h3').textContent = document.getElementById('Name').value;
+        currentItemToEdit.querySelector('p').textContent = document.getElementById('Info').value;
+
+        // Đặt lại biến `currentItemToEdit` về `null` sau khi cập nhật
+        currentItemToEdit = null;
+    }
+
+    // Đóng modal và đặt lại form
+    addModal.style.display = 'none';
+    addForm.reset();
+});
 
 
 
@@ -145,68 +160,54 @@ document.addEventListener('click', function (event) {
 $(document).ready(function() {
     let currentSpeed = 0.8; 
 
+    // Xử lý sự kiện khi nhấn nút ON
     $(".on").click(function() {
+        // Bắt đầu quay quạt với tốc độ hiện tại
         $(".box img").css({
             "animation": `rotateon ${currentSpeed}s infinite linear`
         });
 
+        // Ẩn nút ON và hiển thị nút OFF
         $(".on").hide();
         $(".off").show();
 
+        // Cập nhật bóng đổ cho nút ON và OFF
         $(".on").css("box-shadow", "0px 0px 20px 5px green");
         $(".off").css("box-shadow", "0px 0px 20px 5px red");
     });
 
+    // Xử lý sự kiện khi nhấn nút OFF
     $(".off").click(function() {
         // Dừng quay quạt
         $(".box img").css({
-            "animation": "none" 
+            "animation": "none" // Dừng hiệu ứng quay
         });
 
+        // Hiển thị nút ON và ẩn nút OFF
         $(".on").show();
         $(".off").hide();
 
+        // Cập nhật bóng đổ cho nút ON và OFF
         $(".on").css("box-shadow", "0px 0px 20px 5px green");
         $(".off").css("box-shadow", "0px 0px 20px 5px red");
     });
+
     // Xử lý sự kiện khi nhấn vào các nút điều chỉnh tốc độ quạt
     $(".speed-button").click(function() {
+        // Lấy tốc độ từ thuộc tính data-speed của nút
         currentSpeed = $(this).data("speed");
-        if ($(".off").is(":visible")) {
 
+        // Kiểm tra nếu quạt đang quay (nút OFF đang hiển thị)
+        if ($(".off").is(":visible")) {
+            // Cập nhật tốc độ quay của quạt
             $(".box img").css({
                 "animation": `rotateon ${currentSpeed}s infinite linear`
             });
         }
     });
-
-
 });
 
 
 
-
-
-$(document).ready(function() {
-    let isOn = false; 
-
-    $('#color-picker').on('input', function() {
-        const color = $(this).val();
-        if (isOn) { 
-            $('.rgb-color').css('background-color', color);
-        }
-    });
-
-    $('#toggle-button').on('click', function() {
-        isOn = !isOn; 
-        if (isOn) {
-            $('.rgb-color').css('background-color', $('#color-picker').val());
-            $(this).text('Tắt'); 
-        } else {
-            $('.rgb-color').css('background-color', 'transparent');
-            $(this).text('Bật'); 
-        }
-    });
-});
 
 

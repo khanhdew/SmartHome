@@ -6,16 +6,14 @@
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="sc7.css">
 
-	<title>WebApp</title>
+	<title>SmartHome</title>
 </head>
 <body>
-
-
 	<!-- SIDEBAR -->
 	<section id="sidebar">
 		<a href="#" class="brand">
 			<i class='bx bx-shape-polygon'></i>
-			<span class="text">WebApp</span>
+			<span class="text">SmartHome</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
@@ -49,17 +47,17 @@
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			<i class='bx bx-menu'></i>
+			<i class='bx bx-menu'></i>	
 			<form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
 			<a href="#" class="notification">
-				<i class='bx bxs-bell'></i>
+				<i class='bx bxs-bell' ></i>
 				<span class="num">3</span>
 			</a>
 			<div class="profile-btn-wrapper">
@@ -72,78 +70,110 @@
 			</div>
 			<div id="account-menu" class="account-menu">
 				<ul>
-					<li><a href="#">Account</a></li>
-					<li><a href="#">Log out</a></li>
+					<li><a href="#"><i class='bx bx-user'>Account</i></a></li>
+					<li><a href="#"><i class='bx bx-log-in'>Log out</i></a></li>
 				</ul>
 			</div>
 		</nav>
-
+		
 		<!-- NAVBAR -->
+
 		<!-- MAIN -->
 		<main>
-			  <button id="addBtn" class="addBtn">
-				  <i class='bx bxs-message-alt-add'></i>
-			  </button>
+			<!--form Add-->
+			<button id="addBtn" class="addBtn">
+				<i class='bx bxs-message-alt-add'></i>
+			</button> 
+    
+			<div id="addModal" class="modal">
+				<div class="modal-content">
+					<span class="close">&times;</span>
+					<h2>Thêm mới</h2>
+					<form id="addForm">
+						<label for="Name">Tên:</label>
+						<input type="text" id="Name" name="Name" required>
+						<br>
+						<label for="Info">Thông tin:</label>
+						<textarea id="Info" name="Info" rows="4" required></textarea>
+						<br>
+						<button type="submit">Lưu</button>
+					</form>
+				</div>
+			</div>
+			<!--form Edit-->
+			<div id="suaBtnForm">
+				<span class="close">&times;</span>
+				<form id="EditAll">
+					<button id="edit1">
+						<i class='bx bxs-edit-alt'>Edit info</i>
+					</button>
+					<button id="edit2">
+						<i class='bx bx-list-ul' >Members</i>
+					</button>
+				</form>
+			</div>
 
-			  <div id="addModal" class="modal">
-				  <div class="modal-content">
-					  <span class="close">&times;</span>
-					  <h2>Thêm mới</h2>
-					  <form id="addForm">
-						  <label for="Name">Tên:</label>
-						  <input type="text" id="Name" name="Name" required>
-						  <br>
-						  <label for="Info">Thông tin:</label>
-						  <textarea id="Info" name="Info" rows="4" required></textarea>
-						  <br>
-						  <button type="submit">Lưu</button>
-					  </form>
-				  </div>
-			  </div>
+	
 
-			  <ul class="box-info" id="boxInfoList">
-				  <li>
-					  <span class="text">
-						  <h3>House 1</h3>
-						  <p>Thông tin chung</p>
-						  <button>Sửa</button>
-						  <button>Xóa</button>
-					  </span>
-				  </li>
-				  <li>
-					  <span class="text">
-						  <h3>House 2</h3>
-						  <p>Thông tin chung</p>
-						  <button>Sửa</button>
-						  <button>Xóa</button>
-					  </span>
-				  </li>
-				  <li>
-					  <span class="text">
-						  <h3>House 3</h3>
-						  <p>Thông tin chung</p>
-						  <button>Sửa</button>
-						  <button>Xóa</button>
-					  </span>
-				  </li>
-				  <li>
-					  <span class="text">
-						  <h3>House 4</h3>
-						  <p>Thông tin chung</p>
-						  <button>Sửa</button>
-						  <button>Xóa</button>
-					  </span>
-				  </li>
-				  <li>
-					  <span class="text">
-						  <h3>House 5</h3>
-						  <p>Thông tin chung</p>
-						  <button>Sửa</button>
-						  <button>Xóa</button>
-					  </span>
-				  </li>
-			  </ul>
-		  </main>
+
+    		<ul class="box-info" id="boxInfoList">
+				<li class="active">
+					<span class="text" >
+						<a href="house/House1.html">
+							<h3>House 1</h3>
+							<p>Thông tin chung</p>
+							
+						</a>
+							<button id ="edit">Sửa</button>
+							<button>Xóa</button>
+					</span>
+				</li>s
+				<li class="active">
+					<span class="text" >
+						<a href="house/House2.html">
+							<h3>House 2</h3>
+							<p>Thông tin chung</p>
+							
+						</a>
+							<button>Sửa</button>
+							<button>Xóa</button>
+					</span>
+				</li>
+				<li class="active">
+					<span class="text" >
+						<a href="house/House3.html">
+							<h3>House 3</h3>
+							<p>Thông tin chung</p>
+							
+						</a>
+							<button>Sửa</button>
+							<button>Xóa</button>
+					</span>
+				</li>
+				<li class="active">
+					<span class="text" >
+						<a href="house/House4.html">
+							<h3>House 4</h3>
+							<p>Thông tin chung</p>
+							
+						</a>
+							<button>Sửa</button>
+							<button>Xóa</button>
+					</span>
+				</li>
+				<li class="active">
+					<span class="text" >
+						<a href="house/House5.html">
+							<h3>House 5</h3>
+							<p>Thông tin chung</p>
+							
+						</a>
+							<button>Sửa</button>
+							<button>Xóa</button>
+					</span>
+				</li>
+			</ul>
+		</main>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
