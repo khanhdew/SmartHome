@@ -397,6 +397,7 @@ body {
 	overflow-y: auto;
 }
 #content main .addBtn {
+	
     position: fixed;
     top: 60px;
     right: 20px; 
@@ -416,6 +417,7 @@ body {
 #content main .addBtn:hover {
     background-color: var(--blue); 
 }
+
 #content main .modal {
     display: none; 
     position: fixed; 
@@ -552,11 +554,47 @@ body {
 #content main .box-info li span p {
 	padding-bottom: 30px;
 }
-#content main .box-info li button {
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-	
+
+#content main .box-info li span a {
+	color: var(--dark);
+	font-size: 18px;
+	font-weight: 500;
+	margin-right: 15px;
+	transition: color 0.3s ease, transform 0.3s ease;
+}
+
+#content main .box-info li span .text {
+	display: flex;
+	flex-direction: column;
+	gap: 10px; 
+}
+
+#content main .box-info li span .text h3 {
+	margin: 0;
+}
+
+#content main .box-info li span .button-group {
+	display: flex;
+	gap: 15px; 
+	margin-left: auto;
+}
+
+#content main .box-info li span .button-group a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	background-color: var(--blue); 
+	color: #fff;
+	border-radius: 8px;
+	transition: background-color 0.3s ease;
+	font-size: 18px;
+	text-decoration: none;
+}
+
+#content main .box-info li span .button-group a:hover {
+	background-color: var(--red); 
 }
 
 #content main .box-info li button:first-of-type {
@@ -567,10 +605,7 @@ body {
 	background-color: var(--red);
     color: var(--light);
 }
-button.edit, button.delete {
-	margin-right: 10px; 
-	margin-left: 20px;
-}
+
 /* MAIN */
 /* CONTENT */
 
@@ -741,7 +776,83 @@ button.edit, button.delete {
 .edit-house-page .btn-primary:hover {
 	background-color: var(--dark);
 }
+/*RenderHouse member*/
+.table {
+	width: 100%;
+	max-width: 800px; 
+	margin: 20px auto; 
+	border-collapse: collapse; 
+	font-family: var(--poppins);
+	background: var(--light); 
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); 
+	border-radius: 12px; 
+}
 
+.table thead {
+	background-color: var(--blue); 
+	color: var(--light); 
+}
+
+.table th, .table td {
+	padding: 12px; 
+	text-align: left; 
+	border-bottom: 1px solid var(--grey); 
+}
+.table td{
+	color:var(--dark);
+}
+.table tbody tr:hover {
+	background-color: var(--light-blue); 
+}
+
+.table a {
+	color: var(--red); 
+	text-decoration: none; 
+	transition: color 0.3s ease; 
+}
+
+.table .text-danger {
+	color: var(--red);
+	font-size: 14px;
+	margin-top: 4px;
+}
+
+/*//*/
+.edit-page-container {
+	display: flex; /* Sử dụng Flexbox để bố trí */
+	justify-content: space-between; /* Đặt khoảng cách giữa hai phần */
+	align-items: flex-start; /* Căn chỉnh phần tử ở đầu */
+	padding: 20px; /* Thêm khoảng cách bên ngoài */
+}
+
+.edit-house-page {
+	flex: 1; /* Chiếm một nửa chiều rộng */
+	margin-right: 20px; /* Khoảng cách bên phải giữa hai phần */
+}
+
+.house-members {
+	flex: 1; /* Chiếm một nửa chiều rộng */
+}
+
+/* Định dạng cho các phần */
+.edit-house-page, .house-members {
+	background: var(--light); /* Nền cho các phần */
+	border-radius: 12px; /* Bo góc cho các phần */
+	padding: 20px; /* Khoảng cách bên trong */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+}
+
+/* Tùy chỉnh cho bảng trong house-members nếu cần */
+.house-members table {
+	width: 100%; /* Đảm bảo bảng chiếm toàn bộ chiều rộng */
+	border-collapse: collapse; /* Xóa khoảng cách giữa các ô */
+}
+
+.house-members th, .house-members td {
+	padding: 12px; /* Khoảng cách bên trong ô */
+	text-align: left; /* Căn trái cho văn bản */
+	border-bottom: 1px solid var(--grey); /* Đường viền dưới */
+}
 
 
 /* DEVICES */
@@ -920,7 +1031,6 @@ body[data-light="10"] .lamp-blub,
 body[data-light="10"] .lamp-lamp-shadow {
 	opacity: 1;
 }
-
 /* quạt */
 .on, .off {
 	position: absolute;
