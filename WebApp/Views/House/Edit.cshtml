@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/MyLayout.cshtml";
 }
 @model DAO.BaseModels.House
-<div class="ms-2 mx-2">
+<div class="edit-house-page ms-2 mx-2">
     <h1>Edit House</h1>
     <div asp-validation-summary="All" class="text-danger"></div>
     <form asp-controller="House" asp-action="Edit" asp-route-id="@Model.ID" method="post" class="mt-3">

@@ -152,35 +152,129 @@ document.addEventListener('click', function (event) {
 // });
 document.addEventListener('DOMContentLoaded', function () {
     const editButtons = document.querySelectorAll('.editBtn');
+// lưu thông tin
+addForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const Name = document.getElementById('Name').value;
+    const Info = document.getElementById('Info').value;
+
+    const newItem = document.createElement('li');
+    newItem.innerHTML = `
+        <span class="text">
+            <h3>${Name}</h3>
+            <p>${Info}</p>
+            <button>Sửa</button>
+            <button>Xóa</button>
+        </span>
+    `;
+    boxInfoList.appendChild(newItem);
+
+    addModal.style.display = 'none';
+
+    addForm.reset();
+});
+
+
+
+
+//nút xóa
+document.addEventListener('click', function (event) {
+    if (event.target.textContent === 'Xóa') {
+        const itemToDelete = event.target.closest('li');
+        itemToDelete.remove();
+    }
+});
+
+//nút sửa
+
+document.addEventListener('DOMContentLoaded', () => {
+    const editButtons = document.querySelectorAll('#edit');
+    const choiceModal = document.getElementById('choiceModal');
     const editModal = document.getElementById('editModal');
-    const editForm = document.getElementById('editForm');
-    const editId = document.getElementById('editId');
-    const editName = document.getElementById('editName');
-    const editLocation = document.getElementById('editLocation');
+    const membersModal = document.getElementById('membersModal');
+    const editMemberModal = document.getElementById('editMemberModal');
+    const closeButtons = document.querySelectorAll('.close');
+    const editInfoForm = document.getElementById('editInfoForm');
+    const editMemberForm = document.getElementById('editMemberForm');
+    const membersList = document.getElementById('membersList');
 
+    let currentEditing;
+    let currentMember;
     editButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const houseId = this.getAttribute('data-id');
-            fetch(`/House/GetHouse/${houseId}`)
-                .then(response => response.json())
-                .then(data => {
-                    editId.value = data.id;
-                    editName.value = data.name;
-                    editLocation.value = data.location;
-                    editModal.style.display = 'block';
-                });
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentEditing = e.target.closest('li');
+            choiceModal.style.display = 'block';
         });
     });
 
-    document.querySelectorAll('.close').forEach(span => {
-        span.addEventListener('click', function () {
+    document.getElementById('editChoice').addEventListener('click', () => {
+        choiceModal.style.display = 'none';
+
+        const name = currentEditing.querySelector('h3').innerText;
+        const info = currentEditing.querySelector('p').innerText;
+
+        document.getElementById('EditName').value = name;
+        document.getElementById('EditInfo').value = info;
+
+        editModal.style.display = 'block';
+    });
+
+    document.getElementById('membersChoice').addEventListener('click', () => {
+        choiceModal.style.display = 'none';
+        membersModal.style.display = 'block';
+    });
+
+    editInfoForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('EditName').value;
+        const info = document.getElementById('EditInfo').value;
+
+        currentEditing.querySelector('h3').innerText = name;
+        currentEditing.querySelector('p').innerText = info;
+
+        editModal.style.display = 'none';
+    });
+
+    membersList.addEventListener('click', (e) => {
+        if (e.target.classList.contains('editMember')) {
+            currentMember = e.target.closest('li');
+            const memberName = currentMember.querySelector('span').innerText;
+
+            document.getElementById('memberName').value = memberName;
+            editMemberModal.style.display = 'block';
+        }
+    });
+
+    editMemberForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('memberName').value;
+        const info = document.getElementById('memberInfo').value;
+        currentMember.querySelector('span').innerText = name;
+        editMemberModal.style.display = 'none';
+    });
+
+    membersList.addEventListener('click', (e) => {
+        if (e.target.classList.contains('deleteMember')) {
+            e.target.closest('li').remove();
+        }
+    });
+
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
             editModal.style.display = 'none';
+            membersModal.style.display = 'none';
+            choiceModal.style.display = 'none';
+            editMemberModal.style.display = 'none';
         });
     });
 
-    window.addEventListener('click', function (event) {
-        if (event.target == editModal) {
+    window.addEventListener('click', (event) => {
+        if (event.target === editModal || event.target === membersModal || event.target === choiceModal || event.target === editMemberModal) {
             editModal.style.display = 'none';
+            membersModal.style.display = 'none';
+            choiceModal.style.display = 'none';
+            editMemberModal.style.display = 'none';
         }
     });
 });
@@ -210,7 +304,7 @@ $(document).ready(function() {
     $(".off").click(function() {
         // Dừng quay quạt
         $(".box img").css({
-            "animation": "none" // Dừng hiệu ứng quay
+            "animation": "none"
         });
 
         // Hiển thị nút ON và ẩn nút OFF
@@ -235,4 +329,72 @@ $(document).ready(function() {
             });
         }
     });
+
+
 });
+
+
+
+//RGB
+
+$(document).ready(function() {
+    let isOn = false;
+
+    $('#color-picker').on('input', function() {
+        const color = $(this).val();
+        if (isOn) {
+            $('.rgb-color').css('background-color', color);
+        }
+    });
+
+    $('#toggle-button').on('click', function() {
+        isOn = !isOn;
+        if (isOn) {
+            $('.rgb-color').css('background-color', $('#color-picker').val());
+            $(this).text('Tắt');
+        } else {
+            $('.rgb-color').css('background-color', 'transparent');
+            $(this).text('Bật');
+        }
+    });
+});
+
+
+// History
+function addHistory(action) {
+    const historyList = document.getElementById('historyList');
+    const listItem = document.createElement('li');
+    const timestamp = new Date().toLocaleString();
+    listItem.textContent = `${timestamp}: ${action}`;
+    historyList.appendChild(listItem);
+}
+
+document.getElementById('slider').addEventListener('input', function () {
+    const brightness = this.value;
+    addHistory(`Độ sáng đèn: ${brightness}`);
+});
+
+
+document.querySelector('.on').addEventListener('click', () => {
+    addHistory("Bật quạt");
+});
+document.querySelector('.off').addEventListener('click', () => {
+    addHistory("Tắt quạt");
+});
+document.querySelectorAll('.speed-button').forEach(button => {
+    button.addEventListener('click', function () {
+        const speed = this.getAttribute('data-speed');
+        addHistory(`Tốc độ quạt: ${speed}`);
+    });
+});
+
+
+document.getElementById('toggle-button').addEventListener('click', function () {
+    const isOn = this.textContent === "Tắt";
+    addHistory(isOn ? "Bật LED RGB" : "Tắt LED RGB");
+});
+document.getElementById('color-picker').addEventListener('input', function () {
+    const color = this.value;
+    addHistory(`Màu đèn LED RGB: ${color}`);
+});
+
