@@ -7,32 +7,34 @@ Layout = "MyLayout";
 <partial name="Create"/>
 @foreach (var houseWithRooms in Model)
 {
-if (houseWithRooms.Value.Any())
-{
-<h2>@houseWithRooms.Key.Name</h2>
-<ul class="box-info" id="boxInfoList">
-    @foreach (var room in houseWithRooms.Value)
+    if (houseWithRooms.Value.Any())
     {
-    <li>
-        <span class="text">
-            <h3>
-                <a href='@Url.Action("Index", "Device", new { roomId = room.ID })'>
-                    @room.Name
-                </a>
-            </h3>
-            <p>@room.Detail</p>
-            <!-- Edit Button -->
-            <a class="edit" asp-action="Create" asp-route-roomId="@room.ID">
-                <i class="bx bxs-edit"></i>
-            </a>
-            <a class= "delete" asp-action="Delete" asp-route-roomId="@room.ID">
-                <i class="bx bxs-trash"></i>
-            </a>
-        </span>
-    </li>
+        <h2>@houseWithRooms.Key.Name</h2>
+        <ul class="box-info" id="boxInfoList">
+            @foreach (var room in houseWithRooms.Value)
+            {
+                <li>
+                    <span class="text">
+                        <h3>
+                            <a href='@Url.Action("Index", "Device", new { roomId = room.ID })'>
+                                @room.Name
+                            </a>
+                        </h3>
+                        <p>@room.Detail</p>
+                        <!-- Edit Button -->
+                        <a class="edit" asp-action="Create" asp-route-roomId="@room.ID">
+                            <i class="bx bxs-edit"></i>
+                        </a>
+                        <a class="delete" asp-action="Delete" asp-route-roomId="@room.ID">
+                            <i class="bx bxs-trash"></i>
+                        </a>
+                    </span>
+                </li>
+            }
+        </ul>
     }
-</ul>
 }
+
 @section Scripts {
     <script>
         $(document).ready(function() {
@@ -76,4 +78,4 @@ if (houseWithRooms.Value.Any())
             }
         });
     </script>
-}}
+}

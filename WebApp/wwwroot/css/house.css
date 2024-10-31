@@ -921,6 +921,140 @@ body[data-light="10"] .lamp-lamp-shadow {
 	opacity: 1;
 }
 
+/* quạt */
+.on, .off {
+	position: absolute;
+	border-radius: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	top: 70%;
+	width: 40px;
+	height: 40px;
+}
+
+.textfan .on img:hover, .textfan .off img:hover {
+	transform: scale(1.1);
+}
+
+.textfan .part {
+	margin-top: 90px;
+	position: relative;
+	border: 25px solid var(--grey);
+	box-shadow: 0px 0px 20px 2px var(--light);
+	border-radius: 50%;
+	width: 150px;
+	height: 150px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.textfan .part .box {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+
+.textfan .part .box img {
+	animation: rotateon 1s linear infinite;
+	animation-play-state: paused;
+}
+
+@keyframes rotateon {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.textfan .part .box1 {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	background-color: black;
+	top: 50%;
+	border-radius: 50%;
+	box-shadow: 0px 0px 20px 10px gray;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.speed-button {
+	width: 40px;
+	height: 40px;
+	margin-right: 500px;
+	color: var(--light);
+	border: none;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: 500;
+	transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.toggle-btn {
+	margin-right: 50px;
+	background-color: #4CAF50;
+	color: white;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.toggle-btn:hover {
+	background-color: #45a049;
+}
+
+.textrgb {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 20px;
+}
+
+.rgb-light {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	border: 5px solid #ccc;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+	margin: 10px 0;
+}
+
+.rgb-color {
+	width: 90%;
+	height: 90%;
+	border-radius: 50%;
+	transition: background-color 0.3s ease;
+}
+
+.rgb-input {
+	display: flex;
+	flex-direction: column;
+
+}
+
+.color-label {
+	margin-bottom: 5px;
+	color: var(--dark);
+}
+
+
+
+.history-section {
+	margin-top: 20px;
+	color:var(--dark);
+}
+
+#historyList {
+	list-style: none;
+	padding: 0;
+}
+#historyList li {
+	padding: 10px;
+	border-bottom: 1px solid var(--dark);
+}
 
 
 
