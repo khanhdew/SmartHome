@@ -86,10 +86,21 @@ namespace WebApp.Controllers
             return View("Edit", house);
         }
 
-        [HttpPost]
+        public IActionResult Delete(int houseId)
+        {
+            if (!_houseService.IsHouseOwner(_userService.GetCurrentUserId(), houseId))
+                return RedirectToAction("AccessDenied", "Account");
+            
+            return View( _houseService.GetHouseById(houseId));
+        }
+        
+        
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public IActionResult DeleteHouse(int houseId)
         {
             var houseMembers = _houseService.GetHouseMembers(houseId);
+            Console.WriteLine("House ID: " + houseId + " User ID: " + _userService.GetCurrentUserId());
             // get the current user role in the house
             var userRole = houseMembers.FirstOrDefault(hm => hm.UserID == _userService.GetCurrentUserId())?.Role;
             if (userRole == "Owner")

@@ -12,12 +12,14 @@ public class DeviceController : Controller
     private readonly IDeviceService _deviceService;
     private readonly IRoomService _roomService;
     private readonly IUserService _userService;
+    private readonly IHouseService _houseService;
 
-    public DeviceController(IDeviceService deviceService, IRoomService roomService, IUserService userService)
+    public DeviceController(IDeviceService deviceService, IRoomService roomService, IUserService userService, IHouseService houseService)
     {
         _deviceService = deviceService;
         _roomService = roomService;
         _userService = userService;
+        _houseService = houseService;
     }
 
     [Authorize]
@@ -34,6 +36,15 @@ public class DeviceController : Controller
         else
         {
             devices = _deviceService.GetDevicesByUserId(_userService.GetCurrentUserId());
+            // get devices from joined house's rooms
+            var house = _houseService.GetHousesByUserId(_userService.GetCurrentUserId());
+            var houseRooms = house.SelectMany(h => h.Rooms);
+            var houseDevices = houseRooms.SelectMany(r => r.Devices);
+            
+            // add to devices
+            
+            
+            devices = devices.Concat(houseDevices);
         }
         
         return View(devices);

@@ -99,4 +99,18 @@ public class RoomController : Controller
         return View("Edit", room);
     }
     
+    public IActionResult Delete(int roomId)
+    {
+        return View("Delete", _roomService.GetRoomById(roomId));
+    }
+    
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public IActionResult DeleteRoom(int roomId)
+    {
+        
+        _roomService.DeleteRoom(roomId);
+        return RedirectToAction("Index");
+    }
+    
 }
