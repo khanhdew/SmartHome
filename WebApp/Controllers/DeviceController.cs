@@ -1,6 +1,7 @@
 ﻿using DAO.BaseModels;
 using DAO.Models;
 using DAO.Models.Devices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Services;
 
@@ -19,7 +20,7 @@ public class DeviceController : Controller
         _userService = userService;
     }
 
-    // GET
+    [Authorize]
     public IActionResult Index(int? roomId)
     {
         var roomsWithDevices = new Dictionary<Room, IEnumerable<Device>>();

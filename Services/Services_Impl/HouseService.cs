@@ -40,6 +40,11 @@ public class HouseService: IHouseService
         return _houseRepository.GetHouseById(houseId);
     }
 
+    public void DeleteHouse(int houseId)
+    {
+        _houseRepository.DeleteHouse(houseId);
+    }
+
     public IEnumerable<House> GetHousesByUserId(string userId)
     {
         return _houseRepository.GetHouseByUserID(userId);
@@ -75,8 +80,13 @@ public class HouseService: IHouseService
         _houseRepository.RemoveHouseMember(userId, houseId);
     }
 
-    public IEnumerable<User?> GetHouseMembers(int houseId)
+    public IEnumerable<HouseMember?> GetHouseMembers(int houseId)
     {
         return _houseRepository.GetHouseMembers(houseId);
+    }
+    
+    public bool IsHouseOwner(string userId, int houseId)
+    {
+        return _houseRepository.IsHouseOwner(userId, houseId);
     }
 }

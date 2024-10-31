@@ -15,4 +15,5 @@ public interface IDeviceService
     public DeviceConfig AddDeviceConfig(DeviceConfig deviceConfig);
     public DeviceConfig GetDeviceConfigByDeviceId(int deviceId);
     public DeviceConfig UpdateDeviceConfig(DeviceConfig deviceConfig);
+    public bool IsDeviceOwner(string userId, int deviceId);
 }

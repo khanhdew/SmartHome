@@ -1,4 +1,7 @@
+using System.Security.Claims;
 using DAO.BaseModels;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -34,10 +37,6 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(AccountViewModel model)
         {
-            Console.WriteLine("Login");
-            Console.WriteLine("LoginModel.Email: " + model.LoginModel.Email +
-                              "\n LoginModel.Password: " + model.LoginModel.Password +
-                              "\n LoginModel.RememberMe: " + model.LoginModel.RememberMe);
             if (!ModelState.IsValid)
             {
                 foreach (var state in ModelState)
@@ -52,10 +51,27 @@ namespace WebApp.Controllers
             {
                 var result = await _signInManager.PasswordSignInAsync(model.LoginModel.Email, model.LoginModel.Password, 
                     model.LoginModel.RememberMe, lockoutOnFailure: false);
-                Console.WriteLine("Result: " + result);
                 if (result.Succeeded)
-                {
-                    return RedirectToAction("Index", "Home");
+                { 
+                    // add claims
+                    var user = await _userManager.FindByEmailAsync(model.LoginModel.Email);
+                    var roles = await _userManager.GetRolesAsync(user);
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.NameIdentifier, user.Id),
+                        new Claim(ClaimTypes.Name, user.UserName),
+                        new Claim(ClaimTypes.Email, user.Email)
+                    };
+                    // Add role claims
+                    claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
+
+                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var authProperties = new AuthenticationProperties
+                    {
+                        IsPersistent = model.LoginModel.RememberMe
+                    };
+                    await HttpContext.SignInAsync(new ClaimsPrincipal(claimsIdentity), authProperties);
+                    return RedirectToAction("Index", "House");
                 }
                 ModelState.AddModelError("", "Invalid login attempt.");
             }
@@ -75,10 +91,6 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(AccountViewModel model)
         {
-            Console.WriteLine("Register");
-            Console.WriteLine("RegisterModel.Email: " + model.RegisterModel.Email +
-                              "\n RegisterModel.Password: " + model.RegisterModel.Password +
-                              "\n RegisterModel.ConfirmPassword: " + model.RegisterModel.ConfirmPassword);
             if (!ModelState.IsValid)
             {
                 foreach (var state in ModelState)
@@ -95,6 +107,7 @@ namespace WebApp.Controllers
                 var result = await _userManager.CreateAsync(user, model.RegisterModel.Password);
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, "Member");
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
@@ -112,6 +125,12 @@ namespace WebApp.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+        
+        [HttpGet("accessdenied")]
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }

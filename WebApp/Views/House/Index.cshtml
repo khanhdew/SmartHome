@@ -5,8 +5,9 @@
     Layout = "~/Views/Shared/MyLayout.cshtml";
 }
 <div class="ms-2 mx-2">
-    <partial name="Create"/>
+    @* <partial name="Create"/> *@
 
+    @await Component.InvokeAsync("HouseCreate")
     <ul class="box-info" id="boxInfoList">
         @foreach (var item in Model)
         {
@@ -18,15 +19,61 @@
                         </a>
                     </h3>
                     <p>@item.Location</p>
-                    <!-- Edit Button -->
-                    <button onclick="location.href='@Url.Action("Edit", "House", new { id = @item.ID })'">
+                    <a asp-action="Edit" asp-route-houseId="@item.ID">
                         <i class="bx bxs-edit"></i>
-                    </button>
-                    <button onclick="location.href='@Url.Action("Delete", "House", new { id = @item.ID })'">
+                    </a>
+                    <a asp-action="Delete" asp-route-houseId="@item.ID">
                         <i class="bx bxs-trash"></i>
-                    </button>
+                    </a>
                 </span>
             </li>
         }
     </ul>
+
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            var skip = @Model.Count();
+            var take = 3; // Number of items to load each time
+            var isLoading = false; // Prevent multiple requests
+            var allItemsLoaded = false; // Flag to indicate all items are loaded
+
+            $('main').on('scroll', function() {
+                if ($(window).scrollTop() + $(window).height() >= $(document).height()  && !isLoading) {
+                    if (!allItemsLoaded) {
+                        loadMoreHouses();
+                    }
+                }
+            });
+
+            function loadMoreHouses() {
+                isLoading = true;
+                $("#loading").show();
+                setTimeout(function() { // Add delay
+                    $.ajax({
+                        url: '@Url.Action("LoadMoreHouses", "House")',
+                        type: 'GET',
+                        data: { skip: skip, take: take },
+                        success: function (result) {
+                            if (result.trim() === "") {
+                                // No more items to load
+                                allItemsLoaded = true;
+                            } else {
+                                $("#boxInfoList").append(result);
+                                skip += take;
+                            }
+                            isLoading = false;
+                            $("#loading").hide();
+                        },
+                        error: function () {
+                            isLoading = false;
+                            $("#loading").hide();
+                        }
+                    });
+                }, 500); // Delay of 500ms
+            }
+        });
+    </script>
+}

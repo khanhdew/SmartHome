@@ -648,7 +648,9 @@ body {
 	}
 
 }
-
+.no-transition {
+	transition: none !important;
+}
 #content main .box-info {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 

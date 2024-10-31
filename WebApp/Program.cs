@@ -2,6 +2,7 @@ using DAO.BaseModels;
 using DAO.Reposistories_Impl;
 using DAO.Repositories;
 using DAO.Context;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Services.Services_Impl;
 using Services.Services;
@@ -14,16 +15,48 @@ var connectionString = builder.Configuration.GetConnectionString("SmartHomeConte
 builder.Services.AddDbContext<SmartHomeContext>(options =>
     options.UseSqlServer(connectionString));
 
+// Register Identity services
+builder.Services.AddIdentity<User, IdentityRole>()
+    .AddEntityFrameworkStores<SmartHomeContext>()
+    .AddDefaultTokenProviders();
 
-builder.Services.AddRazorPages();
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    // Password settings
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 3;
+    options.Password.RequiredUniqueChars = 1;
+
+    // Lockout settings
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+    options.Lockout.MaxFailedAccessAttempts = 5;
+    options.Lockout.AllowedForNewUsers = true;
+
+    // User settings
+    options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.@+";
+    options.User.RequireUniqueEmail = true;
+
+    // Sign-in settings
+    options.SignIn.RequireConfirmedEmail = false;
+    options.SignIn.RequireConfirmedPhoneNumber = false;
+});
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Login";
+    options.LogoutPath = "/Logout";
+    options.AccessDeniedPath = "/AccessDenied";
+});
+
+// Add other services
 builder.Services.AddScoped<SmartHomeContext>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<SignInManager<User>>(); // Đăng ký SignInManager
-builder.Services.AddScoped<UserManager<User>>(); // Đăng ký UserManager
-
+builder.Services.AddScoped<SignInManager<User>>();
+builder.Services.AddScoped<UserManager<User>>();
 builder.Services.AddScoped<IHouseRepository, HouseRepository>();
 builder.Services.AddScoped<IHouseService, HouseService>();
 builder.Services.AddScoped<IRoomRepository, RoomRepository>();
@@ -32,66 +65,25 @@ builder.Services.AddScoped<IDeviceRepository, DeviceRepository>();
 builder.Services.AddScoped<IDeviceService, DeviceService>();
 builder.Services.AddScoped<IThingsboardService, ThingsboardService>();
 
-builder.Services.AddIdentity<User, IdentityRole>()
-    .AddEntityFrameworkStores<SmartHomeContext>()
-    .AddDefaultTokenProviders();
-
-builder.Services.ConfigureApplicationCookie(options =>
-{
-    options.LoginPath = "/Login";
-    options.LogoutPath = "/Logout";
-
-});
-
-builder.Services.Configure<IdentityOptions>(options =>
-{
-    // Thiết lập về Password
-    options.Password.RequireDigit = false; // Không bắt phải có số
-    options.Password.RequireLowercase = false; // Không bắt phải có chữ thường
-    options.Password.RequireNonAlphanumeric = false; // Không bắt ký tự đặc biệt
-    options.Password.RequireUppercase = false; // Không bắt buộc chữ in
-    options.Password.RequiredLength = 3; // Số ký tự tối thiểu của password
-    options.Password.RequiredUniqueChars = 1; // Số ký tự riêng biệt
-
-    // Cấu hình Lockout - khóa user
-    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // Khóa 5 phút
-    options.Lockout.MaxFailedAccessAttempts = 5; // Thất bại 5 lầ thì khóa
-    options.Lockout.AllowedForNewUsers = true;
-
-    // Cấu hình về User.
-    options.User.AllowedUserNameCharacters = // các ký tự đặt tên user
-        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.@+";
-    options.User.RequireUniqueEmail = true;  // Email là duy nhất
-
-    // Cấu hình đăng nhập.
-    options.SignIn.RequireConfirmedEmail = false;            // Cấu hình xác thực địa chỉ email (email phải tồn tại)
-    options.SignIn.RequireConfirmedPhoneNumber = false;     // Xác thực số điện thoại
-});
-
-
-
-// Add services to the container.
+// Add MVC services
 builder.Services.AddControllersWithViews();
-
-// Add session services
+builder.Services.AddRazorPages();
 builder.Services.AddDistributedMemoryCache();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=House}/{action=Index}");
 
 app.Run();

@@ -13,10 +13,12 @@ namespace DAO.Reposistories_Impl
     public class HouseRepository : IHouseRepository
     {
         private readonly SmartHomeContext _context;
+        private readonly IRoomRepository _roomRepository;
 
-        public HouseRepository(SmartHomeContext context)
+        public HouseRepository(SmartHomeContext context, IRoomRepository roomRepository)
         {
             _context = context;
+            _roomRepository = roomRepository;
         }
 
         public House AddHouse(House house)
@@ -85,16 +87,11 @@ namespace DAO.Reposistories_Impl
             }
         }
 
-        public IEnumerable<User?> GetHouseMembers(int houseId)
+        public IEnumerable<HouseMember?> GetHouseMembers(int houseId)
         {
             // Get all house members
-            var houseMembers = _context.HouseMembers.Where(hm => hm.HouseID == houseId).ToList();
-            List<User?> result = new List<User?>();
-            foreach (var houseMember in houseMembers)
-            {
-                result.Add(_context.Users.FirstOrDefault(u => u.Id == houseMember.UserID));
-            }
-            return result;
+            var houseMembers = _context.HouseMembers.Include(hm => hm.User).Where(hm => hm.HouseID == houseId).ToList();
+            return houseMembers;
         }
 
         public Room AddRoomToHouse(int houseId, Room room)
@@ -124,18 +121,17 @@ namespace DAO.Reposistories_Impl
 
         public void DeleteHouse(int houseId)
         {
-            var house = _context.Houses.FirstOrDefault(h => h.ID == houseId);
+            var house = _context.Houses.Include(h => h.Rooms).FirstOrDefault(h => h.ID == houseId);
             if (house == null)
             {
                 throw new Exception("House not found");
             }
-            // change house's user to null
-            var houseMembers = _context.HouseMembers.Where(hm => hm.HouseID == houseId).ToList();
-            foreach (var houseMember in houseMembers)
+            // remove house's rooms
+            foreach (var room in house.Rooms)
             {
-                houseMember.HouseID = null;
-                _context.HouseMembers.Update(houseMember);
+                _roomRepository.DeleteRoom(room.ID);
             }
+            _context.Houses.Remove(house);
             _context.SaveChanges();
         }
 
@@ -219,7 +215,15 @@ namespace DAO.Reposistories_Impl
             _context.SaveChanges();
             return houseToUpdate;
         }
-
-       
+        
+        public bool IsHouseOwner(string userId, int houseId)
+        {
+            var houseMember = _context.HouseMembers.FirstOrDefault(hm => hm.UserID == userId && hm.HouseID == houseId);
+            if (houseMember == null)
+            {
+                throw new Exception("House member not found");
+            }
+            return houseMember.Role == "Owner";
+        }
     }
 }

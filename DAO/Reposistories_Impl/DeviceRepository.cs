@@ -231,5 +231,15 @@ namespace DAO.Reposistories_Impl
                 throw;
             }
         }
+        public bool IsDeviceOwner(string userId, int deviceId)
+        {
+            var device = _context.Devices.FirstOrDefault(d => d.ID == deviceId);
+            if (device == null)
+            {
+                throw new Exception("Device not found");
+            }
+
+            return device.UserID == userId;
+        }
     }
 }

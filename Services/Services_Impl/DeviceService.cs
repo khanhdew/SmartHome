@@ -102,4 +102,9 @@ public class DeviceService : IDeviceService
     {
         throw new NotImplementedException();
     }
+    
+    public bool IsDeviceOwner(string userId, int deviceId)
+    {
+        return _deviceRepository.IsDeviceOwner(userId, deviceId);
+    }
 }

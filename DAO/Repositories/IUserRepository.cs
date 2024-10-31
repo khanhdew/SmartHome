@@ -15,5 +15,6 @@ namespace DAO.Repositories
         User UpdateUser(User user);
         User GetUserByUsername(string username);
         User GetLoggedInUser();
+        IEnumerable<User> GetAllUsers();
     }
 }

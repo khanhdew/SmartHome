@@ -1,36 +1,81 @@
-﻿@model Dictionary<DAO.BaseModels.House, IEnumerable<DAO.BaseModels.Room>>
+﻿@using DAO.BaseModels
+@model Dictionary<DAO.BaseModels.House, IEnumerable<DAO.BaseModels.Room>>
 
 @{
-ViewBag.Title = "Rooms by House";
-Layout = "MyLayout";
+    ViewBag.Title = "Rooms by House";
+    Layout = "MyLayout";
 }
-<partial name="Create"/>
+<partial name="Create" />
 @foreach (var houseWithRooms in Model)
 {
-if (houseWithRooms.Value.Any())
-{
-<h2>@houseWithRooms.Key.Name</h2>
-<ul class="box-info" id="boxInfoList">
-    @foreach (var room in houseWithRooms.Value)
+    if (houseWithRooms.Value.Any())
     {
-    <li>
-        <span class="text">
-            <h3>
-                <a href='@Url.Action("Index", "Device", new { roomId = room.ID })'>
-                    @room.Name
-                </a>
-            </h3>
-            <p>@room.Detail</p>
-            <!-- Edit Button -->
-            <button onclick="location.href='@Url.Action("Edit", "Room", new { id = room.ID })'">
-                <i class="bx bxs-edit"></i>
-            </button>
-            <button onclick="location.href='@Url.Action("Delete", "Room", new { id = room.ID })'">
-                <i class="bx bxs-trash"></i>
-            </button>
-        </span>
-    </li>
+        <h2>@houseWithRooms.Key.Name</h2>
+        <ul class="box-info" id="boxInfoList">
+            @foreach (var room in houseWithRooms.Value)
+            {
+                <li>
+                    <span class="text">
+                        <h3>
+                            <a href='@Url.Action("Index", "Device", new { roomId = room.ID })'>
+                                @room.Name
+                            </a>
+                        </h3>
+                        <p>@room.Detail</p>
+                        <!-- Edit Button -->
+                        <button onclick="location.href='@Url.Action("Edit", "Room", new { id = room.ID })'">
+                            <i class="bx bxs-edit"></i>
+                        </button>
+                        <button onclick="location.href='@Url.Action("Delete", "Room", new { id = room.ID })'">
+                            <i class="bx bxs-trash"></i>
+                        </button>
+                    </span>
+                </li>
+            }
+        </ul>
     }
-</ul>
 }
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            var skip = @Model.Count();
+            var take = 3; // Number of items to load each time
+            var isLoading = false; // Prevent multiple requests
+            var allItemsLoaded = false; // Flag to indicate all items are loaded
+            $('main').on('scroll', function() {
+                if ($(window).scrollTop() + $(window).height() >= $(document).height()  && !isLoading) {
+                    if (!allItemsLoaded) {
+                        loadMoreHouses();
+                    }
+                }
+            });
+
+            function loadMoreHouses() {
+                isLoading = true;
+                $("#loading").show();
+                setTimeout(function() { // Add delay
+                    $.ajax({
+                        url: '@Url.Action("LoadMoreRoom", "Room")',
+                        type: 'GET',
+                        data: { skip: skip, take: take },
+                        success: function (result) {
+                            if (result.trim() === "") {
+                                // No more items to load
+                                allItemsLoaded = true;
+                            } else {
+                                $("#boxInfoList").append(result);
+                                skip += take;
+                            }
+                            isLoading = false;
+                            $("#loading").hide();
+                        },
+                        error: function () {
+                            isLoading = false;
+                            $("#loading").hide();
+                        }
+                    });
+                }, 500); // Delay of 500ms
+            }
+        });
+    </script>
 }

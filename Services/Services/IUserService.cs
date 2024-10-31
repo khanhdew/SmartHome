@@ -11,4 +11,5 @@ public interface IUserService
 
     string GetCurrentUserId();
     void SetHttpContext(ClaimsPrincipal user);
+    
 }

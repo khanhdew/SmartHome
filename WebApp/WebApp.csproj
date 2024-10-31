@@ -72,10 +72,25 @@
     <_ContentIncludedByDefault Remove="Areas\Identity\Pages\_ValidationScriptsPartial.cshtml" />
     <_ContentIncludedByDefault Remove="Areas\Identity\Pages\_ViewImports.cshtml" />
     <_ContentIncludedByDefault Remove="Areas\Identity\Pages\_ViewStart.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Role\AddRoleClaim.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Role\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Role\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Role\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Role\EditRoleClaim.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Role\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Role\_StatusMessage.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Role\_ViewImports.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Role\_ViewStart.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Users\AddRole.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Users\EditUserRoleClaim.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Users\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Users\SetPassword.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Users\_StatusMessage.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Users\_ViewImports.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Users\_ViewStart.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewComponents\" />
     <Folder Include="wwwroot\Template\" />
   </ItemGroup>
 

@@ -18,18 +18,41 @@ allSideMenu.forEach(item => {
 // Ẩn/hiện sidebar khi nhấn vào biểu tượng menu
 menuBar.addEventListener('click', function () {
     sidebar.classList.toggle('hide');
+    localStorage.setItem('sidebarState', sidebar.classList.contains('hide') ? 'hide' : 'show');
 });
 
 // Kiểm tra kích thước màn hình để ẩn sidebar nếu cần
 if (window.innerWidth < 768) {
     sidebar.classList.add('hide');
+    localStorage.setItem('sidebarState', 'hide');
 }
 
 // Điều chỉnh hiển thị sidebar khi thay đổi kích thước cửa sổ
 window.addEventListener('resize', function () {
     if (this.innerWidth > 576) {
         sidebar.classList.remove('hide');
+        localStorage.setItem('sidebarState', 'show');
     }
+});
+
+// Kiểm tra trạng thái sidebar từ localStorage khi tải trang
+document.addEventListener('DOMContentLoaded', function () {
+    const sidebar = document.getElementById('sidebar');
+    const sidebarState = localStorage.getItem('sidebarState');
+
+    // Add a class to disable the animation
+    sidebar.classList.add('no-transition');
+
+    if (sidebarState === 'hide') {
+        sidebar.classList.add('hide');
+    } else {
+        sidebar.classList.remove('hide');
+    }
+
+    // Remove the class after the initial state is set
+    setTimeout(() => {
+        sidebar.classList.remove('no-transition');
+    }, 0);
 });
 
 // Chức năng chuyển đổi chế độ tối (switch mode)
@@ -73,11 +96,11 @@ const addForm = document.getElementById('addForm');
 const boxInfoList = document.getElementById('boxInfoList');
 
 addBtn.addEventListener('click', () => {
-    addModal.style.display = 'block'; 
+    addModal.style.display = 'block';
 });
 
 closeModal.addEventListener('click', () => {
-    addModal.style.display = 'none'; 
+    addModal.style.display = 'none';
 });
 
 window.addEventListener('click', (event) => {
@@ -85,8 +108,6 @@ window.addEventListener('click', (event) => {
         addModal.style.display = 'none';
     }
 });
-
-
 
 //nút sửa xóa
 
@@ -112,23 +133,23 @@ document.addEventListener('click', function (event) {
     }
 });
 
-// Cập nhật dữ liệu khi người dùng nhấn "Lưu"
-addForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    if (currentItemToEdit) {
-        // Cập nhật thông tin của mục đang sửa
-        currentItemToEdit.querySelector('h3').textContent = document.getElementById('Name').value;
-        currentItemToEdit.querySelector('p').textContent = document.getElementById('Info').value;
-
-        // Đặt lại biến `currentItemToEdit` về `null` sau khi cập nhật
-        currentItemToEdit = null;
-    }
-
-    // Đóng modal và đặt lại form
-    addModal.style.display = 'none';
-    addForm.reset();
-});
+// // Cập nhật dữ liệu khi người dùng nhấn "Lưu"
+// addForm.addEventListener('submit', (event) => {
+//     event.preventDefault();
+//
+//     if (currentItemToEdit) {
+//         // Cập nhật thông tin của mục đang sửa
+//         currentItemToEdit.querySelector('h3').textContent = document.getElementById('Name').value;
+//         currentItemToEdit.querySelector('p').textContent = document.getElementById('Info').value;
+//
+//         // Đặt lại biến `currentItemToEdit` về `null` sau khi cập nhật
+//         currentItemToEdit = null;
+//     }
+//
+//     // Đóng modal và đặt lại form
+//     addModal.style.display = 'none';
+//     addForm.reset();
+// });
 document.addEventListener('DOMContentLoaded', function () {
     const editButtons = document.querySelectorAll('.editBtn');
     const editModal = document.getElementById('editModal');
@@ -167,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
 //Fan
 
 $(document).ready(function() {
-    let currentSpeed = 0.8; 
+    let currentSpeed = 0.8;
 
     // Xử lý sự kiện khi nhấn nút ON
     $(".on").click(function() {

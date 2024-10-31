@@ -1,4 +1,5 @@
 ﻿using DAO.BaseModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Services;
 
@@ -17,7 +18,7 @@ public class RoomController : Controller
         _userService = userService;
     }
 
-    // GET
+    [Authorize]
     public IActionResult Index(int? houseId)
     {
         var housesWithRooms = new Dictionary<House, IEnumerable<Room>>();
@@ -42,6 +43,33 @@ public class RoomController : Controller
         return View(housesWithRooms);
     }
     
+    public IActionResult LoadMoreRoom(int? houseId, int skip, int take)
+    {
+        var housesWithRooms = new Dictionary<House, IEnumerable<Room>>();
+        if (houseId != null)
+        {
+            var house = _houseService.GetHouseById((int)houseId);
+            var rooms = _houseService.GetRooms((int)houseId)
+                .Skip(skip)
+                .Take(take)
+                .ToList();
+            housesWithRooms[house] = rooms;
+        }
+        else
+        {
+            var houses = _houseService.GetHousesByUserId(_userService.GetCurrentUserId());
+            foreach (var house in houses)
+            {
+                var rooms = _houseService.GetRooms(house.ID)
+                    .Skip(skip)
+                    .Take(take)
+                    .ToList();
+                housesWithRooms[house] = rooms;
+            }
+        }
+        return PartialView("RoomSection", housesWithRooms);
+    }
+    
     [HttpPost]
     public IActionResult Create(int houseId, string name, string detail)
     {
@@ -50,7 +78,25 @@ public class RoomController : Controller
             var newRoom = _houseService.AddRoomToHouse(houseId, new Room { Name = name, Detail = detail });
             return RedirectToAction("Index", new { houseId = houseId });
         }
-        return PartialView("Create");
+        
+        return View("Index");
+    }
+    [Authorize]
+    public IActionResult Edit(int roomId)
+    {
+        return View("Edit", _roomService.GetRoomById(roomId));
+    }
+    
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Edit(Room room)
+    {
+        if (ModelState.IsValid)
+        {
+            _roomService.EditRoom(room);
+            return RedirectToAction("Index");
+        }
+        return View("Edit", room);
     }
     
 }

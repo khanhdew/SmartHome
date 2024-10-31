@@ -1,0 +1,22 @@
+﻿@model IEnumerable<DAO.BaseModels.House>
+
+@foreach (var item in Model)
+{
+    <li>
+        <span class="text">
+            <h3>
+                <a href='@Url.Action("Index", "Room", new { houseId = @item.ID })'>
+                    @item.Name
+                </a>
+            </h3>
+            <p>@item.Location</p>
+            <!-- Edit Button -->
+            <a asp-action="Edit" asp-route-houseId="@item.ID">
+                <i class="bx bxs-edit"></i>
+            </a>
+            <a asp-action="Delete" asp-route-houseId="@item.ID">
+                <i class="bx bxs-trash"></i>
+            </a>
+        </span>
+    </li>
+}

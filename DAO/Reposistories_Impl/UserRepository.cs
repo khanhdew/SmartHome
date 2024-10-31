@@ -3,6 +3,7 @@ using DAO.Exceptions.UserExceptions;
 using DAO.Repositories;
 using Microsoft.Data.SqlClient;
 using DAO.BaseModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAO.Reposistories_Impl
 {
@@ -51,6 +52,11 @@ namespace DAO.Reposistories_Impl
         public User GetLoggedInUser()
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<User> GetAllUsers()
+        {
+            return _context.Users;
         }
 
         public User UpdateUser(User user)

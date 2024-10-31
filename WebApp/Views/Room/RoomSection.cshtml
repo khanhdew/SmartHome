@@ -1,0 +1,31 @@
+﻿@model Dictionary<DAO.BaseModels.House, IEnumerable<DAO.BaseModels.Room>>
+<partial name="Create"/>
+@foreach (var houseWithRooms in Model)
+{
+    if (houseWithRooms.Value.Any())
+    {
+        <h2>@houseWithRooms.Key.Name</h2>
+        <ul class="box-info" id="boxInfoList">
+            @foreach (var room in houseWithRooms.Value)
+            {
+                <li>
+                    <span class="text">
+                        <h3>
+                            <a href='@Url.Action("Index", "Device", new { roomId = room.ID })'>
+                                @room.Name
+                            </a>
+                        </h3>
+                        <p>@room.Detail</p>
+                        <!-- Edit Button -->
+                        <button onclick="location.href='@Url.Action("Edit", "Room", new { id = room.ID })'">
+                            <i class="bx bxs-edit"></i>
+                        </button>
+                        <button onclick="location.href='@Url.Action("Delete", "Room", new { id = room.ID })'">
+                            <i class="bx bxs-trash"></i>
+                        </button>
+                    </span>
+                </li>
+            }
+        </ul>
+    }
+}

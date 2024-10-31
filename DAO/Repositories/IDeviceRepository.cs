@@ -20,7 +20,6 @@ namespace DAO.Repositories
         DeviceConfig AddDeviceConfig(DeviceConfig deviceConfig);
         DeviceConfig GetDeviceConfigByDeviceId(int deviceId);
         DeviceConfig UpdateDeviceConfig(DeviceConfig deviceConfig);
-        
-        
+        bool IsDeviceOwner(string userId, int deviceId);
     }
 }

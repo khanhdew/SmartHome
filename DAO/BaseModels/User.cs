@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using DAO.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace DAO.BaseModels
