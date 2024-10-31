@@ -6,7 +6,7 @@ using DAO.Models.Devices;
 namespace DAO.BaseModels
 {
     [Table("Device")]
-    public partial class Device : IDevice
+    public class Device : IDevice
     {
         public Device()
         {
@@ -20,7 +20,7 @@ namespace DAO.BaseModels
         public string? Name { get; set; }
         [StringLength(50)]
         [Column(TypeName = "nvarchar(50)")]
-        public DeviceType? Type { get; set; }
+        public string? Type { get; set; }
         [StringLength(255)]
         public string? DeviceToken { get; set; }
         public string? UserID { get; set; }

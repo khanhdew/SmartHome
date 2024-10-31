@@ -23,7 +23,7 @@ namespace DAO.Reposistories_Impl
             _deviceRepository = deviceRepository;
         }
 
-        public IDevice AddDeviceToRoom(int roomId, Device device)
+        public Device AddDeviceToRoom(int roomId, Device device)
         {
             // check if device already exists
             var deviceInDb = _context.Devices.FirstOrDefault(d => d.ID == device.ID);
@@ -97,14 +97,15 @@ namespace DAO.Reposistories_Impl
             }
         }
 
-        public IEnumerable<IDevice> GetDevicesByRoomId(int roomId)
+        public IEnumerable<Device> GetDevicesByRoomId(int roomId)
         {
-            var devices = _context.Devices.Where(d => d.RoomID == roomId).ToList();
-            var specificDevices = new List<IDevice>();
+            var devices = _context.Devices.Include(d => d.User).Where(d => d.RoomID == roomId).ToList();
+            var specificDevices = new List<Device>();
 
             foreach (var device in devices)
             {
-                var specificDevice = DeviceFactory.CreateDevice((DeviceType)device.Type!, device.Name);
+                var specificDevice = DeviceFactory.CreateDevice(device.Type!, device.Name);
+                specificDevice.User = device.User;
                 specificDevices.Add(specificDevice);
             }
 

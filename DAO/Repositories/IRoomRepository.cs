@@ -14,9 +14,9 @@ namespace DAO.Repositories
         void DeleteRoom(int roomId);
         Room UpdateRoom(Room room);
         Room GetRoomById(int roomId);
-        IDevice AddDeviceToRoom(int roomId, Device device);
+        Device AddDeviceToRoom(int roomId, Device device);
         void RemoveDeviceFromRoom(int roomId, int deviceId);
-        IEnumerable<IDevice> GetDevicesByRoomId(int roomId);
+        IEnumerable<Device> GetDevicesByRoomId(int roomId);
 
     }
 }

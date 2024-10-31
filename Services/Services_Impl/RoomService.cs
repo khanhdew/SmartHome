@@ -33,12 +33,12 @@ public class RoomService : IRoomService
         _roomRepository.DeleteRoom(roomId);
     }
 
-    public IEnumerable<IDevice> GetDevicesByRoomId(int roomId)
+    public IEnumerable<Device> GetDevicesByRoomId(int roomId)
     {
         return _roomRepository.GetDevicesByRoomId(roomId);
     }
 
-    public IDevice AddDeviceToRoom(int roomId, Device device)
+    public Device AddDeviceToRoom(int roomId, Device device)
     {
         return _roomRepository.AddDeviceToRoom(roomId, device);
     }

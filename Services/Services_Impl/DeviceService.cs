@@ -1,6 +1,5 @@
 ﻿using System.Text.Json;
 using DAO.BaseModels;
-using DAO.Models.Devices;
 using DAO.Repositories;
 using Services.Services;
 using Services.Thingsboard_Services;
@@ -17,7 +16,7 @@ public class DeviceService : IDeviceService
         _deviceRepository = deviceRepository;
         _thingsboardService = thingsboardService;
     }
-    public IDevice CreateDevice(Device device)
+    public Device CreateDevice(Device device)
     {
         try
         {
@@ -36,7 +35,7 @@ public class DeviceService : IDeviceService
         }
     }
 
-    public IDevice EditDevice(Device device)
+    public Device EditDevice(Device device)
     {
         try
         {
@@ -55,12 +54,12 @@ public class DeviceService : IDeviceService
         throw new NotImplementedException();
     }
 
-    public IDevice GetDeviceById(int deviceId)
+    public Device GetDeviceById(int deviceId)
     {
         return _deviceRepository.GetDeviceById(deviceId);
     }
 
-    public IEnumerable<IDevice> GetDevicesByUserId(string userId)
+    public IEnumerable<Device> GetDevicesByUserId(string userId)
     {
         return _deviceRepository.GetDevicesByUserId(userId);
     }

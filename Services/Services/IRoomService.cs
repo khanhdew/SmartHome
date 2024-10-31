@@ -9,7 +9,7 @@ public interface IRoomService
     public IEnumerable<Room> GetRoomsByHouseId(int houseId);
     public Room GetRoomById(int roomId);
     public void DeleteRoom(int roomId);
-    public IEnumerable<IDevice> GetDevicesByRoomId(int roomId);
-    public IDevice AddDeviceToRoom(int roomId, Device device);
+    public IEnumerable<Device> GetDevicesByRoomId(int roomId);
+    public Device AddDeviceToRoom(int roomId, Device device);
     public void RemoveDeviceFromRoom(int roomId, int deviceId);
 }

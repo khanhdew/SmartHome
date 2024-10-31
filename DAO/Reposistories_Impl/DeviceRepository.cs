@@ -8,6 +8,7 @@ using DAO.Context;
 using DAO.Models;
 using DAO.Models.Devices;
 using DAO.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAO.Reposistories_Impl
 {
@@ -20,7 +21,7 @@ namespace DAO.Reposistories_Impl
             _context = context;
         }
         
-        public IDevice AddDevice(Device device)
+        public Device AddDevice(Device device)
         {
             try
             {
@@ -60,7 +61,7 @@ namespace DAO.Reposistories_Impl
             }
         }
 
-        public IDevice UpdateDevice(Device device)
+        public Device UpdateDevice(Device device)
         {
             try
             {
@@ -81,7 +82,7 @@ namespace DAO.Reposistories_Impl
             }
         }
         
-        public IDevice GetDeviceById(int deviceId)
+        public Device GetDeviceById(int deviceId)
         {
             try
             {
@@ -100,7 +101,7 @@ namespace DAO.Reposistories_Impl
             }
         }
 
-        public IEnumerable<IDevice> GetDevicesByUserId(string userId)
+        public IEnumerable<Device> GetDevicesByUserId(string userId)
         {
             
             try
@@ -111,12 +112,13 @@ namespace DAO.Reposistories_Impl
                     throw new Exception("User not found");
                 }
 
-                var devices = _context.Devices.Where(d => d.UserID == user.Id).ToList();
-                var specificDevices = new List<IDevice>();
+                var devices = _context.Devices.Include(d => d.Room).Where(d => d.UserID == user.Id).ToList();
+                var specificDevices = new List<Device>();
 
                 foreach (var device in devices)
                 {
-                    var specificDevice = DeviceFactory.CreateDevice((DeviceType)device.Type!, device.Name);
+                    var specificDevice = DeviceFactory.CreateDevice(device.Type!, device.Name);
+                    specificDevice.Room = device.Room;
                     specificDevices.Add(specificDevice);
                 }
                 return specificDevices;

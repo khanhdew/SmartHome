@@ -23,37 +23,45 @@ public class DeviceController : Controller
     [Authorize]
     public IActionResult Index(int? roomId)
     {
-        var roomsWithDevices = new Dictionary<Room, IEnumerable<Device>>();
+        IEnumerable<Device> devices;
         if (roomId != null)
         {
             var room = _roomService.GetRoomById((int)roomId);
-            var devices = _roomService.GetDevicesByRoomId((int)roomId).Cast<Device>();
-            roomsWithDevices[room] = devices;
+            devices = _roomService.GetDevicesByRoomId((int)roomId);
             ViewBag.RoomId = roomId;
+            ViewBag.RoomName = room.Name;
         }
         else
         {
-            var devices = _deviceService.GetDevicesByUserId(_userService.GetCurrentUserId()).Cast<Device>();
-            foreach (var device in devices)
-            {
-                var room = _roomService.GetRoomById(device.Room.ID);
-                if (roomsWithDevices.ContainsKey(room))
-                {
-                    roomsWithDevices[room] = roomsWithDevices[room].Append(device);
-                }
-                else
-                {
-                    roomsWithDevices[room] = new List<Device> { device };
-                }
-            }
+            devices = _deviceService.GetDevicesByUserId(_userService.GetCurrentUserId());
         }
         
-        return View(roomsWithDevices);
+        return View(devices);
     }
+    
     [HttpPost]
-    public IActionResult Create(Device device)
+    public IActionResult Create([Bind("Name,DeviceToken,Type,UserID,RoomID")]Device device)
     {
         _deviceService.CreateDevice(device);
         return RedirectToAction("Index");
     }
+    
+    public IActionResult Edit()
+    {
+        return View();
+    }
+    
+    [HttpPost]
+    public IActionResult Edit([Bind("ID,Name,DeviceToken,Type,UserID,RoomID")]Device device)
+    {
+        _deviceService.EditDevice(device);
+        return View();
+    }
+    
+    public IActionResult Delete(int id)
+    {
+        _deviceService.DeleteDevice(id);
+        return RedirectToAction("Index");
+    }
+    
 }
