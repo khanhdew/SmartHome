@@ -9,22 +9,18 @@ namespace Services.Services_Impl;
 public class DeviceService : IDeviceService
 {
     private readonly IDeviceRepository _deviceRepository;
-    private readonly IThingsboardService _thingsboardService;
     
-    public DeviceService(IDeviceRepository deviceRepository, IThingsboardService thingsboardService)
+    public DeviceService(IDeviceRepository deviceRepository)
     {
         _deviceRepository = deviceRepository;
-        _thingsboardService = thingsboardService;
     }
     public Device CreateDevice(Device device)
     {
         try
         {
             var deviceCreated =(Device) _deviceRepository.AddDevice(device);
-            var tbDevice = _thingsboardService.CreateDevice(device);
-            var root = JsonDocument.Parse(tbDevice.ToString()).RootElement;
-            deviceCreated.TbDeviceId = root.GetProperty("id").GetProperty("id").GetString();
-            Console.WriteLine(tbDevice.ToString());
+            
+            
             _deviceRepository.UpdateDevice(deviceCreated);
             return deviceCreated;
         }

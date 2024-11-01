@@ -10,6 +10,8 @@ public interface IThingsboardService
     public object CreateCustomerAccount(Account account);
     public object? CreateDevice(Device device);
     public object AssignDeviceToCustomer(string deviceId, string customerId);
-    public object? ControlDevice(string deviceId, object data);
+    public object? ControlDevice(int deviceId, string command);
+    public object? ControlDevice(int deviceId, string command, int? dim = null, int? R = null, int? G = null,
+        int? B = null);
     
 }

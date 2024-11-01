@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Services.Services;
 using WebApp.Models;
+using WebApp.Utils;
 
 namespace WebApp.Controllers
 {
@@ -28,12 +29,12 @@ namespace WebApp.Controllers
             return View(houses);
         }
 
-        public IActionResult HouseFilter(string? keyword)
+        public IActionResult Search(string keyword)
         {
             var houses = _houseService.GetHousesByUserId(_userService.GetCurrentUserId());
             if (!string.IsNullOrEmpty(keyword))
             {
-                houses = houses.Where(h => h.Name.ToLower().Contains(keyword)).ToList();
+                houses = houses.Where(h => StringProcessHelper.RemoveDiacritics(h.Name).Contains(keyword, StringComparison.OrdinalIgnoreCase) || StringProcessHelper.RemoveDiacritics(h.Location).Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
             }
 
             return PartialView("HouseSection", houses);

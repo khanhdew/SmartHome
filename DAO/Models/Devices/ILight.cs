@@ -2,5 +2,5 @@
 
 public interface ILight : IDevice
 {
-    void SetDim(int dim);
+    object SetDim(int dim);
 }

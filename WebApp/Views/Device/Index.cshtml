@@ -19,7 +19,7 @@
             <li>
                 <span class="textlight">
                     <div class="text ">
-                        <h3>Light</h3>
+                        <h3>@device.Name</h3>
                         <div class="lamp-wrapper-main">
                             <div class="lamp-rope"></div>
                             <div class="lamp-inner">
@@ -47,7 +47,7 @@
             <li>
                 <span class="textfan">
                     <div class="text ">
-                        <h3>Fan</h3>
+                        <h3>@device.Name</h3>
                         <div class="part">
                             <div class="box">
                                 <img src="https://cdn-icons-png.flaticon.com/512/95/95252.png" width="100%" height="100%">
@@ -78,7 +78,7 @@
             <li>
                 <span class="textlight">
                     <div class="text ">
-                        <h3>RGB Light</h3>
+                        <h3>@device.Name</h3>
                         <div class="rgb-light">
                             <div class="rgb-color"></div>
                         </div>
@@ -94,4 +94,65 @@
         }
     }
 </ul>
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            var skip = @Model.Count();
+            var take = 3; // Number of items to load each time
+            var isLoading = false; // Prevent multiple requests
+            var allItemsLoaded = false; // Flag to indicate all items are loaded
 
+            $('main').on('scroll', function() {
+                if ($(window).scrollTop() + $(window).height() >= $(document).height()  && !isLoading) {
+                    if (!allItemsLoaded) {
+                        loadMoreDevices();
+                    }
+                }
+            });
+
+            function loadMoreDevices() {
+                isLoading = true;
+                $("#loading").show();
+                setTimeout(function() { // Add delay
+                    $.ajax({
+                        url: '@Url.Action("LoadMoreDevices", "Device")',
+                        type: 'GET',
+                        data: { skip: skip, take: take },
+                        success: function (result) {
+                            if (result.trim() === "") {
+                                // No more items to load
+                                allItemsLoaded = true;
+                            } else {
+                                $("#boxInfoList").append(result);
+                                skip += take;
+                            }
+                            isLoading = false;
+                            $("#loading").hide();
+                        },
+                        error: function () {
+                            isLoading = false;
+                            $("#loading").hide();
+                        }
+                    });
+                }, 500); // Delay of 500ms
+            }
+            
+            $('button.search-btn').click(function(event) {
+                event.preventDefault();
+                var keyword = $('#keyword').val();
+                $.ajax({
+                    url: '@Url.Action("Search", "Device")',
+                    type: 'GET',
+                    data: { keyword: keyword },
+                    success: function(data) {
+                        // Assuming you have a div with id 'searchResults' to display the results
+                        $('#boxInfoList').html(data);
+                    },
+                    error: function() {
+                        alert('Error occurred while searching.');
+                    }
+                });
+            });
+        });
+    </script>
+}
