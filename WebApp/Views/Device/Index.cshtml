@@ -162,14 +162,36 @@
         });
 
         // Light functionality
-        $(document).ready(function() {
-            $('input[type="range"]').on('input', function () {
-                const brightness = $(this).val();
-                $(this).closest('li').find('.lamp-blub').css('opacity', brightness / 10); // Cập nhật opacity cho đèn
-                addHistory(`Độ sáng: ${brightness}`);
-            });
+        let brightness;
+
+        // Update brightness value on input
+        $('input[type="range"]').on('input', function () {
+            brightness = $(this).val();
+            $(this).closest('li').find('.lamp-inner').css('opacity', brightness / 10);
         });
 
+        // Send AJAX request on change
+        $('input[type="range"]').on('change', function () {
+            const deviceId = $(this).closest('li').data('device-id');
+            const command = JSON.stringify({
+                method: "setLedDim",
+                params: brightness * 25.5
+            });
+
+            $.ajax({
+                url: '@Url.Action("Control", "Device")',
+                type: 'POST',
+                data: {
+                    id: deviceId,
+                    command: command
+                },
+                success: function() {
+                },
+                error: function() {
+                    alert('Error occurred while controlling the light.');
+                }
+            });
+        });
 
         $('.toggle-btn.light').click(function () {
             const isOn = $(this).hasClass('on');
@@ -180,7 +202,7 @@
             });
 
             $.ajax({
-                url: '@Url.Action("Control","Device")',
+                url: '@Url.Action("Control", "Device")',
                 type: 'POST',
                 data: {
                     id: deviceId,
@@ -188,7 +210,6 @@
                 },
                 success: function() {
                     $(this).toggleClass('on off');
-                    addHistory(isOn ? "Tắt đèn" : "Bật đèn");
                 }.bind(this),
                 error: function() {
                     alert('Error occurred while controlling the light.');
@@ -201,37 +222,97 @@
 
         $('.toggle-btn.fan').click(function () {
             const isOn = $(this).hasClass('on');
-            $(this).toggleClass('on off');
-            $(this).closest('li').find('.box img').css("animation", isOn ? "none" : `rotateon ${currentSpeed}s infinite linear`);
-            addHistory(isOn ? "Tắt quạt" : "Bật quạt");
+            const deviceId = $(this).closest('li').data('device-id');
+            const command = JSON.stringify({
+                method: "setFanStatus",
+                params: isOn ? 0 : 1
+            });
+
+            $.ajax({
+                url: '@Url.Action("Control", "Device")',
+                type: 'POST',
+                data: {
+                    id: deviceId,
+                    command: command
+                },
+                success: function() {
+                    $(this).toggleClass('on off');
+                    $(this).closest('li').find('.box img').css("animation", isOn ? "none" : `rotateon ${currentSpeed}s infinite linear`);
+                }.bind(this),
+                error: function() {
+                    alert('Error occurred while controlling the fan.');
+                }
+            });
         });
 
         $('.speed-button').click(function () {
             currentSpeed = $(this).data('speed');
-            if ($('.toggle-btn.fan').hasClass('off')) {
-                $(this).closest('li').find('.box img').css("animation", `rotateon ${currentSpeed}s infinite linear`);
-            }
-            addHistory(`Tốc độ quạt: ${currentSpeed}`);
+            const deviceId = $(this).closest('li').data('device-id');
+            const speed = $(this).text();
+            const command = JSON.stringify({
+                method: "setFanSpeed",
+                params: speed * 85
+            });
+
+            $.ajax({
+                url: '@Url.Action("Control", "Device")',
+                type: 'POST',
+                data: {
+                    id: deviceId,
+                    command: command
+                },
+                success: function() {
+                    if ($('.toggle-btn.fan').hasClass('off')) {
+                        $(this).closest('li').find('.box img').css("animation", `rotateon ${currentSpeed}s infinite linear`);
+                    }
+                }.bind(this),
+                error: function() {
+                    alert('Error occurred while controlling the fan speed.');
+                }
+            });
         });
 
         // RGB functionality
         let rgbIsOn = false;
-
+        
         $('.toggle-btn.rgb').click(function () {
             rgbIsOn = !rgbIsOn;
             const color = $(this).closest('li').find('#color-picker').val();
-            $(this).closest('li').find('.rgb-color').css('background-color', rgbIsOn ? color : 'transparent');
-            addHistory(rgbIsOn ? "Bật LED RGB" : "Tắt LED RGB");
-            $(this).toggleClass('on off');
+            const deviceId = $(this).closest('li').data('device-id');
+            const rgb = hexToRgb(color);
+            if (!rgbIsOn) {
+                rgb.r = rgb.g = rgb.b = 0;
+            }
+            const command = JSON.stringify({
+                method: "setRgbColor",
+                params: [rgb.r, rgb.g, rgb.b]
+            });
+
+            $.ajax({
+                url: '@Url.Action("Control", "Device")',
+                type: 'POST',
+                data: {
+                    id: deviceId,
+                    command: command
+                },
+                success: function() {
+                    $(this).closest('li').find('.rgb-color').css('background-color', rgbIsOn ? color : 'transparent');
+                    $(this).toggleClass('on off');
+                }.bind(this),
+                error: function() {
+                    alert('Error occurred while controlling the RGB light.');
+                }
+            });
         });
 
-        $('#color-picker').on('input', function() {
-            if (rgbIsOn) {
-                const color = $(this).val();
-                $(this).closest('li').find('.rgb-color').css('background-color', color);
-                addHistory(`Màu LED RGB: ${color}`);
-            }
-        });
+        function hexToRgb(hex) {
+            const bigint = parseInt(hex.slice(1), 16);
+            const r = (bigint >> 16) & 255;
+            const g = (bigint >> 8) & 255;
+            const b = bigint & 255;
+            return { r, g, b };
+        }
+        
     });
 </script>
 }

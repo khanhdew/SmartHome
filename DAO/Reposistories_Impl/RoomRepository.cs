@@ -106,6 +106,9 @@ namespace DAO.Reposistories_Impl
             {
                 var specificDevice = DeviceFactory.CreateDevice(device.Type!, device.Name);
                 specificDevice.User = device.User;
+                specificDevice.ID = device.ID;
+                specificDevice.RoomID = device.RoomID;
+                specificDevice.DeviceToken = device.DeviceToken;
                 specificDevices.Add(specificDevice);
             }
 

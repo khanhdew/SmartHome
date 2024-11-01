@@ -69,7 +69,7 @@ public class DeviceController : Controller
                 }
             }
         }
-        
+      
         return View(devices.Take(10).ToList());
     }
 
@@ -196,7 +196,6 @@ public class DeviceController : Controller
     [HttpPost]
     public IActionResult Control(int id, string command)
     {
-        
         _thingsboardService.ControlDevice(id, command);
         return RedirectToAction("Index");
     }
