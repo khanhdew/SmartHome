@@ -162,12 +162,14 @@
         });
 
         // Light functionality
-        $('input[type="range"]').on('input', function () {
-            const brightness = $(this).val();
-            $(this).closest('li').find('.lamp-inner').css('opacity', brightness / 10);
-            $(this).closest('li').attr('data-light', brightness);
-            addHistory(`Độ sáng ${brightness}`);
+        $(document).ready(function() {
+            $('input[type="range"]').on('input', function () {
+                const brightness = $(this).val();
+                $(this).closest('li').find('.lamp-blub').css('opacity', brightness / 10); // Cập nhật opacity cho đèn
+                addHistory(`Độ sáng: ${brightness}`);
+            });
         });
+
 
         $('.toggle-btn.light').click(function () {
             const isOn = $(this).hasClass('on');
@@ -194,7 +196,7 @@
             });
         });
 
-// Fan functionality
+        // Fan functionality
         let currentSpeed = 0.8;
 
         $('.toggle-btn.fan').click(function () {
@@ -212,7 +214,7 @@
             addHistory(`Tốc độ quạt: ${currentSpeed}`);
         });
 
-// RGB functionality
+        // RGB functionality
         let rgbIsOn = false;
 
         $('.toggle-btn.rgb').click(function () {
