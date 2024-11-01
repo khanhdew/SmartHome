@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Services.Services
+@inject IUserService UserService
+@{
     var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
     var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
 }
@@ -34,6 +36,15 @@
                 <span class="text">Settings</span>
             </a>
         </li>
+        @if (User.IsInRole("Admin"))
+        {
+            <li class="@(currentController == "Admin" ? "active" : "")">
+                <a href="@Url.Action("Index", "Admin")" class="ajax-link">
+                    <i class='bx bxs-user-account'></i>
+                    <span class="text">Admin Panel</span>
+                </a>
+            </li>
+        }
     </ul>
 </section>
 <script>

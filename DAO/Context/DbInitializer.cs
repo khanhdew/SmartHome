@@ -59,10 +59,11 @@ public class DbInitializer
             // Add user role with houses
             User houseOwner = new User
             {
+                Id = "ID2",
                 UserName = "user@randong.com.vn",
                 NormalizedUserName = "USER@RANGDONG.COM.VN",
-                Email = "user@smarthome.com.vn",
-                NormalizedEmail = "USER@SMARTHOME.COM.VN",
+                Email = "user@rangdong.com.vn",
+                NormalizedEmail = "USER@RANGDONG.COM.VN",
                 EmailConfirmed = true,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 ConcurrencyStamp = Guid.NewGuid().ToString(),
@@ -76,6 +77,7 @@ public class DbInitializer
             // create guest user
             User gUser = new User
             {
+                Id = "ID3",
                 UserName = "guest@randong.com.vn",
                 NormalizedUserName = "GUEST@RANGDONG.COM.VN",
                 Email = "guest@randong.com.vn",
@@ -87,7 +89,7 @@ public class DbInitializer
                 PhoneNumberConfirmed = true
             };
             
-            gUser.PasswordHash = passwordHasher.HashPassword(gUser, "user");
+            gUser.PasswordHash = passwordHasher.HashPassword(gUser, "guest");
             context.Users.Add(gUser);
             context.SaveChanges();
             
@@ -107,7 +109,13 @@ public class DbInitializer
                 UserID = houseOwner.Id
             };
             
-            context.HouseMembers.Add(houseOwnerHouse);
+            var houseOwnerHouse2 = new HouseMember()
+            {
+                HouseID = house.ID,
+                UserID = gUser.Id
+            };
+            
+            context.HouseMembers.AddRange(houseOwnerHouse, houseOwnerHouse2);
             context.SaveChanges();
             
             // add rooms for the house

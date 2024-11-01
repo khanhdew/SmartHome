@@ -7,8 +7,8 @@
     if (device is Light)
     {
         <li>
-            <span class="textlight">
-                <div class="text ">
+            <span class="text">
+                <div class="textlight">
                     <h3>@device.Name</h3>
                     <div class="lamp-wrapper-main">
                         <div class="lamp-rope"></div>
@@ -17,6 +17,9 @@
                             <div class="lamp-blub"></div>
                         </div>
                     </div>
+                    <a class="toggle-btn light">
+                        <i class='bx bx-power-off'></i>
+                    </a>
                     <form oninput="document.body.setAttribute('data-light', slider.value)" class="lamp-input">
                         <label for="slider" class="slider-label">Độ sáng:</label>
                         <div class="slider-container">
@@ -26,7 +29,6 @@
                             <input type="range" id="slider" value="0" min="0" max="10" class="slider">
                         </div>
                     </form>
-                    <button type="button" id="toggle-button" class="toggle-btn">Bật/Tắt</button>
                 </div>
             </span>
         </li>
@@ -35,8 +37,8 @@
     if (device is Fan)
     {
         <li>
-            <span class="textfan">
-                <div class="text ">
+            <span class="text">
+                <div class="textfan">
                     <h3>@device.Name</h3>
                     <div class="part">
                         <div class="box">
@@ -44,20 +46,18 @@
                             <div class="box1"></div>
                         </div>
                     </div>
-                    <form class="fan-input">
-                        <div class="on">
-                            <img src="pic/power.png" width="100%">
+                    <a class="toggle-btn fan">
+                        <i class='bx bx-power-off'></i>
+                    </a>
+                    <form oninput="document.body.setAttribute('data-light', slider.value)" class="lamp-input">
+                        <label for="slider" class="slider-label">Tốc độ:</label>
+                        <i class='bx bxs-radiation'></i>
+                        <div>
+                            <a class="speed-button" data-speed="0.8">1</a>
+                            <a class="speed-button" data-speed="0.4">2</a>
+                            <a class="speed-button" data-speed="0.2">3</a>
                         </div>
-                        <div class="off">
-                            <img src="pic/power-button.png" width="100%">
-                        </div>
-
                     </form>
-                    <div>
-                        <button class="speed-button" data-speed="0.8">1</button>
-                        <button class="speed-button" data-speed="0.2">2</button>
-
-                    </div>
                 </div>
             </span>
         </li>
@@ -66,18 +66,24 @@
     if (device is RgbLight)
     {
         <li>
-            <span class="textlight">
-                <div class="text ">
+            <span class="text">
+                <div class="textrgb ">
                     <h3>@device.Name</h3>
                     <div class="rgb-light">
                         <div class="rgb-color"></div>
                     </div>
-                    <form class="rgb-input">
-                        <label for="color-picker" class="color-label">Chọn màu:</label>
-                        <input type="color" id="color-picker" value="#ff0000">
-                        <button type="button" id="toggle-button" class="toggle-btn">Bật/Tắt</button>
+                    <a class="toggle-btn rgb">
+                        <i class='bx bx-power-off'></i>
+                    </a>
+                    <form oninput="document.body.setAttribute('data-light', slider.value)" class="lamp-input">
+                        <label for="slider" class="slider-label">Chọn màu:</label>
+                        <div class="slider-container">
+                            <div class="icon-sun">
+                                <i class='bx bxs-sun'></i>
+                            </div>
+                            <input type="color" id="color-picker" value="#ff0000">
+                        </div>
                     </form>
-
                 </div>
             </span>
         </li>

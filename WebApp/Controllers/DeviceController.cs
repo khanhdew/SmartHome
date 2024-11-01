@@ -18,7 +18,8 @@ public class DeviceController : Controller
     private readonly IHouseService _houseService;
     private readonly IThingsboardService _thingsboardService;
 
-    public DeviceController(IDeviceService deviceService, IRoomService roomService, IUserService userService, IHouseService houseService, IThingsboardService thingsboardService)
+    public DeviceController(IDeviceService deviceService, IRoomService roomService, IUserService userService,
+        IHouseService houseService, IThingsboardService thingsboardService)
     {
         _deviceService = deviceService;
         _roomService = roomService;
@@ -30,130 +31,167 @@ public class DeviceController : Controller
     [Authorize]
     public IActionResult Index(int? roomId)
     {
+        
+        Dictionary<int,int> deviceMap = new Dictionary<int, int>();
+        
         IEnumerable<Device> devices;
         if (roomId != null)
         {
             var room = _roomService.GetRoomById((int)roomId);
             devices = _roomService.GetDevicesByRoomId((int)roomId);
+
             ViewBag.RoomId = roomId;
             ViewBag.RoomName = room.Name;
         }
         else
         {
-            devices = _deviceService.GetDevicesByUserId(_userService.GetCurrentUserId());
+            devices = _deviceService.GetDevicesByUserId(_userService.GetCurrentUserId()).ToList();
+            foreach (var device in devices)
+            {
+                deviceMap[device.ID] = 1;
+            }
+
             // get devices from joined house's rooms
             var houses = _houseService.GetHousesByUserId(_userService.GetCurrentUserId());
             foreach (var house in houses)
             {
-                var houseDevices = new List<Device>();
                 var rooms = _houseService.GetRooms(house.ID);
                 foreach (var room in rooms)
                 {
-                    houseDevices.AddRange(_roomService.GetDevicesByRoomId(room.ID));
+                    var houseDevices = _roomService.GetDevicesByRoomId(room.ID);
+                    foreach (var device in houseDevices)
+                    {
+                        if(deviceMap[device.ID]==1)
+                            continue;
+                        deviceMap[device.ID] = 1;
+                        devices.Append(device);
+                    }
                 }
-                
-                devices = devices.Concat(houseDevices);
             }
-            
         }
-        devices = devices.Take(10).ToList();
-        return View(devices);
+        
+        return View(devices.Take(10).ToList());
     }
-    
-    
-    
-    [HttpPost]
-    public IActionResult Create([Bind("Name,DeviceToken,Type,UserID,RoomID")]Device device)
+
+    [Authorize]
+    public IActionResult LoadMoreDevices(int? roomId, int skip, int take)
     {
-        var deviceCreated = _deviceService.CreateDevice(device);
-        var tbDevice = _thingsboardService.CreateDevice(deviceCreated);
+        Dictionary<int,int> deviceMap = new Dictionary<int, int>();
+        
+        IEnumerable<Device> devices;
+        if (roomId != null)
+        {
+            var room = _roomService.GetRoomById((int)roomId);
+            devices = _roomService.GetDevicesByRoomId((int)roomId);
+
+            ViewBag.RoomId = roomId;
+            ViewBag.RoomName = room.Name;
+        }
+        else
+        {
+            devices = _deviceService.GetDevicesByUserId(_userService.GetCurrentUserId()).ToList();
+            foreach (var device in devices)
+            {
+                deviceMap[device.ID] = 1;
+            }
+
+            // get devices from joined house's rooms
+            var houses = _houseService.GetHousesByUserId(_userService.GetCurrentUserId());
+            foreach (var house in houses)
+            {
+                var rooms = _houseService.GetRooms(house.ID);
+                foreach (var room in rooms)
+                {
+                    var houseDevices = _roomService.GetDevicesByRoomId(room.ID);
+                    foreach (var device in houseDevices)
+                    {
+                        if(deviceMap[device.ID]==1)
+                            continue;
+                        deviceMap[device.ID] = 1;
+                        devices.Append(device);
+                    }
+                }
+            }
+        }
+        return PartialView("DeviceSection", devices.Skip(skip).Take(take).ToList());
+    }
+
+    [Authorize]
+    public IActionResult Search(int? roomId, string keyword)
+    {
+        Dictionary<int,int> deviceMap = new Dictionary<int, int>();
+        
+        IEnumerable<Device> devices;
+        if (roomId != null)
+        {
+            var room = _roomService.GetRoomById((int)roomId);
+            devices = _roomService.GetDevicesByRoomId((int)roomId).Where(d => StringProcessHelper.RemoveDiacritics(d.Name).ToLower()
+                .Contains(StringProcessHelper.RemoveDiacritics(keyword).ToLower()));
+
+            ViewBag.RoomId = roomId;
+            ViewBag.RoomName = room.Name;
+        }
+        else
+        {
+            devices = _deviceService.GetDevicesByUserId(_userService.GetCurrentUserId()).Where(d => StringProcessHelper.RemoveDiacritics(d.Name).ToLower()
+                .Contains(StringProcessHelper.RemoveDiacritics(keyword).ToLower())).ToList();
+            foreach (var device in devices)
+            {
+                deviceMap[device.ID] = 1;
+            }
+
+            // get devices from joined house's rooms
+            var houses = _houseService.GetHousesByUserId(_userService.GetCurrentUserId());
+            foreach (var house in houses)
+            {
+                var rooms = _houseService.GetRooms(house.ID);
+                foreach (var room in rooms)
+                {
+                    var houseDevices = _roomService.GetDevicesByRoomId(room.ID).Where(d => StringProcessHelper.RemoveDiacritics(d.Name).ToLower()
+                        .Contains(StringProcessHelper.RemoveDiacritics(keyword).ToLower()));
+                    foreach (var device in houseDevices)
+                    {
+                        if(deviceMap[device.ID]==1)
+                            continue;
+                        deviceMap[device.ID] = 1;
+                        devices.Append(device);
+                    }
+                }
+            }
+        }
+        return PartialView("DeviceSection", devices.Take(10).ToList());
+    }
+
+    [HttpPost]
+    public IActionResult Create([Bind("Name,DeviceToken,Type,UserID,RoomID")] Device device)
+    {
+        var tbDevice = _thingsboardService.CreateDevice(device);
         var root = JsonDocument.Parse(tbDevice.ToString()).RootElement;
-        deviceCreated.TbDeviceId = root.GetProperty("id").GetProperty("id").GetString();
-        Console.WriteLine(tbDevice.ToString());
+        device.TbDeviceId = root.GetProperty("id").GetProperty("id").GetString();
+        var deviceCreated = _deviceService.CreateDevice(device);
+        Console.WriteLine(deviceCreated.ToString());
         return RedirectToAction("Index");
     }
-    
+
     public IActionResult Edit()
     {
         return View();
     }
-    
+
     [HttpPost]
-    public IActionResult Edit([Bind("ID,Name,DeviceToken,Type,UserID,RoomID")]Device device)
+    public IActionResult Edit([Bind("ID,Name,DeviceToken,Type,UserID,RoomID")] Device device)
     {
         _deviceService.EditDevice(device);
         return View();
     }
-    
+
     public IActionResult Delete(int id)
     {
         _deviceService.DeleteDevice(id);
         return RedirectToAction("Index");
     }
 
-    public IActionResult LoadMoreDevices(int? roomId,int skip, int take)
-    {
-        IEnumerable<Device> devices;
-        if (roomId != null)
-        {
-            var room = _roomService.GetRoomById((int)roomId);
-            devices = _roomService.GetDevicesByRoomId((int)roomId);
-            ViewBag.RoomId = roomId;
-            ViewBag.RoomName = room.Name;
-        }
-        else
-        {
-            devices = _deviceService.GetDevicesByUserId(_userService.GetCurrentUserId());
-            // get devices from joined house's rooms
-            var houses = _houseService.GetHousesByUserId(_userService.GetCurrentUserId());
-            foreach (var house in houses)
-            {
-                var houseDevices = new List<Device>();
-                var rooms = _houseService.GetRooms(house.ID);
-                foreach (var room in rooms)
-                {
-                    houseDevices.AddRange(_roomService.GetDevicesByRoomId(room.ID));
-                }
-                
-                devices = devices.Concat(houseDevices);
-            }
-            
-        }
-        devices = devices.Skip(skip).Take(take).ToList();
-        return PartialView("DeviceSection", devices);
-    }
-    
-    public IActionResult Search(int? roomId, string keyword)
-    {
-        IEnumerable<Device> devices;
-        if (roomId != null)
-        {
-            devices = _roomService.GetDevicesByRoomId((int)roomId)
-                .Where(d => StringProcessHelper.RemoveDiacritics(d.Name).ToLower().Contains(StringProcessHelper.RemoveDiacritics(keyword).ToLower()))
-                .ToList();
-        }
-        else
-        {
-            devices = _deviceService.GetDevicesByUserId(_userService.GetCurrentUserId())
-                .Where(d => StringProcessHelper.RemoveDiacritics(d.Name).ToLower().Contains(StringProcessHelper.RemoveDiacritics(keyword).ToLower()))
-                .ToList();
-            // get devices from joined house's rooms
-            var houses = _houseService.GetHousesByUserId(_userService.GetCurrentUserId());
-            foreach (var house in houses)
-            {
-                var houseDevices = new List<Device>();
-                var rooms = _houseService.GetRooms(house.ID);
-                foreach (var room in rooms)
-                {
-                    houseDevices.AddRange(_roomService.GetDevicesByRoomId(room.ID));
-                }
-                
-                devices = devices.Concat(houseDevices).Where(d => StringProcessHelper.RemoveDiacritics(d.Name).ToLower().Contains(StringProcessHelper.RemoveDiacritics(keyword).ToLower()));
-            }
-        }
-        return PartialView("DeviceSection", devices);
-    }
-    
+
     public IActionResult Control(int id, string command)
     {
         _thingsboardService.ControlDevice(id, command);
