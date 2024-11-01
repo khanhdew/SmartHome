@@ -149,7 +149,6 @@ namespace DAO.Reposistories_Impl
                 }
 
                 roomToUpdate.Name = room.Name;
-                roomToUpdate.HouseID = room.HouseID;
                 roomToUpdate.Detail = room.Detail;
                 _context.Rooms.Update(roomToUpdate);
                 _context.SaveChanges();

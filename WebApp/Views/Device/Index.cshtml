@@ -16,7 +16,7 @@
         // check if device instance of Light
         if (device is Light)
         {
-            <li>
+            <li data-device-id="@device.ID">
                 <span class="text">
                     <div class="textlight">
                         <h3>@device.Name</h3>
@@ -46,7 +46,7 @@
 
         if (device is Fan)
         {
-            <li>
+            <li data-device-id="@device.ID">
                 <span class="text">
                     <div class="textfan">
                         <h3>@device.Name</h3>
@@ -75,7 +75,7 @@
 
         if (device is RgbLight)
         {
-            <li>
+            <li data-device-id="@device.ID">
                 <span class="text">
                     <div class="textrgb ">
                         <h3>@device.Name</h3>
@@ -171,8 +171,27 @@
 
         $('.toggle-btn.light').click(function () {
             const isOn = $(this).hasClass('on');
-            $(this).toggleClass('on off');
-            addHistory(isOn ? "Tắt đèn" : "Bật đèn");
+            const deviceId = $(this).closest('li').data('device-id');
+            const command = JSON.stringify({
+                method: "setLedStatus",
+                params: isOn ? 0 : 1
+            });
+
+            $.ajax({
+                url: '@Url.Action("Control","Device")',
+                type: 'POST',
+                data: {
+                    id: deviceId,
+                    command: command
+                },
+                success: function() {
+                    $(this).toggleClass('on off');
+                    addHistory(isOn ? "Tắt đèn" : "Bật đèn");
+                }.bind(this),
+                error: function() {
+                    alert('Error occurred while controlling the light.');
+                }
+            });
         });
 
 // Fan functionality

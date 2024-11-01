@@ -193,9 +193,10 @@ public class DeviceController : Controller
         return RedirectToAction("Index");
     }
 
-
+    [HttpPost]
     public IActionResult Control(int id, string command)
     {
+        
         _thingsboardService.ControlDevice(id, command);
         return RedirectToAction("Index");
     }
