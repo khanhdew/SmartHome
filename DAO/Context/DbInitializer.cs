@@ -139,8 +139,18 @@ public class DbInitializer
                 RoleId = "ID1",
                 UserId = "ID1"
             };
+            var userRole2 = new IdentityUserRole<string>
+            {
+                RoleId = "ID2",
+                UserId = "ID2"
+            };
+            var userRole3 = new IdentityUserRole<string>
+            {
+                RoleId = "ID2",
+                UserId = "ID3"
+            };
 
-            context.UserRoles.Add(userRole);
+            context.UserRoles.AddRange(userRole, userRole2, userRole3);
             context.SaveChanges();
         }
     }
