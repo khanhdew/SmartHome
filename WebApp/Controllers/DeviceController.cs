@@ -163,13 +163,15 @@ public class DeviceController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create([Bind("Name,DeviceToken,Type,UserID,RoomID")] Device device)
+    public IActionResult Create( Device device)
     {
-        var tbDevice = _thingsboardService.CreateDevice(device);
+        var tempDevice = device;
+        tempDevice.Name = StringProcessHelper.RemoveDiacritics(device.Name);
+        var tbDevice = _thingsboardService.CreateDevice(tempDevice);
+        Console.WriteLine("\u001b[32m" + tbDevice.ToString() + "\u001b[0m");
         var root = JsonDocument.Parse(tbDevice.ToString()).RootElement;
         device.TbDeviceId = root.GetProperty("id").GetProperty("id").GetString();
         var deviceCreated = _deviceService.CreateDevice(device);
-        Console.WriteLine(deviceCreated.ToString());
         return RedirectToAction("Index");
     }
 

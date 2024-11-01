@@ -2,21 +2,21 @@
 @using DAO.Models.Devices
 @model IEnumerable<DAO.BaseModels.Device>
 @{
-ViewBag.Title = "title";
-Layout = "MyLayout";
+    ViewBag.Title = "title";
+    Layout = "MyLayout";
 }
 @await Component.InvokeAsync("DeviceCreate")
 @if (ViewBag.RoomName != null)
 {
-<h1>@ViewBag.RoomName</h1>
+    <h1>@ViewBag.RoomName</h1>
 }
 <ul class="box-info" id="boxInfoList">
     @foreach (var device in Model)
     {
-    // check if device instance of Light
-    if (device is Light)
-    {
-    <li>
+        // check if device instance of Light
+        if (device is Light)
+        {
+            <li>
                 <span class="text">
                     <div class="textlight">
                         <h3>@device.Name</h3>
@@ -27,8 +27,10 @@ Layout = "MyLayout";
                                 <div class="lamp-blub"></div>
                             </div>
                         </div>
-                        <a class="toggle-btn light"><i class='bx bx-power-off'></i></a>
-                        <form oninput="document.body.setAttribute('data-light', slider.value)" class="lamp-input">
+                        <a class="toggle-btn light">
+                            <i class='bx bx-power-off'></i>
+                        </a>
+                        <form class="lamp-input">
                             <label for="slider" class="slider-label">Độ sáng:</label>
                             <div class="slider-container">
                                 <div class="icon-sun">
@@ -39,12 +41,12 @@ Layout = "MyLayout";
                         </form>
                     </div>
                 </span>
-    </li>
-    }
+            </li>
+        }
 
-    if (device is Fan)
-    {
-    <li>
+        if (device is Fan)
+        {
+            <li>
                 <span class="text">
                     <div class="textfan">
                         <h3>@device.Name</h3>
@@ -54,31 +56,35 @@ Layout = "MyLayout";
                                 <div class="box1"></div>
                             </div>
                         </div>
-                        <a class="toggle-btn fan"><i class='bx bx-power-off'></i></a>
+                        <a class="toggle-btn fan">
+                            <i class='bx bx-power-off'></i>
+                        </a>
                         <form oninput="document.body.setAttribute('data-light', slider.value)" class="lamp-input">
                             <label for="slider" class="slider-label">Tốc độ:</label>
                             <i class='bx bxs-radiation'></i>
                             <div>
-                            <a class="speed-button" data-speed="0.8">1</a>
-                            <a class="speed-button" data-speed="0.4">2</a>
-                            <a class="speed-button" data-speed="0.2">3</a>
+                                <a class="speed-button" data-speed="0.8">1</a>
+                                <a class="speed-button" data-speed="0.4">2</a>
+                                <a class="speed-button" data-speed="0.2">3</a>
                             </div>
                         </form>
                     </div>
                 </span>
-    </li>
-    }
+            </li>
+        }
 
-    if (device is RgbLight)
-    {
-    <li>
+        if (device is RgbLight)
+        {
+            <li>
                 <span class="text">
                     <div class="textrgb ">
                         <h3>@device.Name</h3>
                         <div class="rgb-light">
                             <div class="rgb-color"></div>
                         </div>
-                        <a class="toggle-btn rgb"><i class='bx bx-power-off'></i></a>
+                        <a class="toggle-btn rgb">
+                            <i class='bx bx-power-off'></i>
+                        </a>
                         <form oninput="document.body.setAttribute('data-light', slider.value)" class="lamp-input">
                             <label for="slider" class="slider-label">Chọn màu:</label>
                             <div class="slider-container">
@@ -90,10 +96,11 @@ Layout = "MyLayout";
                         </form>
                     </div>
                 </span>
-    </li>
-    }
+            </li>
+        }
     }
 </ul>
+
 @section Scripts {
     <script>
     $(document).ready(function() {
@@ -153,12 +160,12 @@ Layout = "MyLayout";
                 }
             });
         });
-    });
-    $(document).ready(function() {
+
         // Light functionality
         $('input[type="range"]').on('input', function () {
             const brightness = $(this).val();
-            document.body.setAttribute('data-light', brightness);
+            $(this).closest('li').find('.lamp-inner').css('opacity', brightness / 10);
+            $(this).closest('li').attr('data-light', brightness);
             addHistory(`Độ sáng ${brightness}`);
         });
 
@@ -168,31 +175,31 @@ Layout = "MyLayout";
             addHistory(isOn ? "Tắt đèn" : "Bật đèn");
         });
 
-        // Fan functionality
+// Fan functionality
         let currentSpeed = 0.8;
 
         $('.toggle-btn.fan').click(function () {
             const isOn = $(this).hasClass('on');
             $(this).toggleClass('on off');
-            $('.box img').css("animation", isOn ? "none" : `rotateon ${currentSpeed}s infinite linear`);
+            $(this).closest('li').find('.box img').css("animation", isOn ? "none" : `rotateon ${currentSpeed}s infinite linear`);
             addHistory(isOn ? "Tắt quạt" : "Bật quạt");
         });
 
         $('.speed-button').click(function () {
             currentSpeed = $(this).data('speed');
             if ($('.toggle-btn.fan').hasClass('off')) {
-                $('.box img').css("animation", `rotateon ${currentSpeed}s infinite linear`);
+                $(this).closest('li').find('.box img').css("animation", `rotateon ${currentSpeed}s infinite linear`);
             }
             addHistory(`Tốc độ quạt: ${currentSpeed}`);
         });
 
-        // RGB functionality
+// RGB functionality
         let rgbIsOn = false;
 
         $('.toggle-btn.rgb').click(function () {
             rgbIsOn = !rgbIsOn;
-            const color = $('#color-picker').val();
-            $('.rgb-color').css('background-color', rgbIsOn ? color : 'transparent');
+            const color = $(this).closest('li').find('#color-picker').val();
+            $(this).closest('li').find('.rgb-color').css('background-color', rgbIsOn ? color : 'transparent');
             addHistory(rgbIsOn ? "Bật LED RGB" : "Tắt LED RGB");
             $(this).toggleClass('on off');
         });
@@ -200,11 +207,10 @@ Layout = "MyLayout";
         $('#color-picker').on('input', function() {
             if (rgbIsOn) {
                 const color = $(this).val();
-                $('.rgb-color').css('background-color', color);
+                $(this).closest('li').find('.rgb-color').css('background-color', color);
                 addHistory(`Màu LED RGB: ${color}`);
             }
         });
-        });
-    
+    });
 </script>
 }
