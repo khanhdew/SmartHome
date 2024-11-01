@@ -4,23 +4,25 @@ namespace DAO.Models.Devices;
 
 public class RgbLight : Device, IRgbLight
 {
-    public void TurnOn()
+    public object TurnOn()
     {
-        throw new NotImplementedException();
+        return new { method = "turnOn", parameters = new { } };
     }
 
-    public void TurnOff()
+    public object TurnOff()
     {
-        throw new NotImplementedException();
+        return new { method = "turnOff", parameters = new { } };
     }
 
-    public void SetDim(int dim)
+    public object SetDim(int dim)
     {
-        throw new NotImplementedException();
+        return new { method = "setDim", parameters = new { dim } };
     }
 
-    public void SetColor(int R, int G, int B)
+    public object SetColor(int R, int G, int B)
     {
-        throw new NotImplementedException();
+        // return an object with method name and parameters
+        var color = new { R, G, B };
+        return new { method = "setColor", parameters = new { color } };
     }
 }

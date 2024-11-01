@@ -35,6 +35,12 @@ public class UserService : IUserService
     {
         return _userRepository.GetUserByUsername(username);
     }
+
+    public IEnumerable<User> GetUsers()
+    {
+        return _userRepository.GetAllUsers();
+    }
+
     public string GetCurrentUserId()
     {
         return _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -48,6 +54,12 @@ public class UserService : IUserService
     {
         return GetCurrentUserAsync().GetAwaiter().GetResult();
     }
+
+    public User? GetUserById(string userId)
+    {
+        return _userRepository.GetUserById(userId);
+    }
+
     public void SetHttpContext(ClaimsPrincipal user)
     {
         var context = new DefaultHttpContext();

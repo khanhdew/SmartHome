@@ -4,18 +4,21 @@ namespace DAO.Models.Devices;
 
 public class Fan : Device, IFan
 {
-    public void TurnOn()
+    public object TurnOn()
     {
-        throw new NotImplementedException();
+        // return an object with method name and parameters
+        return new { method = "turnOn", parameters = new { } };
     }
 
-    public void TurnOff()
+    public object TurnOff()
     {
-        throw new NotImplementedException();
+        // return an object with method name and parameters
+        return new { method = "turnOff", parameters = new { } };
     }
 
-    public void SetSpeed(double speed)
+    public object SetSpeed(double speed)
     {
-        throw new NotImplementedException();
+        // return an object with method name and parameters
+        return new { method = "setSpeed", parameters = new { speed } };
     }
 }

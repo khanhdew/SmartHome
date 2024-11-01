@@ -59,6 +59,11 @@ namespace DAO.Reposistories_Impl
             return _context.Users;
         }
 
+        public User? GetUserById(string userId)
+        {
+            return _context.Users.FirstOrDefault(u => u.Id == userId);
+        }
+
         public User UpdateUser(User user)
         {
             var userToUpdate = _context.Users.FirstOrDefault(u => u.UserName == user.UserName);

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Services;
+using WebApp.Utils;
 
 namespace WebApp.Controllers;
 
@@ -70,6 +71,22 @@ public class RoomController : Controller
         return PartialView("RoomSection", housesWithRooms);
     }
     
+    public IActionResult Search(int? houseId, string keyword)
+    {
+        
+        var houses = _houseService.GetHousesByUserId(_userService.GetCurrentUserId());
+        var roomsWithHouse = new Dictionary<House, IEnumerable<Room>>();
+        foreach (var house in houses)
+        {
+            var rooms = _houseService.GetRooms(house.ID)
+                .Where(r => StringProcessHelper.RemoveDiacritics(r.Name).ToLower().Contains(StringProcessHelper.RemoveDiacritics(keyword).ToLower()))
+                .ToList();
+            roomsWithHouse[house] = rooms;
+        }
+        
+        return PartialView("RoomSection", roomsWithHouse);
+    }
+    
     [HttpPost]
     public IActionResult Create(int houseId, string name, string detail)
     {
@@ -84,6 +101,13 @@ public class RoomController : Controller
     [Authorize]
     public IActionResult Edit(int roomId)
     {
+        // check if user is owner of the house
+        var room = _roomService.GetRoomById(roomId);
+        var houseMembers = _houseService.GetHouseMembers((int)room.HouseID!);
+        if (!houseMembers.Any(hm => hm.UserID == _userService.GetCurrentUserId() && hm.Role == "Owner"))
+        {
+            return RedirectToAction("AccessDenied", "Account");
+        }
         return View("Edit", _roomService.GetRoomById(roomId));
     }
     
@@ -101,6 +125,13 @@ public class RoomController : Controller
     
     public IActionResult Delete(int roomId)
     {
+        // check if user is owner of the house
+        var room = _roomService.GetRoomById(roomId);
+        var houseMembers = _houseService.GetHouseMembers((int)room.HouseID!);
+        if (!houseMembers.Any(hm => hm.UserID == _userService.GetCurrentUserId() && hm.Role == "Owner"))
+        {
+            return RedirectToAction("AccessDenied", "Account");
+        }
         return View("Delete", _roomService.GetRoomById(roomId));
     }
     

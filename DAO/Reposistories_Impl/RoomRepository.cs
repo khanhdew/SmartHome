@@ -114,7 +114,7 @@ namespace DAO.Reposistories_Impl
 
         public Room GetRoomById(int roomId)
         {
-            var room = _context.Rooms.FirstOrDefault(r => r.ID == roomId);
+            var room = _context.Rooms.Include(r => r.House).FirstOrDefault(r => r.ID == roomId);
             return room;
         }
 

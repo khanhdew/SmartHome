@@ -46,12 +46,12 @@ namespace DAO.BaseModels
             return base.ToString();
         }
 
-        public void TurnOn()
+        public object TurnOn()
         {
             throw new NotImplementedException();
         }
 
-        public void TurnOff()
+        public object TurnOff()
         {
             throw new NotImplementedException();
         }

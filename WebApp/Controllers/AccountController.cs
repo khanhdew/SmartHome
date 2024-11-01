@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Services.Services;
 using WebApp.Models;
 
 namespace WebApp.Controllers
@@ -14,11 +15,14 @@ namespace WebApp.Controllers
     {
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
+        private readonly IUserService _userService;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager,
+            IUserService userService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _userService = userService;
         }
 
         [HttpGet("login")]
@@ -29,6 +33,7 @@ namespace WebApp.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+
             return View();
         }
 
@@ -47,12 +52,13 @@ namespace WebApp.Controllers
                     }
                 }
             }
+
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.LoginModel.Email, model.LoginModel.Password, 
+                var result = await _signInManager.PasswordSignInAsync(model.LoginModel.Email, model.LoginModel.Password,
                     model.LoginModel.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
-                { 
+                {
                     // add claims
                     var user = await _userManager.FindByEmailAsync(model.LoginModel.Email);
                     var roles = await _userManager.GetRolesAsync(user);
@@ -73,6 +79,7 @@ namespace WebApp.Controllers
                     await HttpContext.SignInAsync(new ClaimsPrincipal(claimsIdentity), authProperties);
                     return RedirectToAction("Index", "House");
                 }
+
                 ModelState.AddModelError("", "Invalid login attempt.");
             }
 
@@ -101,6 +108,7 @@ namespace WebApp.Controllers
                     }
                 }
             }
+
             if (ModelState.IsValid)
             {
                 var user = new User { UserName = model.RegisterModel.Email, Email = model.RegisterModel.Email };
@@ -111,11 +119,13 @@ namespace WebApp.Controllers
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
                 }
             }
+
             return View("Login", model);
         }
 
@@ -124,13 +134,94 @@ namespace WebApp.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "House");
         }
-        
+
         [HttpGet("accessdenied")]
         public IActionResult AccessDenied()
         {
             return View();
+        }
+
+        [HttpGet("changepassword")]
+        [Authorize]
+        public IActionResult ChangePassword()
+        {
+            return View(new ChangePasswordModel());
+        }
+
+        [HttpPost("changepassword")]
+        [ValidateAntiForgeryToken]
+        public IActionResult ChangePassword(ChangePasswordModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                foreach (var state in ModelState)
+                {
+                    foreach (var error in state.Value.Errors)
+                    {
+                        Console.WriteLine($"Key: {state.Key}, Error: {error.ErrorMessage}");
+                    }
+                }
+            }
+
+            if (ModelState.IsValid)
+            {
+                var user = _userService.GetLoggedInUser();
+                var result = _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword)
+                    .GetAwaiter().GetResult();
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "House");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+
+            return View(model);
+        }
+
+        [HttpGet("settings")]
+        [Authorize]
+        public IActionResult Settings()
+        {
+            return View();
+        }
+
+        [HttpGet("accountdetails")]
+        [Authorize]
+        public IActionResult Index()
+        {
+            return View(_userService.GetLoggedInUser());
+        }
+
+        [HttpPost("accountdetails")]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(User user)
+        {
+            if (!ModelState.IsValid)
+            {
+                foreach (var state in ModelState)
+                {
+                    foreach (var error in state.Value.Errors)
+                    {
+                        Console.WriteLine($"Key: {state.Key}, Error: {error.ErrorMessage}");
+                    }
+                }
+                return View("Index", user);
+            }
+
+            var updatedUser = _userService.EditUser(user);
+            if (updatedUser != null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Failed to update user information.");
+            return View("Index", user);
         }
     }
 }

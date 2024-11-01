@@ -2,5 +2,5 @@
 
 public interface IFan : IDevice
 {
-    void SetSpeed(double speed);
+    object SetSpeed(double speed);
 }
