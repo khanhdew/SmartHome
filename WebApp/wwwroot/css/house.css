@@ -597,14 +597,7 @@ body {
 	background-color: var(--red); 
 }
 
-#content main .box-info li button:first-of-type {
-    background-color: var(--blue);
-    color: var(--light);
-}
-#content main .box-info li button:last-of-type {
-	background-color: var(--red);
-    color: var(--light);
-}
+
 
 /* MAIN */
 /* CONTENT */
@@ -635,7 +628,7 @@ body {
 		width: auto;
 		height: auto;
 		background: transparent;
-		border-radius: none;
+		border-radius: 5px;
 		color: var(--dark);
 	}
 
@@ -776,7 +769,7 @@ body {
 .edit-house-page .btn-primary:hover {
 	background-color: var(--dark);
 }
-/*RenderHouse member*/
+/*Render*/
 .table {
 	width: 100%;
 	max-width: 800px; 
@@ -817,42 +810,99 @@ body {
 	margin-top: 4px;
 }
 
-/*//*/
+/*sua nha, sua phong va RENDER*/
 .edit-page-container {
-	display: flex; /* Sử dụng Flexbox để bố trí */
-	justify-content: space-between; /* Đặt khoảng cách giữa hai phần */
-	align-items: flex-start; /* Căn chỉnh phần tử ở đầu */
-	padding: 20px; /* Thêm khoảng cách bên ngoài */
+	display: flex; 
+	justify-content: space-between; 
+
+	padding: 20px; 
 }
 
-.edit-house-page {
-	flex: 1; /* Chiếm một nửa chiều rộng */
-	margin-right: 20px; /* Khoảng cách bên phải giữa hai phần */
+.edit-house-page,.house-members {
+	flex: 1; 
+	margin: 10px; 
 }
 
-.house-members {
-	flex: 1; /* Chiếm một nửa chiều rộng */
-}
-
-/* Định dạng cho các phần */
 .edit-house-page, .house-members {
-	background: var(--light); /* Nền cho các phần */
-	border-radius: 12px; /* Bo góc cho các phần */
-	padding: 20px; /* Khoảng cách bên trong */
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+	background: var(--light);
+	border-radius: 12px; 
+	padding: 20px; 
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Tùy chỉnh cho bảng trong house-members nếu cần */
-.house-members table {
-	width: 100%; /* Đảm bảo bảng chiếm toàn bộ chiều rộng */
-	border-collapse: collapse; /* Xóa khoảng cách giữa các ô */
+
+.container {
+	display: flex;
+	justify-content: space-between; 
+	padding: 20px;
 }
 
-.house-members th, .house-members td {
-	padding: 12px; /* Khoảng cách bên trong ô */
-	text-align: left; /* Căn trái cho văn bản */
-	border-bottom: 1px solid var(--grey); /* Đường viền dưới */
+.edit-house-page, .device-management {
+	flex: 1;
+	margin: 10px; 
 }
+
+.edit-house-page, .device-management {
+	background: var(--light); 
+	border-radius: 12px; 
+	padding: 20px; 
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+/* DELETE */
+.delete-house-container,
+.delete-room-container{
+	padding: 40px;
+	background: var(--light); 
+	border-radius: 12px; 
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+	max-width: 600px; 
+	margin: 20px auto; 
+	font-family: var(--poppins); 
+}
+
+.delete-house-container h1,
+.delete-room-container h1{
+	color: var(--blue); 
+	font-weight: 600; 
+	font-size: 28px; 
+	margin-bottom: 10px; 
+}
+
+.delete-house-container h3,
+.delete-room-container h3{
+	color: var(--dark);
+	font-weight: 400;
+	margin-bottom: 20px; 
+}
+
+.delete-house-container dl,
+.delete-room-container dl{
+	margin-bottom: 20px; 
+}
+
+.delete-house-container dt,
+.delete-room-container dt{
+	font-weight: 500; 
+	color: var(--dark); 
+}
+
+.delete-house-container dd,
+.delete-room-container dd{
+	margin-left: 0; 
+	color: var(--dark); 
+}
+
+.delete-house-container form button,
+.delete-room-container form button,
+.delete-room-container form a,
+.delete-house-container form a{
+	margin-right: 10px; 
+	padding: 10px 20px;
+	color:var(--dark);
+}
+.delete-house-container
+
+
 
 
 /* DEVICES */
