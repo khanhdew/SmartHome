@@ -154,7 +154,6 @@ public class DeviceController : Controller
         return PartialView("DeviceSection", devices);
     }
     
-    [HttpPost]
     public IActionResult Control(int id, string command)
     {
         _thingsboardService.ControlDevice(id, command);

@@ -65,6 +65,8 @@ builder.Services.AddScoped<IDeviceRepository, DeviceRepository>();
 builder.Services.AddScoped<IDeviceService, DeviceService>();
 builder.Services.AddScoped<IThingsboardService, ThingsboardService>();
 
+
+
 // Add MVC services
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
@@ -77,6 +79,13 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
+
+using (var scope = app.Services.CreateScope())
+{
+    var service = scope.ServiceProvider;
+    DbInitializer.Initializer(service);
+}
+
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();

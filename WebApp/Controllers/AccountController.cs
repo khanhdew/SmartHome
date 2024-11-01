@@ -117,7 +117,7 @@ namespace WebApp.Controllers
                 {
                     await _userManager.AddToRoleAsync(user, "Member");
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "House");
                 }
 
                 foreach (var error in result.Errors)
