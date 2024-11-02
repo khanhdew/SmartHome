@@ -8,7 +8,6 @@ namespace WebApp.Controllers
 		[Route("Error/GeneralError")]
 		public IActionResult GeneralError()
 		{
-			Console.WriteLine("GeneralError");
 			return View();
 		}
 
@@ -16,7 +15,6 @@ namespace WebApp.Controllers
 		[Route("Error/404")]
 		public IActionResult NotFound()
 		{
-			Console.WriteLine("GeneralError 40404040");
 			Response.StatusCode = 404;
 			return View();
 		}
@@ -25,7 +23,6 @@ namespace WebApp.Controllers
 		[Route("Error/403")]
 		public IActionResult Forbidden()
 		{
-			Console.WriteLine("GeneralError 4030403043");
 			Response.StatusCode = 403;
 			return View();
 		}

@@ -7,6 +7,7 @@ public interface IHouseService
     public House CreateHouse(string name, string address);
     public House EditHouse(House house);
     public House GetHouseById(int houseId);
+    public IEnumerable<House> GetHouses();
     public void DeleteHouse(int houseId);
     public IEnumerable<House> GetHousesByUserId(string userId);
     public IEnumerable<Room> GetRooms(int houseId);

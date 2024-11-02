@@ -1,0 +1,50 @@
+@model IEnumerable<DAO.BaseModels.User>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_AdminLayout";
+}
+
+<div class="container-xl px-4 mt-n10">
+    <div class="card mb-4">
+        <div class="card-header">Extended DataTables</div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().UserName) </th>
+                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().Email) </th>
+                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().DisplayName) </th>
+                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().PhoneNumber) </th>
+                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault()) </th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().UserName) </th>
+                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().Email) </th>
+                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().DisplayName) </th>
+                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().PhoneNumber) </th>
+                    <th>Actions</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td>@user.Email</td>
+                        <td>@user.DisplayName</td>
+                        <td>@user.PhoneNumber</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "User", new { id = user.Id })" class="btn btn-primary">Edit</a>
+                            <a href="@Url.Action("Delete", "User", new { id = user.Id })" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,5 @@
 ﻿using System.Text.Json;
 using DAO.BaseModels;
-using DAO.Models;
-using DAO.Models.Devices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Services;
