@@ -61,9 +61,8 @@ public class DeviceController : Controller
                     var houseDevices = _roomService.GetDevicesByRoomId(room.ID);
                     foreach (var device in houseDevices)
                     {
-                        if(deviceMap[device.ID]==1)
+                        if (!deviceMap.TryAdd(device.ID, 1))
                             continue;
-                        deviceMap[device.ID] = 1;
                         devices.Append(device);
                     }
                 }
@@ -105,9 +104,8 @@ public class DeviceController : Controller
                     var houseDevices = _roomService.GetDevicesByRoomId(room.ID);
                     foreach (var device in houseDevices)
                     {
-                        if(deviceMap[device.ID]==1)
+                        if (!deviceMap.TryAdd(device.ID, 1))
                             continue;
-                        deviceMap[device.ID] = 1;
                         devices.Append(device);
                     }
                 }
@@ -151,9 +149,8 @@ public class DeviceController : Controller
                         .Contains(StringProcessHelper.RemoveDiacritics(keyword).ToLower()));
                     foreach (var device in houseDevices)
                     {
-                        if(deviceMap[device.ID]==1)
+                        if (!deviceMap.TryAdd(device.ID, 1))
                             continue;
-                        deviceMap[device.ID] = 1;
                         devices.Append(device);
                     }
                 }

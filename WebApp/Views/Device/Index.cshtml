@@ -285,7 +285,11 @@
             }
             const command = JSON.stringify({
                 method: "setRgbColor",
-                params: [rgb.r, rgb.g, rgb.b]
+                params: {
+                    r: rgb.r,
+                    g: rgb.g,
+                    b: rgb.b
+                }
             });
 
             $.ajax({

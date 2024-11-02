@@ -11,12 +11,14 @@ public class RoomController : Controller
     private readonly IRoomService _roomService;
     private readonly IHouseService _houseService;
     private readonly IUserService _userService;
+    private readonly IDeviceService _deviceService;
 
-    public RoomController(IRoomService roomService, IHouseService houseService, IUserService userService)
+    public RoomController(IRoomService roomService, IHouseService houseService, IUserService userService, IDeviceService deviceService)
     {
         _roomService = roomService;
         _houseService = houseService;
         _userService = userService;
+        _deviceService = deviceService;
     }
 
     [Authorize]
@@ -143,5 +145,19 @@ public class RoomController : Controller
         _roomService.DeleteRoom(roomId);
         return RedirectToAction("Index");
     }
+
     
+    public IActionResult RemoveDeviceFromRoom(int roomId, int deviceId)
+    {
+        _roomService.RemoveDeviceFromRoom(roomId, deviceId);
+        return RedirectToAction("Edit", new { roomId });
+    }
+
+    
+    public IActionResult AddDeviceToRoom(int roomId, int deviceId)
+    {
+        var device = _deviceService.GetDeviceById(deviceId);
+        _roomService.AddDeviceToRoom(roomId, device);
+        return RedirectToAction("Edit", new { roomId });
+    }
 }
