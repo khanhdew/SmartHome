@@ -137,7 +137,7 @@ namespace DAO.Reposistories_Impl
 
         public IEnumerable<House> GetAllHouses()
         {
-            return _context.Houses.ToList();
+            return _context.Houses.Include(h => h.HouseMembers).ToList();
         }
 
         public IEnumerable<House> GetHouseByUserID(string userId)

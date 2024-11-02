@@ -36,13 +36,14 @@ public class AdminController : Controller
     public IActionResult ManageHouses()
     {
         var houses = _houseService.GetHouses();
-        return View();
+        return View(houses);
     }
     
     [Authorize(Roles = "Admin")]
     public IActionResult ManageDevices()
     {
-        return View();
+        var devices = _deviceService.GetDevices();
+        return View(devices);
     }
     
 }

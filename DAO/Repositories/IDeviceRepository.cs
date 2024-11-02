@@ -21,5 +21,6 @@ namespace DAO.Repositories
         DeviceConfig GetDeviceConfigByDeviceId(int deviceId);
         DeviceConfig UpdateDeviceConfig(DeviceConfig deviceConfig);
         bool IsDeviceOwner(string userId, int deviceId);
+        IEnumerable<Device> GetAllDevices();
     }
 }

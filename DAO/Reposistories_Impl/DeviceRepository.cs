@@ -246,5 +246,10 @@ namespace DAO.Reposistories_Impl
 
             return device.UserID == userId;
         }
+
+        public IEnumerable<Device> GetAllDevices()
+        {
+            return _context.Devices.Include(d => d.User).ToList();
+        }
     }
 }

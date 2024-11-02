@@ -55,6 +55,11 @@ public class DeviceService : IDeviceService
         return _deviceRepository.GetDeviceById(deviceId);
     }
 
+    public IEnumerable<Device> GetDevices()
+    {
+        return _deviceRepository.GetAllDevices();
+    }
+
     public IEnumerable<Device> GetDevicesByUserId(string userId)
     {
         return _deviceRepository.GetDevicesByUserId(userId);

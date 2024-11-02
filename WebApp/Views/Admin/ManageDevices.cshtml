@@ -1,9 +1,10 @@
-@model IEnumerable<DAO.BaseModels.User>
+@model System.Collections.Generic.IEnumerable<DAO.BaseModels.Device>
 
 @{
     ViewBag.Title = "title";
     Layout = "_AdminLayout";
 }
+
 <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
     <div class="container-xl px-4">
         <div class="page-header-content pt-4">
@@ -26,33 +27,30 @@
             <table id="datatablesSimple">
                 <thead>
                 <tr>
-                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().UserName) </th>
-                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().Email) </th>
-                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().DisplayName) </th>
-                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().PhoneNumber) </th>
+                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().Name) </th>
+                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().Type) </th>
+                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().DeviceToken) </th>
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
-                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().UserName) </th>
-                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().Email) </th>
-                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().DisplayName) </th>
-                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().PhoneNumber) </th>
+                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().Name) </th>
+                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().Type) </th>
+                    <th>@Html.DisplayNameFor(m => m.FirstOrDefault().DeviceToken) </th>
                     <th>Actions</th>
                 </tr>
                 </tfoot>
                 <tbody>
-                @foreach (var user in Model)
+                @foreach (var device in Model)
                 {
                     <tr>
-                        <td>@user.UserName</td>
-                        <td>@user.Email</td>
-                        <td>@user.DisplayName</td>
-                        <td>@user.PhoneNumber</td>
+                        <td>@device.Name</td>
+                        <td>@device.Type</td>
+                        <td>@device.DeviceToken</td>
                         <td>
-                            <a href="@Url.Action("Edit", "User", new { id = user.Id })" class="btn btn-primary">Edit</a>
-                            <a href="@Url.Action("Delete", "User", new { id = user.Id })" class="btn btn-danger">Delete</a>
+                            <a href="@Url.Action("Edit", "Device", new { id = device.ID })" class="btn btn-primary">Edit</a>
+                            <a href="@Url.Action("Delete", "Device", new { id = device.ID })" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 }
