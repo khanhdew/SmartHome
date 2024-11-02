@@ -1,4 +1,6 @@
-﻿@model IEnumerable<DAO.BaseModels.HouseMember>
+﻿@using System.Security.Claims
+@using Services.Thingsboard_Services.BaseModel
+@model IEnumerable<DAO.BaseModels.HouseMember>
 
 <table class="table">
     <thead>
@@ -32,9 +34,32 @@
                 @Html.DisplayFor(modelItem => item.Role)
             </td>
             <td>
-                <a href="@Url.Action("RemoveHouseMember", "House", new { id = item.ID })">Remove</a> 
+                <a href="@Url.Action("RemoveHouseMember", "House", new { userId = item.UserID, houseId = @ViewBag.HouseId })">Remove</a>
             </td>
         </tr>
     }
     </tbody>
+    <tfoot>
+    <tr>
+        @{
+            var ownerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var houseId = ViewBag.HouseId;
+            var invitationLink = Url.Action("AddUserToHouse", "House", new { ownerId = ownerId, houseId = houseId });
+        }
+        <td>
+            <button onclick="copyToClipboard('@invitationLink')">Copy Invitation Link</button>
+        </td>
+    </tr>
+    </tfoot>
 </table>
+<script>
+    function copyToClipboard(text) {
+        // get window.location.origin
+        let origin = window.location.origin;
+        navigator.clipboard.writeText(origin+text).then(function() {
+            alert('Invitation link copied to clipboard');
+        }, function(err) {
+            console.error('Could not copy text: ', err);
+        });
+    }
+</script>

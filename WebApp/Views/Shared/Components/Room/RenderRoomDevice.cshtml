@@ -4,7 +4,7 @@
 @using Microsoft.EntityFrameworkCore
 @model IEnumerable<DAO.BaseModels.Device>
 @{
-    var roomId = Model.FirstOrDefault()!.RoomID;
+    var roomId = ViewBag.RoomId;
 }
 @* Generate a table of device *@
 <table class="table">

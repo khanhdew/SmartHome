@@ -15,6 +15,7 @@ public class RoomDeviceViewComponent : ViewComponent
     public async Task<IViewComponentResult> InvokeAsync(int roomId)
     {
         var roomDevices = _roomService.GetDevicesByRoomId(roomId);
+        ViewBag.RoomId = roomId;
         return View("~/Views/Shared/Components/Room/RenderRoomDevice.cshtml", roomDevices);
     }
 }

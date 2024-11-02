@@ -115,5 +115,23 @@ namespace WebApp.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult RemoveHouseMember(int houseId, string userId)
+        {
+            if (!_houseService.IsHouseOwner(_userService.GetCurrentUserId(), houseId))
+                return RedirectToAction("AccessDenied", "Account");
+            Console.WriteLine("House ID: " + houseId + " User ID: " + userId);
+            _houseService.RemoveHouseMember(userId, houseId);
+            return RedirectToAction("Edit", new {houseId});
+        }
+
+        public IActionResult AddUserToHouse(string ownerid, int houseid)
+        {
+            if (!_houseService.IsHouseOwner(_userService.GetUserById(ownerid)!.Id, houseid))
+                return RedirectToAction("AccessDenied", "Account");
+            
+            _houseService.AddHouseMember(_userService.GetCurrentUserId(), houseid, "Member");
+            return RedirectToAction("Index");
+        }
     }
 }

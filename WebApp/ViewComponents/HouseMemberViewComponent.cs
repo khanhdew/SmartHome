@@ -13,6 +13,7 @@ public class HouseMemberViewComponent : ViewComponent
     public async Task<IViewComponentResult> InvokeAsync(int houseId)
     {
         var houseMembers = _houseService.GetHouseMembers(houseId);
+        ViewBag.HouseId = houseId;
         return View("~/Views/Shared/Components/House/RenderHouseMember.cshtml", houseMembers);
     }
 }
