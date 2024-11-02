@@ -108,6 +108,7 @@
         var isLoading = false; // Prevent multiple requests
         var allItemsLoaded = false; // Flag to indicate all items are loaded
 
+        
         $('main').on('scroll', function() {
             if ($(window).scrollTop() + $(window).height() >= $(document).height()  && !isLoading) {
                 if (!allItemsLoaded) {
