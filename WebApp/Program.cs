@@ -65,6 +65,8 @@ builder.Services.AddScoped<IDeviceRepository, DeviceRepository>();
 builder.Services.AddScoped<IDeviceService, DeviceService>();
 builder.Services.AddScoped<IThingsboardService, ThingsboardService>();
 
+
+
 // Add MVC services
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
@@ -73,12 +75,16 @@ builder.Services.AddDistributedMemoryCache();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline
-//if (app.Environment.IsDevelopment())
-//{
 
-//}
 app.UseExceptionHandler("/Error/GeneralError");
 app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
+using (var scope = app.Services.CreateScope())
+{
+    var service = scope.ServiceProvider;
+    DbInitializer.Initializer(service);
+}
+
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();

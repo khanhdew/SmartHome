@@ -74,7 +74,7 @@ public class ThingsboardService : IThingsboardService
         };
         _deviceService.AddTelemetryDatum(telemetryDatum);
         // string jsonData = JsonSerializer.Serialize(command, new JsonSerializerOptions { WriteIndented = true });
-        return new Request<object?>(SystemConfiguration.ThingsboardServer + $"api/rpc/oneway/{deviceId}", command,
+        return new Request<object?>(SystemConfiguration.ThingsboardServer + $"api/rpc/oneway/{temp.TbDeviceId}", command,
             _adminToken).Post();
     }
 

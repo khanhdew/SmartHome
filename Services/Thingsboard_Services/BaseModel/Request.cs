@@ -28,7 +28,15 @@ public class Request<T>
             }
 
             var content = new StringContent(Body, Encoding.UTF8, "application/json");
-            var response = client.PostAsync(Url, content).Result;
+
+            var request = client.PostAsync(Url, content);
+            request.Wait();
+            // log request in console color green
+            Console.WriteLine($"\u001b[32mRequest URL: {Url}\u001b[0m");
+            Console.WriteLine($"\u001b[32mRequest Content: {Body}\u001b[0m");
+            
+            
+            var response = request.Result;
 
             // Kiểm tra trạng thái phản hồi
             if (!response.IsSuccessStatusCode)

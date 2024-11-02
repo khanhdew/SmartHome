@@ -246,6 +246,9 @@ body {
 	border-radius: 0 36px 36px 0;
 	cursor: pointer;
 }
+#content nav .hello-user{
+	color: var(--dark);
+}
 #content nav .notification {
 	font-size: 20px;
 	position: relative;
@@ -360,8 +363,8 @@ body {
 .account-menu ul li a {
     color: var(--dark);
     text-decoration: none;
-     
-    font-weight: 500;
+	font-family: var(--poppins);
+	font-weight: 500;
     font-size: 16px;
     transition: color 0.3s ease; 
 }
@@ -598,14 +601,7 @@ body {
 	background-color: var(--red); 
 }
 
-#content main .box-info li button:first-of-type {
-    background-color: var(--blue);
-    color: var(--light);
-}
-#content main .box-info li button:last-of-type {
-	background-color: var(--red);
-    color: var(--light);
-}
+
 
 /* MAIN */
 /* CONTENT */
@@ -636,7 +632,7 @@ body {
 		width: auto;
 		height: auto;
 		background: transparent;
-		border-radius: none;
+		border-radius: 5px;
 		color: var(--dark);
 	}
 
@@ -685,6 +681,7 @@ body {
 	}
 
 }
+
 .no-transition {
 	transition: none !important;
 }
@@ -777,7 +774,7 @@ body {
 .edit-house-page .btn-primary:hover {
 	background-color: var(--dark);
 }
-/*RenderHouse member*/
+/*Render*/
 .table {
 	width: 100%;
 	max-width: 800px; 
@@ -818,48 +815,104 @@ body {
 	margin-top: 4px;
 }
 
-/*//*/
+/*sua nha, sua phong va RENDER*/
 .edit-page-container {
-	display: flex; /* Sử dụng Flexbox để bố trí */
-	justify-content: space-between; /* Đặt khoảng cách giữa hai phần */
-	align-items: flex-start; /* Căn chỉnh phần tử ở đầu */
-	padding: 20px; /* Thêm khoảng cách bên ngoài */
+	display: flex; 
+	justify-content: space-between; 
+
+	padding: 20px; 
 }
 
-.edit-house-page {
-	flex: 1; /* Chiếm một nửa chiều rộng */
-	margin-right: 20px; /* Khoảng cách bên phải giữa hai phần */
+.edit-house-page,.house-members {
+	flex: 1; 
+	margin: 10px; 
 }
 
-.house-members {
-	flex: 1; /* Chiếm một nửa chiều rộng */
-}
-
-/* Định dạng cho các phần */
 .edit-house-page, .house-members {
-	background: var(--light); /* Nền cho các phần */
-	border-radius: 12px; /* Bo góc cho các phần */
-	padding: 20px; /* Khoảng cách bên trong */
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+	background: var(--light);
+	border-radius: 12px; 
+	padding: 20px; 
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Tùy chỉnh cho bảng trong house-members nếu cần */
-.house-members table {
-	width: 100%; /* Đảm bảo bảng chiếm toàn bộ chiều rộng */
-	border-collapse: collapse; /* Xóa khoảng cách giữa các ô */
+
+.container {
+	display: flex;
+	justify-content: space-between; 
+	padding: 20px;
 }
 
-.house-members th, .house-members td {
-	padding: 12px; /* Khoảng cách bên trong ô */
-	text-align: left; /* Căn trái cho văn bản */
-	border-bottom: 1px solid var(--grey); /* Đường viền dưới */
+.edit-house-page, .device-management {
+	flex: 1;
+	margin: 10px; 
 }
+
+.edit-house-page, .device-management {
+	background: var(--light); 
+	border-radius: 12px; 
+	padding: 20px; 
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+/* DELETE */
+.delete-house-container,
+.delete-room-container{
+	padding: 40px;
+	background: var(--light); 
+	border-radius: 12px; 
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+	max-width: 600px; 
+	margin: 20px auto; 
+	font-family: var(--poppins); 
+}
+
+.delete-house-container h1,
+.delete-room-container h1{
+	color: var(--blue); 
+	font-weight: 600; 
+	font-size: 28px; 
+	margin-bottom: 10px; 
+}
+
+.delete-house-container h3,
+.delete-room-container h3{
+	color: var(--dark);
+	font-weight: 400;
+	margin-bottom: 20px; 
+}
+
+.delete-house-container dl,
+.delete-room-container dl{
+	margin-bottom: 20px; 
+}
+
+.delete-house-container dt,
+.delete-room-container dt{
+	font-weight: 500; 
+	color: var(--dark); 
+}
+
+.delete-house-container dd,
+.delete-room-container dd{
+	margin-left: 0; 
+	color: var(--dark); 
+}
+
+.delete-house-container form button,
+.delete-room-container form button,
+.delete-room-container form a,
+.delete-house-container form a{
+	margin-right: 10px; 
+	padding: 10px 20px;
+	color:var(--dark);
+}
+.delete-house-container
+
+
 
 
 /* DEVICES */
-
-/*đèn*/
-#text1 {
+	/*đèn*/
+#textlight {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
@@ -871,6 +924,9 @@ body {
 	overflow: hidden;
 	width: 100vw;
 	height: 100vh;
+}
+.textlight h3{
+	color: var(--dark);
 }
 .lamp-wrapper-main {
 	margin-top: 30px;
@@ -927,7 +983,7 @@ body {
 	filter: blur(20px);
 	z-index: 2;
 	opacity: 0;
-	transition: all 300ms;
+	transition: opacity 0.3s ease;
 }
 .lamp-input {
 	width: 250px;
@@ -988,6 +1044,7 @@ body {
 	background: #0056b3;
 }
 
+
 body[data-light="0"] .lamp-blub,
 body[data-light="0"] .lamp-lamp-shadow {
 	opacity: 0;
@@ -1033,14 +1090,21 @@ body[data-light="10"] .lamp-lamp-shadow {
 	opacity: 1;
 }
 /* quạt */
-.on, .off {
-	position: absolute;
-	border-radius: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	top: 70%;
-	width: 40px;
-	height: 40px;
+#textfan {
+	position: relative;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	overflow: hidden;
+	width: 100vw;
+	height: 100vh;
+}
+.textfan h3{
+	color: var(--dark);
 }
 
 .textfan .on img:hover, .textfan .off img:hover {
@@ -1049,6 +1113,7 @@ body[data-light="10"] .lamp-lamp-shadow {
 
 .textfan .part {
 	margin-top: 90px;
+	margin-bottom: 10px ;
 	position: relative;
 	border: 25px solid var(--grey);
 	box-shadow: 0px 0px 20px 2px var(--light);
@@ -1088,44 +1153,54 @@ body[data-light="10"] .lamp-lamp-shadow {
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+
 .speed-button {
-	width: 40px;
-	height: 40px;
-	margin-right: 500px;
-	color: var(--light);
-	border: none;
+	width: 15px; 
+	height: 25px; 
+	border-radius: 5px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 	cursor: pointer;
-	font-size: 16px;
-	font-weight: 500;
+	font-weight: bold;
 	transition: background-color 0.3s ease, transform 0.2s ease;
 }
-
-.toggle-btn {
-	margin-right: 50px;
-	background-color: #4CAF50;
-	color: white;
-	border-radius: 5px;
-	border: none;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
+.speed-button[data-speed="0.8"],
+.speed-button[data-speed="0.2"],
+.speed-button[data-speed="0.4"]{
+	background-color: var(--blue); 
+}
+.speed-button:hover {
+	background-color: #007BFF; 
+	transform: scale(1.05); 
+}
+.speed-button:active {
+	transform: scale(0.95); 
 }
 
-.toggle-btn:hover {
-	background-color: #45a049;
-}
 
-.textrgb {
+/* rgb */
+#textrgb {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-evenly;
 	align-items: center;
-	margin: 20px;
+	background-color: #282c34;
+	overflow: hidden;
+	width: 100vw;
+	height: 100vh;
 }
-
+.textrgb h3{
+	color: var(--dark);
+}
 .rgb-light {
 	width: 150px;
 	height: 150px;
 	border-radius: 50%;
-	border: 5px solid #ccc;
+	border: 5px solid #fff;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -1150,8 +1225,41 @@ body[data-light="10"] .lamp-lamp-shadow {
 	margin-bottom: 5px;
 	color: var(--dark);
 }
+.toggle-btn fan{
+	margin-top:20px;
+	position: relative;
+	top:-100px;
+}
 
+.toggle-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px; 
+	height: 30px; 
+	margin-bottom:20px;
+	background-color: var(--red); 
+	border: none;
+	border-radius: 50%; 
+	cursor: pointer;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+	transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
 
+.toggle-btn:hover {
+	background-color: #FF4C4C; 
+	box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+	transform: scale(1.05);
+}
+
+.toggle-btn:active {
+	transform: scale(0.95);
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-btn.active {
+	background-color: green; 
+}
 
 .history-section {
 	margin-top: 20px;
@@ -1189,6 +1297,193 @@ body[data-light="10"] .lamp-lamp-shadow {
 }
 
 
+/* ACCOUNT */
+/*SETTING*/
+.settings-section {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 20px; 
+	padding: 20px; 
+	max-width: 1200px; 
+	margin: 0 auto;
+	font-family: var(--poppins);
+}
 
+.setting-item {
+	background: var(--light); 
+	border-radius: 12px; 
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+	padding: 20px;
+	transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
 
+.setting-item:hover {
+	transform: translateY(-5px); 
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); 
+}
 
+.setting-item h3 {
+	color: var(--blue);
+	font-weight: 600; 
+	font-size: 20px; 
+	margin-bottom: 8px;
+}
+
+.setting-item p {
+	color: var(--dark); 
+	font-size: 14px; 
+	margin-bottom: 16px;
+}
+
+.btn {
+	background-color: var(--blue); 
+	color: var(--light); 
+	border: none;
+	padding: 10px 20px; 
+	border-radius: 8px; 
+	font-size: 14px; 
+	cursor: pointer; 
+	transition: background-color 0.3s ease; 
+}
+.btn:hover {
+	background-color: var(--dark); 
+}
+.language-select {
+	width: 100%; 
+	padding: 10px; 
+	font-size: 14px; 
+	background: var(--blue); 
+	color:var(--light);
+	border-radius: 8px; 
+	cursor: pointer;
+}
+.language-select:hover{
+	background-color: var(--dark);
+}
+/* INDEDX */
+.account-info-frame {
+	max-width: 500px;
+	margin: 50px auto;
+	padding: 20px;
+	background-color: var(--light);
+	border-radius: 10px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.account-info-container h2 {
+	text-align: center; 
+	color: var(--dark); 
+	margin-bottom: 20px; 
+}
+
+.form-group {
+	margin-bottom: 15px;
+}
+
+.col-form-label {
+	font-weight: bold; 
+	color: var(--dark); 
+}
+
+.form-control {
+	width: 100%; 
+	padding: 10px; 
+	border-radius: 5px;
+	border: 1px solid var(--grey); 
+	transition: border-color 0.3s; 
+}
+
+.form-control:focus {
+	border-color: var(--blue); 
+	outline: none; 
+}
+
+.btn-primary {
+	width: 100%; 
+	padding: 10px; 
+	border-radius: 5px;
+	background-color: var(--blue); 
+	color: #fff; 
+	font-weight: bold;
+	transition: background-color 0.3s, transform 0.2s; 
+}
+
+.btn-primary:hover {
+	background-color: #0056b3; 
+	transform: scale(1.05);
+}
+
+.btn-primary:active {
+	transform: scale(0.95); 
+}
+
+/* CHANGE PASSWORD */
+.change-password-container {
+	max-width: 500px; 
+	margin: 50px auto; 
+	padding: 20px; 
+	background-color: var(--light); 
+	border-radius: 10px; 
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.change-password-frame {
+	border: 5px solid var(--blue); 
+	border-radius: 15px; 
+	padding: 15px;
+	background-color: var(--light-blue); 
+}
+
+.change-password-container h1 {
+	text-align: center; 
+	color: var(--dark); 
+	margin-bottom: 20px; 
+}
+
+.form-group {
+	margin-bottom: 15px; 
+}
+
+.control-label {
+	font-weight: bold; 
+	color: var(--dark); 
+}
+
+.form-control {
+	width: 100%; 
+	padding: 10px; 
+	border-radius: 5px;
+	border: 1px solid var(--grey); 
+	transition: border-color 0.3s; 
+}
+
+.form-control:focus {
+	border-color: var(--blue); 
+	outline: none; 
+}
+
+.text-danger {
+	font-size: 14px; 
+	color: var(--red); 
+}
+
+.btn-primary {
+	width: 100%; 
+	padding: 10px;
+	border-radius: 5px; 
+	background-color: var(--blue); 
+	color: #fff; 
+	font-weight: bold; 
+	transition: background-color 0.3s, transform 0.2s; 
+}
+
+.btn-primary:hover {
+	background-color: #0056b3; 
+	transform: scale(1.05); 
+}
+
+.btn-primary:active {
+	transform: scale(0.95); 
+}
+
+/* ACCOUNT */

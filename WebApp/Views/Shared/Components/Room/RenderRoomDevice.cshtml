@@ -1,7 +1,11 @@
-﻿@using DAO.Context
+﻿@using System.Security.Claims
+@using DAO.Context
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @using Microsoft.EntityFrameworkCore
 @model IEnumerable<DAO.BaseModels.Device>
-
+@{
+    var roomId = Model.FirstOrDefault()!.RoomID;
+}
 @* Generate a table of device *@
 <table class="table">
     <thead>
@@ -24,6 +28,7 @@
     <tbody>
     @foreach (var item in Model)
     {
+
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -35,13 +40,13 @@
                 @Html.DisplayFor(modelItem => item.User.Email)
             </td>
             <td>
-                <a asp-action="RemoveDeviceFromRoom" asp-controller="Room" asp-route-id="">Remove</a>
+                <a asp-action="RemoveDeviceFromRoom" asp-controller="Room" asp-route-roomId="@roomId" asp-route-deviceId="@item.ID">Remove</a>
             </td>
         </tr>
     }
     @{
         SmartHomeContext context = new SmartHomeContext();
-        var unAssignedDevices = context.Devices.Include(d=>d.User).Where(d => d.RoomID == null).ToList();
+        var unAssignedDevices = context.Devices.Include(d => d.User).Where(d => d.RoomID == null && d.UserID == User.FindFirstValue(ClaimTypes.NameIdentifier)).ToList();
         foreach (var device in unAssignedDevices)
         {
             <tr>
@@ -55,7 +60,7 @@
                     @Html.DisplayFor(modelItem => device.User.Email)
                 </td>
                 <td>
-                    <a asp-action="AddDeviceToRoom" asp-controller="Room" asp-route-id="">Add</a>
+                    <a asp-action="AddDeviceToRoom" asp-controller="Room" asp-route-roomId="@roomId" asp-route-deviceId="@device.ID">Add</a>
                 </td>
             </tr>
         }
