@@ -15,7 +15,7 @@ public class DeviceTelemetryViewComponent : ViewComponent
     public async Task<IViewComponentResult> InvokeAsync(int deviceId)
     {
         // take last 15 telemetry data
-        var telemetryData = _deviceService.GetTelemetryDatumByDeviceId(deviceId).TakeLast(15);
+        var telemetryData = _deviceService.GetTelemetryDataByDeviceId(deviceId).TakeLast(15);
         return View("~/Views/Shared/Components/Device/RenderDeviceTelemetry.cshtml", telemetryData);
     }
 }
