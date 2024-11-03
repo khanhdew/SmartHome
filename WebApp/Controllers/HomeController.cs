@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 using WebApp.Models;
 
 namespace WebApp.Controllers
@@ -13,11 +15,21 @@ namespace WebApp.Controllers
             _logger = logger;
         }
 
+        
         public IActionResult Index()
         {
+            // // show claims
+            // var claims = User.Claims;
+            // foreach (var claim in claims)
+            // {
+            //     Console.WriteLine($"Type: {claim.Type}, Value: {claim.Value}");
+            // }
+            // // show role in claims
+            // var role = User.FindFirst(ClaimTypes.Role)?.Value;
+            // Console.WriteLine($"Role: {role}");
             return View();
         }
-
+        [Authorize]
         public IActionResult Privacy()
         {
             return View();

@@ -1,0 +1,99 @@
+﻿@model IEnumerable<DAO.BaseModels.House>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+<div class="ms-2 mx-2">
+    @* <partial name="Create"/> *@
+    @await Component.InvokeAsync("HouseCreate")
+    <ul class="box-info" id="boxInfoList">
+        @foreach (var item in Model)
+        {
+        <li>
+                <span class="text">
+                    <h3>
+                        <a href='@Url.Action("Index", "Room", new { houseId = @item.ID })'>
+                            @item.Name
+                        </a>
+                    </h3>
+                    <p>@item.Location</p>
+                    <div class="button-group">
+                        <a asp-action="Edit" asp-route-houseId="@item.ID">
+                            <i class="bx bxs-edit"></i>
+                        </a>
+                        <a class="delete" asp-action="Delete" asp-route-houseId="@item.ID">
+                            <i class="bx bxs-trash"></i>
+                        </a>
+                    </div>
+                </span>
+        </li>
+        }
+    </ul>
+</div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            var skip = @Model.Count();
+            var take = 3; // Number of items to load each time
+            var isLoading = false; // Prevent multiple requests
+            var allItemsLoaded = false; // Flag to indicate all items are loaded
+
+            $('main').on('scroll', function() {
+                if ($(window).scrollTop() + $(window).height() >= $(document).height()  && !isLoading) {
+                    if (!allItemsLoaded) {
+                        loadMoreHouses();
+                    }
+                }
+            });
+
+            function loadMoreHouses() {
+                isLoading = true;
+                $("#loading").show();
+                setTimeout(function() { // Add delay
+                    $.ajax({
+                        url: '@Url.Action("LoadMoreHouses", "House")',
+                        type: 'GET',
+                        data: { skip: skip, take: take },
+                        success: function (result) {
+                            if (result.trim() === "") {
+                                // No more items to load
+                                allItemsLoaded = true;
+                            } else {
+                                $("#boxInfoList").append(result);
+                                skip += take;
+                            }
+                            isLoading = false;
+                            $("#loading").hide();
+                        },
+                        error: function () {
+                            isLoading = false;
+                            $("#loading").hide();
+                        }
+                    });
+                }, 500); // Delay of 500ms
+            }
+            
+            $('button.search-btn').click(function(event) {
+                event.preventDefault();
+                var keyword = $('#keyword').val();
+                $.ajax({
+                    url: '@Url.Action("Search", "House")',
+                    type: 'GET',
+                    data: { keyword: keyword },
+                    success: function(data) {
+                        // Assuming you have a div with id 'searchResults' to display the results
+                        $('#boxInfoList').html(data);
+                    },
+                    error: function() {
+                        alert('Error occurred while searching.');
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+

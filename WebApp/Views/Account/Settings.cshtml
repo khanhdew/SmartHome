@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Settings";
+    Layout = "MyLayout";
+}
+
+<h2>Cài đặt</h2>
+<div class="settings-section">
+    <div class="setting-item">
+        <h3>Thông báo</h3>
+        <p>Bật hoặc tắt thông báo.</p>
+        <button class="btn notification-btn">Bật thông báo</button>
+    </div>				
+    <div class="setting-item">
+        <h3>Cập nhật tài khoản</h3>
+        <p>Thay đổi thông tin tài khoản của bạn.</p>
+        <button class="btn" onclick="location.href='@Url.Action("Index", "Account")'">Thông tin tài khoản</button>
+    </div>
+    <div class="setting-item">
+        <h3>Đổi mật khẩu</h3>
+        <p>Đảm bảo tài khoản của bạn an toàn bằng cách đổi mật khẩu thường xuyên.</p>
+        <button class="btn" onclick="location.href='@Url.Action("ChangePassword", "Account")'">Đổi mật khẩu</button>
+    </div>
+    <div class="setting-item">
+        <h3>Ngôn ngữ</h3>
+        <p>Chọn ngôn ngữ cho ứng dụng.</p>
+        <select class="language-select">
+            <option value="en">Tiếng Việt</option>
+            <option value="vi">English</option>
+        </select>
+    </div>
+    <div class="setting-item">
+        <h3>Quyền riêng tư</h3>
+        <p>Quản lý các tùy chọn quyền riêng tư của bạn.</p>
+        <button class="btn">Cài đặt quyền riêng tư</button>
+    </div>
+</div>

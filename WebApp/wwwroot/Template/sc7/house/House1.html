@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="house.css">
+
+	<title>SmartHome-Room</title>
+</head>
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bx-shape-polygon'></i>
+			<span class="text">SmartHome</span>
+		</a>
+		<ul class="side-menu top">
+			<li>
+				<a href="Yourhouse.html">
+					<i class='bx bxs-home-heart'></i>
+					<span class="text">Your house</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="Room.html">
+					<i class='bx bxs-building'></i>
+					<span class="text">Room</span>
+				</a>
+			</li>
+			<li>
+				<a href="Device.html">
+					<i class='bx bxs-devices'></i>
+					<span class="text">Device</span>
+				</a>
+			</li>
+			<li>
+				<a href="Setting.html">
+					<i class='bx bxs-cog' ></i>
+					<span class="text">Settings</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu'></i>	
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="notification">
+				<i class='bx bxs-bell' ></i>
+				<span class="num">3</span>
+			</a>
+			<div class="profile-btn-wrapper">
+				<a href="#" class="profile">
+					<img src="pic1/profile.jpg">
+				</a>
+				<button id="account-btn" class="account-btn">
+					<i class='bx bxs-down-arrow'></i>
+				</button>
+			</div>
+			<div id="account-menu" class="account-menu">
+				<ul>
+					<li><a href="#"><i class='bx bx-user'>Account</i></a></li>
+					<li><a href="#"><i class='bx bx-log-in'>Log out</i></a></li>
+				</ul>
+			</div>
+		</nav>
+		
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+
+			<button id="addBtn" class="addBtn">
+				<i class='bx bxs-message-alt-add'></i>
+			</button> 
+    
+			<div id="addModal" class="modal">
+				<div class="modal-content">
+					<span class="close">&times;</span>
+					<h2>Thêm mới</h2>
+					<form id="addForm">
+						<label for="Name">Tên:</label>
+						<input type="text" id="Name" name="Name" required>
+						<br>
+						<label for="Info">Thông tin:</label>
+						<textarea id="Info" name="Info" rows="4" required></textarea>
+						<br>
+						<button type="submit">Lưu</button>
+					</form>
+				</div>
+			</div>
+
+    		<ul class="box-info" id="boxInfoList">
+				<li>
+					<span class="text">
+						<h3>Livingroom</h3>
+						<p>House 1</p>
+						<button>Sửa</button>
+						<button>Xóa</button>
+					</span>
+				</li>
+				<li>
+					<span class="text">
+						<h3>Bedroom</h3>
+						<p>House 1</p>
+						<button>Sửa</button>
+						<button>Xóa</button>
+					</span>
+				</li>
+				<li>
+					<span class="text">
+						<h3>Diningroom</h3>
+						<p>House 1</p>
+						<button>Sửa</button>
+						<button>Xóa</button>
+					</span>
+				</li>
+			</ul>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	<script src="house.js"></script>
+</body>
+</html>

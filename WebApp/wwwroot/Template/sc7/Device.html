@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="sc7.css">
+
+	<title>SmartHome-Device</title>
+</head>
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bx-shape-polygon'></i>
+			<span class="text">SmartHome</span>
+		</a>
+		<ul class="side-menu top">
+			<li>
+				<a href="Yourhouse.html">
+					<i class='bx bxs-home-heart'></i>
+					<span class="text">Your house</span>
+				</a>
+			</li>
+			<li>
+				<a href="Room.html">
+					<i class='bx bxs-building'></i>
+					<span class="text">Room</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="Device.html">
+					<i class='bx bxs-devices'></i>
+					<span class="text">Device</span>
+				</a>
+			</li>
+			<li>
+				<a href="Setting.html">
+					<i class='bx bxs-cog' ></i>
+					<span class="text">Settings</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu'></i>	
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="notification">
+				<i class='bx bxs-bell' ></i>
+				<span class="num">3</span>
+			</a>
+			<div class="profile-btn-wrapper">
+				<a href="#" class="profile">
+					<img src="pic/profile.jpg">
+				</a>
+				<button id="account-btn" class="account-btn">
+					<i class='bx bxs-down-arrow'></i>
+				</button>
+			</div>
+			<div id="account-menu" class="account-menu">
+				<ul>
+					<li><a href="#"><i class='bx bx-user'>Account</i></a></li>
+					<li><a href="#"><i class='bx bx-log-in'>Log out</i></a></li>
+				</ul>
+			</div>
+		</nav>
+		
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+
+			<button id="addBtn" class="addBtn">
+				<i class='bx bxs-message-alt-add'></i>
+			</button> 
+			<div id="addModal" class="modal">
+				<div class="modal-content">
+					<span class="close">&times;</span>
+					<h2>Thêm mới</h2>
+					<form id="addForm">
+						<label for="Name">Tên:</label>
+						<input type="text" id="Name" name="Name" required>
+						<br>
+						<label for="Info">Thông tin:</label>
+						<textarea id="Info" name="Info" rows="4" required></textarea>
+						<br>
+						<button type="submit">Lưu</button>
+					</form>
+				</div>
+			</div>
+
+    		<ul class="box-info" id="boxInfoList">
+				<li>
+					<span class="textlight">
+						<div class="text 1">
+							<h3>Light</h3>
+							<div class="lamp-wrapper-main">
+								<div class="lamp-rope"></div>
+								<div class="lamp-inner">
+									<div class="lamp-main lamp-bottom"></div>
+									<div class="lamp-blub"></div>
+								</div>
+							</div>
+							<form oninput="document.body.setAttribute('data-light', slider.value)" class="lamp-input">
+								<label for="slider" class="slider-label">Độ sáng:</label>
+								<div class="slider-container">
+									<div class="icon-sun">
+										<i class='bx bxs-sun'></i>
+									</div>
+									<input type="range" id="slider" value="0" min="0" max="10" class="slider">
+								</div>
+							</form>
+						</div>
+					</span>
+				</li>
+				<li>
+					<span class="textfan">
+						<div class="text 2">
+							<h3>Fan</h3>
+							<div class="part">
+								<div class="box">
+									<img src="https://cdn-icons-png.flaticon.com/512/95/95252.png" width="100%" height="100%">
+									<div class="box1"></div>
+								</div>
+							</div>
+							<form class="fan-input">
+								<div class="on"><img src="pic/power.png" width="100%"></div>
+								<div class="off"><img src="pic/power-button.png" width="100%"></div>
+
+							</form>
+							<div>
+								<button class="speed-button" data-speed="0.8">1</button>
+								<button class="speed-button" data-speed="0.2">2</button>
+								
+							</div>
+						</div>
+					</span>
+				</li>
+				<li>
+					<span class="textfan">
+						<div class="text 3">
+							<h3>Led RGB</h3>
+							<div class="rgb-light">
+								<div class="rgb-color"></div>
+							</div>
+							<form class="rgb-input">
+								<label for="color-picker" class="color-label">Chọn màu:</label>
+								<input type="color" id="color-picker" value="#ff0000">
+								<button type="button" id="toggle-button" class="toggle-btn">Bật/Tắt</button>
+							</form>
+							
+						</div>
+						</div>
+					</span>
+				</li>
+				
+				
+			</ul>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="sc7.js"></script>
+</body>
+</html>

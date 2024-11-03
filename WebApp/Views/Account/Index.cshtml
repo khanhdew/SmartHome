@@ -1,0 +1,38 @@
+﻿
+@model DAO.BaseModels.User
+
+@{
+    ViewBag.Title = "Thông tin tài khoản";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+<div class="account-info-frame">
+    <h2>Thông tin tài khoản</h2>
+    <form asp-action="Edit" method="post">
+        <div class="form-group row">
+            <label asp-for="UserName" class="col-sm-2 col-form-label">UserName</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" asp-for="UserName" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="DisplayName" class="col-sm-2 col-form-label">Tên</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" asp-for="DisplayName">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" asp-for="Email">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="PhoneNumber" class="col-sm-2 col-form-label">Số điện thoại</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" asp-for="PhoneNumber">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Chỉnh sửa</button>
+    </form>
+</div>
+
