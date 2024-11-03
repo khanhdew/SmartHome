@@ -11,7 +11,7 @@ namespace DAO.BaseModels
         public Device()
         {
             DeviceConfigs = new HashSet<DeviceConfig>();
-            TelemetryData = new HashSet<TelemetryDatum>();
+            TelemetryData = new HashSet<TelemetryData>();
         }
 
         [Key]
@@ -38,7 +38,7 @@ namespace DAO.BaseModels
         [InverseProperty("Device")]
         public virtual ICollection<DeviceConfig> DeviceConfigs { get; set; }
         [InverseProperty("Device")]
-        public virtual ICollection<TelemetryDatum> TelemetryData { get; set; }
+        public virtual ICollection<TelemetryData> TelemetryData { get; set; }
 
         public override string ToString()
         {

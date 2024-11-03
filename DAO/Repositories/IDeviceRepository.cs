@@ -15,8 +15,8 @@ namespace DAO.Repositories
         Device UpdateDevice(Device device);
         Device GetDeviceById(int deviceId);
         IEnumerable<Device> GetDevicesByUserId(string userId);
-        TelemetryDatum AddTelemetryDatum(TelemetryDatum telemetryDatum);
-        IEnumerable<TelemetryDatum> GetTelemetryDataByDeviceId(int deviceId);
+        TelemetryData AddTelemetryDatum(TelemetryData telemetryData);
+        IEnumerable<TelemetryData> GetTelemetryDataByDeviceId(int deviceId);
         DeviceConfig AddDeviceConfig(DeviceConfig deviceConfig);
         DeviceConfig GetDeviceConfigByDeviceId(int deviceId);
         DeviceConfig UpdateDeviceConfig(DeviceConfig deviceConfig);

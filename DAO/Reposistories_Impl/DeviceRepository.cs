@@ -133,20 +133,20 @@ namespace DAO.Reposistories_Impl
             }
         }
 
-        public TelemetryDatum AddTelemetryDatum(TelemetryDatum telemetryDatum)
+        public TelemetryData AddTelemetryDatum(TelemetryData telemetryData)
         {
             // check if device exists
-            var device = _context.Devices.FirstOrDefault(d => d.ID == telemetryDatum.DeviceID);
+            var device = _context.Devices.FirstOrDefault(d => d.ID == telemetryData.DeviceID);
             if (device == null)
             {
                 throw new Exception("Device not found");
             }
-            _context.TelemetryData.Add(telemetryDatum);
+            _context.TelemetryData.Add(telemetryData);
             _context.SaveChanges();
-            return telemetryDatum;
+            return telemetryData;
         }
 
-        public IEnumerable<TelemetryDatum> GetTelemetryDataByDeviceId(int deviceId)
+        public IEnumerable<TelemetryData> GetTelemetryDataByDeviceId(int deviceId)
         {
             try
             {

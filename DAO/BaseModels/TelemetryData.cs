@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAO.BaseModels
 {
-    public partial class TelemetryDatum
+    public partial class TelemetryData
     {
         [Key]
         public int ID { get; set; }

@@ -4,6 +4,7 @@ using Configuration;
 using DAO.BaseModels;
 using DAO.Models;
 using DAO.Models.Devices;
+using Microsoft.Extensions.Logging;
 using Services.Services;
 using Services.Thingsboard_Services.BaseModel;
 
@@ -13,9 +14,12 @@ public class ThingsboardService : IThingsboardService
 {
     private Token _adminToken;
     private readonly IDeviceService _deviceService;
-    public ThingsboardService(IDeviceService deviceService)
+    private readonly ILogger<ThingsboardService> _logger;
+
+    public ThingsboardService(IDeviceService deviceService, ILogger<ThingsboardService> logger)
     {
         _deviceService = deviceService;
+        _logger = logger;
         _adminToken = GetAdminToken();
     }
     public Token? Login(Account account)
@@ -67,15 +71,50 @@ public class ThingsboardService : IThingsboardService
     {
         var temp = _deviceService.GetDeviceById(deviceId);
         if (temp == null) return null;
-        TelemetryDatum telemetryDatum = new()
+        try
         {
-            DeviceID = temp.ID,
-            Body = command
-        };
-        _deviceService.AddTelemetryDatum(telemetryDatum);
-        // string jsonData = JsonSerializer.Serialize(command, new JsonSerializerOptions { WriteIndented = true });
-        return new Request<object?>(SystemConfiguration.ThingsboardServer + $"api/rpc/oneway/{temp.TbDeviceId}", command,
-            _adminToken).Post();
+            var response = new Request<object?>(
+                SystemConfiguration.ThingsboardServer + $"api/rpc/oneway/{temp.TbDeviceId}",
+                command,
+                _adminToken).Post();
+            TelemetryData telemetryData = new()
+            {
+                DeviceID = temp.ID,
+                Body = command
+            };
+            _deviceService.AddTelemetryDatum(telemetryData);
+            return response;
+        }
+        catch (HttpRequestException e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        catch (UnauthorizedAccessException e)
+        {
+            _logger.LogError(e, "UnauthorizedAccessException: {Message}", e.Message);
+            throw new UnauthorizedAccessException("Unauthorized");
+        }
+        catch (ArgumentException e)
+        {
+            _logger.LogError(e, "ArgumentException: {Message}", e.Message);
+            throw new ArgumentException("Device already registered with this device token");
+        }
+        catch (TimeoutException e)
+        {
+            _logger.LogError(e, "TimeoutException: {Message}", e.Message);
+            throw new TimeoutException("Device is offline");
+        }
+        catch (KeyNotFoundException e)
+        {
+            _logger.LogError(e, "KeyNotFoundException: {Message}", e.Message);
+            throw new KeyNotFoundException("Device not found");
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Exception: {Message}", e.Message);
+            throw;
+        }
     }
 
     private object decodeControlCommand(Device device,string command, int? dim = null, int? R = null, int? G = null, int? B = null)

@@ -11,8 +11,8 @@ public interface IDeviceService
     public IEnumerable<Device> GetDevices();
     public IEnumerable<Device> GetDevicesByUserId(string userId);
     public void DeleteDevice(int deviceId);
-    public TelemetryDatum AddTelemetryDatum(TelemetryDatum telemetryDatum);
-    public IEnumerable<TelemetryDatum> GetTelemetryDataByDeviceId(int deviceId);
+    public TelemetryData AddTelemetryDatum(TelemetryData telemetryData);
+    public IEnumerable<TelemetryData> GetTelemetryDataByDeviceId(int deviceId);
     public DeviceConfig AddDeviceConfig(DeviceConfig deviceConfig);
     public DeviceConfig GetDeviceConfigByDeviceId(int deviceId);
     public DeviceConfig UpdateDeviceConfig(DeviceConfig deviceConfig);

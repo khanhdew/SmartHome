@@ -21,7 +21,7 @@ namespace DAO.Context
         public virtual DbSet<House> Houses { get; set; } = null!;
         public virtual DbSet<HouseMember> HouseMembers { get; set; } = null!;
         public virtual DbSet<Room> Rooms { get; set; } = null!;
-        public virtual DbSet<TelemetryDatum> TelemetryData { get; set; } = null!;
+        public virtual DbSet<TelemetryData> TelemetryData { get; set; } = null!;
         public virtual DbSet<UserPreference> UserPreferences { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -98,7 +98,7 @@ namespace DAO.Context
                     .HasConstraintName("FK__Room__HouseID__5165187F");
             });
 
-            modelBuilder.Entity<TelemetryDatum>(entity =>
+            modelBuilder.Entity<TelemetryData>(entity =>
             {
                 entity.Property(e => e.Timestamp).HasDefaultValueSql("(getdate())");
 
