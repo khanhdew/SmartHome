@@ -62,6 +62,46 @@ public class ThingsboardService : IThingsboardService
         return new Request<object?>(SystemConfiguration.ThingsboardServer + "api/device-with-credentials", jsonData, _adminToken).Post();
     }
 
+    public object? DeleteDevice(int deviceId)
+    {
+        var temp = _deviceService.GetDeviceById(deviceId);
+        if (temp == null) return null;
+        try
+        {
+            return new Request<object?>(SystemConfiguration.ThingsboardServer + $"api/device/{temp.TbDeviceId}", null, _adminToken).Delete();
+        }
+        catch (HttpRequestException e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        catch (UnauthorizedAccessException e)
+        {
+            _logger.LogError(e, "UnauthorizedAccessException: {Message}", e.Message);
+            throw new UnauthorizedAccessException("Unauthorized");
+        }
+        catch (ArgumentException e)
+        {
+            _logger.LogError(e, "ArgumentException: {Message}", e.Message);
+            throw new ArgumentException("Device already registered with this device token");
+        }
+        catch (TimeoutException e)
+        {
+            _logger.LogError(e, "TimeoutException: {Message}", e.Message);
+            throw new TimeoutException("Device is offline");
+        }
+        catch (KeyNotFoundException e)
+        {
+            _logger.LogError(e, "KeyNotFoundException: {Message}", e.Message);
+            throw new KeyNotFoundException("Device not found");
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Exception: {Message}", e.Message);
+            throw;
+        }
+    }
+
     public object AssignDeviceToCustomer(string deviceId, string customerId)
     {
         throw new NotImplementedException();

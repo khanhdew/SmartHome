@@ -98,4 +98,43 @@ public class Request<T>
             return default; // Hoặc ném ngoại lệ tùy theo nhu cầu của bạn
         }
     }
+
+    public object? Delete()
+    {
+        using HttpClient client = new HttpClient();
+
+        if (Token != null)
+        {
+            client.DefaultRequestHeaders.Add("X-Authorization", "Bearer " + Token.token);
+        }
+
+        var request = client.DeleteAsync(Url);
+        request.Wait();
+        // log request in console color green
+        Console.WriteLine($"\u001b[32mRequest URL: {Url}\u001b[0m");
+
+        var response = request.Result;
+
+        // Kiểm tra trạng thái phản hồi
+
+        // Check response status
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorMessage = response.Content.ReadAsStringAsync().Result;
+            switch (response.StatusCode)
+            {
+                case HttpStatusCode.Unauthorized:
+                    throw new UnauthorizedAccessException();
+                case HttpStatusCode.BadRequest:
+                    throw new ArgumentException();
+                case HttpStatusCode.NotFound:
+                    throw new KeyNotFoundException();
+                case HttpStatusCode.GatewayTimeout:
+                    throw new TimeoutException();
+                
+            }
+        }
+
+        return null;
+    }
 }

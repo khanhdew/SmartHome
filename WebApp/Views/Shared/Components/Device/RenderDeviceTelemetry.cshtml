@@ -1,0 +1,31 @@
+@using Newtonsoft.Json.Linq
+@model IEnumerable<DAO.BaseModels.TelemetryDatum>
+<table>
+    <thead>
+    <tr>
+        <th>Action</th>
+        <th>Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @{
+                    var body = item.Body;
+                    var json = JObject.Parse(body);
+                    var action = json["method"];
+                    var param = json["params"];
+                <text>
+                    @action @param
+                </text>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timestamp)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
