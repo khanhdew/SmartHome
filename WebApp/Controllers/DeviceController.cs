@@ -209,27 +209,27 @@ public class DeviceController : Controller
         catch (UnauthorizedAccessException e)
         {
             _logger.LogError(e, "UnauthorizedAccessException: {Message}", e.Message);
-            return StatusCode(401, new { message = "Error while controlling device", details = e.Message });
+            return StatusCode(401, new { message = "Unauthorized access while controlling device", details = e.Message });
         }
         catch (ArgumentException e)
         {
             _logger.LogError(e, "ArgumentException: {Message}", e.Message);
-            return StatusCode(400, new { message = "Error while controlling device", details = e.Message });
+            return StatusCode(400, new { message = "Invalid argument while controlling device", details = e.Message });
         }
         catch (TimeoutException e)
         {
             _logger.LogError(e, "TimeoutException: {Message}", e.Message);
-            return StatusCode(504, new { message = "Error while controlling device", details = e.Message });
+            return StatusCode(504, new { message = "Request timed out while controlling device", details = e.Message });
         }
         catch (KeyNotFoundException e)
         {
             _logger.LogError(e, "KeyNotFoundException: {Message}", e.Message);
-            return StatusCode(404, new { message = "Error while controlling device", details = e.Message });
+            return StatusCode(404, new { message = "Device not found", details = e.Message });
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "Error while controlling device");
-            throw;
+            _logger.LogError(e, "An unexpected error occurred: {Message}", e.Message);
+            return StatusCode(500, new { message = "An unexpected error occurred while controlling device", details = "Please check the server logs for more details." });
         }
         return Ok();
     }

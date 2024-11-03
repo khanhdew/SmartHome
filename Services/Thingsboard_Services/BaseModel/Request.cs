@@ -2,7 +2,6 @@
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
-
 namespace Services.Thingsboard_Services.BaseModel;
 
 public class Request<T>
@@ -60,9 +59,17 @@ public class Request<T>
 
 
         var responseString = response.Content.ReadAsStringAsync().Result;
-
-        // Deserialize JSON thành đối tượng loại T
-        return JsonSerializer.Deserialize<T>(responseString);
+        try
+        {
+            var result = JsonSerializer.Deserialize<T>(responseString);
+            // Deserialize JSON thành đối tượng loại T
+            return result;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return default;
+        }
     }
 
 
@@ -89,12 +96,6 @@ public class Request<T>
         {
             // Xử lý lỗi kết nối tại đây
             Console.WriteLine($"Request error: {ex.Message}");
-            return default; // Hoặc ném ngoại lệ tùy theo nhu cầu của bạn
-        }
-        catch (JsonException ex)
-        {
-            // Xử lý lỗi deserialize tại đây
-            Console.WriteLine($"JSON deserialization error: {ex.Message}");
             return default; // Hoặc ném ngoại lệ tùy theo nhu cầu của bạn
         }
     }

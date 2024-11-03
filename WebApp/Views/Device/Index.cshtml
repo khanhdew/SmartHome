@@ -147,15 +147,18 @@
         $('button.search-btn').click(function(event) {
             event.preventDefault();
             var keyword = $('#keyword').val();
+            $('#loading').show();
             $.ajax({
                 url: '@Url.Action("Search", "Device")',
                 type: 'GET',
                 data: { keyword: keyword },
                 success: function(data) {
                     // Assuming you have a div with id 'searchResults' to display the results
+                    $('#loading').hide();
                     $('#boxInfoList').html(data);
                 },
                 error: function() {
+                    $('#loading').hide();
                     alert('Error occurred while searching.');
                 }
             });
@@ -177,7 +180,7 @@
                 method: "setLedDim",
                 params: brightness * 25.5
             });
-
+            $('#loading').show();
             $.ajax({
                 url: '@Url.Action("Control", "Device")',
                 type: 'POST',
@@ -186,9 +189,11 @@
                     command: command
                 },
                 success: function() {
+                    $('#loading').hide();
                 },
                 error: function(xhr) {
                     var errorMessage = xhr.responseText ? xhr.responseText : 'Error occurred while controlling the device.';
+                    $('#loading').hide();
                     alert(errorMessage);
                 }
             });
@@ -201,7 +206,7 @@
                 method: "setLedStatus",
                 params: isOn ? 0 : 1
             });
-
+            $('#loading').show();
             $.ajax({
                 url: '@Url.Action("Control", "Device")',
                 type: 'POST',
@@ -210,10 +215,12 @@
                     command: command
                 },
                 success: function() {
+                    $('#loading').hide();
                     $(this).toggleClass('on off');
                 }.bind(this),
                 error: function(xhr) {
                     var errorMessage = xhr.responseText ? xhr.responseText : 'Error occurred while controlling the device.';
+                    $('#loading').hide();
                     alert(errorMessage);
                 }
             });
@@ -229,6 +236,7 @@
                 method: "setFanStatus",
                 params: isOn ? 0 : 1
             });
+            $('#loading').show();
 
             $.ajax({
                 url: '@Url.Action("Control", "Device")',
@@ -238,11 +246,13 @@
                     command: command
                 },
                 success: function() {
+                    $('#loading').hide();
                     $(this).toggleClass('on off');
                     $(this).closest('li').find('.box img').css("animation", isOn ? "none" : `rotateon ${currentSpeed}s infinite linear`);
                 }.bind(this),
                 error: function(xhr) {
                     var errorMessage = xhr.responseText ? xhr.responseText : 'Error occurred while controlling the device.';
+                    $('#loading').hide();
                     alert(errorMessage);
                 }
             });
@@ -256,6 +266,7 @@
                 method: "setFanSpeed",
                 params: speed * 85
             });
+            $('#loading').show();
 
             $.ajax({
                 url: '@Url.Action("Control", "Device")',
@@ -265,12 +276,15 @@
                     command: command
                 },
                 success: function() {
+                    $('#loading').hide();
                     if ($('.toggle-btn.fan').hasClass('off')) {
                         $(this).closest('li').find('.box img').css("animation", `rotateon ${currentSpeed}s infinite linear`);
                     }
+                    
                 }.bind(this),
                 error: function(xhr) {
                     var errorMessage = xhr.responseText ? xhr.responseText : 'Error occurred while controlling the device.';
+                    $('#loading').hide();
                     alert(errorMessage);
                 }
             });
@@ -295,6 +309,7 @@
                     b: rgb.b
                 }
             });
+            $('#loading').show();
 
             $.ajax({
                 url: '@Url.Action("Control", "Device")',
@@ -306,9 +321,11 @@
                 success: function() {
                     $(this).closest('li').find('.rgb-color').css('background-color', rgbIsOn ? color : 'transparent');
                     $(this).toggleClass('on off');
+                    $('#loading').hide();
                 }.bind(this),
                 error: function(xhr) {
                     var errorMessage = xhr.responseText ? xhr.responseText : 'Error occurred while controlling the device.';
+                    $('#loading').hide();
                     alert(errorMessage);
                 }
             });
@@ -320,8 +337,8 @@
             const g = (bigint >> 8) & 255;
             const b = bigint & 255;
             return { r, g, b };
-        }
-        
+        };
+
     });
 </script>
 }

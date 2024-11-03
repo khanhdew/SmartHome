@@ -95,11 +95,6 @@ public class ThingsboardService : IThingsboardService
             _logger.LogError(e, "KeyNotFoundException: {Message}", e.Message);
             throw new KeyNotFoundException("Device not found");
         }
-        catch (Exception e)
-        {
-            _logger.LogError(e, "Exception: {Message}", e.Message);
-            throw;
-        }
     }
 
     public object AssignDeviceToCustomer(string deviceId, string customerId)
@@ -110,13 +105,13 @@ public class ThingsboardService : IThingsboardService
     public object? ControlDevice(int deviceId, string command)
     {
         var temp = _deviceService.GetDeviceById(deviceId);
-        if (temp == null) return null;
         try
         {
             var response = new Request<object?>(
                 SystemConfiguration.ThingsboardServer + $"api/rpc/oneway/{temp.TbDeviceId}",
                 command,
                 _adminToken).Post();
+            
             TelemetryData telemetryData = new()
             {
                 DeviceID = temp.ID,
@@ -124,11 +119,6 @@ public class ThingsboardService : IThingsboardService
             };
             _deviceService.AddTelemetryDatum(telemetryData);
             return response;
-        }
-        catch (HttpRequestException e)
-        {
-            Console.WriteLine(e);
-            throw;
         }
         catch (UnauthorizedAccessException e)
         {
@@ -149,11 +139,6 @@ public class ThingsboardService : IThingsboardService
         {
             _logger.LogError(e, "KeyNotFoundException: {Message}", e.Message);
             throw new KeyNotFoundException("Device not found");
-        }
-        catch (Exception e)
-        {
-            _logger.LogError(e, "Exception: {Message}", e.Message);
-            throw;
         }
     }
 
