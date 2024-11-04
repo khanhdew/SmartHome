@@ -524,7 +524,7 @@ body {
 	margin-top: 30px;
 }
 #content main .box-info li {
-    padding: 24px 0px 0px 24px;
+    padding: 24px  24px;
     background: var(--light);
     border-radius: 30px;
     display: flex;
@@ -556,7 +556,7 @@ body {
 }
 #content main .box-info li .text {
     position: relative;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
 }
 #content main .box-info li span p {
 	padding-bottom: 30px;
@@ -690,7 +690,7 @@ body {
 }
 #content main .box-info {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(4, 1fr); 
     grid-gap: 24px; 
     margin-top: 36px;
 }
@@ -908,12 +908,43 @@ body {
 	padding: 10px 20px;
 	color:var(--dark);
 }
-.delete-house-container
 
 
 
 
 /* DEVICES */
+.device-top {
+	display: flex; /* Sử dụng flexbox để căn chỉnh nội dung */
+	justify-content: space-between; /* Căn giữa khoảng cách giữa tiêu đề và nút */
+	align-items: center; /* Căn giữa theo chiều dọc */
+	padding: 10px; /* Thêm khoảng đệm */
+
+}
+
+.device-top h3 {
+	margin: 0; /* Xóa khoảng cách mặc định */
+	font-size: 1.2em; /* Kích thước chữ cho tiêu đề */
+	flex-grow: 1; /* Để tiêu đề chiếm không gian còn lại */
+}
+
+.btn-container-device {
+	display: flex; /* Sử dụng flexbox để căn chỉnh các nút */
+	gap: 5px; /* Khoảng cách giữa các nút */
+}
+
+
+.btn-container-device a {
+	display: inline-block; /* Để các nút được căn chỉnh đúng cách */
+	padding: 5px 5px; /* Thêm khoảng đệm cho nút */
+	
+	border-radius: 5px; /* Bo góc cho nút */
+	text-decoration: none; /* Xóa gạch chân */
+	transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền */
+}
+
+.btn-container-device a:hover {
+	background-color: var(--blue); /* Màu nền khi hover */
+}
 
 	/*đèn*/
 #textlight {
@@ -1211,7 +1242,7 @@ body[data-light="10"] .lamp-lamp-shadow {
 	align-items: center;
 	justify-content: center;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-	margin: 30px 0;
+	margin: 30px ;
 }
 
 .rgb-color {
@@ -1258,9 +1289,7 @@ body[data-light="10"] .lamp-lamp-shadow {
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.toggle-btn.active {
-	background-color: green; 
-}
+
 
 .history-section {
 	margin-top: 20px;
