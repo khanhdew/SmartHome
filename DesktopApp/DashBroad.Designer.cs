@@ -33,16 +33,16 @@
             PanelMenu = new Krypton.Toolkit.KryptonPanel();
             menuDevice = new FontAwesome.Sharp.IconButton();
             menuRoom = new FontAwesome.Sharp.IconButton();
-            iconButton6 = new FontAwesome.Sharp.IconButton();
-            iconButton7 = new FontAwesome.Sharp.IconButton();
+            menuSetting = new FontAwesome.Sharp.IconButton();
+            menuExit = new FontAwesome.Sharp.IconButton();
             menuHome = new FontAwesome.Sharp.IconButton();
             panel2 = new Panel();
             btnMenu = new FontAwesome.Sharp.IconButton();
             AnhLogo = new PictureBox();
             PanelTitleBar = new Krypton.Toolkit.KryptonPanel();
             DashMode = new FontAwesome.Sharp.IconButton();
-            iconButton8 = new FontAwesome.Sharp.IconButton();
-            iconButton9 = new FontAwesome.Sharp.IconButton();
+            navTenUser = new FontAwesome.Sharp.IconButton();
+            navBacham = new FontAwesome.Sharp.IconButton();
             label1 = new Label();
             PanelMain = new Krypton.Toolkit.KryptonPanel();
             MenuBaCham = new ContextMenuStrip(components);
@@ -62,20 +62,21 @@
             // 
             PanelMenu.Controls.Add(menuDevice);
             PanelMenu.Controls.Add(menuRoom);
-            PanelMenu.Controls.Add(iconButton6);
-            PanelMenu.Controls.Add(iconButton7);
+            PanelMenu.Controls.Add(menuSetting);
+            PanelMenu.Controls.Add(menuExit);
             PanelMenu.Controls.Add(menuHome);
             PanelMenu.Controls.Add(panel2);
             PanelMenu.Dock = DockStyle.Left;
             PanelMenu.Location = new Point(0, 0);
             PanelMenu.Name = "PanelMenu";
             PanelMenu.Size = new Size(218, 730);
-            PanelMenu.StateNormal.Color1 = Color.FromArgb(97, 102, 246);
+            PanelMenu.StateNormal.Color1 = Color.FromArgb(0, 105, 91);
+            PanelMenu.StateNormal.Color2 = Color.Transparent;
             PanelMenu.TabIndex = 1;
             // 
             // menuDevice
             // 
-            menuDevice.BackColor = Color.FromArgb(97, 102, 246);
+            menuDevice.BackColor = Color.Transparent;
             menuDevice.Dock = DockStyle.Top;
             menuDevice.FlatAppearance.BorderSize = 0;
             menuDevice.FlatStyle = FlatStyle.Flat;
@@ -99,7 +100,7 @@
             // 
             // menuRoom
             // 
-            menuRoom.BackColor = Color.FromArgb(97, 102, 246);
+            menuRoom.BackColor = Color.Transparent;
             menuRoom.Dock = DockStyle.Top;
             menuRoom.FlatAppearance.BorderSize = 0;
             menuRoom.FlatStyle = FlatStyle.Flat;
@@ -121,55 +122,55 @@
             menuRoom.UseVisualStyleBackColor = false;
             menuRoom.Click += menuRoom_Click;
             // 
-            // iconButton6
+            // menuSetting
             // 
-            iconButton6.BackColor = Color.FromArgb(97, 102, 246);
-            iconButton6.Dock = DockStyle.Bottom;
-            iconButton6.FlatAppearance.BorderSize = 0;
-            iconButton6.FlatStyle = FlatStyle.Flat;
-            iconButton6.Font = new Font("Cascadia Code SemiBold", 4.2F, FontStyle.Bold, GraphicsUnit.Millimeter);
-            iconButton6.ForeColor = Color.White;
-            iconButton6.IconChar = FontAwesome.Sharp.IconChar.Cog;
-            iconButton6.IconColor = Color.White;
-            iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton6.IconSize = 33;
-            iconButton6.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton6.Location = new Point(0, 620);
-            iconButton6.Name = "iconButton6";
-            iconButton6.Padding = new Padding(3);
-            iconButton6.Size = new Size(218, 63);
-            iconButton6.TabIndex = 9;
-            iconButton6.Tag = "Setting";
-            iconButton6.Text = "Setting";
-            iconButton6.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton6.UseVisualStyleBackColor = false;
+            menuSetting.BackColor = Color.Transparent;
+            menuSetting.Dock = DockStyle.Bottom;
+            menuSetting.FlatAppearance.BorderSize = 0;
+            menuSetting.FlatStyle = FlatStyle.Flat;
+            menuSetting.Font = new Font("Cascadia Code SemiBold", 4.2F, FontStyle.Bold, GraphicsUnit.Millimeter);
+            menuSetting.ForeColor = Color.White;
+            menuSetting.IconChar = FontAwesome.Sharp.IconChar.Cog;
+            menuSetting.IconColor = Color.White;
+            menuSetting.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            menuSetting.IconSize = 33;
+            menuSetting.ImageAlign = ContentAlignment.MiddleLeft;
+            menuSetting.Location = new Point(0, 620);
+            menuSetting.Name = "menuSetting";
+            menuSetting.Padding = new Padding(3);
+            menuSetting.Size = new Size(218, 63);
+            menuSetting.TabIndex = 9;
+            menuSetting.Tag = "Setting";
+            menuSetting.Text = "Setting";
+            menuSetting.TextImageRelation = TextImageRelation.ImageBeforeText;
+            menuSetting.UseVisualStyleBackColor = false;
             // 
-            // iconButton7
+            // menuExit
             // 
-            iconButton7.BackColor = Color.FromArgb(97, 102, 246);
-            iconButton7.Dock = DockStyle.Bottom;
-            iconButton7.FlatAppearance.BorderSize = 0;
-            iconButton7.FlatStyle = FlatStyle.Flat;
-            iconButton7.Font = new Font("Cascadia Code SemiBold", 4.2F, FontStyle.Bold, GraphicsUnit.Millimeter);
-            iconButton7.ForeColor = Color.White;
-            iconButton7.IconChar = FontAwesome.Sharp.IconChar.SignOut;
-            iconButton7.IconColor = Color.White;
-            iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton7.IconSize = 33;
-            iconButton7.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton7.Location = new Point(0, 683);
-            iconButton7.Name = "iconButton7";
-            iconButton7.Padding = new Padding(10, 0, 0, 0);
-            iconButton7.Size = new Size(218, 47);
-            iconButton7.TabIndex = 7;
-            iconButton7.Tag = "Exit";
-            iconButton7.Text = "Exit";
-            iconButton7.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton7.UseVisualStyleBackColor = false;
+            menuExit.BackColor = Color.Transparent;
+            menuExit.Dock = DockStyle.Bottom;
+            menuExit.FlatAppearance.BorderSize = 0;
+            menuExit.FlatStyle = FlatStyle.Flat;
+            menuExit.Font = new Font("Cascadia Code SemiBold", 4.2F, FontStyle.Bold, GraphicsUnit.Millimeter);
+            menuExit.ForeColor = Color.White;
+            menuExit.IconChar = FontAwesome.Sharp.IconChar.SignOut;
+            menuExit.IconColor = Color.White;
+            menuExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            menuExit.IconSize = 33;
+            menuExit.ImageAlign = ContentAlignment.MiddleLeft;
+            menuExit.Location = new Point(0, 683);
+            menuExit.Name = "menuExit";
+            menuExit.Padding = new Padding(10, 0, 0, 0);
+            menuExit.Size = new Size(218, 47);
+            menuExit.TabIndex = 7;
+            menuExit.Tag = "Exit";
+            menuExit.Text = "Exit";
+            menuExit.TextImageRelation = TextImageRelation.ImageBeforeText;
+            menuExit.UseVisualStyleBackColor = false;
             // 
             // menuHome
             // 
-            menuHome.BackColor = Color.FromArgb(97, 102, 246);
+            menuHome.BackColor = Color.Transparent;
             menuHome.Dock = DockStyle.Top;
             menuHome.FlatAppearance.BorderSize = 0;
             menuHome.FlatStyle = FlatStyle.Flat;
@@ -194,7 +195,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.FromArgb(97, 102, 246);
+            panel2.BackColor = Color.Transparent;
             panel2.Controls.Add(btnMenu);
             panel2.Controls.Add(AnhLogo);
             panel2.Dock = DockStyle.Top;
@@ -205,6 +206,7 @@
             // 
             // btnMenu
             // 
+            btnMenu.BackColor = Color.Transparent;
             btnMenu.Dock = DockStyle.Top;
             btnMenu.FlatAppearance.BorderSize = 0;
             btnMenu.FlatStyle = FlatStyle.Flat;
@@ -212,23 +214,24 @@
             btnMenu.IconColor = Color.White;
             btnMenu.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnMenu.IconSize = 35;
-            btnMenu.Location = new Point(132, 0);
+            btnMenu.Location = new Point(138, 0);
             btnMenu.Name = "btnMenu";
             btnMenu.Padding = new Padding(10);
-            btnMenu.Size = new Size(86, 53);
+            btnMenu.Size = new Size(80, 59);
             btnMenu.TabIndex = 0;
             btnMenu.Tag = "Menu";
             btnMenu.TextAlign = ContentAlignment.MiddleLeft;
-            btnMenu.UseVisualStyleBackColor = true;
+            btnMenu.UseVisualStyleBackColor = false;
             btnMenu.Click += btnMenu_Click;
             // 
             // AnhLogo
             // 
+            AnhLogo.BackColor = Color.Transparent;
             AnhLogo.Dock = DockStyle.Left;
             AnhLogo.Image = (Image)resources.GetObject("AnhLogo.Image");
             AnhLogo.Location = new Point(0, 0);
             AnhLogo.Name = "AnhLogo";
-            AnhLogo.Size = new Size(132, 59);
+            AnhLogo.Size = new Size(138, 59);
             AnhLogo.SizeMode = PictureBoxSizeMode.Zoom;
             AnhLogo.TabIndex = 0;
             AnhLogo.TabStop = false;
@@ -236,12 +239,14 @@
             // PanelTitleBar
             // 
             PanelTitleBar.Controls.Add(DashMode);
-            PanelTitleBar.Controls.Add(iconButton8);
-            PanelTitleBar.Controls.Add(iconButton9);
+            PanelTitleBar.Controls.Add(navTenUser);
+            PanelTitleBar.Controls.Add(navBacham);
             PanelTitleBar.Controls.Add(label1);
             PanelTitleBar.Dock = DockStyle.Top;
             PanelTitleBar.Location = new Point(218, 0);
             PanelTitleBar.Name = "PanelTitleBar";
+            PanelTitleBar.Padding = new Padding(1);
+            PanelTitleBar.PanelBackStyle = Krypton.Toolkit.PaletteBackStyle.HeaderPrimary;
             PanelTitleBar.Size = new Size(1082, 59);
             PanelTitleBar.StateNormal.Color1 = Color.FromArgb(0, 105, 91);
             PanelTitleBar.StateNormal.Color2 = Color.FromArgb(0, 105, 91);
@@ -250,7 +255,7 @@
             // DashMode
             // 
             DashMode.AutoSize = true;
-            DashMode.BackColor = Color.FromArgb(0, 29, 53);
+            DashMode.BackColor = Color.Transparent;
             DashMode.Dock = DockStyle.Right;
             DashMode.FlatAppearance.BorderColor = Color.White;
             DashMode.FlatAppearance.BorderSize = 0;
@@ -260,58 +265,59 @@
             DashMode.IconChar = FontAwesome.Sharp.IconChar.ToggleOn;
             DashMode.IconColor = Color.White;
             DashMode.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            DashMode.Location = new Point(774, 0);
+            DashMode.Location = new Point(758, 1);
             DashMode.Name = "DashMode";
-            DashMode.Size = new Size(56, 59);
+            DashMode.Size = new Size(56, 57);
             DashMode.TabIndex = 0;
             DashMode.UseVisualStyleBackColor = false;
+            DashMode.Click += DashMode_Click;
             // 
-            // iconButton8
+            // navTenUser
             // 
-            iconButton8.BackColor = Color.FromArgb(0, 105, 91);
-            iconButton8.Dock = DockStyle.Right;
-            iconButton8.FlatAppearance.BorderSize = 0;
-            iconButton8.FlatStyle = FlatStyle.Flat;
-            iconButton8.Font = new Font("Cascadia Code", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            iconButton8.ForeColor = Color.White;
-            iconButton8.IconChar = FontAwesome.Sharp.IconChar.UserAstronaut;
-            iconButton8.IconColor = Color.White;
-            iconButton8.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton8.IconSize = 35;
-            iconButton8.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton8.Location = new Point(830, 0);
-            iconButton8.Name = "iconButton8";
-            iconButton8.Size = new Size(209, 59);
-            iconButton8.TabIndex = 1;
-            iconButton8.Text = "Vũ Mạnh Cường";
-            iconButton8.UseVisualStyleBackColor = false;
+            navTenUser.BackColor = Color.Transparent;
+            navTenUser.Dock = DockStyle.Right;
+            navTenUser.FlatAppearance.BorderSize = 0;
+            navTenUser.FlatStyle = FlatStyle.Flat;
+            navTenUser.Font = new Font("Cascadia Code", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            navTenUser.ForeColor = Color.White;
+            navTenUser.IconChar = FontAwesome.Sharp.IconChar.UserAstronaut;
+            navTenUser.IconColor = Color.White;
+            navTenUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            navTenUser.IconSize = 35;
+            navTenUser.ImageAlign = ContentAlignment.MiddleLeft;
+            navTenUser.Location = new Point(814, 1);
+            navTenUser.Name = "navTenUser";
+            navTenUser.Size = new Size(224, 57);
+            navTenUser.TabIndex = 1;
+            navTenUser.Text = "Vũ Mạnh Cường";
+            navTenUser.UseVisualStyleBackColor = false;
             // 
-            // iconButton9
+            // navBacham
             // 
-            iconButton9.BackColor = Color.FromArgb(0, 105, 91);
-            iconButton9.Dock = DockStyle.Right;
-            iconButton9.FlatAppearance.BorderSize = 0;
-            iconButton9.FlatStyle = FlatStyle.Flat;
-            iconButton9.IconChar = FontAwesome.Sharp.IconChar.EllipsisVertical;
-            iconButton9.IconColor = Color.White;
-            iconButton9.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton9.IconSize = 28;
-            iconButton9.Location = new Point(1039, 0);
-            iconButton9.Name = "iconButton9";
-            iconButton9.Size = new Size(43, 59);
-            iconButton9.TabIndex = 2;
-            iconButton9.UseVisualStyleBackColor = false;
-            iconButton9.Click += iconButton9_Click;
+            navBacham.BackColor = Color.Transparent;
+            navBacham.Dock = DockStyle.Right;
+            navBacham.FlatAppearance.BorderSize = 0;
+            navBacham.FlatStyle = FlatStyle.Flat;
+            navBacham.IconChar = FontAwesome.Sharp.IconChar.EllipsisVertical;
+            navBacham.IconColor = Color.White;
+            navBacham.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            navBacham.IconSize = 28;
+            navBacham.Location = new Point(1038, 1);
+            navBacham.Name = "navBacham";
+            navBacham.Size = new Size(43, 57);
+            navBacham.TabIndex = 2;
+            navBacham.UseVisualStyleBackColor = false;
+            navBacham.Click += navBacham_Click;
             // 
             // label1
             // 
-            label1.BackColor = Color.FromArgb(0, 105, 91);
+            label1.BackColor = Color.Transparent;
             label1.Dock = DockStyle.Left;
             label1.Font = new Font("Cascadia Code", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(0, 0);
+            label1.Location = new Point(1, 1);
             label1.Name = "label1";
-            label1.Size = new Size(206, 59);
+            label1.Size = new Size(206, 57);
             label1.TabIndex = 0;
             label1.Text = "Smart Home";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -331,7 +337,7 @@
             MenuBaCham.ImageScalingSize = new Size(20, 20);
             MenuBaCham.Items.AddRange(new ToolStripItem[] { Account, Logout });
             MenuBaCham.Name = "contextMenuStrip1";
-            MenuBaCham.Size = new Size(215, 88);
+            MenuBaCham.Size = new Size(147, 60);
             // 
             // Account
             // 
@@ -340,7 +346,7 @@
             Account.IconColor = Color.Black;
             Account.IconFont = FontAwesome.Sharp.IconFont.Auto;
             Account.Name = "Account";
-            Account.Size = new Size(214, 28);
+            Account.Size = new Size(146, 28);
             Account.Text = "Account";
             // 
             // Logout
@@ -350,7 +356,7 @@
             Logout.IconColor = Color.Black;
             Logout.IconFont = FontAwesome.Sharp.IconFont.Auto;
             Logout.Name = "Logout";
-            Logout.Size = new Size(214, 28);
+            Logout.Size = new Size(146, 28);
             Logout.Text = "Logout";
             // 
             // DashBroad
@@ -379,20 +385,20 @@
         private Krypton.Toolkit.KryptonPanel PanelMenu;
         private Krypton.Toolkit.KryptonPanel PanelTitleBar;
         private FontAwesome.Sharp.IconButton btnMenu;
-        private Krypton.Toolkit.KryptonPanel PanelMain;
         private Panel panel2;
         private PictureBox AnhLogo;
         private FontAwesome.Sharp.IconButton menuHome;
-        private FontAwesome.Sharp.IconButton iconButton7;
-        private FontAwesome.Sharp.IconButton iconButton6;
+        private FontAwesome.Sharp.IconButton menuExit;
+        private FontAwesome.Sharp.IconButton menuSetting;
         private Label label1;
-        private FontAwesome.Sharp.IconButton iconButton8;
-        private FontAwesome.Sharp.IconButton iconButton9;
+        private FontAwesome.Sharp.IconButton navTenUser;
+        private FontAwesome.Sharp.IconButton navBacham;
         private FontAwesome.Sharp.IconButton menuDevice;
         private FontAwesome.Sharp.IconButton menuRoom;
-        private FontAwesome.Sharp.IconButton DashMode;
         private ContextMenuStrip MenuBaCham;
         private FontAwesome.Sharp.IconMenuItem Account;
         private FontAwesome.Sharp.IconMenuItem Logout;
+        public Krypton.Toolkit.KryptonPanel PanelMain;
+        public FontAwesome.Sharp.IconButton DashMode;
     }
 }

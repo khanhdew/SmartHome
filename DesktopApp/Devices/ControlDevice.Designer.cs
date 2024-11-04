@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            flayoutDevice = new FlowLayoutPanel();
             addDevice = new FontAwesome.Sharp.IconButton();
+            flayoutDevice = new FlowLayoutPanel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -43,15 +43,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1082, 56);
             panel1.TabIndex = 2;
-            // 
-            // flayoutDevice
-            // 
-            flayoutDevice.BackColor = Color.MistyRose;
-            flayoutDevice.Dock = DockStyle.Fill;
-            flayoutDevice.Location = new Point(0, 0);
-            flayoutDevice.Name = "flayoutDevice";
-            flayoutDevice.Size = new Size(1082, 671);
-            flayoutDevice.TabIndex = 3;
             // 
             // addDevice
             // 
@@ -73,12 +64,21 @@
             addDevice.UseVisualStyleBackColor = false;
             addDevice.Click += addDevice_Click;
             // 
+            // flayoutDevice
+            // 
+            flayoutDevice.BackColor = Color.Transparent;
+            flayoutDevice.Dock = DockStyle.Fill;
+            flayoutDevice.Location = new Point(0, 56);
+            flayoutDevice.Name = "flayoutDevice";
+            flayoutDevice.Size = new Size(1082, 615);
+            flayoutDevice.TabIndex = 3;
+            // 
             // ControlDevice
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(panel1);
             Controls.Add(flayoutDevice);
+            Controls.Add(panel1);
             Name = "ControlDevice";
             Size = new Size(1082, 671);
             panel1.ResumeLayout(false);
@@ -89,7 +89,7 @@
         #endregion
 
         private Panel panel1;
-        private FlowLayoutPanel flayoutDevice;
         private FontAwesome.Sharp.IconButton addDevice;
+        private FlowLayoutPanel flayoutDevice;
     }
 }
