@@ -19,7 +19,17 @@
             <li data-device-id="@device.ID">
                 <span class="text">
                     <div class="textlight">
-                        <h3>@device.Name</h3>
+                        <div class="device-top">
+                            <h3>@device.Name</h3>
+                            <div class="btn-container-device">
+                                <a class="edit-btn-device">
+                                    <i class='bx bxs-edit-alt'></i> 
+                                </a>
+                                <a class="delete-btn-device">
+                                    <i class="bx bx-trash"></i> 
+                                </a>
+                            </div>
+                        </div>
                         <div class="lamp-wrapper-main">
                             <div class="lamp-rope"></div>
                             <div class="lamp-inner">
@@ -49,7 +59,17 @@
             <li data-device-id="@device.ID">
                 <span class="text">
                     <div class="textfan">
-                        <h3>@device.Name</h3>
+                        <div class="device-top">
+                            <h3>@device.Name</h3>
+                            <div class="btn-container-device">
+                                <a class="edit-btn-device">
+                                    <i class='bx bxs-edit-alt'></i> 
+                                </a>
+                                <a class="delete-btn-device">
+                                    <i class="bx bx-trash"></i> 
+                                </a>
+                            </div>
+                        </div>
                         <div class="part">
                             <div class="box">
                                 <img src="https://cdn-icons-png.flaticon.com/512/95/95252.png" width="100%" height="100%">
@@ -77,7 +97,17 @@
             <li data-device-id="@device.ID">
                 <span class="text">
                     <div class="textrgb ">
-                        <h3>@device.Name</h3>
+                        <div class="device-top">
+                            <h3>@device.Name</h3>
+                            <div class="btn-container-device">
+                                <a class="edit-btn-device">
+                                    <i class='bx bxs-edit-alt'></i> 
+                                </a>
+                                <a class="delete-btn-device">
+                                    <i class="bx bx-trash"></i> 
+                                </a>
+                            </div>
+                        </div>
                         <div class="rgb-light">
                             <div class="rgb-color"></div>
                         </div>
@@ -147,15 +177,18 @@
         $('button.search-btn').click(function(event) {
             event.preventDefault();
             var keyword = $('#keyword').val();
+            $('#loading').show();
             $.ajax({
                 url: '@Url.Action("Search", "Device")',
                 type: 'GET',
                 data: { keyword: keyword },
                 success: function(data) {
                     // Assuming you have a div with id 'searchResults' to display the results
+                    $('#loading').hide();
                     $('#boxInfoList').html(data);
                 },
                 error: function() {
+                    $('#loading').hide();
                     alert('Error occurred while searching.');
                 }
             });
@@ -163,12 +196,11 @@
 
         // Light functionality
         let brightness;
-
-        // Update brightness value on input
-        $('input[type="range"]').on('input', function () {
-            brightness = $(this).val();
-            $(this).closest('li').find('.lamp-inner').css('opacity', brightness / 10);
+            document.querySelector('.slider').addEventListener('input', function() {
+            var lightLevel = this.value;
+            document.body.setAttribute('data-light', lightLevel);
         });
+    
 
         // Send AJAX request on change
         $('input[type="range"]').on('change', function () {
@@ -177,7 +209,7 @@
                 method: "setLedDim",
                 params: brightness * 25.5
             });
-
+            $('#loading').show();
             $.ajax({
                 url: '@Url.Action("Control", "Device")',
                 type: 'POST',
@@ -186,9 +218,12 @@
                     command: command
                 },
                 success: function() {
+                    $('#loading').hide();
                 },
-                error: function() {
-                    alert('Error occurred while controlling the light.');
+                error: function(xhr) {
+                    var errorMessage = xhr.responseText ? xhr.responseText : 'Error occurred while controlling the device.';
+                    $('#loading').hide();
+                    alert(errorMessage);
                 }
             });
         });
@@ -200,7 +235,7 @@
                 method: "setLedStatus",
                 params: isOn ? 0 : 1
             });
-
+            $('#loading').show();
             $.ajax({
                 url: '@Url.Action("Control", "Device")',
                 type: 'POST',
@@ -209,10 +244,13 @@
                     command: command
                 },
                 success: function() {
+                    $('#loading').hide();
                     $(this).toggleClass('on off');
                 }.bind(this),
-                error: function() {
-                    alert('Error occurred while controlling the light.');
+                error: function(xhr) {
+                    var errorMessage = xhr.responseText ? xhr.responseText : 'Error occurred while controlling the device.';
+                    $('#loading').hide();
+                    alert(errorMessage);
                 }
             });
         });
@@ -227,6 +265,7 @@
                 method: "setFanStatus",
                 params: isOn ? 0 : 1
             });
+            $('#loading').show();
 
             $.ajax({
                 url: '@Url.Action("Control", "Device")',
@@ -236,11 +275,14 @@
                     command: command
                 },
                 success: function() {
+                    $('#loading').hide();
                     $(this).toggleClass('on off');
                     $(this).closest('li').find('.box img').css("animation", isOn ? "none" : `rotateon ${currentSpeed}s infinite linear`);
                 }.bind(this),
-                error: function() {
-                    alert('Error occurred while controlling the fan.');
+                error: function(xhr) {
+                    var errorMessage = xhr.responseText ? xhr.responseText : 'Error occurred while controlling the device.';
+                    $('#loading').hide();
+                    alert(errorMessage);
                 }
             });
         });
@@ -253,6 +295,7 @@
                 method: "setFanSpeed",
                 params: speed * 85
             });
+            $('#loading').show();
 
             $.ajax({
                 url: '@Url.Action("Control", "Device")',
@@ -262,12 +305,16 @@
                     command: command
                 },
                 success: function() {
+                    $('#loading').hide();
                     if ($('.toggle-btn.fan').hasClass('off')) {
                         $(this).closest('li').find('.box img').css("animation", `rotateon ${currentSpeed}s infinite linear`);
                     }
+                    
                 }.bind(this),
-                error: function() {
-                    alert('Error occurred while controlling the fan speed.');
+                error: function(xhr) {
+                    var errorMessage = xhr.responseText ? xhr.responseText : 'Error occurred while controlling the device.';
+                    $('#loading').hide();
+                    alert(errorMessage);
                 }
             });
         });
@@ -291,6 +338,7 @@
                     b: rgb.b
                 }
             });
+            $('#loading').show();
 
             $.ajax({
                 url: '@Url.Action("Control", "Device")',
@@ -302,9 +350,12 @@
                 success: function() {
                     $(this).closest('li').find('.rgb-color').css('background-color', rgbIsOn ? color : 'transparent');
                     $(this).toggleClass('on off');
+                    $('#loading').hide();
                 }.bind(this),
-                error: function() {
-                    alert('Error occurred while controlling the RGB light.');
+                error: function(xhr) {
+                    var errorMessage = xhr.responseText ? xhr.responseText : 'Error occurred while controlling the device.';
+                    $('#loading').hide();
+                    alert(errorMessage);
                 }
             });
         });
@@ -315,8 +366,8 @@
             const g = (bigint >> 8) & 255;
             const b = bigint & 255;
             return { r, g, b };
-        }
-        
+        };
+
     });
 </script>
 }

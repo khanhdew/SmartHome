@@ -15,15 +15,17 @@ public class DeviceController : Controller
     private readonly IUserService _userService;
     private readonly IHouseService _houseService;
     private readonly IThingsboardService _thingsboardService;
+    private readonly ILogger<DeviceController> _logger;
 
     public DeviceController(IDeviceService deviceService, IRoomService roomService, IUserService userService,
-        IHouseService houseService, IThingsboardService thingsboardService)
+        IHouseService houseService, IThingsboardService thingsboardService, ILogger<DeviceController> logger)
     {
         _deviceService = deviceService;
         _roomService = roomService;
         _userService = userService;
         _houseService = houseService;
         _thingsboardService = thingsboardService;
+        _logger = logger;
     }
 
     [Authorize]
@@ -158,19 +160,28 @@ public class DeviceController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create( Device device)
+    public IActionResult Create(Device device)
     {
         var tempDevice = device;
         tempDevice.Name = StringProcessHelper.RemoveDiacritics(device.Name);
-        var tbDevice = _thingsboardService.CreateDevice(tempDevice);
-        Console.WriteLine("\u001b[32m" + tbDevice.ToString() + "\u001b[0m");
-        var root = JsonDocument.Parse(tbDevice.ToString()).RootElement;
-        device.TbDeviceId = root.GetProperty("id").GetProperty("id").GetString();
-        var deviceCreated = _deviceService.CreateDevice(device);
+        try
+        {
+            var tbDevice = _thingsboardService.CreateDevice(tempDevice);
+            Console.WriteLine("\u001b[32m" + tbDevice.ToString() + "\u001b[0m");
+            var root = JsonDocument.Parse(tbDevice.ToString()).RootElement;
+            device.TbDeviceId = root.GetProperty("id").GetProperty("id").GetString();
+            var deviceCreated = _deviceService.CreateDevice(device);
+        }
+        catch (Exception e)
+        {
+            ModelState.AddModelError("Error", e.Message);
+            _logger.LogError(e, "Error while creating device");
+            return StatusCode(400, new { message = "Error while creating device", details = e.Message });
+        }
         return RedirectToAction("Index");
     }
 
-    public IActionResult Edit()
+    public IActionResult Edit(int id)
     {
         return View();
     }
@@ -191,7 +202,35 @@ public class DeviceController : Controller
     [HttpPost]
     public IActionResult Control(int id, string command)
     {
-        _thingsboardService.ControlDevice(id, command);
-        return RedirectToAction("Index");
+        try
+        {
+            _thingsboardService.ControlDevice(id, command);
+        }
+        catch (UnauthorizedAccessException e)
+        {
+            _logger.LogError(e, "UnauthorizedAccessException: {Message}", e.Message);
+            return StatusCode(401, new { message = "Unauthorized access while controlling device", details = e.Message });
+        }
+        catch (ArgumentException e)
+        {
+            _logger.LogError(e, "ArgumentException: {Message}", e.Message);
+            return StatusCode(400, new { message = "Invalid argument while controlling device", details = e.Message });
+        }
+        catch (TimeoutException e)
+        {
+            _logger.LogError(e, "TimeoutException: {Message}", e.Message);
+            return StatusCode(504, new { message = "Request timed out while controlling device", details = e.Message });
+        }
+        catch (KeyNotFoundException e)
+        {
+            _logger.LogError(e, "KeyNotFoundException: {Message}", e.Message);
+            return StatusCode(404, new { message = "Device not found", details = e.Message });
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "An unexpected error occurred: {Message}", e.Message);
+            return StatusCode(500, new { message = "An unexpected error occurred while controlling device", details = "Please check the server logs for more details." });
+        }
+        return Ok();
     }
 }

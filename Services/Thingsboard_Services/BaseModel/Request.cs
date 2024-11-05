@@ -1,7 +1,7 @@
-﻿using System.Net.Http.Headers;
+﻿using System.Net;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
-
 namespace Services.Thingsboard_Services.BaseModel;
 
 public class Request<T>
@@ -9,6 +9,7 @@ public class Request<T>
     public string Url { get; set; }
     public string Body { get; set; }
     public Token? Token { get; set; }
+
     public Request(string url, string body, Token? token)
     {
         Url = url;
@@ -18,46 +19,60 @@ public class Request<T>
 
     public T? Post()
     {
+        using HttpClient client = new HttpClient();
+
+        if (Token != null)
+        {
+            client.DefaultRequestHeaders.Add("X-Authorization", "Bearer " + Token.token);
+        }
+
+        var content = new StringContent(Body, Encoding.UTF8, "application/json");
+
+        var request = client.PostAsync(Url, content);
+        request.Wait();
+        // log request in console color green
+        Console.WriteLine($"\u001b[32mRequest URL: {Url}\u001b[0m");
+        Console.WriteLine($"\u001b[32mRequest Content: {Body}\u001b[0m");
+
+
+        var response = request.Result;
+
+        // Kiểm tra trạng thái phản hồi
+
+        // Check response status
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorMessage = response.Content.ReadAsStringAsync().Result;
+            switch (response.StatusCode)
+            {
+                case HttpStatusCode.Unauthorized:
+                    throw new UnauthorizedAccessException();
+                case HttpStatusCode.BadRequest:
+                    throw new ArgumentException();
+                case HttpStatusCode.NotFound:
+                    throw new KeyNotFoundException();
+                case HttpStatusCode.GatewayTimeout:
+                    throw new TimeoutException();
+                
+            }
+        }
+
+
+        var responseString = response.Content.ReadAsStringAsync().Result;
         try
         {
-            using HttpClient client = new HttpClient();
-        
-            if (Token != null)
-            {
-                client.DefaultRequestHeaders.Add("X-Authorization", "Bearer " + Token.token);
-            }
-
-            var content = new StringContent(Body, Encoding.UTF8, "application/json");
-
-            var request = client.PostAsync(Url, content);
-            request.Wait();
-            // log request in console color green
-            Console.WriteLine($"\u001b[32mRequest URL: {Url}\u001b[0m");
-            Console.WriteLine($"\u001b[32mRequest Content: {Body}\u001b[0m");
-            
-            
-            var response = request.Result;
-
-            // Kiểm tra trạng thái phản hồi
-            if (!response.IsSuccessStatusCode)
-            {
-                Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
-                return default;
-            }
-
-            var responseString = response.Content.ReadAsStringAsync().Result;
-
+            var result = JsonSerializer.Deserialize<T>(responseString);
             // Deserialize JSON thành đối tượng loại T
-            return JsonSerializer.Deserialize<T>(responseString);
+            return result;
         }
-        catch (Exception ex)
+        catch (Exception e)
         {
-            Console.WriteLine($"Deserialization Error: {ex.Message}");
+            Console.WriteLine(e);
             return default;
         }
     }
 
-    
+
     public async Task<T?> GetAsync()
     {
         using HttpClient client = new HttpClient();
@@ -83,13 +98,44 @@ public class Request<T>
             Console.WriteLine($"Request error: {ex.Message}");
             return default; // Hoặc ném ngoại lệ tùy theo nhu cầu của bạn
         }
-        catch (JsonException ex)
+    }
+
+    public object? Delete()
+    {
+        using HttpClient client = new HttpClient();
+
+        if (Token != null)
         {
-            // Xử lý lỗi deserialize tại đây
-            Console.WriteLine($"JSON deserialization error: {ex.Message}");
-            return default; // Hoặc ném ngoại lệ tùy theo nhu cầu của bạn
+            client.DefaultRequestHeaders.Add("X-Authorization", "Bearer " + Token.token);
         }
+
+        var request = client.DeleteAsync(Url);
+        request.Wait();
+        // log request in console color green
+        Console.WriteLine($"\u001b[32mRequest URL: {Url}\u001b[0m");
+
+        var response = request.Result;
+
+        // Kiểm tra trạng thái phản hồi
+
+        // Check response status
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorMessage = response.Content.ReadAsStringAsync().Result;
+            switch (response.StatusCode)
+            {
+                case HttpStatusCode.Unauthorized:
+                    throw new UnauthorizedAccessException();
+                case HttpStatusCode.BadRequest:
+                    throw new ArgumentException();
+                case HttpStatusCode.NotFound:
+                    throw new KeyNotFoundException();
+                case HttpStatusCode.GatewayTimeout:
+                    throw new TimeoutException();
+                
+            }
+        }
+
+        return null;
     }
 }
-    
-    

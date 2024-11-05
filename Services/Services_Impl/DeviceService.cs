@@ -70,11 +70,11 @@ public class DeviceService : IDeviceService
         throw new NotImplementedException();
     }
 
-    public TelemetryDatum AddTelemetryDatum(TelemetryDatum telemetryDatum)
+    public TelemetryData AddTelemetryDatum(TelemetryData telemetryData)
     {
         try
         {
-            return _deviceRepository.AddTelemetryDatum(telemetryDatum);
+            return _deviceRepository.AddTelemetryDatum(telemetryData);
         }
         catch (Exception e)
         {
@@ -83,7 +83,7 @@ public class DeviceService : IDeviceService
         }
     }
 
-    public IEnumerable<TelemetryDatum> GetTelemetryDataByDeviceId(int deviceId)
+    public IEnumerable<TelemetryData> GetTelemetryDataByDeviceId(int deviceId)
     {
         throw new NotImplementedException();
     }
