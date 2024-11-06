@@ -67,7 +67,15 @@ public class DeviceService : IDeviceService
 
     public void DeleteDevice(int deviceId)
     {
-        throw new NotImplementedException();
+        try
+        {
+            _deviceRepository.DeleteDevice(deviceId);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
     public TelemetryData AddTelemetryDatum(TelemetryData telemetryData)
@@ -85,7 +93,7 @@ public class DeviceService : IDeviceService
 
     public IEnumerable<TelemetryData> GetTelemetryDataByDeviceId(int deviceId)
     {
-        throw new NotImplementedException();
+        return _deviceRepository.GetTelemetryDataByDeviceId(deviceId);
     }
 
     public DeviceConfig AddDeviceConfig(DeviceConfig deviceConfig)

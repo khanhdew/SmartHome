@@ -9,7 +9,17 @@
             <li data-device-id="@device.ID">
                 <span class="text">
                     <div class="textlight">
-                        <h3>@device.Name</h3>
+                        <div class="device-top">
+                            <h3>@device.Name</h3>
+                            <div class="btn-container-device">
+                                <a class="edit-btn-device" href="@Url.Action("Edit","Device", new { id = @device.ID })">
+                                    <i class='bx bxs-edit-alt'></i> 
+                                </a>
+                                <a class="delete-btn-device" href="@Url.Action("Delete","Device", new { id = @device.ID })">
+                                    <i class="bx bx-trash"></i> 
+                                </a>
+                            </div>
+                        </div>
                         <div class="lamp-wrapper-main">
                             <div class="lamp-rope"></div>
                             <div class="lamp-inner">
@@ -39,7 +49,17 @@
             <li data-device-id="@device.ID">
                 <span class="text">
                     <div class="textfan">
-                        <h3>@device.Name</h3>
+                        <div class="device-top">
+                            <h3>@device.Name</h3>
+                            <div class="btn-container-device">
+                                <a class="edit-btn-device" href="@Url.Action("Edit","Device", new { id = @device.ID })">
+                                    <i class='bx bxs-edit-alt'></i> 
+                                </a>
+                                <a class="delete-btn-device" href="@Url.Action("Delete","Device", new { id = @device.ID })">
+                                    <i class="bx bx-trash"></i> 
+                                </a>
+                            </div>
+                        </div>
                         <div class="part">
                             <div class="box">
                                 <img src="https://cdn-icons-png.flaticon.com/512/95/95252.png" width="100%" height="100%">
@@ -67,7 +87,17 @@
             <li data-device-id="@device.ID">
                 <span class="text">
                     <div class="textrgb ">
-                        <h3>@device.Name</h3>
+                        <div class="device-top">
+                            <h3>@device.Name</h3>
+                            <div class="btn-container-device">
+                                <a class="edit-btn-device" href="@Url.Action("Edit","Device", new { id = @device.ID })">
+                                    <i class='bx bxs-edit-alt'></i> 
+                                </a>
+                                <a class="delete-btn-device" href="@Url.Action("Delete","Device", new { id = @device.ID })">
+                                    <i class="bx bx-trash"></i> 
+                                </a>
+                            </div>
+                        </div>
                         <div class="rgb-light">
                             <div class="rgb-color"></div>
                         </div>

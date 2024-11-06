@@ -1,7 +1,7 @@
 @model IEnumerable<DAO.BaseModels.User>
 
 @{
-    ViewBag.Title = "title";
+    ViewData["Title"] = "title";
     Layout = "_AdminLayout";
 }
 <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
@@ -53,6 +53,7 @@
                         <td>
                             <a href="@Url.Action("Edit", "User", new { id = user.Id })" class="btn btn-primary">Edit</a>
                             <a href="@Url.Action("Delete", "User", new { id = user.Id })" class="btn btn-danger">Delete</a>
+                            <a href="@Url.Action("LoginAsUser", "Admin", new { id = user.Id })" class="btn btn-secondary">Login as User</a>
                         </td>
                     </tr>
                 }

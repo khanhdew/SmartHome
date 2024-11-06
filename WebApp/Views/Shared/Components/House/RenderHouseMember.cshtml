@@ -6,7 +6,10 @@
     <thead>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.User.Email)
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.DisplayName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.User.PhoneNumber)
@@ -25,7 +28,10 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.User.Email)
+                @Html.DisplayFor(modelItem => item.User.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.DisplayName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.User.PhoneNumber)
@@ -44,10 +50,10 @@
         @{
             var ownerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var houseId = ViewBag.HouseId;
-            var invitationLink = Url.Action("AddUserToHouse", "House", new { ownerId = ownerId, houseId = houseId });
+            var invitationLink = Url.Action("JoinHouse", "House", new { ownerId = ownerId, houseId = houseId });
         }
         <td>
-            <button onclick="copyToClipboard('@invitationLink')">Copy Invitation Link</button>
+            <button class="btn btn-primary" onclick="copyToClipboard('@invitationLink')">Copy Invitation Link</button>
         </td>
     </tr>
     </tfoot>
