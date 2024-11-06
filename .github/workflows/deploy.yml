@@ -38,6 +38,7 @@ jobs:
           script: |
             git config --global url."https://${{ secrets.PERSONAL_GITHUB_TOKEN }}:@github.com".insteadOf "https://github.com"
             cd SmartHome/
+            git pull origin master
             docker build -t dotnetweb .
             docker run -p 8888:80 dotnetweb -d
       - name: Update deployment Status (success)
