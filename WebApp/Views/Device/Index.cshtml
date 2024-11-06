@@ -2,7 +2,7 @@
 @using DAO.Models.Devices
 @model IEnumerable<DAO.BaseModels.Device>
 @{
-    ViewBag.Title = "title";
+    ViewData["Title"] = "title";
     Layout = "MyLayout";
 }
 @await Component.InvokeAsync("DeviceCreate")
@@ -22,10 +22,10 @@
                         <div class="device-top">
                             <h3>@device.Name</h3>
                             <div class="btn-container-device">
-                                <a class="edit-btn-device">
+                                <a class="edit-btn-device" href="@Url.Action("Edit","Device", new { id = @device.ID })">
                                     <i class='bx bxs-edit-alt'></i> 
                                 </a>
-                                <a class="delete-btn-device">
+                                <a class="delete-btn-device" href="@Url.Action("Delete","Device", new { id = @device.ID })">
                                     <i class="bx bx-trash"></i> 
                                 </a>
                             </div>
@@ -62,10 +62,10 @@
                         <div class="device-top">
                             <h3>@device.Name</h3>
                             <div class="btn-container-device">
-                                <a class="edit-btn-device">
+                                <a class="edit-btn-device" href="@Url.Action("Edit","Device", new { id = @device.ID })">
                                     <i class='bx bxs-edit-alt'></i> 
                                 </a>
-                                <a class="delete-btn-device">
+                                <a class="delete-btn-device" href="@Url.Action("Delete","Device", new { id = @device.ID })">
                                     <i class="bx bx-trash"></i> 
                                 </a>
                             </div>
@@ -100,10 +100,10 @@
                         <div class="device-top">
                             <h3>@device.Name</h3>
                             <div class="btn-container-device">
-                                <a class="edit-btn-device">
+                                <a class="edit-btn-device" href="@Url.Action("Edit","Device", new { id = @device.ID })">
                                     <i class='bx bxs-edit-alt'></i> 
                                 </a>
-                                <a class="delete-btn-device">
+                                <a class="delete-btn-device" href="@Url.Action("Delete","Device", new { id = @device.ID })">
                                     <i class="bx bx-trash"></i> 
                                 </a>
                             </div>
