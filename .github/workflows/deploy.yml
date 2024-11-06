@@ -23,6 +23,7 @@ jobs:
         with:
           token: '${{ github.token }}'
           environment-url: ${{ vars.MY_APP }}
+          task: deploy
           environment: production
       - name: Set up SSH Key and Deploy my App on Server
         # run: |
