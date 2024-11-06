@@ -37,7 +37,7 @@ jobs:
           port: 22
           script: |
             git config --global url."https://${{ secrets.PERSONAL_GITHUB_TOKEN }}:@github.com".insteadOf "https://github.com"
-            https://github.com/khanhdew/SmartHome.git
+            git clone https://github.com/khanhdew/SmartHome.git
             cd SmartHome/
             cd WebApp/
             dotnet run
