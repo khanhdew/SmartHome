@@ -38,8 +38,8 @@ jobs:
           script: |
             git config --global url."https://${{ secrets.PERSONAL_GITHUB_TOKEN }}:@github.com".insteadOf "https://github.com"
             cd SmartHome/
-            docker build -t khanhdew/dotnetweb .
-            docker run -p 8888:80 khanhdew/dotnetweb -d
+            docker build -t dotnetweb .
+            docker run -p 8888:80 dotnetweb -d
       - name: Update deployment Status (success)
         if: success()
         uses: chrnorm/deployment-status@v2
