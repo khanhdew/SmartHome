@@ -223,5 +223,12 @@ namespace WebApp.Controllers
             ModelState.AddModelError("", "Failed to update user information.");
             return View("Index", user);
         }
+        
+        [HttpGet("forgotpassword")]
+        [AllowAnonymous]
+        public IActionResult ForgotPassword()
+        {
+            return View(_userService.GetLoggedInUser());
+        }
     }
 }
