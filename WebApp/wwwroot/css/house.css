@@ -695,16 +695,22 @@ body {
     margin-top: 36px;
 }
 
+
 @media screen and (max-width: 768px) {
     #content main .box-info {
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(3, 1fr); 
     }
 }
 
 @media screen and (max-width: 576px) {
     #content main .box-info {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
+}
+@media screen and (max-width: 450px) {
+	#content main .box-info {
+		grid-template-columns: 1fr ;
+	}
 }
 /* EDIT HOUSE */
 .edit-house-page {
@@ -914,36 +920,36 @@ body {
 
 /* DEVICES */
 .device-top {
-	display: flex; /* Sử dụng flexbox để căn chỉnh nội dung */
-	justify-content: space-between; /* Căn giữa khoảng cách giữa tiêu đề và nút */
-	align-items: center; /* Căn giữa theo chiều dọc */
-	padding: 10px; /* Thêm khoảng đệm */
+	display: flex; 
+	justify-content: space-between;
+	align-items: center; 
+	padding: 10px; 
 
 }
 
 .device-top h3 {
-	margin: 0; /* Xóa khoảng cách mặc định */
-	font-size: 1.2em; /* Kích thước chữ cho tiêu đề */
-	flex-grow: 1; /* Để tiêu đề chiếm không gian còn lại */
+	margin: 0;
+	font-size: 1.2em; 
+	flex-grow: 1; 
 }
 
 .btn-container-device {
-	display: flex; /* Sử dụng flexbox để căn chỉnh các nút */
-	gap: 5px; /* Khoảng cách giữa các nút */
+	display: flex;
+	gap: 5px;
 }
 
 
 .btn-container-device a {
-	display: inline-block; /* Để các nút được căn chỉnh đúng cách */
-	padding: 5px 5px; /* Thêm khoảng đệm cho nút */
+	display: inline-block;
+	padding: 5px 5px; 
 	
-	border-radius: 5px; /* Bo góc cho nút */
-	text-decoration: none; /* Xóa gạch chân */
-	transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền */
+	border-radius: 5px; 
+	text-decoration: none; 
+	transition: background-color 0.3s; 
 }
 
 .btn-container-device a:hover {
-	background-color: var(--blue); /* Màu nền khi hover */
+	background-color: var(--blue); 
 }
 
 	/*đèn*/
@@ -1518,3 +1524,60 @@ body[data-light="10"] .lamp-lamp-shadow {
 }
 
 /* ACCOUNT */
+/*  ERROR */
+.error-box {
+	width: 250px;
+	padding: 20px;
+	background-color: #f1f1f1;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	text-align: center;
+	font-family: Arial, sans-serif;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
+}
+
+.error-box .title-bar {
+	background-color: #d32f2f;
+	color: white;
+	padding: 10px;
+	border-radius: 10px 10px 0 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.title-bar .title {
+	font-size: 14px;
+}
+
+.title-bar .close-btn {
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.error-box .content {
+	font-size: 24px;
+	font-weight: bold;
+	color: #333;
+	margin: 20px 0;
+}
+
+.error-box .ok-btn {
+	background-color: #d32f2f;
+	color: white;
+	padding: 8px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.error-box .ok-btn:hover {
+	background-color: #b71c1c;
+}
