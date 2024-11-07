@@ -125,6 +125,7 @@ namespace WebApp.Controllers
             return RedirectToAction("Edit", new {houseId});
         }
 
+        [HttpGet, ActionName("JoinHouse")]
         public IActionResult AddUserToHouse(string ownerid, int houseid)
         {
             if (!_houseService.IsHouseOwner(_userService.GetUserById(ownerid)!.Id, houseid))

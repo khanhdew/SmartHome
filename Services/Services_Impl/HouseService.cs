@@ -40,6 +40,11 @@ public class HouseService: IHouseService
         return _houseRepository.GetHouseById(houseId);
     }
 
+    public User GetHouseOwner(int houseId)
+    {
+        return _houseRepository.GetHouseOwner(houseId);
+    }
+
     public IEnumerable<House> GetHouses()
     {
         return _houseRepository.GetAllHouses();

@@ -60,7 +60,7 @@ namespace WebApp.Controllers
                 if (result.Succeeded)
                 {
                     // add claims
-                    var user = await _userManager.FindByEmailAsync(model.LoginModel.Email);
+                    var user = await _userManager.FindByIdAsync(model.LoginModel.Email);
                     var roles = await _userManager.GetRolesAsync(user);
                     var claims = new List<Claim>
                     {
@@ -222,6 +222,13 @@ namespace WebApp.Controllers
 
             ModelState.AddModelError("", "Failed to update user information.");
             return View("Index", user);
+        }
+        
+        [HttpGet("forgotpassword")]
+        [AllowAnonymous]
+        public IActionResult ForgotPassword()
+        {
+            return View(_userService.GetLoggedInUser());
         }
     }
 }

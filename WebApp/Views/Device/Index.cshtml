@@ -2,7 +2,7 @@
 @using DAO.Models.Devices
 @model IEnumerable<DAO.BaseModels.Device>
 @{
-    ViewBag.Title = "title";
+    ViewData["Title"] = "title";
     Layout = "MyLayout";
 }
 @await Component.InvokeAsync("DeviceCreate")
@@ -22,10 +22,10 @@
                         <div class="device-top">
                             <h3>@device.Name</h3>
                             <div class="btn-container-device">
-                                <a class="edit-btn-device">
+                                <a class="edit-btn-device" href="@Url.Action("Edit","Device", new { id = @device.ID })">
                                     <i class='bx bxs-edit-alt'></i> 
                                 </a>
-                                <a class="delete-btn-device">
+                                <a class="delete-btn-device" href="@Url.Action("Delete","Device", new { id = @device.ID })">
                                     <i class="bx bx-trash"></i> 
                                 </a>
                             </div>
@@ -62,10 +62,10 @@
                         <div class="device-top">
                             <h3>@device.Name</h3>
                             <div class="btn-container-device">
-                                <a class="edit-btn-device">
+                                <a class="edit-btn-device" href="@Url.Action("Edit","Device", new { id = @device.ID })">
                                     <i class='bx bxs-edit-alt'></i> 
                                 </a>
-                                <a class="delete-btn-device">
+                                <a class="delete-btn-device" href="@Url.Action("Delete","Device", new { id = @device.ID })">
                                     <i class="bx bx-trash"></i> 
                                 </a>
                             </div>
@@ -100,10 +100,10 @@
                         <div class="device-top">
                             <h3>@device.Name</h3>
                             <div class="btn-container-device">
-                                <a class="edit-btn-device">
+                                <a class="edit-btn-device" href="@Url.Action("Edit","Device", new { id = @device.ID })">
                                     <i class='bx bxs-edit-alt'></i> 
                                 </a>
-                                <a class="delete-btn-device">
+                                <a class="delete-btn-device" href="@Url.Action("Delete","Device", new { id = @device.ID })">
                                     <i class="bx bx-trash"></i> 
                                 </a>
                             </div>
@@ -196,10 +196,20 @@
 
         // Light functionality
         let brightness;
-            document.querySelector('.slider').addEventListener('input', function() {
-            var lightLevel = this.value;
-            document.body.setAttribute('data-light', lightLevel);
+        document.querySelectorAll('.slider').forEach(function(slider) {
+            slider.addEventListener('input', function() {
+                var lightLevel = this.value;
+                var deviceElement = this.closest('li');
+                deviceElement.setAttribute('data-light', lightLevel);
+
+                // Update the brightness of the lamp bulb
+                var lampBulb = deviceElement.querySelector('.lamp-blub');
+                if (lampBulb) {
+                    lampBulb.style.opacity = lightLevel / 10; // Assuming the slider value ranges from 0 to 10
+                }
+            });
         });
+       
     
 
         // Send AJAX request on change
@@ -262,8 +272,8 @@
             const isOn = $(this).hasClass('on');
             const deviceId = $(this).closest('li').data('device-id');
             const command = JSON.stringify({
-                method: "setFanStatus",
-                params: isOn ? 0 : 1
+                method: "setFanSpeed",
+                params: isOn ? 0 : 255
             });
             $('#loading').show();
 

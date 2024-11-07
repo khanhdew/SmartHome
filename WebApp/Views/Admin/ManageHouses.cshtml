@@ -1,7 +1,8 @@
+@using Services.Services
 @model System.Collections.Generic.IEnumerable<DAO.BaseModels.House>
-
+@inject IHouseService HouseService
 @{
-    ViewBag.Title = "title";
+    ViewData["Title"] = "title";
     Layout = "_AdminLayout";
 }
 <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
@@ -28,7 +29,7 @@
                 <tr>
                     <th>@Html.DisplayNameFor(m => m.FirstOrDefault().Name) </th>
                     <th>@Html.DisplayNameFor(m => m.FirstOrDefault().Location) </th>
-                    <th>Actions</th>
+                    <th>Owner</th>
                 </tr>
                 </thead>
                 <tfoot>
@@ -45,8 +46,13 @@
                         <td>@house.Name</td>
                         <td>@house.Location</td>
                         <td>
-                            <a href="@Url.Action("Edit", "House", new { id = house.ID })" class="btn btn-primary">Edit</a>
-                            <a href="@Url.Action("Delete", "House", new { id = house.ID })" class="btn btn-danger">Delete</a>
+                            @{
+                                var owner = HouseService.GetHouseOwner(house.ID);
+                                if (owner != null)
+                                {
+                                    @owner.UserName
+                                }
+                            }
                         </td>
                     </tr>
                 }

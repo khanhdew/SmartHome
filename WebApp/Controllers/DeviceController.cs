@@ -181,9 +181,15 @@ public class DeviceController : Controller
         return RedirectToAction("Index");
     }
 
+    [Authorize]
     public IActionResult Edit(int id)
     {
-        return View();
+        var device = _deviceService.GetDeviceById(id);
+        if(!_deviceService.IsDeviceOwner(_userService.GetCurrentUserId(), id))
+        {
+            return RedirectToAction("AccessDenied", "Account");
+        }
+        return View(device);
     }
 
     [HttpPost]
@@ -195,6 +201,10 @@ public class DeviceController : Controller
 
     public IActionResult Delete(int id)
     {
+        if(!_deviceService.IsDeviceOwner(_userService.GetCurrentUserId(), id))
+        {
+            return RedirectToAction("AccessDenied", "Account");
+        }
         _deviceService.DeleteDevice(id);
         return RedirectToAction("Index");
     }
@@ -224,7 +234,7 @@ public class DeviceController : Controller
         catch (KeyNotFoundException e)
         {
             _logger.LogError(e, "KeyNotFoundException: {Message}", e.Message);
-            return StatusCode(404, new { message = "Device not found", details = e.Message });
+            return StatusCode(404, new { message = "Device not registered", details = e.Message });
         }
         catch (Exception e)
         {
