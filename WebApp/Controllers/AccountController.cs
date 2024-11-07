@@ -60,7 +60,7 @@ namespace WebApp.Controllers
                 if (result.Succeeded)
                 {
                     // add claims
-                    var user = await _userManager.FindByEmailAsync(model.LoginModel.Email);
+                    var user = await _userManager.FindByIdAsync(model.LoginModel.Email);
                     var roles = await _userManager.GetRolesAsync(user);
                     var claims = new List<Claim>
                     {

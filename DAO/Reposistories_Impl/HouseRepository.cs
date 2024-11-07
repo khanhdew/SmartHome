@@ -225,5 +225,15 @@ namespace DAO.Reposistories_Impl
             }
             return houseMember.Role == "Owner";
         }
+
+        public User GetHouseOwner(int houseId)
+        {
+            var houseMember = _context.HouseMembers.Include(hm=>hm.User).FirstOrDefault(hm => hm.HouseID == houseId && hm.Role == "Owner");
+            if (houseMember == null)
+            {
+                throw new Exception("House owner not found");
+            }
+            return houseMember.User!;
+        }
     }
 }

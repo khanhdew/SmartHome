@@ -1,5 +1,6 @@
+@using Services.Services
 @model System.Collections.Generic.IEnumerable<DAO.BaseModels.Device>
-
+@inject IDeviceService DeviceService
 @{
     ViewData["Title"] = "title";
     Layout = "_AdminLayout";
@@ -30,7 +31,7 @@
                     <th>@Html.DisplayNameFor(m => m.FirstOrDefault().Name) </th>
                     <th>@Html.DisplayNameFor(m => m.FirstOrDefault().Type) </th>
                     <th>@Html.DisplayNameFor(m => m.FirstOrDefault().DeviceToken) </th>
-                    <th>Actions</th>
+                    <th>Owner</th>
                 </tr>
                 </thead>
                 <tfoot>
@@ -38,7 +39,7 @@
                     <th>@Html.DisplayNameFor(m => m.FirstOrDefault().Name) </th>
                     <th>@Html.DisplayNameFor(m => m.FirstOrDefault().Type) </th>
                     <th>@Html.DisplayNameFor(m => m.FirstOrDefault().DeviceToken) </th>
-                    <th>Actions</th>
+                    <th>Owner</th>
                 </tr>
                 </tfoot>
                 <tbody>
@@ -49,8 +50,13 @@
                         <td>@device.Type</td>
                         <td>@device.DeviceToken</td>
                         <td>
-                            <a href="@Url.Action("Edit", "Device", new { id = device.ID })" class="btn btn-primary">Edit</a>
-                            <a href="@Url.Action("Delete", "Device", new { id = device.ID })" class="btn btn-danger">Delete</a>
+                            @{
+                                var owner = DeviceService.GetDeviceById(device.ID);
+                                if (owner != null)
+                                {
+                                    @owner.User.UserName
+                                }
+                            }
                         </td>
                     </tr>
                 }

@@ -196,10 +196,20 @@
 
         // Light functionality
         let brightness;
-            document.querySelector('.slider').addEventListener('input', function() {
-            var lightLevel = this.value;
-            document.body.setAttribute('data-light', lightLevel);
+        document.querySelectorAll('.slider').forEach(function(slider) {
+            slider.addEventListener('input', function() {
+                var lightLevel = this.value;
+                var deviceElement = this.closest('li');
+                deviceElement.setAttribute('data-light', lightLevel);
+
+                // Update the brightness of the lamp bulb
+                var lampBulb = deviceElement.querySelector('.lamp-blub');
+                if (lampBulb) {
+                    lampBulb.style.opacity = lightLevel / 10; // Assuming the slider value ranges from 0 to 10
+                }
+            });
         });
+       
     
 
         // Send AJAX request on change
@@ -262,8 +272,8 @@
             const isOn = $(this).hasClass('on');
             const deviceId = $(this).closest('li').data('device-id');
             const command = JSON.stringify({
-                method: "setFanStatus",
-                params: isOn ? 0 : 1
+                method: "setFanSpeed",
+                params: isOn ? 0 : 255
             });
             $('#loading').show();
 
