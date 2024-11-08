@@ -22,11 +22,11 @@
                         <div class="device-top">
                             <h3>@device.Name</h3>
                             <div class="btn-container-device">
-                                <a class="edit-btn-device" href="@Url.Action("Edit","Device", new { id = @device.ID })">
-                                    <i class='bx bxs-edit-alt'></i> 
+                                <a class="edit-btn-device" href="@Url.Action("Edit", "Device", new { id = @device.ID })">
+                                    <i class='bx bxs-edit-alt'></i>
                                 </a>
-                                <a class="delete-btn-device" href="@Url.Action("Delete","Device", new { id = @device.ID })">
-                                    <i class="bx bx-trash"></i> 
+                                <a class="delete-btn-device" href="@Url.Action("Delete", "Device", new { id = @device.ID })">
+                                    <i class="bx bx-trash"></i>
                                 </a>
                             </div>
                         </div>
@@ -62,11 +62,11 @@
                         <div class="device-top">
                             <h3>@device.Name</h3>
                             <div class="btn-container-device">
-                                <a class="edit-btn-device" href="@Url.Action("Edit","Device", new { id = @device.ID })">
-                                    <i class='bx bxs-edit-alt'></i> 
+                                <a class="edit-btn-device" href="@Url.Action("Edit", "Device", new { id = @device.ID })">
+                                    <i class='bx bxs-edit-alt'></i>
                                 </a>
-                                <a class="delete-btn-device" href="@Url.Action("Delete","Device", new { id = @device.ID })">
-                                    <i class="bx bx-trash"></i> 
+                                <a class="delete-btn-device" href="@Url.Action("Delete", "Device", new { id = @device.ID })">
+                                    <i class="bx bx-trash"></i>
                                 </a>
                             </div>
                         </div>
@@ -100,11 +100,11 @@
                         <div class="device-top">
                             <h3>@device.Name</h3>
                             <div class="btn-container-device">
-                                <a class="edit-btn-device" href="@Url.Action("Edit","Device", new { id = @device.ID })">
-                                    <i class='bx bxs-edit-alt'></i> 
+                                <a class="edit-btn-device" href="@Url.Action("Edit", "Device", new { id = @device.ID })">
+                                    <i class='bx bxs-edit-alt'></i>
                                 </a>
-                                <a class="delete-btn-device" href="@Url.Action("Delete","Device", new { id = @device.ID })">
-                                    <i class="bx bx-trash"></i> 
+                                <a class="delete-btn-device" href="@Url.Action("Delete", "Device", new { id = @device.ID })">
+                                    <i class="bx bx-trash"></i>
                                 </a>
                             </div>
                         </div>
@@ -273,7 +273,7 @@
             const deviceId = $(this).closest('li').data('device-id');
             const command = JSON.stringify({
                 method: "setFanSpeed",
-                params: isOn ? 0 : 255
+                params: isOn ? 0 : currentSpeed * 255
             });
             $('#loading').show();
 
@@ -300,12 +300,14 @@
         $('.speed-button').click(function () {
             currentSpeed = $(this).data('speed');
             const deviceId = $(this).closest('li').data('device-id');
-            const speed = $(this).text();
+            let speed = $(this).text();
+            if (speed === 1) speed = 1.5;
             const command = JSON.stringify({
                 method: "setFanSpeed",
                 params: speed * 85
             });
             $('#loading').show();
+
 
             $.ajax({
                 url: '@Url.Action("Control", "Device")',
@@ -316,10 +318,7 @@
                 },
                 success: function() {
                     $('#loading').hide();
-                    if ($('.toggle-btn.fan').hasClass('off')) {
-                        $(this).closest('li').find('.box img').css("animation", `rotateon ${currentSpeed}s infinite linear`);
-                    }
-                    
+                    $(this).closest('li').find('.box img').css("animation", `rotateon ${currentSpeed}s infinite linear`);
                 }.bind(this),
                 error: function(xhr) {
                     var errorMessage = xhr.responseText ? xhr.responseText : 'Error occurred while controlling the device.';

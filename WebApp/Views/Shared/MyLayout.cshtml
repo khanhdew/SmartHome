@@ -8,35 +8,27 @@
     <title>@ViewBag.Title - SmartHome</title>
 </head>
 <body>
-    <!-- SIDEBAR -->
-    <partial name="_Sidebar" />
+<!-- SIDEBAR -->
+<partial name="_Sidebar"/>
 
-    <!-- CONTENT -->
-    <section id="content">
-        <!-- NAVBAR -->
-        <partial name="_Navbar" />
-        <!-- MAIN CONTENT AREA -->
-        <main>
-            <div id="renderBodyContent">
-                @RenderBody()
+<!-- CONTENT -->
+<section id="content">
+    <!-- NAVBAR -->
+    <partial name="_Navbar"/>
+    <!-- MAIN CONTENT AREA -->
+    <main>
+        <div id="renderBodyContent">
+            @RenderBody()
+        </div>
+        <div id="loading" style="display:none;">
+            <div class="loader-wrapper">
+                <i class='bx bx-loader-alt bx-spin bx-rotate-90'></i>
             </div>
-            <div id="loading" style="display:none;">
-                <div class="loader-wrapper">
-                    <i class='bx bx-loader-alt bx-spin bx-rotate-90' ></i>
-                </div>
-            </div>
-            <div class="error-box">
-                <div class="title-bar">
-                    <span class="title">Error message</span>
-                    <span class="close-btn">&times;</span>
-                </div>
-                <div class="content">ERROR!</div>
-                <button class="ok-btn">OK</button>
-            </div>
-        </main>
-    </section>
-    <script src="~/js/house.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    @RenderSection("Scripts", required: false)
+        </div>
+    </main>
+</section>
+<script src="~/js/house.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@RenderSection("Scripts", required: false)
 </body>
 </html>

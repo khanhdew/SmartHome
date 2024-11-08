@@ -61,7 +61,7 @@ namespace WebApp.Controllers
                 {
                     // add claims
                     var user = await _userManager.FindByIdAsync(model.LoginModel.Email);
-                    var roles = await _userManager.GetRolesAsync(user);
+                    // var roles = await _userManager.GetRolesAsync(user);
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.NameIdentifier, user.Id),
@@ -69,8 +69,8 @@ namespace WebApp.Controllers
                         new Claim(ClaimTypes.Email, user.Email)
                     };
                     // Add role claims
-                    claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
-
+                    // claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
+                    
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     var authProperties = new AuthenticationProperties
                     {

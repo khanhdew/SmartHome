@@ -15,6 +15,8 @@ public class DeviceFactory
                 return new RgbLight { Name = name, Type = "RgbLight", DeviceToken = GenerateDeviceToken() };
             case "Fan":
                 return new Fan { Name = name, Type = "Fan", DeviceToken = GenerateDeviceToken() };
+            case "Speaker":
+                return new Speaker { Name = name, Type = "Speaker", DeviceToken = GenerateDeviceToken() };
             default:
                 throw new ArgumentException("Invalid device type");
         }
