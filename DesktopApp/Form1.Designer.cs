@@ -29,11 +29,35 @@ partial class Form1
     /// </summary>
     private void InitializeComponent()
     {
-        this.components = new System.ComponentModel.Container();
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.ClientSize = new System.Drawing.Size(800, 450);
-        this.Text = "Form1";
+        Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+        Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+        Panel = new Guna.UI2.WinForms.Guna2Panel();
+        SuspendLayout();
+        // 
+        // Panel
+        // 
+        Panel.BackColor = SystemColors.Control;
+        Panel.CustomizableEdges = customizableEdges1;
+        Panel.Dock = DockStyle.Fill;
+        Panel.Location = new Point(0, 0);
+        Panel.Name = "Panel";
+        Panel.ShadowDecoration.CustomizableEdges = customizableEdges2;
+        Panel.Size = new Size(1124, 516);
+        Panel.TabIndex = 0;
+        // 
+        // Form1
+        // 
+        AutoScaleDimensions = new SizeF(8F, 20F);
+        AutoScaleMode = AutoScaleMode.Font;
+        ClientSize = new Size(1124, 516);
+        Controls.Add(Panel);
+        Name = "Form1";
+        Text = "Form1";
+        Load += Form1_Load;
+        ResumeLayout(false);
     }
 
     #endregion
+
+    private Guna.UI2.WinForms.Guna2Panel Panel;
 }
