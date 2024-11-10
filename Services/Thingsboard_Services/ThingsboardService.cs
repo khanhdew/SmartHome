@@ -142,6 +142,46 @@ public class ThingsboardService : IThingsboardService
         }
     }
 
+    public object? ControlDevice(int deviceId, object command)
+    {
+        var temp = _deviceService.GetDeviceById(deviceId);
+        try
+        {
+            var response = new Request<object?>(
+                SystemConfiguration.ThingsboardServer + $"api/rpc/oneway/{temp.TbDeviceId}",
+                JsonSerializer.Serialize(command),
+                _adminToken).Post();
+            
+            TelemetryData telemetryData = new()
+            {
+                DeviceID = temp.ID,
+                Body = JsonSerializer.Serialize(command)
+            };
+            _deviceService.AddTelemetryDatum(telemetryData);
+            return response;
+        }
+        catch (UnauthorizedAccessException e)
+        {
+            _logger.LogError(e, "UnauthorizedAccessException: {Message}", e.Message);
+            throw new UnauthorizedAccessException("Unauthorized");
+        }
+        catch (ArgumentException e)
+        {
+            _logger.LogError(e, "ArgumentException: {Message}", e.Message);
+            throw new ArgumentException("Device already registered with this device token");
+        }
+        catch (TimeoutException e)
+        {
+            _logger.LogError(e, "TimeoutException: {Message}", e.Message);
+            throw new TimeoutException("Device is offline");
+        }
+        catch (KeyNotFoundException e)
+        {
+            _logger.LogError(e, "KeyNotFoundException: {Message}", e.Message);
+            throw new KeyNotFoundException("Device not found");
+        }
+    }
+
     private object decodeControlCommand(Device device,string command, int? dim = null, int? R = null, int? G = null, int? B = null)
     {
         switch (command)

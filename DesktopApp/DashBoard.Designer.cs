@@ -30,13 +30,14 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashBoard));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             PanelSideBar = new Guna.UI2.WinForms.Guna2Panel();
-            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             PanelSideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             SuspendLayout();
@@ -54,6 +55,31 @@
             PanelSideBar.Size = new Size(312, 591);
             PanelSideBar.TabIndex = 0;
             // 
+            // guna2Button1
+            // 
+            guna2Button1.BackColor = Color.Transparent;
+            guna2Button1.BorderRadius = 20;
+            guna2Button1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            guna2Button1.Checked = true;
+            guna2Button1.CheckedState.FillColor = Color.White;
+            guna2Button1.CheckedState.Image = (Image)resources.GetObject("resource.Image");
+            guna2Button1.CustomizableEdges = customizableEdges1;
+            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button1.FillColor = Color.White;
+            guna2Button1.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            guna2Button1.ForeColor = Color.FromArgb(0, 118, 212);
+            guna2Button1.ImageAlign = HorizontalAlignment.Left;
+            guna2Button1.ImageOffset = new Point(10, 0);
+            guna2Button1.Location = new Point(47, 188);
+            guna2Button1.Name = "guna2Button1";
+            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2Button1.Size = new Size(225, 56);
+            guna2Button1.TabIndex = 1;
+            guna2Button1.Text = "guna2Button1";
+            // 
             // guna2PictureBox1
             // 
             guna2PictureBox1.CustomizableEdges = customizableEdges3;
@@ -65,24 +91,6 @@
             guna2PictureBox1.Size = new Size(99, 75);
             guna2PictureBox1.TabIndex = 1;
             guna2PictureBox1.TabStop = false;
-            // 
-            // guna2Button1
-            // 
-            guna2Button1.BackColor = Color.Transparent;
-            guna2Button1.CustomizableEdges = customizableEdges1;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.FillColor = Color.White;
-            guna2Button1.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            guna2Button1.ForeColor = Color.FromArgb(0, 118, 212);
-            guna2Button1.Location = new Point(58, 172);
-            guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2Button1.Size = new Size(225, 56);
-            guna2Button1.TabIndex = 1;
-            guna2Button1.Text = "guna2Button1";
             // 
             // DashBoard
             // 

@@ -3,7 +3,7 @@ using DAO.Exceptions.UserExceptions;
 using DAO.Repositories;
 using Microsoft.Data.SqlClient;
 using DAO.BaseModels;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace DAO.Reposistories_Impl
 {
@@ -11,9 +11,11 @@ namespace DAO.Reposistories_Impl
     public class UserRepository : IUserRepository
     {
         private readonly SmartHomeContext _context;
-        public UserRepository(SmartHomeContext context)
+        private readonly UserManager<User> _userManager;
+        public UserRepository(SmartHomeContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
         public User AddUser(User user)
         {
@@ -77,7 +79,7 @@ namespace DAO.Reposistories_Impl
             var properties = user.GetType().GetProperties();
             foreach (var property in properties)
             {
-                if (property.Name == "Id" || property.Name == "UserName" || property.GetValue(user) == null )
+                if (property.Name == "Id" || property.Name == "UserName"||property.Name =="Email" || property.GetValue(user) == null )
                 {
                     continue;
                 }
