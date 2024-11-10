@@ -13,12 +13,12 @@ namespace DesktopApp
     public partial class Login : UserControl
     {
 
-        private MainForm mainForm;
-        public Login(MainForm form)
+        
+        public Login()
         {
             InitializeComponent();
             this.AutoScaleMode = AutoScaleMode.None;
-            this.mainForm = form;
+            
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -28,10 +28,24 @@ namespace DesktopApp
 
         private void lblSignup_Click(object sender, EventArgs e)
         {
-            mainForm.Panel.Controls.Clear();
-            SignUp signUp = new SignUp(mainForm);
-            signUp.Dock = DockStyle.Fill;
-            mainForm.Panel.Controls.Add(signUp);
+            var parentForm = this.Parent ;
+           
+                var newUserControl = new SignUp(); 
+                parentForm.Controls.Clear();
+                parentForm.Controls.Add(newUserControl);
+                newUserControl.Dock = DockStyle.Fill;
+          
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            var parentForm = this.Parent ;
+            
+                var newUserControl = new DashBoard(); 
+                parentForm.Controls.Clear();
+                parentForm.Controls.Add(newUserControl);
+                newUserControl.Dock = DockStyle.Fill;
+          
         }
     }
 }

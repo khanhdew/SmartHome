@@ -49,7 +49,7 @@ partial class MainForm
         Panel.Margin = new Padding(4);
         Panel.Name = "Panel";
         Panel.ShadowDecoration.CustomizableEdges = customizableEdges2;
-        Panel.Size = new Size(1075, 602);
+        Panel.Size = new Size(1075, 633);
         Panel.TabIndex = 0;
         // 
         // guna2Transition1
@@ -78,7 +78,7 @@ partial class MainForm
         // 
         AutoScaleDimensions = new SizeF(10F, 25F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(1075, 602);
+        ClientSize = new Size(1075, 633);
         Controls.Add(Panel);
         guna2Transition1.SetDecoration(this, Guna.UI2.AnimatorNS.DecorationType.None);
         Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);

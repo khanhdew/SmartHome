@@ -2,21 +2,22 @@ namespace DesktopApp;
 
 public partial class MainForm : Form
 {
-    Login login;
-   
+    Login login= new Login();
+
     public MainForm()
     {
         InitializeComponent();
-        login = new Login(this);
+      ShowLogin();
     }
 
     private void Form1_Load(object sender, EventArgs e)
     {
-        ShowLogin();
+        //ShowLogin();
     }
 
     private void ShowLogin()
     {
+      
         Panel.Controls.Clear();
         login.Dock = DockStyle.Fill;
         Panel.Controls.Add(login);
