@@ -1,8 +1,6 @@
 ﻿using System.Text.Json;
-using System.Text.Json.Nodes;
 using Configuration;
 using DAO.BaseModels;
-using DAO.Models;
 using DAO.Models.Devices;
 using Microsoft.Extensions.Logging;
 using Services.Services;
@@ -29,6 +27,7 @@ public class ThingsboardService : IThingsboardService
 
     public Token GetAdminToken()
     {
+        if(_adminToken != null) return _adminToken;
         return new Request<Token>(SystemConfiguration.ThingsboardServer + "api/auth/login", "{\"username\":\"" + SystemConfiguration.AdminUsername + "\",\"password\":\"" + SystemConfiguration.AdminPassword + "\"}", null).Post()!;
     }
 

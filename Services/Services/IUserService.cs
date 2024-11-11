@@ -13,5 +13,7 @@ public interface IUserService
 
     string GetCurrentUserId();
     void SetHttpContext(ClaimsPrincipal user);
-    
+
+    void Login(string username, string password);
+    void Logout();
 }

@@ -13,11 +13,13 @@ public class UserService : IUserService
     private readonly IUserRepository _userRepository;
     private readonly UserManager<User> _userManager;
     private readonly IHttpContextAccessor _httpContextAccessor;
-    public UserService(IUserRepository userRepository, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor)
+    private readonly SignInManager<User> _signInManager;
+    public UserService(IUserRepository userRepository, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor, SignInManager<User> signInManager)
     {
         _userRepository = userRepository;
         _userManager = userManager;
         _httpContextAccessor = httpContextAccessor;
+        _signInManager = signInManager;
     }
     public User EditUser(User user)
     {
@@ -65,5 +67,32 @@ public class UserService : IUserService
         var context = new DefaultHttpContext();
         context.User = user;
         _httpContextAccessor.HttpContext = context;
+    }
+
+    public void Login(string username, string password)
+    {
+        var user = _userRepository.GetUserByUsername(username);
+        if (user == null)
+        {
+            throw new UserNotFoundException("User not found");
+        }
+        if (!_userManager.CheckPasswordAsync(user, password).GetAwaiter().GetResult())
+        {
+            throw new InvalidPasswordException("Invalid password");
+        }
+        var claims = new List<Claim>
+        {
+            new Claim(ClaimTypes.NameIdentifier, user.Id),
+            new Claim(ClaimTypes.Name, user.UserName),
+            new Claim(ClaimTypes.Email, user.Email)
+        };
+        var identity = new ClaimsIdentity(claims, "login");
+        var principal = new ClaimsPrincipal(identity);
+        SetHttpContext(principal);
+    }
+
+    public void Logout()
+    {
+        _signInManager.SignOutAsync().GetAwaiter().GetResult();
     }
 }

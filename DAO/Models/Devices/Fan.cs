@@ -19,6 +19,6 @@ public class Fan : Device, IFan
     public object SetSpeed(double speed)
     {
         // return an object with method name and parameters
-        return new { method = "setSpeed", parameters = new { speed } };
+        return new { method = "setFanSpeed", parameters = new { speed } };
     }
 }

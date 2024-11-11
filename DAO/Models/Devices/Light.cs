@@ -19,6 +19,6 @@ public class Light : Device, ILight
     public object SetDim(int dim)
     {
         Dim = dim;
-        return new { method = "setDim", parameters = new { dim } };
+        return new { method = "setLedDim", parameters = new { dim } };
     }
 }
