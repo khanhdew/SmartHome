@@ -1,8 +1,13 @@
-﻿using System;
+﻿using DesktopApp.Controls.Devices;
+using DesktopApp.Controls.Houses;
+using DesktopApp.Controls.Rooms;
+using DesktopApp.Controls.Setting;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,12 +17,12 @@ namespace DesktopApp
 {
     public partial class DashBoard : UserControl
     {
-       
+
         public DashBoard()
         {
             InitializeComponent();
+            ColapseMenu();
 
-          
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -26,11 +31,75 @@ namespace DesktopApp
         }
         private void ColapseMenu()
         {
-          
+            if (PanelSideBar.Width >= 210)
+            {
+                PanelSideBar.Width = 80;
+                btnLogo.Text = "";
+                PanelLogo.Width = 80;
+                foreach (Button menuButton in PanelSideBar.Controls.OfType<Button>())
+                {
+                    menuButton.Text = "";
+                    menuButton.ImageAlign = ContentAlignment.MiddleCenter;
+                    menuButton.Padding = new Padding(0);
+                }
+
+
+            }
+            else
+            {
+                PanelSideBar.Width = 210;
+                btnLogo.Text = "Smart Home";
+                PanelLogo.Width = 210;
+                foreach (Button menuButton in PanelSideBar.Controls.OfType<Button>())
+                {
+                    menuButton.Text = " " + menuButton.Tag.ToString();
+                    menuButton.ImageAlign = ContentAlignment.MiddleLeft;
+
+
+
+                }
+
+            }
+
+
+
+
         }
 
-      
-    }
+        private void menuAdminPage_Click(object sender, EventArgs e)
+        {
+            var parentForm = this.Parent;
+            var newUserControl = new AdminControl();
+            parentForm.Controls.Clear();
+            parentForm.Controls.Add(newUserControl);
+            newUserControl.Dock = DockStyle.Fill;
+        }
 
-  
+        private void menuHouse_Click(object sender, EventArgs e)
+        {
+            GoiUserControl(new HouseControl());
+        }
+
+        private void menuRoom_Click(object sender, EventArgs e)
+        {
+            GoiUserControl(new RoomControl());
+        }
+
+        private void menuDevice_Click(object sender, EventArgs e)
+        {
+            GoiUserControl(new DeviceControl());
+        }
+
+        private void menuSettings_Click(object sender, EventArgs e)
+        {
+            GoiUserControl(new SettingControl());
+        }
+
+        private void GoiUserControl(UserControl userControl)
+        {
+            PanelMain.Controls.Clear();
+            userControl.Dock = DockStyle.Fill;
+            PanelMain.Controls.Add(userControl);
+        }
+    }
 }
