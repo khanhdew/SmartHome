@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUp));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUp));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -59,8 +59,7 @@
             // 
             // guna2ShadowPanel1
             // 
-            guna2ShadowPanel1.BackColor = Color.Transparent;
-            guna2ShadowPanel1.BackgroundImage = (Image)resources.GetObject("guna2ShadowPanel1.BackgroundImage");
+            guna2ShadowPanel1.BackColor = Color.FromArgb(36, 54, 101);
             guna2ShadowPanel1.BackgroundImageLayout = ImageLayout.Stretch;
             guna2ShadowPanel1.Controls.Add(txtDKLaiPass);
             guna2ShadowPanel1.Controls.Add(lblLogin);
@@ -74,11 +73,14 @@
             guna2ShadowPanel1.Margin = new Padding(3, 2, 3, 2);
             guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             guna2ShadowPanel1.ShadowColor = Color.Transparent;
+            guna2ShadowPanel1.ShadowDepth = 0;
+            guna2ShadowPanel1.ShadowShift = 0;
             guna2ShadowPanel1.Size = new Size(941, 452);
             guna2ShadowPanel1.TabIndex = 0;
             // 
             // txtDKLaiPass
             // 
+            txtDKLaiPass.Anchor = AnchorStyles.None;
             txtDKLaiPass.BorderColor = Color.Transparent;
             txtDKLaiPass.BorderRadius = 8;
             txtDKLaiPass.BorderThickness = 0;
@@ -94,7 +96,8 @@
             txtDKLaiPass.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtDKLaiPass.IconLeft = (Image)resources.GetObject("txtDKLaiPass.IconLeft");
             txtDKLaiPass.IconLeftSize = new Size(25, 25);
-            txtDKLaiPass.Location = new Point(312, 238);
+            txtDKLaiPass.Location = new Point(330, 240);
+            txtDKLaiPass.Margin = new Padding(3, 4, 3, 4);
             txtDKLaiPass.Name = "txtDKLaiPass";
             txtDKLaiPass.PasswordChar = '*';
             txtDKLaiPass.PlaceholderForeColor = Color.Black;
@@ -106,6 +109,7 @@
             // 
             // lblLogin
             // 
+            lblLogin.Anchor = AnchorStyles.None;
             lblLogin.BorderRadius = 10;
             lblLogin.CustomizableEdges = customizableEdges3;
             lblLogin.DisabledState.BorderColor = Color.DarkGray;
@@ -119,7 +123,7 @@
             lblLogin.Image = (Image)resources.GetObject("lblLogin.Image");
             lblLogin.ImageAlign = HorizontalAlignment.Right;
             lblLogin.ImageSize = new Size(40, 40);
-            lblLogin.Location = new Point(421, 389);
+            lblLogin.Location = new Point(439, 391);
             lblLogin.Margin = new Padding(3, 2, 3, 2);
             lblLogin.Name = "lblLogin";
             lblLogin.ShadowDecoration.CustomizableEdges = customizableEdges4;
@@ -130,9 +134,12 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
             label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(382, 41);
+            label3.ForeColor = Color.FromArgb(139, 216, 189);
+            label3.Location = new Point(400, 43);
             label3.Name = "label3";
             label3.Size = new Size(107, 32);
             label3.TabIndex = 15;
@@ -140,6 +147,7 @@
             // 
             // btnSignup
             // 
+            btnSignup.Anchor = AnchorStyles.None;
             btnSignup.BorderRadius = 20;
             btnSignup.CustomizableEdges = customizableEdges5;
             btnSignup.DisabledState.BorderColor = Color.DarkGray;
@@ -147,11 +155,11 @@
             btnSignup.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnSignup.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnSignup.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnSignup.FillColor = Color.FromArgb(255, 109, 163);
-            btnSignup.FillColor2 = Color.FromArgb(254, 190, 129);
+            btnSignup.FillColor = Color.FromArgb(139, 216, 189);
+            btnSignup.FillColor2 = Color.FromArgb(139, 216, 189);
             btnSignup.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             btnSignup.ForeColor = Color.White;
-            btnSignup.Location = new Point(312, 335);
+            btnSignup.Location = new Point(330, 337);
             btnSignup.Margin = new Padding(3, 2, 3, 2);
             btnSignup.Name = "btnSignup";
             btnSignup.ShadowDecoration.CustomizableEdges = customizableEdges6;
@@ -161,6 +169,7 @@
             // 
             // txtDKPassword
             // 
+            txtDKPassword.Anchor = AnchorStyles.None;
             txtDKPassword.BorderColor = Color.Transparent;
             txtDKPassword.BorderRadius = 8;
             txtDKPassword.BorderThickness = 0;
@@ -176,7 +185,8 @@
             txtDKPassword.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtDKPassword.IconLeft = (Image)resources.GetObject("txtDKPassword.IconLeft");
             txtDKPassword.IconLeftSize = new Size(25, 25);
-            txtDKPassword.Location = new Point(312, 175);
+            txtDKPassword.Location = new Point(330, 177);
+            txtDKPassword.Margin = new Padding(3, 4, 3, 4);
             txtDKPassword.Name = "txtDKPassword";
             txtDKPassword.PasswordChar = '*';
             txtDKPassword.PlaceholderForeColor = Color.Black;
@@ -188,6 +198,7 @@
             // 
             // txtDKUserName
             // 
+            txtDKUserName.Anchor = AnchorStyles.None;
             txtDKUserName.BorderColor = Color.Transparent;
             txtDKUserName.BorderRadius = 8;
             txtDKUserName.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dot;
@@ -204,7 +215,8 @@
             txtDKUserName.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtDKUserName.IconLeft = (Image)resources.GetObject("txtDKUserName.IconLeft");
             txtDKUserName.IconLeftSize = new Size(25, 25);
-            txtDKUserName.Location = new Point(312, 111);
+            txtDKUserName.Location = new Point(330, 113);
+            txtDKUserName.Margin = new Padding(3, 4, 3, 4);
             txtDKUserName.Name = "txtDKUserName";
             txtDKUserName.PasswordChar = '\0';
             txtDKUserName.PlaceholderForeColor = Color.Black;
@@ -238,12 +250,12 @@
 
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private Guna.UI2.WinForms.Guna2TextBox txtDKLaiPass;
         private Guna.UI2.WinForms.Guna2Button lblLogin;
         private Label label3;
         private Guna.UI2.WinForms.Guna2GradientButton btnSignup;
         private Guna.UI2.WinForms.Guna2TextBox txtDKPassword;
         private Guna.UI2.WinForms.Guna2TextBox txtDKUserName;
-        private Guna.UI2.WinForms.Guna2TextBox txtDKLaiPass;
-        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }

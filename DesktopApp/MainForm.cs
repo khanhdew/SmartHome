@@ -2,12 +2,14 @@ namespace DesktopApp;
 
 public partial class MainForm : Form
 {
-    Login login= new Login();
+    private readonly Login login;
 
-    public MainForm()
+    public MainForm(Login login)
     {
         InitializeComponent();
-      ShowLogin();
+        this.login = login;
+        ShowLogin();
+        
     }
 
     private void Form1_Load(object sender, EventArgs e)

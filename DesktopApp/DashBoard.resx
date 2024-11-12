@@ -120,6 +120,9 @@
   <metadata name="guna2Elipse2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>161, 17</value>
   </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>82</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -41519,7 +41522,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
         LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
         SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAoBIAAAJNU0Z0AUkBTAIBAQYB
-        AAFgAQABYAEAASEBAAEhAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAYQDAAFCAwABAQEAAQgF
+        AAFoAQABaAEAASEBAAEhAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAYQDAAFCAwABAQEAAQgF
         AAEIASIYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHAAQAB8AHKAaYBAAEzBQAB
         MwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5AQABgAF8Af8BAAJQAf8B
         AAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMAAWYDAAGZAwABzAIAATMD
@@ -45377,7 +45380,7 @@
   <data name="guna2Button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAAA6hJREFUeF7tm8lrFEEUxqOi4nZwA/UqKupJcMH/IEKMSXrKqIiCSG4eJEjipMo+
+        DAAACwwBP0AiyAAAA6hJREFUeF7tm8lrFEEUxqOi4nZwA/UqKupJcMH/IEKMSXrKqIiCSG4eJEjipMo+
         CKIgiF5EEfRqMKAGJXEyVZ2o0UMQXMEVUaKoJ1dQIfG9yQMheeqkp3pSFfsHHwlDz3vf10t1d013RUpK
         ShkZnBAovS6jjAyUOZVRuh019L+RItu1FpehhccPIjQzA2kUqB+CDv5NtIzc3tg5g77uN4HMbw6kfjs8
         6L+l3whpMlTGR2B3l7oJggzwAYtR4buHwzCcSEX9AcIfGxkonmCMOEpl/SA4oHdyQUqSNLupvNtsCa8t
