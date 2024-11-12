@@ -9,6 +9,11 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Content Include="bin\Debug\net6.0-windows\DesktopApp.deps.json" />
+      <Content Include="bin\Debug\net6.0-windows\DesktopApp.runtimeconfig.json" />
+    </ItemGroup>
+
+    <ItemGroup>
       <PackageReference Include="Guna.UI2.WinForms" Version="2.0.4.6" />
     </ItemGroup>
 
@@ -17,13 +22,100 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controls\Devices\" />
-      <Folder Include="Controls\Houses\" />
-      <Folder Include="Controls\Rooms\" />
+      <Folder Include="bin\Debug\Images\" />
+      <Folder Include="bin\Release\net6.0-windows\" />
+      <Folder Include="Controls\Accounts\" />
+		<Folder Include="Controls\Devices\" />
+		<Folder Include="Controls\Houses\" />
+		<Folder Include="Controls\Rooms\" />
       <Folder Include="Views\Accounts\" />
       <Folder Include="Views\Devices\" />
       <Folder Include="Views\Houses\" />
       <Folder Include="Views\Rooms\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="bin\Debug\net6.0-windows\Configuration.dll" />
+      <None Include="bin\Debug\net6.0-windows\Configuration.pdb" />
+      <None Include="bin\Debug\net6.0-windows\DAO.dll" />
+      <None Include="bin\Debug\net6.0-windows\DAO.pdb" />
+      <None Include="bin\Debug\net6.0-windows\DesktopApp.dll" />
+      <None Include="bin\Debug\net6.0-windows\DesktopApp.exe" />
+      <None Include="bin\Debug\net6.0-windows\DesktopApp.pdb" />
+      <None Include="bin\Debug\net6.0-windows\Guna.UI2.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Authentication.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Authentication.Cookies.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Authentication.Core.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Authentication.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Cryptography.Internal.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.DataProtection.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.DataProtection.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Hosting.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Http.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Http.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Http.Extensions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Http.Features.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Identity.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.WebUtilities.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Data.SqlClient.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Relational.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.SqlServer.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Caching.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Caching.Memory.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Hosting.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Identity.Core.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Identity.Stores.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.ObjectPool.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Options.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Primitives.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.WebEncoders.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Identity.Client.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.IdentityModel.Logging.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.IdentityModel.Protocols.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.IdentityModel.Tokens.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Net.Http.Headers.dll" />
+      <None Include="bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll" />
+      <None Include="bin\Debug\net6.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll" />
+      <None Include="bin\Debug\net6.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll" />
+      <None Include="bin\Debug\net6.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll" />
+      <None Include="bin\Debug\net6.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll" />
+      <None Include="bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Management.dll" />
+      <None Include="bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll" />
+      <None Include="bin\Debug\net6.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll" />
+      <None Include="bin\Debug\net6.0-windows\Services.dll" />
+      <None Include="bin\Debug\net6.0-windows\Services.pdb" />
+      <None Include="bin\Debug\net6.0-windows\System.Diagnostics.DiagnosticSource.dll" />
+      <None Include="bin\Debug\net6.0-windows\System.IdentityModel.Tokens.Jwt.dll" />
+      <None Include="bin\Debug\net6.0-windows\System.Management.dll" />
+      <None Include="bin\Debug\net6.0-windows\System.Runtime.Caching.dll" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Properties\Resources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resources.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Properties\Resources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
 </Project>
