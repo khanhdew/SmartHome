@@ -78,7 +78,7 @@
             guna2ShadowPanel1.ShadowDepth = 80;
             guna2ShadowPanel1.ShadowShift = 10;
             guna2ShadowPanel1.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
-            guna2ShadowPanel1.Size = new Size(941, 452);
+            guna2ShadowPanel1.Size = new Size(941, 512);
             guna2ShadowPanel1.TabIndex = 0;
             // 
             // lblSignup
@@ -97,11 +97,11 @@
             lblSignup.Image = (Image)resources.GetObject("lblSignup.Image");
             lblSignup.ImageAlign = HorizontalAlignment.Right;
             lblSignup.ImageSize = new Size(40, 40);
-            lblSignup.Location = new Point(334, 377);
+            lblSignup.Location = new Point(327, 424);
             lblSignup.Margin = new Padding(3, 2, 3, 2);
             lblSignup.Name = "lblSignup";
             lblSignup.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            lblSignup.Size = new Size(204, 36);
+            lblSignup.Size = new Size(204, 41);
             lblSignup.TabIndex = 24;
             lblSignup.Text = "Creat Account";
             lblSignup.Click += lblSignup_Click;
@@ -111,9 +111,9 @@
             label3.AutoSize = true;
             guna2Transition1.SetDecoration(label3, Guna.UI2.AnimatorNS.DecorationType.None);
             label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(374, 48);
+            label3.Location = new Point(367, 51);
             label3.Name = "label3";
-            label3.Size = new Size(136, 32);
+            label3.Size = new Size(154, 37);
             label3.TabIndex = 23;
             label3.Text = "User Login";
             // 
@@ -122,9 +122,9 @@
             lblQuenPass.AutoSize = true;
             guna2Transition1.SetDecoration(lblQuenPass, Guna.UI2.AnimatorNS.DecorationType.None);
             lblQuenPass.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            lblQuenPass.Location = new Point(334, 343);
+            lblQuenPass.Location = new Point(327, 386);
             lblQuenPass.Name = "lblQuenPass";
-            lblQuenPass.Size = new Size(205, 19);
+            lblQuenPass.Size = new Size(232, 21);
             lblQuenPass.TabIndex = 22;
             lblQuenPass.Text = "Forgot Username or password ?";
             // 
@@ -133,9 +133,9 @@
             label1.AutoSize = true;
             guna2Transition1.SetDecoration(label1, Guna.UI2.AnimatorNS.DecorationType.None);
             label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(387, 240);
+            label1.Location = new Point(380, 269);
             label1.Name = "label1";
-            label1.Size = new Size(98, 19);
+            label1.Size = new Size(113, 21);
             label1.TabIndex = 21;
             label1.Text = "Remember me";
             // 
@@ -153,11 +153,11 @@
             btnLogin.FillColor2 = Color.FromArgb(254, 190, 129);
             btnLogin.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             btnLogin.ForeColor = Color.White;
-            btnLogin.Location = new Point(317, 281);
+            btnLogin.Location = new Point(310, 315);
             btnLogin.Margin = new Padding(3, 2, 3, 2);
             btnLogin.Name = "btnLogin";
             btnLogin.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            btnLogin.Size = new Size(260, 42);
+            btnLogin.Size = new Size(260, 48);
             btnLogin.TabIndex = 20;
             btnLogin.Text = "LOGIN";
             btnLogin.Click += btnLogin_Click;
@@ -170,11 +170,11 @@
             checkLogin.CheckedState.InnerColor = Color.White;
             checkLogin.CustomizableEdges = customizableEdges5;
             guna2Transition1.SetDecoration(checkLogin, Guna.UI2.AnimatorNS.DecorationType.None);
-            checkLogin.Location = new Point(320, 240);
+            checkLogin.Location = new Point(313, 269);
             checkLogin.Margin = new Padding(3, 2, 3, 2);
             checkLogin.Name = "checkLogin";
             checkLogin.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            checkLogin.Size = new Size(38, 19);
+            checkLogin.Size = new Size(38, 22);
             checkLogin.TabIndex = 19;
             checkLogin.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
             checkLogin.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
@@ -185,6 +185,7 @@
             // 
             txtPassword.BorderColor = Color.Transparent;
             txtPassword.BorderRadius = 8;
+            txtPassword.BorderThickness = 0;
             txtPassword.CustomizableEdges = customizableEdges7;
             guna2Transition1.SetDecoration(txtPassword, Guna.UI2.AnimatorNS.DecorationType.None);
             txtPassword.DefaultText = "";
@@ -197,22 +198,23 @@
             txtPassword.ForeColor = Color.Black;
             txtPassword.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtPassword.IconLeft = (Image)resources.GetObject("txtPassword.IconLeft");
-            txtPassword.IconLeftSize = new Size(40, 40);
-            txtPassword.Location = new Point(317, 172);
-            txtPassword.Margin = new Padding(3, 4, 3, 4);
+            txtPassword.IconLeftSize = new Size(25, 25);
+            txtPassword.Location = new Point(310, 192);
+            txtPassword.Margin = new Padding(3, 5, 3, 5);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
             txtPassword.PlaceholderForeColor = Color.Black;
             txtPassword.PlaceholderText = "Password";
             txtPassword.SelectedText = "";
             txtPassword.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            txtPassword.Size = new Size(260, 39);
+            txtPassword.Size = new Size(260, 44);
             txtPassword.TabIndex = 18;
             // 
             // txtUserName
             // 
             txtUserName.BorderColor = Color.Transparent;
             txtUserName.BorderRadius = 8;
+            txtUserName.BorderThickness = 0;
             txtUserName.CustomizableEdges = customizableEdges9;
             guna2Transition1.SetDecoration(txtUserName, Guna.UI2.AnimatorNS.DecorationType.None);
             txtUserName.DefaultText = "";
@@ -225,16 +227,16 @@
             txtUserName.ForeColor = Color.Black;
             txtUserName.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtUserName.IconLeft = (Image)resources.GetObject("txtUserName.IconLeft");
-            txtUserName.IconLeftSize = new Size(40, 40);
-            txtUserName.Location = new Point(317, 109);
-            txtUserName.Margin = new Padding(3, 4, 3, 4);
+            txtUserName.IconLeftSize = new Size(25, 25);
+            txtUserName.Location = new Point(310, 121);
+            txtUserName.Margin = new Padding(3, 5, 3, 5);
             txtUserName.Name = "txtUserName";
             txtUserName.PasswordChar = '\0';
             txtUserName.PlaceholderForeColor = Color.Black;
             txtUserName.PlaceholderText = "Username";
             txtUserName.SelectedText = "";
             txtUserName.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            txtUserName.Size = new Size(260, 39);
+            txtUserName.Size = new Size(260, 44);
             txtUserName.TabIndex = 17;
             // 
             // guna2DragControl1
@@ -269,7 +271,7 @@
             // 
             // Login
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.Stretch;
@@ -277,7 +279,7 @@
             guna2Transition1.SetDecoration(this, Guna.UI2.AnimatorNS.DecorationType.None);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Login";
-            Size = new Size(941, 452);
+            Size = new Size(941, 512);
             Load += Login_Load;
             guna2ShadowPanel1.ResumeLayout(false);
             guna2ShadowPanel1.PerformLayout();

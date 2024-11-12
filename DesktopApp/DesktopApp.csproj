@@ -17,6 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Controls\Devices\" />
       <Folder Include="Controls\Houses\" />
       <Folder Include="Controls\Rooms\" />
       <Folder Include="Views\Accounts\" />
