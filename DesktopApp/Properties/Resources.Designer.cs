@@ -59,5 +59,35 @@ namespace DesktopApp.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _10041624 {
+            get {
+                object obj = ResourceManager.GetObject("10041624", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1cf700e7_8ad7_4b8d_8ed1_7b6e362748ab {
+            get {
+                object obj = ResourceManager.GetObject("1cf700e7-8ad7-4b8d-8ed1-7b6e362748ab", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap v4ky_r0jp_210617 {
+            get {
+                object obj = ResourceManager.GetObject("v4ky_r0jp_210617", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
