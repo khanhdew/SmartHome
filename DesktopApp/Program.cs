@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Services.Services_Impl;
 using Services.Services;
 using Services.Thingsboard_Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace DesktopApp;
 
@@ -34,8 +35,12 @@ static class Program
     
     static void ConfigureServices(IServiceCollection services)
     {
+        var connectionString = "Server=localhost;Database=SmartHome;Trusted_Connection=True;User Id=sa;Password=P@ssw0rd";
         services.AddLogging();
         services.AddHttpContextAccessor();
+        //add dbcontext
+        services.AddDbContext<SmartHomeContext>(options =>
+    options.UseSqlServer(connectionString));
         //add repositories
         services.AddSingleton<IDeviceRepository, DeviceRepository>();
         services.AddSingleton<IRoomRepository, RoomRepository>();
@@ -51,7 +56,11 @@ static class Program
         services.AddIdentity<User, IdentityRole>()
             .AddEntityFrameworkStores<SmartHomeContext>()
             .AddDefaultTokenProviders();
-        
+
+
+        //add views
+        services.AddTransient<Login>();
+        services.AddTransient<SignUp>();
         services.AddTransient<MainForm>();
     }
 }

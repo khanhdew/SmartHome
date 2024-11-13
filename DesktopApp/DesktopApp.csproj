@@ -56,6 +56,12 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="bin\Debug\Images\" />
+      <Folder Include="bin\Release\net6.0-windows\" />
+      <Folder Include="Controls\Accounts\" />
+		<Folder Include="Controls\Devices\" />
+		<Folder Include="Controls\Houses\" />
+		<Folder Include="Controls\Rooms\" />
       <Folder Include="Views\Accounts\" />
       <Folder Include="Views\Devices\" />
       <Folder Include="Views\Houses\" />
@@ -129,6 +135,21 @@
       <None Include="bin\Debug\net6.0-windows\System.IdentityModel.Tokens.Jwt.dll" />
       <None Include="bin\Debug\net6.0-windows\System.Management.dll" />
       <None Include="bin\Debug\net6.0-windows\System.Runtime.Caching.dll" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Properties\Resources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resources.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Properties\Resources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Services.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,20 +13,21 @@ namespace DesktopApp
 {
     public partial class SignUp : UserControl
     {
-       
-        public SignUp()
+        private readonly IUserService _userService;
+
+        public SignUp(IUserService userService)
         {
+            _userService = userService;
             InitializeComponent();
             this.AutoScaleMode = AutoScaleMode.None;
-            
         }
 
         private void lblLogin_Click(object sender, EventArgs e)
         {
-            var parentForm = this.Parent ;
+            var parentForm = this.Parent;
             if (parentForm != null)
             {
-                var newUserControl = new Login(); 
+                var newUserControl = new Login(_userService);
                 parentForm.Controls.Clear();
                 parentForm.Controls.Add(newUserControl);
                 newUserControl.Dock = DockStyle.Fill;
