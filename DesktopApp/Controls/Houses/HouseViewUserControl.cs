@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAO.BaseModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace DesktopApp.Controls.Houses
 {
     public partial class HouseViewUserControl : UserControl
     {
-        public HouseViewUserControl()
+        private readonly House house;
+        public HouseViewUserControl(House house)
         {
             InitializeComponent();
+            this.house = house;
         }
 
         private void btnSuaNha_Click(object sender, EventArgs e)

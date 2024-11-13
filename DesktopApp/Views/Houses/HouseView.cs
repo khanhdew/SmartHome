@@ -1,5 +1,4 @@
-﻿using Services.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,14 +10,11 @@ using System.Windows.Forms;
 
 namespace DesktopApp.Views.Houses
 {
-    public partial class HouseViewUserControl : UserControl
+    public partial class HouseView : UserControl
     {
-        private readonly IHouseService _houseService;
-
-        public HouseViewUserControl(IHouseService houseService)
+        public HouseView()
         {
             InitializeComponent();
-            _houseService = houseService;
         }
     }
 }

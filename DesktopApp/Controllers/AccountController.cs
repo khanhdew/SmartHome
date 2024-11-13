@@ -12,8 +12,8 @@ public class AccountController
         _userService = userService;
     }
     
-    public void Login(string username, string password)
+    public void Login(string username, string password, bool persistent)
     {
-        _userService.Login(username, password);
+        _userService.Login(username, password, persistent);
     }
 }

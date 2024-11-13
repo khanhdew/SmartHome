@@ -298,6 +298,7 @@
             Name = "Login";
             Size = new Size(941, 452);
             Load += Login_Load;
+            Click += btnLogin_Click;
             guna2Panel1.ResumeLayout(false);
             guna2Panel1.PerformLayout();
             ResumeLayout(false);

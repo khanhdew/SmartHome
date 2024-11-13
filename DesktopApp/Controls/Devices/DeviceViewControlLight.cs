@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DAO.Models.Devices;
+using Services.Thingsboard_Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,71 @@ namespace DesktopApp.Controls.Devices
 {
     public partial class DeviceViewControlLight : UserControl
     {
-        public DeviceViewControlLight()
+        private readonly Light light;
+        private bool isOn = false;
+        private readonly IThingsboardService thingsboardService;
+        public DeviceViewControlLight(Light light, IThingsboardService thingsboardService)
         {
             InitializeComponent();
+            this.light = light;
+            this.thingsboardService = thingsboardService;
+        }
+
+        private void powerButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                thingsboardService.ControlDevice(light.ID, isOn ? light.TurnOn() : light.TurnOff());
+                isOn = !isOn;
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MessageBox.Show("Unauthorized access","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (TimeoutException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void setLedDim(object sender, EventArgs e)
+        {
+            try
+            {
+                thingsboardService.ControlDevice(light.ID, light.SetDim((int)(TrackBarLight.Value * 25.5)));
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MessageBox.Show("Unauthorized access", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (TimeoutException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

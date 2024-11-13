@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAO.BaseModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace DesktopApp.Controls.Rooms
 {
     public partial class RoomViewUserControl : UserControl
     {
-        public RoomViewUserControl()
+        private readonly Room room;
+        public RoomViewUserControl(Room room)
         {
             InitializeComponent();
+            this.room = room;
         }
     }
 }
