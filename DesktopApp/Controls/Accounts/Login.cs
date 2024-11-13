@@ -40,26 +40,30 @@ namespace DesktopApp
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            var parentForm = this.Parent ;
+            var parentForm = this.Parent;
             var username = txtUsername.Text;
             var password = txtPassword.Text;
             var persistent = checkLogin.Checked;
             try
             {
                 _userService.Login(username, password, persistent);
+                MessageBox.Show("Dang nhap thanh cong");
                 var newUserControl = new DashBoard();
+                newUserControl.btnNameUser.Text ="Hello, "+ username;
                 parentForm.Controls.Clear();
                 parentForm.Controls.Add(newUserControl);
                 newUserControl.Dock = DockStyle.Fill;
+
             }
-            catch (UserNotFoundException ex)
+            catch (UserNotFoundException)
             {
                 MessageBox.Show("Đăng nhập không thành công", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + $" {username} {password} {persistent}");
             }
+          
         }
     }
 }
