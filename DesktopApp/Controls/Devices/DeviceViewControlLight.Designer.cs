@@ -28,69 +28,98 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeviceViewControlLight));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            lblTenDen = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            picDen = new Guna.UI2.WinForms.Guna2PictureBox();
-            btnXoaDen = new Guna.UI2.WinForms.Guna2Button();
-            btnSuaDen = new Guna.UI2.WinForms.Guna2Button();
-            guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            lightBulbPanel = new Guna.UI2.WinForms.Guna2GradientPanel();
+            powerButton = new Guna.UI2.WinForms.Guna2Button();
             TrackBarLight = new Guna.UI2.WinForms.Guna2TrackBar();
-            lblDosang = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            ((System.ComponentModel.ISupportInitialize)picDen).BeginInit();
+            btnSuaDen = new Guna.UI2.WinForms.Guna2Button();
+            btnXoaDen = new Guna.UI2.WinForms.Guna2Button();
+            lblTenDen = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2ShadowPanel1.SuspendLayout();
             SuspendLayout();
             // 
-            // lblTenDen
+            // guna2ShadowPanel1
             // 
-            lblTenDen.BackColor = Color.Transparent;
-            lblTenDen.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTenDen.Location = new Point(30, 20);
-            lblTenDen.Name = "lblTenDen";
-            lblTenDen.Size = new Size(61, 27);
-            lblTenDen.TabIndex = 0;
-            lblTenDen.Text = "Đèn 1";
+            guna2ShadowPanel1.BackColor = Color.Transparent;
+            guna2ShadowPanel1.BackgroundImageLayout = ImageLayout.Center;
+            guna2ShadowPanel1.Controls.Add(lightBulbPanel);
+            guna2ShadowPanel1.Controls.Add(powerButton);
+            guna2ShadowPanel1.Controls.Add(TrackBarLight);
+            guna2ShadowPanel1.Controls.Add(btnSuaDen);
+            guna2ShadowPanel1.Controls.Add(btnXoaDen);
+            guna2ShadowPanel1.Controls.Add(lblTenDen);
+            guna2ShadowPanel1.Dock = DockStyle.Fill;
+            guna2ShadowPanel1.FillColor = Color.White;
+            guna2ShadowPanel1.Location = new Point(0, 0);
+            guna2ShadowPanel1.Name = "guna2ShadowPanel1";
+            guna2ShadowPanel1.Radius = 10;
+            guna2ShadowPanel1.ShadowColor = Color.Black;
+            guna2ShadowPanel1.Size = new Size(219, 225);
+            guna2ShadowPanel1.TabIndex = 0;
             // 
-            // picDen
+            // lightBulbPanel
             // 
-            picDen.CustomizableEdges = customizableEdges8;
-            picDen.Image = Properties.Resources._10041624;
-            picDen.ImageRotate = 0F;
-            picDen.Location = new Point(51, 53);
-            picDen.Name = "picDen";
-            picDen.ShadowDecoration.CustomizableEdges = customizableEdges9;
-            picDen.Size = new Size(144, 152);
-            picDen.SizeMode = PictureBoxSizeMode.Zoom;
-            picDen.TabIndex = 1;
-            picDen.TabStop = false;
+            lightBulbPanel.AutoRoundedCorners = true;
+            lightBulbPanel.BackColor = Color.Transparent;
+            lightBulbPanel.BackgroundImage = (Image)resources.GetObject("lightBulbPanel.BackgroundImage");
+            lightBulbPanel.BackgroundImageLayout = ImageLayout.Center;
+            lightBulbPanel.BorderColor = Color.Transparent;
+            lightBulbPanel.BorderRadius = 41;
+            lightBulbPanel.BorderThickness = 2;
+            lightBulbPanel.CustomizableEdges = customizableEdges1;
+            lightBulbPanel.Enabled = false;
+            lightBulbPanel.Location = new Point(63, 53);
+            lightBulbPanel.Name = "lightBulbPanel";
+            lightBulbPanel.ShadowDecoration.Color = Color.Transparent;
+            lightBulbPanel.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            lightBulbPanel.ShadowDecoration.Enabled = true;
+            lightBulbPanel.Size = new Size(96, 85);
+            lightBulbPanel.TabIndex = 16;
+            lightBulbPanel.UseTransparentBackground = true;
             // 
-            // btnXoaDen
+            // powerButton
             // 
-            btnXoaDen.BorderRadius = 10;
-            btnXoaDen.CustomizableEdges = customizableEdges10;
-            btnXoaDen.DisabledState.BorderColor = Color.DarkGray;
-            btnXoaDen.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnXoaDen.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnXoaDen.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnXoaDen.FillColor = Color.White;
-            btnXoaDen.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnXoaDen.ForeColor = Color.White;
-            btnXoaDen.Image = (Image)resources.GetObject("btnXoaDen.Image");
-            btnXoaDen.Location = new Point(175, 9);
-            btnXoaDen.Name = "btnXoaDen";
-            btnXoaDen.ShadowDecoration.CustomizableEdges = customizableEdges11;
-            btnXoaDen.Size = new Size(46, 38);
-            btnXoaDen.TabIndex = 3;
+            powerButton.BackColor = Color.Transparent;
+            powerButton.BackgroundImage = (Image)resources.GetObject("powerButton.BackgroundImage");
+            powerButton.BackgroundImageLayout = ImageLayout.Zoom;
+            powerButton.CustomizableEdges = customizableEdges3;
+            powerButton.DisabledState.BorderColor = Color.DarkGray;
+            powerButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            powerButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            powerButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            powerButton.FillColor = Color.Transparent;
+            powerButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            powerButton.ForeColor = Color.White;
+            powerButton.Location = new Point(92, 183);
+            powerButton.Name = "powerButton";
+            powerButton.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            powerButton.Size = new Size(36, 39);
+            powerButton.TabIndex = 15;
+            powerButton.Click += powerButton_Click;
+            // 
+            // TrackBarLight
+            // 
+            TrackBarLight.Location = new Point(18, 156);
+            TrackBarLight.Margin = new Padding(3, 2, 3, 2);
+            TrackBarLight.Name = "TrackBarLight";
+            TrackBarLight.Size = new Size(178, 22);
+            TrackBarLight.TabIndex = 13;
+            TrackBarLight.ThumbColor = Color.DeepSkyBlue;
+            TrackBarLight.ValueChanged += setLedDim;
             // 
             // btnSuaDen
             // 
             btnSuaDen.BorderRadius = 10;
-            btnSuaDen.CustomizableEdges = customizableEdges12;
+            btnSuaDen.CustomizableEdges = customizableEdges5;
             btnSuaDen.DisabledState.BorderColor = Color.DarkGray;
             btnSuaDen.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSuaDen.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -99,72 +128,65 @@
             btnSuaDen.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnSuaDen.ForeColor = Color.White;
             btnSuaDen.Image = (Image)resources.GetObject("btnSuaDen.Image");
-            btnSuaDen.Location = new Point(123, 9);
+            btnSuaDen.Location = new Point(119, 20);
+            btnSuaDen.Margin = new Padding(3, 2, 3, 2);
             btnSuaDen.Name = "btnSuaDen";
-            btnSuaDen.ShadowDecoration.CustomizableEdges = customizableEdges13;
-            btnSuaDen.Size = new Size(46, 38);
-            btnSuaDen.TabIndex = 4;
+            btnSuaDen.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnSuaDen.Size = new Size(40, 28);
+            btnSuaDen.TabIndex = 12;
             // 
-            // guna2CircleButton1
+            // btnXoaDen
             // 
-            guna2CircleButton1.DisabledState.BorderColor = Color.DarkGray;
-            guna2CircleButton1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2CircleButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2CircleButton1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2CircleButton1.FillColor = Color.Red;
-            guna2CircleButton1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2CircleButton1.ForeColor = Color.White;
-            guna2CircleButton1.Location = new Point(13, 241);
-            guna2CircleButton1.Name = "guna2CircleButton1";
-            guna2CircleButton1.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            guna2CircleButton1.Size = new Size(35, 31);
-            guna2CircleButton1.TabIndex = 5;
+            btnXoaDen.BorderRadius = 10;
+            btnXoaDen.CustomizableEdges = customizableEdges7;
+            btnXoaDen.DisabledState.BorderColor = Color.DarkGray;
+            btnXoaDen.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnXoaDen.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnXoaDen.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnXoaDen.FillColor = Color.White;
+            btnXoaDen.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnXoaDen.ForeColor = Color.White;
+            btnXoaDen.Image = (Image)resources.GetObject("btnXoaDen.Image");
+            btnXoaDen.Location = new Point(156, 20);
+            btnXoaDen.Margin = new Padding(3, 2, 3, 2);
+            btnXoaDen.Name = "btnXoaDen";
+            btnXoaDen.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnXoaDen.Size = new Size(40, 28);
+            btnXoaDen.TabIndex = 11;
             // 
-            // TrackBarLight
+            // lblTenDen
             // 
-            TrackBarLight.Location = new Point(115, 248);
-            TrackBarLight.Name = "TrackBarLight";
-            TrackBarLight.Size = new Size(124, 29);
-            TrackBarLight.TabIndex = 6;
-            TrackBarLight.ThumbColor = Color.DeepSkyBlue;
-            // 
-            // lblDosang
-            // 
-            lblDosang.BackColor = Color.Transparent;
-            lblDosang.Location = new Point(51, 248);
-            lblDosang.Name = "lblDosang";
-            lblDosang.Size = new Size(58, 22);
-            lblDosang.TabIndex = 7;
-            lblDosang.Text = "Độ sáng";
+            lblTenDen.BackColor = Color.Transparent;
+            lblTenDen.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTenDen.Location = new Point(29, 20);
+            lblTenDen.Margin = new Padding(3, 2, 3, 2);
+            lblTenDen.Name = "lblTenDen";
+            lblTenDen.Size = new Size(48, 22);
+            lblTenDen.TabIndex = 9;
+            lblTenDen.Text = "Đèn 1";
             // 
             // DeviceViewControlLight
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(lblDosang);
-            Controls.Add(TrackBarLight);
-            Controls.Add(guna2CircleButton1);
-            Controls.Add(btnSuaDen);
-            Controls.Add(btnXoaDen);
-            Controls.Add(picDen);
-            Controls.Add(lblTenDen);
+            Controls.Add(guna2ShadowPanel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "DeviceViewControlLight";
-            Size = new Size(250, 300);
-            ((System.ComponentModel.ISupportInitialize)picDen).EndInit();
+            Size = new Size(219, 225);
+            guna2ShadowPanel1.ResumeLayout(false);
+            guna2ShadowPanel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2HtmlLabel lblTenDen;
-        private Guna.UI2.WinForms.Guna2PictureBox picDen;
-        private Guna.UI2.WinForms.Guna2Button btnXoaDen;
-        private Guna.UI2.WinForms.Guna2Button btnSuaDen;
-        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
+        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
+        private Guna.UI2.WinForms.Guna2Button powerButton;
         private Guna.UI2.WinForms.Guna2TrackBar TrackBarLight;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lblDosang;
+        private Guna.UI2.WinForms.Guna2Button btnSuaDen;
+        private Guna.UI2.WinForms.Guna2Button btnXoaDen;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblTenDen;
+        private Guna.UI2.WinForms.Guna2GradientPanel lightBulbPanel;
     }
 }

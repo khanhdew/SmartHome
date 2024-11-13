@@ -69,17 +69,14 @@ public class UserService : IUserService
         _httpContextAccessor.HttpContext = context;
     }
 
-    public void Login(string username, string password)
+    public async Task Login(string username, string password, bool persistent)
     {
         var user = _userRepository.GetUserByUsername(username);
         if (user == null)
         {
             throw new UserNotFoundException("User not found");
         }
-        if (!_userManager.CheckPasswordAsync(user, password).GetAwaiter().GetResult())
-        {
-            throw new InvalidPasswordException("Invalid password");
-        }
+        var result = await _signInManager.PasswordSignInAsync(user, password, persistent, false);
         var claims = new List<Claim>
         {
             new Claim(ClaimTypes.NameIdentifier, user.Id),
@@ -94,5 +91,20 @@ public class UserService : IUserService
     public void Logout()
     {
         _signInManager.SignOutAsync().GetAwaiter().GetResult();
+    }
+
+    public async Task SignUp(string username, string password, string email, string confirmPassword)
+    {
+        var user = new User { UserName = username, Email = email};
+        if(password != confirmPassword)
+        {
+            throw new ArgumentException("Passwords do not match");
+        }
+        var result = await _userManager.CreateAsync(user, password);
+        if (result.Succeeded)
+        {
+            await _userManager.AddToRoleAsync(user, "Member");
+            await _signInManager.SignInAsync(user, isPersistent: false);
+        }
     }
 }

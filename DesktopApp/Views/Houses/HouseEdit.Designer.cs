@@ -1,6 +1,6 @@
 ﻿namespace DesktopApp.Views.Houses
 {
-    partial class HouseViewUserControl
+    partial class HouseEdit
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,12 +30,12 @@
         {
             SuspendLayout();
             // 
-            // HouseUserControl
+            // HouseEditUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Name = "HouseUserControl";
-            Size = new Size(866, 505);
+            Name = "HouseEditUserControl";
+            Size = new Size(838, 447);
             ResumeLayout(false);
         }
 

@@ -1,4 +1,5 @@
-﻿using Services.Services;
+﻿using DAO.Exceptions.UserExceptions;
+using Services.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,14 +43,18 @@ namespace DesktopApp
             var parentForm = this.Parent ;
             var username = txtUsername.Text;
             var password = txtPassword.Text;
-
+            var persistent = checkLogin.Checked;
             try
             {
-                _userService.Login(username, password);
+                _userService.Login(username, password, persistent);
                 var newUserControl = new DashBoard();
                 parentForm.Controls.Clear();
                 parentForm.Controls.Add(newUserControl);
                 newUserControl.Dock = DockStyle.Fill;
+            }
+            catch (UserNotFoundException ex)
+            {
+                MessageBox.Show("Đăng nhập không thành công", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

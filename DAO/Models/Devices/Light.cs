@@ -8,12 +8,12 @@ public class Light : Device, ILight
 
     public object TurnOn()
     {
-        return new { method = "turnOn", parameters = new { } };
+        return new { method = "setLedStatus", parameters = 1 };
     }
 
     public object TurnOff()
     {
-        return new { method = "turnOff", parameters = new { } };
+        return new { method = "setLedStatus", parameters = 0 };
     }
 
     public object SetDim(int dim)
