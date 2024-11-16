@@ -62,7 +62,7 @@
             // 
             // guna2ShadowPanel1
             // 
-            guna2ShadowPanel1.BackColor = Color.FromArgb(36, 54, 101);
+            guna2ShadowPanel1.BackColor = Color.FromArgb(81, 167, 191);
             guna2ShadowPanel1.BackgroundImageLayout = ImageLayout.Stretch;
             guna2ShadowPanel1.Controls.Add(txtEmail);
             guna2ShadowPanel1.Controls.Add(txtConfirmPassword);
@@ -153,7 +153,7 @@
             lblLogin.FillColor = Color.Transparent;
             lblLogin.FocusedColor = Color.Red;
             lblLogin.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            lblLogin.ForeColor = Color.FromArgb(140, 158, 255);
+            lblLogin.ForeColor = Color.FromArgb(218, 244, 255);
             lblLogin.Image = (Image)resources.GetObject("lblLogin.Image");
             lblLogin.ImageAlign = HorizontalAlignment.Right;
             lblLogin.ImageSize = new Size(40, 40);
@@ -172,7 +172,7 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = Color.FromArgb(139, 216, 189);
+            label3.ForeColor = Color.FromArgb(218, 244, 255);
             label3.Location = new Point(400, 43);
             label3.Name = "label3";
             label3.Size = new Size(107, 32);
