@@ -89,7 +89,7 @@
             // 
             // guna2Panel1
             // 
-            guna2Panel1.BackColor = Color.FromArgb(36, 54, 101);
+            guna2Panel1.BackColor = Color.FromArgb(81, 167, 191);
             guna2Panel1.BackgroundImageLayout = ImageLayout.Stretch;
             guna2Panel1.Controls.Add(lblSignup);
             guna2Panel1.Controls.Add(label3);
@@ -123,7 +123,7 @@
             lblSignup.FillColor = Color.Transparent;
             lblSignup.FocusedColor = Color.Red;
             lblSignup.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            lblSignup.ForeColor = Color.White;
+            lblSignup.ForeColor = Color.FromArgb(218, 244, 255);
             lblSignup.Image = (Image)resources.GetObject("lblSignup.Image");
             lblSignup.ImageAlign = HorizontalAlignment.Right;
             lblSignup.ImageSize = new Size(40, 40);
@@ -133,7 +133,7 @@
             lblSignup.ShadowDecoration.CustomizableEdges = customizableEdges2;
             lblSignup.Size = new Size(204, 36);
             lblSignup.TabIndex = 32;
-            lblSignup.Text = "Creat Account";
+            lblSignup.Text = "Create Account";
             lblSignup.Click += lblSignup_Click;
             // 
             // label3
@@ -143,7 +143,7 @@
             label3.BackColor = Color.Transparent;
             guna2Transition1.SetDecoration(label3, Guna.UI2.AnimatorNS.DecorationType.None);
             label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = Color.FromArgb(139, 216, 189);
+            label3.ForeColor = Color.FromArgb(218, 244, 255);
             label3.Location = new Point(397, 44);
             label3.Name = "label3";
             label3.Size = new Size(136, 32);
@@ -157,7 +157,7 @@
             lblQuenPass.BackColor = Color.Transparent;
             guna2Transition1.SetDecoration(lblQuenPass, Guna.UI2.AnimatorNS.DecorationType.None);
             lblQuenPass.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblQuenPass.ForeColor = Color.White;
+            lblQuenPass.ForeColor = Color.FromArgb(218, 244, 255);
             lblQuenPass.Location = new Point(357, 340);
             lblQuenPass.Name = "lblQuenPass";
             lblQuenPass.Size = new Size(232, 20);
@@ -171,7 +171,7 @@
             label1.BackColor = Color.Transparent;
             guna2Transition1.SetDecoration(label1, Guna.UI2.AnimatorNS.DecorationType.None);
             label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.White;
+            label1.ForeColor = Color.FromArgb(218, 244, 255);
             label1.Location = new Point(410, 236);
             label1.Name = "label1";
             label1.Size = new Size(112, 20);
@@ -190,10 +190,10 @@
             btnLogin.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnLogin.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnLogin.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnLogin.FillColor = Color.FromArgb(139, 216, 189);
-            btnLogin.FillColor2 = Color.FromArgb(139, 216, 189);
+            btnLogin.FillColor = Color.FromArgb(218, 244, 255);
+            btnLogin.FillColor2 = Color.FromArgb(218, 244, 255);
             btnLogin.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLogin.ForeColor = Color.White;
+            btnLogin.ForeColor = Color.FromArgb(81, 167, 191);
             btnLogin.Location = new Point(340, 277);
             btnLogin.Margin = new Padding(3, 2, 3, 2);
             btnLogin.Name = "btnLogin";
