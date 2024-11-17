@@ -19,10 +19,10 @@ public class RgbLight : Device, IRgbLight
         return new { method = "setDim", parameters = new { dim } };
     }
 
-    public object SetColor(int R, int G, int B)
+    public object SetColor(int r, int g, int b)
     {
         // return an object with method name and parameters
-        var color = new { R, G, B };
+        var color = new { r, g, b };
         return new { method = "setColor", parameters = new { color } };
     }
 }

@@ -1,53 +1,150 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <UseWindowsForms>true</UseWindowsForms>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWindowsForms>true</UseWindowsForms>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="SignUp.cs" />
-    <Compile Remove="SignUp.Designer.cs" />
-  </ItemGroup>
+    <ItemGroup>
+      <Content Include="bin\Debug\Images\3688450_maketplace_market_shop_buy_ecommerce_icon.png" />
+      <Content Include="bin\Debug\Images\3688454_find_lens_search_magnifier_magnifying_icon.png" />
+      <Content Include="bin\Debug\Images\3688459_artificial_chip_computer_intelligence_processor_icon.png" />
+      <Content Include="bin\Debug\Images\3688465_drag_move_arrow_arrows_direction_icon.png" />
+      <Content Include="bin\Debug\Images\3688469_hamburger_hammenu_menu_catalog_checklist_icon.png" />
+      <Content Include="bin\Debug\Images\3688476_import_document_download_export_upload_icon.png" />
+      <Content Include="bin\Debug\Images\3688479_home_house_apartment_architecture_building_icon.png" />
+      <Content Include="bin\Debug\Images\3688500_cog_configuration_manage_settings_cogwheel_icon.png" />
+      <Content Include="bin\Debug\Images\3688514_building_office_team_workspace_workstation_icon.png" />
+      <Content Include="bin\Debug\Images\3688527_down_chevron_angle_bottom_align_icon.png" />
+      <Content Include="bin\Debug\Images\4026456_device_electronic_machine_technology_icon.png" />
+      <Content Include="bin\Debug\Images\4567708_app_arrow_bookmark_interface_internet_icon.png" />
+      <Content Include="bin\Debug\Images\4567711_app_interface_internet_profile_ui_icon.png" />
+      <Content Include="bin\Debug\Images\4567717_app_arrow_interface_next_right_icon.png" />
+      <Content Include="bin\Debug\Images\4567730_interface_lock_locked_login_padlock_icon.png" />
+      <Content Include="bin\Debug\Images\4567735_add_app_interface_more_plus_icon.png" />
+      <Content Include="bin\Debug\Images\4567736_access_app_interface_internet_ui_icon.png" />
+      <Content Include="bin\Debug\Images\4908740_building_home_house_menu_property_icon.png" />
+      <Content Include="bin\Debug\Images\5172951_camera_cctv_internet_secure_security_icon.png" />
+      <Content Include="bin\Debug\Images\5172965_data_hosting_information_internet_security_icon.png" />
+      <Content Include="bin\Debug\Images\5172973_arrow_entrance_in_internet_log_icon.png" />
+      <Content Include="bin\Debug\Images\5172979_engine_gear_internet_option_security_icon.png" />
+      <Content Include="bin\Debug\Images\5172986_home_house_internet_network_security_icon.png" />
+      <Content Include="bin\Debug\Images\5172996_internet_locked_padlock_password_secure_icon.png" />
+      <Content Include="bin\Debug\Images\5173002_alarm_alert_bell_internet_notice_icon.png" />
+      <Content Include="bin\Debug\Images\5173010_circle_internet_lock_locked_padlock_icon %281%29.png" />
+      <Content Include="bin\Debug\Images\5173010_circle_internet_lock_locked_padlock_icon.png" />
+      <Content Include="bin\Debug\Images\5173016_find_internet_magnifier_search_security_icon.png" />
+      <Content Include="bin\Debug\Images\9068985_home_icon.png" />
+      <Content Include="bin\Debug\Images\passs.png" />
+      <Content Include="bin\Debug\Images\pexels-eberhardgross-2088170.jpg" />
+      <Content Include="bin\Debug\Images\Remove-bg.ai_1731220813236.png" />
+      <Content Include="bin\Debug\Images\user.png" />
+      <Content Include="bin\Debug\Images\z5024041418976_cd58db76f9ae377a4b74f1335d01c3dd.jpg" />
+      <Content Include="bin\Debug\net6.0-windows\DesktopApp.deps.json" />
+      <Content Include="bin\Debug\net6.0-windows\DesktopApp.runtimeconfig.json" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Remove="SignUp.resx" />
-  </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Guna.UI2.WinForms" Version="2.0.4.6" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="FontAwesome.Sharp" Version="6.6.0" />
-    <PackageReference Include="FontAwesome.Sharp.Pro" Version="6.6.0" />
-    <PackageReference Include="Krypton.Docking" Version="85.24.7.204" />
-    <PackageReference Include="Krypton.Navigator" Version="85.24.8.239" />
-    <PackageReference Include="Krypton.Toolkit" Version="85.24.8.239" />
-    <PackageReference Include="Krypton.Workspace" Version="85.24.8.239" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.1.39" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.33" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
-  </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Services\Services.csproj" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Configuration\Configuration.csproj" />
-    <ProjectReference Include="..\DAO\DAO.csproj" />
-    <ProjectReference Include="..\Services\Services.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+      <Folder Include="bin\Debug\Images\" />
+      <Folder Include="bin\Release\net6.0-windows\" />
+      <Folder Include="Views\Accounts\" />
+      <Folder Include="Views\Devices\" />
+      <Folder Include="Views\Rooms\" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
+    <ItemGroup>
+      <None Include="bin\Debug\net6.0-windows\Configuration.dll" />
+      <None Include="bin\Debug\net6.0-windows\Configuration.pdb" />
+      <None Include="bin\Debug\net6.0-windows\DAO.dll" />
+      <None Include="bin\Debug\net6.0-windows\DAO.pdb" />
+      <None Include="bin\Debug\net6.0-windows\DesktopApp.dll" />
+      <None Include="bin\Debug\net6.0-windows\DesktopApp.exe" />
+      <None Include="bin\Debug\net6.0-windows\DesktopApp.pdb" />
+      <None Include="bin\Debug\net6.0-windows\Guna.UI2.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Authentication.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Authentication.Cookies.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Authentication.Core.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Authentication.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Cryptography.Internal.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.DataProtection.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.DataProtection.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Hosting.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Http.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Http.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Http.Extensions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Http.Features.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Identity.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.AspNetCore.WebUtilities.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Data.SqlClient.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Relational.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.SqlServer.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Caching.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Caching.Memory.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Hosting.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Identity.Core.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Identity.Stores.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.Abstractions.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.ObjectPool.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Options.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.Primitives.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Extensions.WebEncoders.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Identity.Client.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.IdentityModel.Logging.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.IdentityModel.Protocols.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.IdentityModel.Tokens.dll" />
+      <None Include="bin\Debug\net6.0-windows\Microsoft.Net.Http.Headers.dll" />
+      <None Include="bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll" />
+      <None Include="bin\Debug\net6.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll" />
+      <None Include="bin\Debug\net6.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll" />
+      <None Include="bin\Debug\net6.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll" />
+      <None Include="bin\Debug\net6.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll" />
+      <None Include="bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Management.dll" />
+      <None Include="bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll" />
+      <None Include="bin\Debug\net6.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll" />
+      <None Include="bin\Debug\net6.0-windows\Services.dll" />
+      <None Include="bin\Debug\net6.0-windows\Services.pdb" />
+      <None Include="bin\Debug\net6.0-windows\System.Diagnostics.DiagnosticSource.dll" />
+      <None Include="bin\Debug\net6.0-windows\System.IdentityModel.Tokens.Jwt.dll" />
+      <None Include="bin\Debug\net6.0-windows\System.Management.dll" />
+      <None Include="bin\Debug\net6.0-windows\System.Runtime.Caching.dll" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Properties\Resources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resources.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Properties\Resources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
 
 </Project>

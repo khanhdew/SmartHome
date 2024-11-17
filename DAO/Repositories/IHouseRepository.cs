@@ -23,5 +23,6 @@ namespace DAO.Repositories
         void RemoveRoomFromHouse(int houseId, int roomId);
         IEnumerable<Room> GetRoomsByHouseId(int houseId);
         public bool IsHouseOwner(string userId, int houseId);
+        User GetHouseOwner(int houseId);
     }
 }
