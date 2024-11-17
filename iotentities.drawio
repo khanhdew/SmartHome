@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" version="24.8.6" pages="19">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" version="24.8.4" pages="9">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="FDD-Main">
-    <mxGraphModel dx="2514" dy="875" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2117" dy="522" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -165,7 +165,7 @@
         <mxCell id="lWrojG8ZAEGJMrB_fnO6-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="lWrojG8ZAEGJMrB_fnO6-64" target="lWrojG8ZAEGJMrB_fnO6-34" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="lWrojG8ZAEGJMrB_fnO6-64" value="Cài đặt tiện ích" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+        <mxCell id="lWrojG8ZAEGJMrB_fnO6-64" value="Tùy chỉnh tiện ích" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="730" y="720" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="REANl_uHcf_742eDeE6I-0" value="Cài đặt phòng" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
@@ -181,7 +181,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="sO-K0KeNw8wq4QjqhWYh" name="FDD-Hệ quản lý thiết bị">
-    <mxGraphModel dx="2899" dy="1063" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2140" dy="522" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -216,7 +216,7 @@
             <mxPoint x="460" y="270" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="TTfGzbpT7r4LJY1bJnti-13" value="Cài đặt tiện ích" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="TTfGzbpT7r4LJY1bJnti-13" value="Tùy chỉnh tiện ích" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="639.94" y="360" width="250.06" height="60" as="geometry" />
         </mxCell>
         <mxCell id="TTfGzbpT7r4LJY1bJnti-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="TTfGzbpT7r4LJY1bJnti-27" target="TTfGzbpT7r4LJY1bJnti-11" edge="1">
@@ -231,6 +231,12 @@
         <mxCell id="TTfGzbpT7r4LJY1bJnti-29" value="Tạo nhóm thiết bị" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="414" y="540" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="TTfGzbpT7r4LJY1bJnti-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="TTfGzbpT7r4LJY1bJnti-31" target="TTfGzbpT7r4LJY1bJnti-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TTfGzbpT7r4LJY1bJnti-31" value="Chia sẻ thiết bị" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="414" y="630" width="120" height="60" as="geometry" />
+        </mxCell>
         <mxCell id="TTfGzbpT7r4LJY1bJnti-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="TTfGzbpT7r4LJY1bJnti-33" target="TTfGzbpT7r4LJY1bJnti-13" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
@@ -243,8 +249,14 @@
         <mxCell id="TTfGzbpT7r4LJY1bJnti-35" value="Ẩn thiết bị" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="730" y="540" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="TTfGzbpT7r4LJY1bJnti-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="TTfGzbpT7r4LJY1bJnti-37" target="TTfGzbpT7r4LJY1bJnti-13" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TTfGzbpT7r4LJY1bJnti-37" value="Thay đổi phòng" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="730" y="630" width="120" height="60" as="geometry" />
+        </mxCell>
         <mxCell id="-Q9a-ElH-PzE8bRXEluL-1" value="Kiểm tra firmware" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="414" y="630" width="120" height="60" as="geometry" />
+          <mxGeometry x="414" y="720" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
