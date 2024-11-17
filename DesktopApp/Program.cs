@@ -4,11 +4,12 @@ using DAO.Reposistories_Impl;
 using DAO.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Services.Services_Impl;
 using Services.Services;
 using Services.Thingsboard_Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using DesktopApp.Utils;
 
 namespace DesktopApp;
 
@@ -37,11 +38,46 @@ static class Program
     {
         var connectionString = "Server=localhost;Database=SmartHome;Trusted_Connection=True;User Id=sa;Password=P@ssw0rd";
         services.AddLogging();
-        services.AddHttpContextAccessor();
+        services.AddSingleton<IHttpContextAccessor, CustomHttpContextAccessor>();
+
         //add dbcontext
         services.AddDbContext<SmartHomeContext>(options =>
     options.UseSqlServer(connectionString));
-        //add repositories
+
+        services.AddIdentity<User, IdentityRole>()
+            .AddEntityFrameworkStores<SmartHomeContext>()
+            .AddDefaultTokenProviders();
+
+        services.Configure<IdentityOptions>(options =>
+        {
+            // Password settings
+            options.Password.RequireDigit = false;
+            options.Password.RequireLowercase = false;
+            options.Password.RequireNonAlphanumeric = false;
+            options.Password.RequireUppercase = false;
+            options.Password.RequiredLength = 3;
+            options.Password.RequiredUniqueChars = 1;
+
+            // Lockout settings
+            options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+            options.Lockout.MaxFailedAccessAttempts = 5;
+            options.Lockout.AllowedForNewUsers = true;
+
+            // User settings
+            options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.@+";
+            options.User.RequireUniqueEmail = true;
+
+            // Sign-in settings
+            options.SignIn.RequireConfirmedEmail = false;
+            options.SignIn.RequireConfirmedPhoneNumber = false;
+        });
+
+        services.ConfigureApplicationCookie(options =>
+        {
+            options.Cookie.HttpOnly = true;
+            options.ExpireTimeSpan = TimeSpan.FromDays(150);
+            options.SlidingExpiration = true;
+        });        //add repositories
         services.AddSingleton<IDeviceRepository, DeviceRepository>();
         services.AddSingleton<IRoomRepository, RoomRepository>();
         services.AddSingleton<IUserRepository, UserRepository>();
@@ -52,15 +88,13 @@ static class Program
         services.AddSingleton<IUserService, UserService>();
         services.AddSingleton<IHouseService, HouseService>();
         services.AddSingleton<IThingsboardService, ThingsboardService>();
-        
-        services.AddIdentity<User, IdentityRole>()
-            .AddEntityFrameworkStores<SmartHomeContext>()
-            .AddDefaultTokenProviders();
-
-
+        services.AddSingleton<SignInManager<User>>();
+        services.AddSingleton<UserManager<User>>();
         //add views
-        services.AddTransient<Login>();
-        services.AddTransient<SignUp>();
-        services.AddTransient<MainForm>();
+        services.AddScoped<Login>();
+        services.AddScoped<SignUp>();
+        services.AddScoped<MainForm>();
+        services.AddScoped<DashBoard>();
+        //add service 
     }
 }

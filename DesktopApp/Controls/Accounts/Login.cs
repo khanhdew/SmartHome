@@ -1,4 +1,7 @@
-﻿using DAO.Exceptions.UserExceptions;
+﻿using DAO.BaseModels;
+using DAO.Exceptions.UserExceptions;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using Services.Services;
 using System;
 using System.Collections.Generic;
@@ -14,13 +17,18 @@ namespace DesktopApp
 {
     public partial class Login : UserControl
     {
-
-        private readonly IUserService _userService;
-        public Login(IUserService userService)
+        private readonly IServiceProvider _serviceProvider;
+        private readonly SignInManager<User> _signInManager;
+        private readonly UserManager<User> _userManager;
+        public Login(IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
+            _signInManager = _serviceProvider.GetRequiredService<SignInManager<User>>();
+            _userManager = _serviceProvider.GetRequiredService<UserManager<User>>();
+
             InitializeComponent();
-            this.AutoScaleMode = AutoScaleMode.None;
-            _userService = userService;
+            AutoScaleMode = AutoScaleMode.None;
+          
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -31,14 +39,14 @@ namespace DesktopApp
         private void lblSignup_Click(object sender, EventArgs e)
         {
             var parentForm = this.Parent ;
-            var newUserControl = new SignUp(_userService); 
+            var newUserControl = _serviceProvider.GetRequiredService<SignUp>();
             parentForm.Controls.Clear();
             parentForm.Controls.Add(newUserControl);
             newUserControl.Dock = DockStyle.Fill;
           
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async Task btnLogin_Click(object sender, EventArgs e)
         {
             var parentForm = this.Parent;
             var username = txtUsername.Text;
@@ -46,14 +54,33 @@ namespace DesktopApp
             var persistent = checkLogin.Checked;
             try
             {
-                _userService.Login(username, password, persistent);
-                MessageBox.Show("Dang nhap thanh cong");
-                var newUserControl = new DashBoard();
-                newUserControl.btnNameUser.Text ="Hello, "+ username;
-                parentForm.Controls.Clear();
-                parentForm.Controls.Add(newUserControl);
-                newUserControl.Dock = DockStyle.Fill;
-
+                var user = await  _userManager.FindByNameAsync(username);
+                if (user!=null)
+                {
+                    var result = await _userManager.CheckPasswordAsync(user, password);
+                    if (result)
+                    {
+                        MainForm.LoggedInUser = user;
+                        MessageBox.Show("Dang nhap thanh cong");
+                        var newUserControl = _serviceProvider.GetRequiredService<DashBoard>();
+                        var userRole = await _userManager.GetRolesAsync(user);
+                        if (userRole.Contains("Admin"))
+                        {
+                            newUserControl.menuAdminPage.Visible = true;
+                        }
+                        newUserControl.btnNameUser.Text = "Hello, " + username;
+                        parentForm.Controls.Clear();
+                        parentForm.Controls.Add(newUserControl);
+                        newUserControl.Dock = DockStyle.Fill;
+                    }else
+                    {
+                        MessageBox.Show("Đăng nhập không thành công", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Đăng nhập không thành công", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (UserNotFoundException)
             {
@@ -63,7 +90,7 @@ namespace DesktopApp
             {
                 MessageBox.Show(ex.Message + $" {username} {password} {persistent}");
             }
-          
+
         }
     }
 }

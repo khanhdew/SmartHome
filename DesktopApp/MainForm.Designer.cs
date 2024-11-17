@@ -41,7 +41,7 @@ partial class MainForm
         // 
         Panel.AutoScroll = true;
         Panel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-        Panel.BackColor = SystemColors.Control;
+        Panel.BackColor = Color.White;
         Panel.CustomizableEdges = customizableEdges1;
         guna2Transition1.SetDecoration(Panel, Guna.UI2.AnimatorNS.DecorationType.None);
         Panel.Dock = DockStyle.Fill;
@@ -76,7 +76,7 @@ partial class MainForm
         // 
         // MainForm
         // 
-        AutoScaleDimensions = new SizeF(10F, 25F);
+        AutoScaleDimensions = new SizeF(8F, 19F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1075, 633);
         Controls.Add(Panel);
@@ -85,7 +85,6 @@ partial class MainForm
         Margin = new Padding(4);
         Name = "MainForm";
         Text = "MainForm";
-        Load += Form1_Load;
         ResumeLayout(false);
     }
 

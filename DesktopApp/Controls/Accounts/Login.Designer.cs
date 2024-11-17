@@ -201,7 +201,7 @@
             btnLogin.Size = new Size(260, 42);
             btnLogin.TabIndex = 28;
             btnLogin.Text = "LOGIN";
-            btnLogin.Click += btnLogin_Click;
+            btnLogin.Click += async (sender, e) => await btnLogin_Click(sender, e);
             // 
             // checkLogin
             // 
@@ -298,7 +298,7 @@
             Name = "Login";
             Size = new Size(941, 452);
             Load += Login_Load;
-            Click += btnLogin_Click;
+            Click += async (sender, e) => await btnLogin_Click(sender, e);
             guna2Panel1.ResumeLayout(false);
             guna2Panel1.PerformLayout();
             ResumeLayout(false);

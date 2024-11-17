@@ -28,79 +28,73 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HouseControl));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            btnAddHouse = new Guna.UI2.WinForms.Guna2CircleButton();
-            flayoutHouse = new FlowLayoutPanel();
-            guna2GradientPanel1.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HouseControl));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            fLayoutPanel = new FlowLayoutPanel();
+            guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            addBtn = new Guna.UI2.WinForms.Guna2Button();
+            guna2Panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // guna2GradientPanel1
+            // fLayoutPanel
             // 
-            guna2GradientPanel1.Controls.Add(btnAddHouse);
-            guna2GradientPanel1.CustomizableEdges = customizableEdges2;
-            guna2GradientPanel1.Dock = DockStyle.Top;
-            guna2GradientPanel1.Font = new Font("Segoe UI", 10.8679247F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2GradientPanel1.Location = new Point(0, 0);
-            guna2GradientPanel1.Name = "guna2GradientPanel1";
-            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges3;
-            guna2GradientPanel1.Size = new Size(1218, 54);
-            guna2GradientPanel1.TabIndex = 0;
+            fLayoutPanel.AutoScroll = true;
+            fLayoutPanel.BackColor = Color.Transparent;
+            fLayoutPanel.Dock = DockStyle.Fill;
+            fLayoutPanel.Location = new Point(0, 0);
+            fLayoutPanel.Name = "fLayoutPanel";
+            fLayoutPanel.Size = new Size(1218, 500);
+            fLayoutPanel.TabIndex = 1;
             // 
-            // btnAddHouse
+            // guna2Panel1
             // 
-            btnAddHouse.BackColor = Color.Transparent;
-            btnAddHouse.BorderColor = Color.Silver;
-            btnAddHouse.DisabledState.BorderColor = Color.DarkGray;
-            btnAddHouse.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnAddHouse.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnAddHouse.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnAddHouse.Dock = DockStyle.Right;
-            btnAddHouse.FillColor = Color.Transparent;
-            btnAddHouse.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAddHouse.ForeColor = Color.White;
-            btnAddHouse.HoverState.BorderColor = Color.LightGray;
-            btnAddHouse.HoverState.CustomBorderColor = Color.LightGray;
-            btnAddHouse.HoverState.FillColor = Color.FromArgb(224, 224, 224);
-            btnAddHouse.HoverState.ForeColor = Color.FromArgb(224, 224, 224);
-            btnAddHouse.Image = (Image)resources.GetObject("btnAddHouse.Image");
-            btnAddHouse.ImageOffset = new Point(1, 1);
-            btnAddHouse.ImageSize = new Size(35, 35);
-            btnAddHouse.Location = new Point(1158, 0);
-            btnAddHouse.Name = "btnAddHouse";
-            btnAddHouse.PressedColor = Color.Transparent;
-            btnAddHouse.ShadowDecoration.CustomizableEdges = customizableEdges1;
-            btnAddHouse.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            btnAddHouse.Size = new Size(60, 54);
-            btnAddHouse.TabIndex = 1;
+            guna2Panel1.Controls.Add(addBtn);
+            guna2Panel1.CustomizableEdges = customizableEdges3;
+            guna2Panel1.Dock = DockStyle.Right;
+            guna2Panel1.Location = new Point(1146, 0);
+            guna2Panel1.Name = "guna2Panel1";
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2Panel1.Size = new Size(72, 500);
+            guna2Panel1.TabIndex = 2;
             // 
-            // flayoutHouse
+            // addBtn
             // 
-            flayoutHouse.Dock = DockStyle.Fill;
-            flayoutHouse.Location = new Point(0, 54);
-            flayoutHouse.Name = "flayoutHouse";
-            flayoutHouse.Size = new Size(1218, 513);
-            flayoutHouse.TabIndex = 1;
+            addBtn.CustomizableEdges = customizableEdges1;
+            addBtn.DisabledState.BorderColor = Color.DarkGray;
+            addBtn.DisabledState.CustomBorderColor = Color.DarkGray;
+            addBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            addBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            addBtn.FillColor = Color.Transparent;
+            addBtn.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            addBtn.ForeColor = Color.White;
+            addBtn.Image = (Image)resources.GetObject("addBtn.Image");
+            addBtn.Location = new Point(3, 18);
+            addBtn.Name = "addBtn";
+            addBtn.PressedColor = Color.Transparent;
+            addBtn.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            addBtn.Size = new Size(50, 29);
+            addBtn.TabIndex = 0;
+            addBtn.Click += addBtn_Click;
             // 
             // HouseControl
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(flayoutHouse);
-            Controls.Add(guna2GradientPanel1);
+            Controls.Add(guna2Panel1);
+            Controls.Add(fLayoutPanel);
             Name = "HouseControl";
-            Size = new Size(1218, 567);
-            guna2GradientPanel1.ResumeLayout(false);
+            Size = new Size(1218, 500);
+            Load += HouseControl_Load;
+            guna2Panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
-        private FlowLayoutPanel flayoutHouse;
-        private Guna.UI2.WinForms.Guna2CircleButton btnAddHouse;
+        private FlowLayoutPanel fLayoutPanel;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Button addBtn;
     }
 }

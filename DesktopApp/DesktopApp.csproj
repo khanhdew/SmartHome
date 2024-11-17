@@ -64,7 +64,6 @@
 		<Folder Include="Controls\Rooms\" />
       <Folder Include="Views\Accounts\" />
       <Folder Include="Views\Devices\" />
-      <Folder Include="Views\Houses\" />
       <Folder Include="Views\Rooms\" />
     </ItemGroup>
 

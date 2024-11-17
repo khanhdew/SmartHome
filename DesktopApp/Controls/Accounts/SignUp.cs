@@ -1,4 +1,5 @@
-﻿using Services.Services;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Services.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,12 +15,13 @@ namespace DesktopApp
     public partial class SignUp : UserControl
     {
         private readonly IUserService _userService;
-
-        public SignUp(IUserService userService)
+        private readonly Login _login;
+        public SignUp(IUserService userService, Login login)
         {
             _userService = userService;
             InitializeComponent();
             this.AutoScaleMode = AutoScaleMode.None;
+            _login = login;
         }
 
         private void lblLogin_Click(object sender, EventArgs e)
@@ -27,7 +29,7 @@ namespace DesktopApp
             var parentForm = this.Parent;
             if (parentForm != null)
             {
-                var newUserControl = new Login(_userService);
+                var newUserControl = _login;
                 parentForm.Controls.Clear();
                 parentForm.Controls.Add(newUserControl);
                 newUserControl.Dock = DockStyle.Fill;
@@ -52,7 +54,7 @@ namespace DesktopApp
             {
                 _userService.SignUp(username, password, email, confirmPassword);
                 MessageBox.Show("Đăng ký thành công", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                var newUserControl = new Login(_userService);
+                var newUserControl = _login;
                 parentForm.Controls.Clear();
                 parentForm.Controls.Add(newUserControl);
                 newUserControl.Dock = DockStyle.Fill;

@@ -1,8 +1,11 @@
+using DAO.BaseModels;
+
 namespace DesktopApp;
 
 public partial class MainForm : Form
 {
     private readonly Login login;
+    public static User LoggedInUser { get; set; }
 
     public MainForm(Login login)
     {
@@ -12,10 +15,7 @@ public partial class MainForm : Form
         
     }
 
-    private void Form1_Load(object sender, EventArgs e)
-    {
-        //ShowLogin();
-    }
+
 
     private void ShowLogin()
     {

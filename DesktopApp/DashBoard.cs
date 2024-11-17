@@ -2,6 +2,7 @@
 using DesktopApp.Controls.Houses;
 using DesktopApp.Controls.Rooms;
 using DesktopApp.Controls.Setting;
+using Services.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,12 +18,12 @@ namespace DesktopApp
 {
     public partial class DashBoard : UserControl
     {
-
-        public DashBoard()
+        private readonly IServiceProvider _serviceProvider;
+        public DashBoard(IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
             InitializeComponent();
             ColapseMenu();
-
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -77,7 +78,7 @@ namespace DesktopApp
 
         private void menuHouse_Click(object sender, EventArgs e)
         {
-            GoiUserControl(new HouseControl());
+            GoiUserControl(new HouseControl(_serviceProvider));
         }
 
         private void menuRoom_Click(object sender, EventArgs e)

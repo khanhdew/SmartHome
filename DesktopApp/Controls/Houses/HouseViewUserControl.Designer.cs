@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HouseViewUserControl));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            lblTenNha = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            lblThongtinNha = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            btnXoaNha = new Guna.UI2.WinForms.Guna2Button();
             btnSuaNha = new Guna.UI2.WinForms.Guna2Button();
+            btnXoaNha = new Guna.UI2.WinForms.Guna2Button();
+            lblThongtinNha = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblTenNha = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2ShadowPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -51,54 +51,17 @@
             guna2ShadowPanel1.Dock = DockStyle.Fill;
             guna2ShadowPanel1.FillColor = Color.White;
             guna2ShadowPanel1.Location = new Point(0, 0);
+            guna2ShadowPanel1.Margin = new Padding(20);
             guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             guna2ShadowPanel1.Radius = 5;
             guna2ShadowPanel1.ShadowColor = Color.Black;
-            guna2ShadowPanel1.Size = new Size(180, 140);
+            guna2ShadowPanel1.Size = new Size(195, 156);
             guna2ShadowPanel1.TabIndex = 0;
-            // 
-            // lblTenNha
-            // 
-            lblTenNha.BackColor = Color.Transparent;
-            lblTenNha.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTenNha.Location = new Point(30, 20);
-            lblTenNha.Name = "lblTenNha";
-            lblTenNha.Size = new Size(63, 27);
-            lblTenNha.TabIndex = 0;
-            lblTenNha.Text = "Nhà 1";
-            // 
-            // lblThongtinNha
-            // 
-            lblThongtinNha.BackColor = Color.Transparent;
-            lblThongtinNha.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblThongtinNha.Location = new Point(30, 50);
-            lblThongtinNha.Name = "lblThongtinNha";
-            lblThongtinNha.Size = new Size(77, 24);
-            lblThongtinNha.TabIndex = 1;
-            lblThongtinNha.Text = "Thông tin";
-            // 
-            // btnXoaNha
-            // 
-            btnXoaNha.BorderRadius = 10;
-            btnXoaNha.CustomizableEdges = customizableEdges5;
-            btnXoaNha.DisabledState.BorderColor = Color.DarkGray;
-            btnXoaNha.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnXoaNha.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnXoaNha.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnXoaNha.FillColor = Color.DeepSkyBlue;
-            btnXoaNha.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnXoaNha.ForeColor = Color.White;
-            btnXoaNha.Image = (Image)resources.GetObject("btnXoaNha.Image");
-            btnXoaNha.Location = new Point(100, 80);
-            btnXoaNha.Name = "btnXoaNha";
-            btnXoaNha.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnXoaNha.Size = new Size(46, 38);
-            btnXoaNha.TabIndex = 2;
             // 
             // btnSuaNha
             // 
             btnSuaNha.BorderRadius = 10;
-            btnSuaNha.CustomizableEdges = customizableEdges7;
+            btnSuaNha.CustomizableEdges = customizableEdges1;
             btnSuaNha.DisabledState.BorderColor = Color.DarkGray;
             btnSuaNha.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSuaNha.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -107,15 +70,53 @@
             btnSuaNha.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnSuaNha.ForeColor = Color.White;
             btnSuaNha.Image = (Image)resources.GetObject("btnSuaNha.Image");
-            btnSuaNha.Location = new Point(30, 80);
+            btnSuaNha.Location = new Point(26, 99);
             btnSuaNha.Name = "btnSuaNha";
-            btnSuaNha.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnSuaNha.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnSuaNha.Size = new Size(46, 38);
             btnSuaNha.TabIndex = 3;
             // 
+            // btnXoaNha
+            // 
+            btnXoaNha.BorderRadius = 10;
+            btnXoaNha.CustomizableEdges = customizableEdges3;
+            btnXoaNha.DisabledState.BorderColor = Color.DarkGray;
+            btnXoaNha.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnXoaNha.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnXoaNha.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnXoaNha.FillColor = Color.Red;
+            btnXoaNha.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnXoaNha.ForeColor = Color.White;
+            btnXoaNha.Image = (Image)resources.GetObject("btnXoaNha.Image");
+            btnXoaNha.Location = new Point(126, 99);
+            btnXoaNha.Name = "btnXoaNha";
+            btnXoaNha.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnXoaNha.Size = new Size(46, 38);
+            btnXoaNha.TabIndex = 2;
+            // 
+            // lblThongtinNha
+            // 
+            lblThongtinNha.BackColor = Color.Transparent;
+            lblThongtinNha.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblThongtinNha.Location = new Point(26, 46);
+            lblThongtinNha.Name = "lblThongtinNha";
+            lblThongtinNha.Size = new Size(69, 23);
+            lblThongtinNha.TabIndex = 1;
+            lblThongtinNha.Text = "Thông tin";
+            // 
+            // lblTenNha
+            // 
+            lblTenNha.BackColor = Color.Transparent;
+            lblTenNha.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTenNha.Location = new Point(26, 16);
+            lblTenNha.Name = "lblTenNha";
+            lblTenNha.Size = new Size(55, 27);
+            lblTenNha.TabIndex = 0;
+            lblTenNha.Text = "Nhà 1";
+            // 
             // HouseViewUserControl
             // 
-            AutoScaleDimensions = new SizeF(8F, 17F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             Controls.Add(guna2ShadowPanel1);
@@ -123,7 +124,7 @@
             Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(0);
             Name = "HouseViewUserControl";
-            Size = new Size(180, 140);
+            Size = new Size(195, 156);
             guna2ShadowPanel1.ResumeLayout(false);
             guna2ShadowPanel1.PerformLayout();
             ResumeLayout(false);
@@ -132,9 +133,9 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lblThongtinNha;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lblTenNha;
         private Guna.UI2.WinForms.Guna2Button btnXoaNha;
         private Guna.UI2.WinForms.Guna2Button btnSuaNha;
+        public Guna.UI2.WinForms.Guna2HtmlLabel lblTenNha;
+        public Guna.UI2.WinForms.Guna2HtmlLabel lblThongtinNha;
     }
 }

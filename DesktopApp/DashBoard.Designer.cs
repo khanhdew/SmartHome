@@ -310,7 +310,7 @@
             btnLogo.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnLogo.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnLogo.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnLogo.DisabledState.Image = (Image)resources.GetObject("resource.Image5");
+            btnLogo.DisabledState.Image = (Image)resources.GetObject("resource.Image");
             btnLogo.Dock = DockStyle.Fill;
             btnLogo.FillColor = Color.Transparent;
             btnLogo.FillColor2 = Color.Transparent;
@@ -375,7 +375,6 @@
             menuAdminPage.HoverState.FillColor = Color.White;
             menuAdminPage.HoverState.FillColor2 = Color.White;
             menuAdminPage.HoverState.ForeColor = Color.FromArgb(0, 118, 212);
-            menuAdminPage.HoverState.Image = (Image)resources.GetObject("resource.Image");
             menuAdminPage.Image = (Image)resources.GetObject("menuAdminPage.Image");
             menuAdminPage.ImageAlign = HorizontalAlignment.Left;
             menuAdminPage.ImageOffset = new Point(5, 0);
@@ -388,6 +387,7 @@
             menuAdminPage.TabIndex = 4;
             menuAdminPage.Tag = "Admin";
             menuAdminPage.Text = "Admin";
+            menuAdminPage.Visible = false;
             menuAdminPage.Click += menuAdminPage_Click;
             // 
             // guna2Panel3
@@ -421,7 +421,6 @@
             menuSettings.HoverState.FillColor = Color.White;
             menuSettings.HoverState.FillColor2 = Color.White;
             menuSettings.HoverState.ForeColor = Color.FromArgb(0, 118, 212);
-            menuSettings.HoverState.Image = (Image)resources.GetObject("resource.Image1");
             menuSettings.Image = (Image)resources.GetObject("menuSettings.Image");
             menuSettings.ImageAlign = HorizontalAlignment.Left;
             menuSettings.ImageOffset = new Point(5, 0);
@@ -433,7 +432,7 @@
             menuSettings.Size = new Size(204, 50);
             menuSettings.TabIndex = 3;
             menuSettings.Tag = "Settings";
-            menuSettings.Text = "Settings";
+            menuSettings.Text = "Chỉnh sửa";
             menuSettings.Click += menuSettings_Click;
             // 
             // menuDevice
@@ -456,7 +455,6 @@
             menuDevice.HoverState.FillColor = Color.White;
             menuDevice.HoverState.FillColor2 = Color.White;
             menuDevice.HoverState.ForeColor = Color.FromArgb(0, 118, 212);
-            menuDevice.HoverState.Image = (Image)resources.GetObject("resource.Image2");
             menuDevice.Image = (Image)resources.GetObject("menuDevice.Image");
             menuDevice.ImageAlign = HorizontalAlignment.Left;
             menuDevice.ImageOffset = new Point(5, 0);
@@ -468,7 +466,7 @@
             menuDevice.Size = new Size(204, 50);
             menuDevice.TabIndex = 2;
             menuDevice.Tag = "Device";
-            menuDevice.Text = "Device";
+            menuDevice.Text = "Thiết bị";
             menuDevice.Click += menuDevice_Click;
             // 
             // menuRoom
@@ -491,7 +489,6 @@
             menuRoom.HoverState.FillColor = Color.White;
             menuRoom.HoverState.FillColor2 = Color.White;
             menuRoom.HoverState.ForeColor = Color.FromArgb(0, 118, 212);
-            menuRoom.HoverState.Image = (Image)resources.GetObject("resource.Image3");
             menuRoom.Image = (Image)resources.GetObject("menuRoom.Image");
             menuRoom.ImageAlign = HorizontalAlignment.Left;
             menuRoom.ImageOffset = new Point(5, 0);
@@ -503,7 +500,7 @@
             menuRoom.Size = new Size(204, 50);
             menuRoom.TabIndex = 1;
             menuRoom.Tag = "Room";
-            menuRoom.Text = "Room";
+            menuRoom.Text = "Phòng";
             menuRoom.Click += menuRoom_Click;
             // 
             // menuHouse
@@ -526,7 +523,6 @@
             menuHouse.HoverState.FillColor = Color.White;
             menuHouse.HoverState.FillColor2 = Color.White;
             menuHouse.HoverState.ForeColor = Color.FromArgb(0, 118, 212);
-            menuHouse.HoverState.Image = (Image)resources.GetObject("resource.Image4");
             menuHouse.Image = (Image)resources.GetObject("menuHouse.Image");
             menuHouse.ImageAlign = HorizontalAlignment.Left;
             menuHouse.ImageOffset = new Point(5, 0);
@@ -538,7 +534,7 @@
             menuHouse.Size = new Size(204, 50);
             menuHouse.TabIndex = 0;
             menuHouse.Tag = "House";
-            menuHouse.Text = "House";
+            menuHouse.Text = "Nhà";
             menuHouse.Click += menuHouse_Click;
             // 
             // guna2Panel1
@@ -555,7 +551,7 @@
             // 
             // PanelMain
             // 
-            PanelMain.BackColor = Color.FromArgb(238, 238, 238);
+            PanelMain.BackColor = Color.WhiteSmoke;
             PanelMain.BorderRadius = 10;
             PanelMain.CustomizableEdges = customizableEdges1;
             PanelMain.Dock = DockStyle.Fill;
@@ -585,18 +581,18 @@
             Accounts.RenderStyle.SelectionForeColor = Color.White;
             Accounts.RenderStyle.SeparatorColor = Color.Gainsboro;
             Accounts.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            Accounts.Size = new Size(220, 30);
+            Accounts.Size = new Size(212, 28);
             Accounts.Text = "Account";
             // 
             // Account
             // 
             Account.Name = "Account";
-            Account.Size = new Size(219, 26);
+            Account.Size = new Size(211, 24);
             Account.Text = "toolStripMenuItem1";
             // 
             // DashBoard
             // 
-            AutoScaleDimensions = new SizeF(9F, 18F);
+            AutoScaleDimensions = new SizeF(9F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.Stretch;
