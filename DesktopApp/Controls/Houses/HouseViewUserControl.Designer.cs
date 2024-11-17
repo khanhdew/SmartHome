@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HouseViewUserControl));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             btnSuaNha = new Guna.UI2.WinForms.Guna2Button();
             btnXoaNha = new Guna.UI2.WinForms.Guna2Button();
@@ -61,7 +61,7 @@
             // btnSuaNha
             // 
             btnSuaNha.BorderRadius = 10;
-            btnSuaNha.CustomizableEdges = customizableEdges1;
+            btnSuaNha.CustomizableEdges = customizableEdges5;
             btnSuaNha.DisabledState.BorderColor = Color.DarkGray;
             btnSuaNha.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSuaNha.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -72,14 +72,14 @@
             btnSuaNha.Image = (Image)resources.GetObject("btnSuaNha.Image");
             btnSuaNha.Location = new Point(26, 107);
             btnSuaNha.Name = "btnSuaNha";
-            btnSuaNha.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnSuaNha.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnSuaNha.Size = new Size(46, 38);
             btnSuaNha.TabIndex = 3;
             // 
             // btnXoaNha
             // 
             btnXoaNha.BorderRadius = 10;
-            btnXoaNha.CustomizableEdges = customizableEdges3;
+            btnXoaNha.CustomizableEdges = customizableEdges7;
             btnXoaNha.DisabledState.BorderColor = Color.DarkGray;
             btnXoaNha.DisabledState.CustomBorderColor = Color.DarkGray;
             btnXoaNha.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -90,7 +90,7 @@
             btnXoaNha.Image = (Image)resources.GetObject("btnXoaNha.Image");
             btnXoaNha.Location = new Point(87, 107);
             btnXoaNha.Name = "btnXoaNha";
-            btnXoaNha.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnXoaNha.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnXoaNha.Size = new Size(46, 38);
             btnXoaNha.TabIndex = 2;
             btnXoaNha.Click += btnXoaNha_Click;

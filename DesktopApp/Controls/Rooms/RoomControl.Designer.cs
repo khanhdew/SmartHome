@@ -28,91 +28,72 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoomControl));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoomControl));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            flayoutHouse = new FlowLayoutPanel();
-            guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            btnAddRoom = new Guna.UI2.WinForms.Guna2CircleButton();
-            lblNameHouse = new Label();
-            guna2GradientPanel1.SuspendLayout();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            addBtn = new Guna.UI2.WinForms.Guna2Button();
+            guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            fLayoutPanel = new FlowLayoutPanel();
+            guna2Panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // flayoutHouse
+            // addBtn
             // 
-            flayoutHouse.Dock = DockStyle.Fill;
-            flayoutHouse.Location = new Point(0, 54);
-            flayoutHouse.Name = "flayoutHouse";
-            flayoutHouse.Size = new Size(1218, 513);
-            flayoutHouse.TabIndex = 3;
+            addBtn.CustomizableEdges = customizableEdges1;
+            addBtn.DisabledState.BorderColor = Color.DarkGray;
+            addBtn.DisabledState.CustomBorderColor = Color.DarkGray;
+            addBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            addBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            addBtn.FillColor = Color.Transparent;
+            addBtn.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            addBtn.ForeColor = Color.White;
+            addBtn.Image = (Image)resources.GetObject("addBtn.Image");
+            addBtn.Location = new Point(3, 18);
+            addBtn.Name = "addBtn";
+            addBtn.PressedColor = Color.Transparent;
+            addBtn.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            addBtn.Size = new Size(50, 29);
+            addBtn.TabIndex = 0;
             // 
-            // guna2GradientPanel1
+            // guna2Panel1
             // 
-            guna2GradientPanel1.Controls.Add(btnAddRoom);
-            guna2GradientPanel1.Controls.Add(lblNameHouse);
-            guna2GradientPanel1.CustomizableEdges = customizableEdges2;
-            guna2GradientPanel1.Dock = DockStyle.Top;
-            guna2GradientPanel1.Font = new Font("Segoe UI", 10.8679247F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2GradientPanel1.Location = new Point(0, 0);
-            guna2GradientPanel1.Name = "guna2GradientPanel1";
-            guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges3;
-            guna2GradientPanel1.Size = new Size(1218, 54);
-            guna2GradientPanel1.TabIndex = 2;
+            guna2Panel1.Controls.Add(addBtn);
+            guna2Panel1.CustomizableEdges = customizableEdges3;
+            guna2Panel1.Dock = DockStyle.Right;
+            guna2Panel1.Location = new Point(1146, 0);
+            guna2Panel1.Name = "guna2Panel1";
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2Panel1.Size = new Size(72, 500);
+            guna2Panel1.TabIndex = 4;
             // 
-            // btnAddRoom
+            // fLayoutPanel
             // 
-            btnAddRoom.BackColor = Color.Transparent;
-            btnAddRoom.BorderColor = Color.Silver;
-            btnAddRoom.DisabledState.BorderColor = Color.DarkGray;
-            btnAddRoom.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnAddRoom.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnAddRoom.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnAddRoom.Dock = DockStyle.Right;
-            btnAddRoom.FillColor = Color.Transparent;
-            btnAddRoom.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAddRoom.ForeColor = Color.White;
-            btnAddRoom.HoverState.BorderColor = Color.LightGray;
-            btnAddRoom.HoverState.CustomBorderColor = Color.LightGray;
-            btnAddRoom.HoverState.FillColor = Color.FromArgb(224, 224, 224);
-            btnAddRoom.HoverState.ForeColor = Color.FromArgb(224, 224, 224);
-            btnAddRoom.Image = (Image)resources.GetObject("btnAddRoom.Image");
-            btnAddRoom.ImageOffset = new Point(1, 1);
-            btnAddRoom.ImageSize = new Size(35, 35);
-            btnAddRoom.Location = new Point(1154, 0);
-            btnAddRoom.Name = "btnAddRoom";
-            btnAddRoom.PressedColor = Color.Transparent;
-            btnAddRoom.ShadowDecoration.CustomizableEdges = customizableEdges1;
-            btnAddRoom.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            btnAddRoom.Size = new Size(64, 54);
-            btnAddRoom.TabIndex = 2;
-            // 
-            // lblNameHouse
-            // 
-            lblNameHouse.AutoSize = true;
-            lblNameHouse.Location = new Point(61, 19);
-            lblNameHouse.Name = "lblNameHouse";
-            lblNameHouse.Size = new Size(52, 21);
-            lblNameHouse.TabIndex = 1;
-            lblNameHouse.Text = "label1";
+            fLayoutPanel.AutoScroll = true;
+            fLayoutPanel.BackColor = Color.Transparent;
+            fLayoutPanel.Dock = DockStyle.Fill;
+            fLayoutPanel.Location = new Point(0, 0);
+            fLayoutPanel.Name = "fLayoutPanel";
+            fLayoutPanel.Size = new Size(1218, 500);
+            fLayoutPanel.TabIndex = 3;
             // 
             // RoomControl
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(flayoutHouse);
-            Controls.Add(guna2GradientPanel1);
+            Controls.Add(guna2Panel1);
+            Controls.Add(fLayoutPanel);
             Name = "RoomControl";
-            Size = new Size(1218, 567);
-            guna2GradientPanel1.ResumeLayout(false);
-            guna2GradientPanel1.PerformLayout();
+            Size = new Size(1218, 500);
+            guna2Panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-        private FlowLayoutPanel flayoutHouse;
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
-        private Label lblNameHouse;
-        private Guna.UI2.WinForms.Guna2CircleButton btnAddRoom;
+
+        private Guna.UI2.WinForms.Guna2Button addBtn;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private FlowLayoutPanel fLayoutPanel;
     }
 }

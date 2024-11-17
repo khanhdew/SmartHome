@@ -81,7 +81,7 @@ namespace DesktopApp
 
         private void menuRoom_Click(object sender, EventArgs e)
         {
-            GoiUserControl(new RoomControl());
+            GoiUserControl(new RoomControl(_serviceProvider));
         }
 
         private void menuDevice_Click(object sender, EventArgs e)
@@ -99,6 +99,34 @@ namespace DesktopApp
             PanelMain.Controls.Clear();
             userControl.Dock = DockStyle.Fill;
             PanelMain.Controls.Add(userControl);
+        }
+
+        private void Search(object sender, KeyEventArgs e)
+        {
+            //check if the enter key is pressed
+            if (e.KeyCode == Keys.Enter)
+            {
+                var userControl = PanelMain.Controls[0];
+                switch (userControl.GetType().Name)
+                {
+
+                    case "HouseControl":
+
+                        var houseControl = (HouseControl)userControl;
+                        houseControl.SearchHouses(guna2TextBox1.Text);
+                        break;
+                    //case "RoomControl":
+                    //    var roomControl = (RoomControl)PanelMain.Controls[0];
+                    //    roomControl.SearchRooms(guna2TextBox1.Text);
+                    //    break;
+                    //case "DeviceControl":
+                    //    var deviceControl = (DeviceControl)PanelMain.Controls[0];
+                    //    deviceControl.SearchDevices(guna2TextBox1.Text);
+                    //    break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }

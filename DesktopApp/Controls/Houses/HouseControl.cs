@@ -1,6 +1,8 @@
 ﻿using DAO.BaseModels;
+using DesktopApp.Utils;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.VisualBasic.Devices;
 using Services.Services;
 using System;
 using System.Collections.Generic;
@@ -18,30 +20,25 @@ namespace DesktopApp.Controls.Houses
     {
         private readonly IHouseService _houseService;
         private readonly IServiceProvider _serviceProvider;
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
-        private readonly IUserService _userService;
+        IEnumerable<House> houseList;
         public HouseControl(IServiceProvider serviceProvider)
         {
             InitializeComponent();
             _serviceProvider = serviceProvider;
             _houseService = _serviceProvider.GetRequiredService<IHouseService>();
-            _userManager = _serviceProvider.GetRequiredService<UserManager<User>>();
-            _signInManager = _serviceProvider.GetRequiredService<SignInManager<User>>();
-            _userService = _serviceProvider.GetRequiredService<IUserService>();
+            houseList = _houseService.GetHousesByUserId(MainForm.LoggedInUser.Id);
         }
 
         private void HouseControl_Load(object sender, EventArgs e)
         {
-            LoadHouses();
+            LoadHouses(houseList);
         }
 
-        private void LoadHouses()
+        private void LoadHouses(IEnumerable<House> houses)
         {
             try
             {
                 fLayoutPanel.Controls.Clear();
-                var houses = _houseService.GetHousesByUserId(MainForm.LoggedInUser.Id);
                 foreach (var house in houses)
                 {
                     var houseViewControl = new HouseViewUserControl(house, _serviceProvider)
@@ -67,10 +64,24 @@ namespace DesktopApp.Controls.Houses
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            //display addForm
             var houseAddControl = new HouseAdd(_houseService);
             houseAddControl.ShowDialog();
-            LoadHouses();
+            LoadHouses(houseList);
+        }
+
+        internal void SearchHouses(string keyword)
+        {
+            var houses = houseList;
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                keyword = StringProcessHelper.RemoveDiacritics(keyword);
+                houses = houses.Where(h => StringProcessHelper.RemoveDiacritics(h.Name).Contains(keyword, StringComparison.OrdinalIgnoreCase) || StringProcessHelper.RemoveDiacritics(h.Location).Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
+                LoadHouses(houses);
+            }
+            else
+            {
+                LoadHouses(houseList);
+            }
         }
     }
 }

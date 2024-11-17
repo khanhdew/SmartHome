@@ -270,6 +270,7 @@
             guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges30;
             guna2TextBox1.Size = new Size(311, 36);
             guna2TextBox1.TabIndex = 5;
+            guna2TextBox1.KeyDown += Search;
             // 
             // btnMenu
             // 

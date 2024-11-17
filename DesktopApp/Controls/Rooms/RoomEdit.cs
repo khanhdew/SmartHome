@@ -13,18 +13,18 @@ using System.Windows.Forms;
 
 namespace DesktopApp.Controls.Rooms
 {
-    public partial class RoomViewUserControl : UserControl
+    public partial class RoomEdit : UserControl
     {
-        private readonly Room room;
-        private readonly IRoomService _roomService;
         private readonly IServiceProvider _serviceProvider;
-        public RoomViewUserControl(Room room, IServiceProvider serviceProvider)
+        private readonly IRoomService _roomService;
+        private Room _room;
+        public RoomEdit(int roomId, IServiceProvider serviceProvider)
         {
             InitializeComponent();
-            this.room = room;
             _serviceProvider = serviceProvider;
             _roomService = _serviceProvider.GetRequiredService<IRoomService>();
-            BackColor = Color.Transparent;
+            _room = _roomService.GetRoomById(roomId);
         }
+
     }
 }
