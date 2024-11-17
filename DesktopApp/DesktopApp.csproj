@@ -60,7 +60,6 @@
       <Folder Include="bin\Release\net6.0-windows\" />
       <Folder Include="Controls\Accounts\" />
 		<Folder Include="Controls\Devices\" />
-		<Folder Include="Controls\Houses\" />
 		<Folder Include="Controls\Rooms\" />
       <Folder Include="Views\Accounts\" />
       <Folder Include="Views\Devices\" />

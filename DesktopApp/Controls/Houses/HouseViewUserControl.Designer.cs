@@ -43,19 +43,19 @@
             // 
             // guna2ShadowPanel1
             // 
+            guna2ShadowPanel1.AutoSize = true;
             guna2ShadowPanel1.BackColor = Color.Transparent;
             guna2ShadowPanel1.Controls.Add(btnSuaNha);
             guna2ShadowPanel1.Controls.Add(btnXoaNha);
             guna2ShadowPanel1.Controls.Add(lblThongtinNha);
             guna2ShadowPanel1.Controls.Add(lblTenNha);
-            guna2ShadowPanel1.Dock = DockStyle.Fill;
             guna2ShadowPanel1.FillColor = Color.White;
             guna2ShadowPanel1.Location = new Point(0, 0);
             guna2ShadowPanel1.Margin = new Padding(20);
             guna2ShadowPanel1.Name = "guna2ShadowPanel1";
-            guna2ShadowPanel1.Radius = 5;
-            guna2ShadowPanel1.ShadowColor = Color.Black;
-            guna2ShadowPanel1.Size = new Size(195, 156);
+            guna2ShadowPanel1.Radius = 10;
+            guna2ShadowPanel1.ShadowColor = Color.Gray;
+            guna2ShadowPanel1.Size = new Size(268, 170);
             guna2ShadowPanel1.TabIndex = 0;
             // 
             // btnSuaNha
@@ -66,11 +66,11 @@
             btnSuaNha.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSuaNha.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnSuaNha.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnSuaNha.FillColor = Color.DeepSkyBlue;
+            btnSuaNha.FillColor = Color.FromArgb(0, 118, 212);
             btnSuaNha.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnSuaNha.ForeColor = Color.White;
             btnSuaNha.Image = (Image)resources.GetObject("btnSuaNha.Image");
-            btnSuaNha.Location = new Point(26, 99);
+            btnSuaNha.Location = new Point(26, 107);
             btnSuaNha.Name = "btnSuaNha";
             btnSuaNha.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnSuaNha.Size = new Size(46, 38);
@@ -88,17 +88,18 @@
             btnXoaNha.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnXoaNha.ForeColor = Color.White;
             btnXoaNha.Image = (Image)resources.GetObject("btnXoaNha.Image");
-            btnXoaNha.Location = new Point(126, 99);
+            btnXoaNha.Location = new Point(87, 107);
             btnXoaNha.Name = "btnXoaNha";
             btnXoaNha.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnXoaNha.Size = new Size(46, 38);
             btnXoaNha.TabIndex = 2;
+            btnXoaNha.Click += btnXoaNha_Click;
             // 
             // lblThongtinNha
             // 
             lblThongtinNha.BackColor = Color.Transparent;
             lblThongtinNha.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblThongtinNha.Location = new Point(26, 46);
+            lblThongtinNha.Location = new Point(26, 54);
             lblThongtinNha.Name = "lblThongtinNha";
             lblThongtinNha.Size = new Size(69, 23);
             lblThongtinNha.TabIndex = 1;
@@ -108,7 +109,7 @@
             // 
             lblTenNha.BackColor = Color.Transparent;
             lblTenNha.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTenNha.Location = new Point(26, 16);
+            lblTenNha.Location = new Point(26, 24);
             lblTenNha.Name = "lblTenNha";
             lblTenNha.Size = new Size(55, 27);
             lblTenNha.TabIndex = 0;
@@ -124,18 +125,19 @@
             Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(0);
             Name = "HouseViewUserControl";
-            Size = new Size(195, 156);
+            Size = new Size(268, 170);
             guna2ShadowPanel1.ResumeLayout(false);
             guna2ShadowPanel1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
         private Guna.UI2.WinForms.Guna2Button btnXoaNha;
-        private Guna.UI2.WinForms.Guna2Button btnSuaNha;
         public Guna.UI2.WinForms.Guna2HtmlLabel lblTenNha;
         public Guna.UI2.WinForms.Guna2HtmlLabel lblThongtinNha;
+        public Guna.UI2.WinForms.Guna2Button btnSuaNha;
     }
 }

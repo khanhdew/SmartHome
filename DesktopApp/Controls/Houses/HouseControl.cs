@@ -44,14 +44,18 @@ namespace DesktopApp.Controls.Houses
                 var houses = _houseService.GetHousesByUserId(MainForm.LoggedInUser.Id);
                 foreach (var house in houses)
                 {
-                    var houseViewControl = new HouseViewUserControl(house)
+                    var houseViewControl = new HouseViewUserControl(house, _serviceProvider)
                     {
                         lblTenNha = { Text = house.Name },
                         lblThongtinNha = { Text = house.Location },
-                        Margin = new Padding(10),
-                        Width = 200,
+                        Margin = new Padding(10)
                     };
-
+                    houseViewControl.btnSuaNha.Click += (sender, e) =>
+                    {
+                        var houseEdit = new HouseEdit(house.ID, _serviceProvider);
+                        Controls.Clear();
+                        Controls.Add(houseEdit);
+                    };
                     fLayoutPanel.Controls.Add(houseViewControl);
                 }
             }
@@ -64,7 +68,9 @@ namespace DesktopApp.Controls.Houses
         private void addBtn_Click(object sender, EventArgs e)
         {
             //display addForm
-
+            var houseAddControl = new HouseAdd(_houseService);
+            houseAddControl.ShowDialog();
+            LoadHouses();
         }
     }
 }

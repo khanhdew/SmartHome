@@ -62,7 +62,7 @@
             // 
             // guna2ShadowPanel1
             // 
-            guna2ShadowPanel1.BackColor = Color.FromArgb(81, 167, 191);
+            guna2ShadowPanel1.BackColor = Color.FromArgb(0, 118, 212);
             guna2ShadowPanel1.BackgroundImageLayout = ImageLayout.Stretch;
             guna2ShadowPanel1.Controls.Add(txtEmail);
             guna2ShadowPanel1.Controls.Add(txtConfirmPassword);
@@ -96,20 +96,20 @@
             txtEmail.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtEmail.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtEmail.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmail.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            txtEmail.ForeColor = Color.Black;
+            txtEmail.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            txtEmail.ForeColor = Color.FromArgb(0, 118, 212);
             txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtEmail.IconLeft = (Image)resources.GetObject("txtEmail.IconLeft");
             txtEmail.IconLeftSize = new Size(25, 25);
-            txtEmail.Location = new Point(330, 165);
-            txtEmail.Margin = new Padding(3, 4, 3, 4);
+            txtEmail.Location = new Point(311, 158);
+            txtEmail.Margin = new Padding(3, 5, 3, 5);
             txtEmail.Name = "txtEmail";
             txtEmail.PasswordChar = '\0';
-            txtEmail.PlaceholderForeColor = Color.Black;
+            txtEmail.PlaceholderForeColor = Color.FromArgb(0, 118, 212);
             txtEmail.PlaceholderText = "Email";
             txtEmail.SelectedText = "";
             txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            txtEmail.Size = new Size(260, 39);
+            txtEmail.Size = new Size(292, 41);
             txtEmail.TabIndex = 10;
             // 
             // txtConfirmPassword
@@ -125,20 +125,20 @@
             txtConfirmPassword.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtConfirmPassword.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtConfirmPassword.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtConfirmPassword.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            txtConfirmPassword.ForeColor = Color.Black;
+            txtConfirmPassword.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            txtConfirmPassword.ForeColor = Color.FromArgb(0, 118, 212);
             txtConfirmPassword.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtConfirmPassword.IconLeft = (Image)resources.GetObject("txtConfirmPassword.IconLeft");
             txtConfirmPassword.IconLeftSize = new Size(25, 25);
-            txtConfirmPassword.Location = new Point(330, 287);
-            txtConfirmPassword.Margin = new Padding(3, 4, 3, 4);
+            txtConfirmPassword.Location = new Point(311, 286);
+            txtConfirmPassword.Margin = new Padding(3, 5, 3, 5);
             txtConfirmPassword.Name = "txtConfirmPassword";
             txtConfirmPassword.PasswordChar = '*';
-            txtConfirmPassword.PlaceholderForeColor = Color.Black;
+            txtConfirmPassword.PlaceholderForeColor = Color.FromArgb(0, 118, 212);
             txtConfirmPassword.PlaceholderText = "Repeat Password";
             txtConfirmPassword.SelectedText = "";
             txtConfirmPassword.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            txtConfirmPassword.Size = new Size(260, 39);
+            txtConfirmPassword.Size = new Size(292, 41);
             txtConfirmPassword.TabIndex = 12;
             // 
             // lblLogin
@@ -153,7 +153,7 @@
             lblLogin.FillColor = Color.Transparent;
             lblLogin.FocusedColor = Color.Red;
             lblLogin.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            lblLogin.ForeColor = Color.FromArgb(218, 244, 255);
+            lblLogin.ForeColor = Color.White;
             lblLogin.Image = (Image)resources.GetObject("lblLogin.Image");
             lblLogin.ImageAlign = HorizontalAlignment.Right;
             lblLogin.ImageSize = new Size(40, 40);
@@ -172,7 +172,7 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = Color.FromArgb(218, 244, 255);
+            label3.ForeColor = Color.White;
             label3.Location = new Point(400, 43);
             label3.Name = "label3";
             label3.Size = new Size(107, 32);
@@ -189,10 +189,10 @@
             btnSignup.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnSignup.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             btnSignup.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnSignup.FillColor = Color.FromArgb(139, 216, 189);
-            btnSignup.FillColor2 = Color.FromArgb(139, 216, 189);
+            btnSignup.FillColor = Color.White;
+            btnSignup.FillColor2 = Color.White;
             btnSignup.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSignup.ForeColor = Color.White;
+            btnSignup.ForeColor = Color.FromArgb(0, 118, 212);
             btnSignup.Location = new Point(330, 345);
             btnSignup.Margin = new Padding(3, 2, 3, 2);
             btnSignup.Name = "btnSignup";
@@ -215,20 +215,20 @@
             txtPassword.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtPassword.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtPassword.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPassword.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPassword.ForeColor = Color.Black;
+            txtPassword.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            txtPassword.ForeColor = Color.FromArgb(0, 118, 212);
             txtPassword.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtPassword.IconLeft = (Image)resources.GetObject("txtPassword.IconLeft");
             txtPassword.IconLeftSize = new Size(25, 25);
-            txtPassword.Location = new Point(330, 224);
-            txtPassword.Margin = new Padding(3, 4, 3, 4);
+            txtPassword.Location = new Point(311, 220);
+            txtPassword.Margin = new Padding(3, 5, 3, 5);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
-            txtPassword.PlaceholderForeColor = Color.Black;
+            txtPassword.PlaceholderForeColor = Color.FromArgb(0, 118, 212);
             txtPassword.PlaceholderText = "Password";
             txtPassword.SelectedText = "";
             txtPassword.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            txtPassword.Size = new Size(260, 39);
+            txtPassword.Size = new Size(292, 41);
             txtPassword.TabIndex = 11;
             // 
             // txtUsername
@@ -245,20 +245,20 @@
             txtUsername.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtUsername.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtUsername.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtUsername.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            txtUsername.ForeColor = Color.Black;
+            txtUsername.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            txtUsername.ForeColor = Color.FromArgb(0, 118, 212);
             txtUsername.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtUsername.IconLeft = (Image)resources.GetObject("txtUsername.IconLeft");
             txtUsername.IconLeftSize = new Size(25, 25);
-            txtUsername.Location = new Point(330, 103);
-            txtUsername.Margin = new Padding(3, 4, 3, 4);
+            txtUsername.Location = new Point(311, 91);
+            txtUsername.Margin = new Padding(3, 5, 3, 5);
             txtUsername.Name = "txtUsername";
             txtUsername.PasswordChar = '\0';
-            txtUsername.PlaceholderForeColor = Color.Black;
+            txtUsername.PlaceholderForeColor = Color.FromArgb(0, 118, 212);
             txtUsername.PlaceholderText = "Username";
             txtUsername.SelectedText = "";
             txtUsername.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            txtUsername.Size = new Size(260, 39);
+            txtUsername.Size = new Size(292, 41);
             txtUsername.TabIndex = 9;
             // 
             // guna2DragControl1

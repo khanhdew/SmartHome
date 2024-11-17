@@ -33,7 +33,8 @@ namespace DesktopApp
 
         private void Login_Load(object sender, EventArgs e)
         {
-
+            btnLogin.Click += async (sender, e) => await btnLogin_Click(sender, e);
+            Click += async (sender, e) => await btnLogin_Click(sender, e);
         }
 
         private void lblSignup_Click(object sender, EventArgs e)

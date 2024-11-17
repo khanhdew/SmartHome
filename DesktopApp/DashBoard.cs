@@ -24,6 +24,7 @@ namespace DesktopApp
             _serviceProvider = serviceProvider;
             InitializeComponent();
             ColapseMenu();
+            GoiUserControl(new HouseControl(_serviceProvider));
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -61,9 +62,6 @@ namespace DesktopApp
                 }
 
             }
-
-
-
 
         }
 
