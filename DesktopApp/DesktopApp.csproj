@@ -58,8 +58,6 @@
     <ItemGroup>
       <Folder Include="bin\Debug\Images\" />
       <Folder Include="bin\Release\net6.0-windows\" />
-      <Folder Include="Controls\Accounts\" />
-		<Folder Include="Controls\Devices\" />
       <Folder Include="Views\Accounts\" />
       <Folder Include="Views\Devices\" />
       <Folder Include="Views\Rooms\" />

@@ -1,4 +1,5 @@
 ﻿using DAO.Models.Devices;
+using Microsoft.Extensions.DependencyInjection;
 using Services.Thingsboard_Services;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,13 @@ namespace DesktopApp.Controls.Devices
         private readonly Light light;
         private bool isOn = false;
         private readonly IThingsboardService thingsboardService;
-        public DeviceViewControlLight(Light light, IThingsboardService thingsboardService)
+        private readonly IServiceProvider serviceProvider;
+        public DeviceViewControlLight(Light light, IServiceProvider serviceProvider)
         {
             InitializeComponent();
             this.light = light;
-            this.thingsboardService = thingsboardService;
+            this.serviceProvider = serviceProvider;
+            thingsboardService = serviceProvider.GetRequiredService<IThingsboardService>();
         }
 
         private void powerButton_Click(object sender, EventArgs e)

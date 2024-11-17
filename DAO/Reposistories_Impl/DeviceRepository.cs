@@ -112,16 +112,18 @@ namespace DAO.Reposistories_Impl
                     throw new Exception("User not found");
                 }
 
-                var devices = _context.Devices.Include(d => d.Room).Where(d => d.UserID == user.Id).ToList();
+                var devices = _context.Devices.Include(d => d.User).Include(d => d.Room).Where(d => d.UserID == user.Id).ToList();
                 var specificDevices = new List<Device>();
 
                 foreach (var device in devices)
                 {
                     var specificDevice = DeviceFactory.CreateDevice(device.Type!, device.Name);
                     specificDevice.Room = device.Room;
+                    specificDevice.RoomID = device.RoomID;
                     specificDevice.ID = device.ID;
                     specificDevice.UserID = device.UserID;
                     specificDevice.DeviceToken = device.DeviceToken;
+                    specificDevice.User = device.User;
                     specificDevices.Add(specificDevice);
                 }
                 return specificDevices;
@@ -156,7 +158,7 @@ namespace DAO.Reposistories_Impl
                     throw new Exception("Device not found");
                 }
 
-                return _context.TelemetryData.Where(t => t.DeviceID == device.ID).ToList();
+                return _context.TelemetryData.Where(t => t.DeviceID == device.ID).ToList().TakeLast(15);
             }
             catch (Exception e)
             {

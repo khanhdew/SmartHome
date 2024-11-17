@@ -23,22 +23,31 @@ namespace DesktopApp.Controls.Houses
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            var house = new House
+            if(txtInvCode.Text == "")
             {
-                Name = txtHouseName.Text,
-                Location = txtHouseAddress.Text
-            };
-            try
-            {
-                var newHouse = _houseService.CreateHouse(house.Name, house.Location);
-                // add house to logged in user
-                _houseService.AddHouseMember(MainForm.LoggedInUser.Id, newHouse.ID, "Owner");
-                MessageBox.Show("House added successfully");
-                Dispose();
+                var house = new House
+                {
+                    Name = txtHouseName.Text,
+                    Location = txtHouseAddress.Text
+                };
+                try
+                {
+                    var newHouse = _houseService.CreateHouse(house.Name, house.Location);
+                    // add house to logged in user
+                    _houseService.AddHouseMember(MainForm.LoggedInUser.Id, newHouse.ID, "Owner");
+                    MessageBox.Show("Tạo nhà thành công");
+                    Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred: {ex.Message}");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                _houseService.AddHouseMember(MainForm.LoggedInUser.Id, txtInvCode.Text, "Member");
+                MessageBox.Show("Gia nhập nhà thành công");
+                Dispose();
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using DAO.BaseModels;
+using DesktopApp.Controls.Rooms;
 using DesktopApp.Utils;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -49,9 +50,22 @@ namespace DesktopApp.Controls.Houses
                     };
                     houseViewControl.btnSuaNha.Click += (sender, e) =>
                     {
+                        if (!_houseService.GetHouseOwner(house.ID).Id.Equals(MainForm.LoggedInUser.Id))
+                        {
+                            MessageBox.Show("Bạn không có quyền sửa nhà này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         var houseEdit = new HouseEdit(house.ID, _serviceProvider);
                         Controls.Clear();
                         Controls.Add(houseEdit);
+                    };
+                    houseViewControl.lblTenNha.Click += (sender, e) =>
+                    {
+                        var roomControl = new RoomControl(house.ID, _serviceProvider);
+                        roomControl.Dock = DockStyle.Fill;
+                        Controls.Clear();
+                        Controls.Add(roomControl);
+                        
                     };
                     fLayoutPanel.Controls.Add(houseViewControl);
                 }

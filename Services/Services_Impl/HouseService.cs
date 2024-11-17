@@ -99,4 +99,22 @@ public class HouseService: IHouseService
     {
         return _houseRepository.IsHouseOwner(userId, houseId);
     }
+
+    public object GenerateInvitationCode(int houseId)
+    {
+        return GetHouseOwner(houseId).Id+houseId.ToString();
+    }
+
+
+    public HouseMember AddHouseMember(string userId, string invitationCode, string role)
+    {
+        var ownerId = invitationCode.Substring(0, 36);
+        var houseId = int.Parse(invitationCode.Substring(36));
+        if (houseId == 0)
+            throw new Exception("Invalid invitation code");
+        if( ownerId != GetHouseOwner(houseId).Id)
+            throw new Exception("Invalid invitation code");
+        return _houseRepository.AddHouseMember(userId, houseId, role);
+
+    }
 }

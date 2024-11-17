@@ -34,8 +34,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            btnSuaPhong = new Guna.UI2.WinForms.Guna2Button();
-            btnXoaPhong = new Guna.UI2.WinForms.Guna2Button();
+            btnXoa = new Guna.UI2.WinForms.Guna2Button();
+            btnSua = new Guna.UI2.WinForms.Guna2Button();
             lblThongtinPhong = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblTenPhong = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2ShadowPanel1.SuspendLayout();
@@ -43,9 +43,10 @@
             // 
             // guna2ShadowPanel1
             // 
+            guna2ShadowPanel1.AutoSize = true;
             guna2ShadowPanel1.BackColor = Color.Transparent;
-            guna2ShadowPanel1.Controls.Add(btnSuaPhong);
-            guna2ShadowPanel1.Controls.Add(btnXoaPhong);
+            guna2ShadowPanel1.Controls.Add(btnXoa);
+            guna2ShadowPanel1.Controls.Add(btnSua);
             guna2ShadowPanel1.Controls.Add(lblThongtinPhong);
             guna2ShadowPanel1.Controls.Add(lblTenPhong);
             guna2ShadowPanel1.Dock = DockStyle.Fill;
@@ -55,66 +56,63 @@
             guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             guna2ShadowPanel1.Radius = 5;
             guna2ShadowPanel1.ShadowColor = Color.Black;
-            guna2ShadowPanel1.Size = new Size(158, 105);
+            guna2ShadowPanel1.Size = new Size(268, 170);
             guna2ShadowPanel1.TabIndex = 0;
             // 
-            // btnSuaPhong
+            // btnXoa
             // 
-            btnSuaPhong.BorderRadius = 10;
-            btnSuaPhong.CustomizableEdges = customizableEdges1;
-            btnSuaPhong.DisabledState.BorderColor = Color.DarkGray;
-            btnSuaPhong.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnSuaPhong.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnSuaPhong.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnSuaPhong.FillColor = Color.DeepSkyBlue;
-            btnSuaPhong.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSuaPhong.ForeColor = Color.White;
-            btnSuaPhong.Image = (Image)resources.GetObject("btnSuaPhong.Image");
-            btnSuaPhong.Location = new Point(26, 60);
-            btnSuaPhong.Margin = new Padding(3, 2, 3, 2);
-            btnSuaPhong.Name = "btnSuaPhong";
-            btnSuaPhong.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnSuaPhong.Size = new Size(40, 28);
-            btnSuaPhong.TabIndex = 7;
+            btnXoa.BorderRadius = 10;
+            btnXoa.CustomizableEdges = customizableEdges1;
+            btnXoa.DisabledState.BorderColor = Color.DarkGray;
+            btnXoa.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnXoa.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnXoa.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnXoa.FillColor = Color.FromArgb(219, 80, 74);
+            btnXoa.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnXoa.ForeColor = Color.White;
+            btnXoa.Image = (Image)resources.GetObject("btnXoa.Image");
+            btnXoa.Location = new Point(86, 107);
+            btnXoa.Name = "btnXoa";
+            btnXoa.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnXoa.Size = new Size(46, 38);
+            btnXoa.TabIndex = 9;
+            btnXoa.Click += btnXoa_Click;
             // 
-            // btnXoaPhong
+            // btnSua
             // 
-            btnXoaPhong.BorderRadius = 10;
-            btnXoaPhong.CustomizableEdges = customizableEdges3;
-            btnXoaPhong.DisabledState.BorderColor = Color.DarkGray;
-            btnXoaPhong.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnXoaPhong.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnXoaPhong.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnXoaPhong.FillColor = Color.DeepSkyBlue;
-            btnXoaPhong.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnXoaPhong.ForeColor = Color.White;
-            btnXoaPhong.Image = (Image)resources.GetObject("btnXoaPhong.Image");
-            btnXoaPhong.Location = new Point(88, 60);
-            btnXoaPhong.Margin = new Padding(3, 2, 3, 2);
-            btnXoaPhong.Name = "btnXoaPhong";
-            btnXoaPhong.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            btnXoaPhong.Size = new Size(40, 28);
-            btnXoaPhong.TabIndex = 6;
+            btnSua.BorderRadius = 10;
+            btnSua.CustomizableEdges = customizableEdges3;
+            btnSua.DisabledState.BorderColor = Color.DarkGray;
+            btnSua.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnSua.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnSua.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSua.FillColor = Color.FromArgb(60, 145, 230);
+            btnSua.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSua.ForeColor = Color.White;
+            btnSua.Image = (Image)resources.GetObject("btnSua.Image");
+            btnSua.Location = new Point(26, 107);
+            btnSua.Name = "btnSua";
+            btnSua.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnSua.Size = new Size(46, 38);
+            btnSua.TabIndex = 8;
             // 
             // lblThongtinPhong
             // 
             lblThongtinPhong.BackColor = Color.Transparent;
-            lblThongtinPhong.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblThongtinPhong.Location = new Point(26, 38);
-            lblThongtinPhong.Margin = new Padding(3, 2, 3, 2);
+            lblThongtinPhong.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblThongtinPhong.Location = new Point(26, 54);
             lblThongtinPhong.Name = "lblThongtinPhong";
-            lblThongtinPhong.Size = new Size(59, 21);
+            lblThongtinPhong.Size = new Size(69, 23);
             lblThongtinPhong.TabIndex = 5;
             lblThongtinPhong.Text = "Thông tin";
             // 
             // lblTenPhong
             // 
             lblTenPhong.BackColor = Color.Transparent;
-            lblTenPhong.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTenPhong.Location = new Point(26, 15);
-            lblTenPhong.Margin = new Padding(3, 2, 3, 2);
+            lblTenPhong.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTenPhong.Location = new Point(26, 24);
             lblTenPhong.Name = "lblTenPhong";
-            lblTenPhong.Size = new Size(66, 22);
+            lblTenPhong.Size = new Size(73, 27);
             lblTenPhong.TabIndex = 4;
             lblTenPhong.Text = "Phòng 1";
             // 
@@ -125,18 +123,19 @@
             Controls.Add(guna2ShadowPanel1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "RoomViewUserControl";
-            Size = new Size(158, 105);
+            Size = new Size(268, 170);
             guna2ShadowPanel1.ResumeLayout(false);
             guna2ShadowPanel1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
-        private Guna.UI2.WinForms.Guna2Button btnXoaPhong;
-        public Guna.UI2.WinForms.Guna2Button btnSuaPhong;
         public Guna.UI2.WinForms.Guna2HtmlLabel lblThongtinPhong;
         public Guna.UI2.WinForms.Guna2HtmlLabel lblTenPhong;
+        public Guna.UI2.WinForms.Guna2Button btnSua;
+        private Guna.UI2.WinForms.Guna2Button btnXoa;
     }
 }

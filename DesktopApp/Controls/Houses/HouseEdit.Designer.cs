@@ -34,18 +34,20 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblHouseName = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnConfirm = new Guna.UI2.WinForms.Guna2Button();
             lblHouseAddress = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            txtHouseAddress = new Guna.UI2.WinForms.Guna2TextBox();
-            txtHouseName = new Guna.UI2.WinForms.Guna2TextBox();
+            txtDetail = new Guna.UI2.WinForms.Guna2TextBox();
+            txtName = new Guna.UI2.WinForms.Guna2TextBox();
             guna2ShadowPanel2 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnDelMember = new Guna.UI2.WinForms.Guna2Button();
@@ -54,6 +56,7 @@
             cellDisplayName = new DataGridViewTextBoxColumn();
             cellPhoneNumber = new DataGridViewTextBoxColumn();
             cellRole = new DataGridViewTextBoxColumn();
+            BtnInvCode = new Guna.UI2.WinForms.Guna2Button();
             guna2ShadowPanel1.SuspendLayout();
             guna2ShadowPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvHouseMember).BeginInit();
@@ -67,8 +70,8 @@
             guna2ShadowPanel1.Controls.Add(lblHouseName);
             guna2ShadowPanel1.Controls.Add(btnConfirm);
             guna2ShadowPanel1.Controls.Add(lblHouseAddress);
-            guna2ShadowPanel1.Controls.Add(txtHouseAddress);
-            guna2ShadowPanel1.Controls.Add(txtHouseName);
+            guna2ShadowPanel1.Controls.Add(txtDetail);
+            guna2ShadowPanel1.Controls.Add(txtName);
             guna2ShadowPanel1.FillColor = Color.White;
             guna2ShadowPanel1.ForeColor = Color.FromArgb(0, 118, 212);
             guna2ShadowPanel1.Location = new Point(15, 72);
@@ -128,52 +131,53 @@
             lblHouseAddress.TabIndex = 7;
             lblHouseAddress.Text = "Địa chỉ";
             // 
-            // txtHouseAddress
+            // txtDetail
             // 
-            txtHouseAddress.BorderRadius = 10;
-            txtHouseAddress.CustomizableEdges = customizableEdges3;
-            txtHouseAddress.DefaultText = "";
-            txtHouseAddress.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtHouseAddress.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtHouseAddress.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtHouseAddress.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtHouseAddress.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtHouseAddress.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txtHouseAddress.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtHouseAddress.Location = new Point(17, 211);
-            txtHouseAddress.Name = "txtHouseAddress";
-            txtHouseAddress.PasswordChar = '\0';
-            txtHouseAddress.PlaceholderText = "";
-            txtHouseAddress.SelectedText = "";
-            txtHouseAddress.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            txtHouseAddress.Size = new Size(297, 36);
-            txtHouseAddress.TabIndex = 9;
+            txtDetail.BorderRadius = 10;
+            txtDetail.CustomizableEdges = customizableEdges3;
+            txtDetail.DefaultText = "";
+            txtDetail.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtDetail.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtDetail.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtDetail.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtDetail.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtDetail.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtDetail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtDetail.Location = new Point(17, 211);
+            txtDetail.Name = "txtDetail";
+            txtDetail.PasswordChar = '\0';
+            txtDetail.PlaceholderText = "";
+            txtDetail.SelectedText = "";
+            txtDetail.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            txtDetail.Size = new Size(297, 36);
+            txtDetail.TabIndex = 9;
             // 
-            // txtHouseName
+            // txtName
             // 
-            txtHouseName.BorderRadius = 10;
-            txtHouseName.CustomizableEdges = customizableEdges5;
-            txtHouseName.DefaultText = "";
-            txtHouseName.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtHouseName.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtHouseName.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtHouseName.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtHouseName.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtHouseName.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txtHouseName.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtHouseName.Location = new Point(17, 135);
-            txtHouseName.Name = "txtHouseName";
-            txtHouseName.PasswordChar = '\0';
-            txtHouseName.PlaceholderText = "";
-            txtHouseName.SelectedText = "";
-            txtHouseName.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            txtHouseName.Size = new Size(297, 36);
-            txtHouseName.TabIndex = 8;
+            txtName.BorderRadius = 10;
+            txtName.CustomizableEdges = customizableEdges5;
+            txtName.DefaultText = "";
+            txtName.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtName.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtName.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtName.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtName.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtName.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtName.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtName.Location = new Point(17, 135);
+            txtName.Name = "txtName";
+            txtName.PasswordChar = '\0';
+            txtName.PlaceholderText = "";
+            txtName.SelectedText = "";
+            txtName.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            txtName.Size = new Size(297, 36);
+            txtName.TabIndex = 8;
             // 
             // guna2ShadowPanel2
             // 
             guna2ShadowPanel2.AutoScroll = true;
             guna2ShadowPanel2.BackColor = Color.Transparent;
+            guna2ShadowPanel2.Controls.Add(BtnInvCode);
             guna2ShadowPanel2.Controls.Add(guna2HtmlLabel2);
             guna2ShadowPanel2.Controls.Add(btnDelMember);
             guna2ShadowPanel2.Controls.Add(dgvHouseMember);
@@ -199,7 +203,7 @@
             // btnDelMember
             // 
             btnDelMember.BorderRadius = 15;
-            btnDelMember.CustomizableEdges = customizableEdges7;
+            btnDelMember.CustomizableEdges = customizableEdges9;
             btnDelMember.DisabledState.BorderColor = Color.DarkGray;
             btnDelMember.DisabledState.CustomBorderColor = Color.DarkGray;
             btnDelMember.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -209,7 +213,7 @@
             btnDelMember.ForeColor = Color.White;
             btnDelMember.Location = new Point(374, 284);
             btnDelMember.Name = "btnDelMember";
-            btnDelMember.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnDelMember.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnDelMember.Size = new Size(135, 45);
             btnDelMember.TabIndex = 1;
             btnDelMember.Text = "Xoá thành viên";
@@ -296,10 +300,30 @@
             cellRole.Name = "cellRole";
             cellRole.ReadOnly = true;
             // 
+            // BtnInvCode
+            // 
+            BtnInvCode.BorderRadius = 15;
+            BtnInvCode.CustomizableEdges = customizableEdges7;
+            BtnInvCode.DisabledState.BorderColor = Color.DarkGray;
+            BtnInvCode.DisabledState.CustomBorderColor = Color.DarkGray;
+            BtnInvCode.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            BtnInvCode.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            BtnInvCode.FillColor = Color.FromArgb(0, 118, 212);
+            BtnInvCode.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnInvCode.ForeColor = Color.White;
+            BtnInvCode.Location = new Point(41, 284);
+            BtnInvCode.Name = "BtnInvCode";
+            BtnInvCode.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            BtnInvCode.Size = new Size(135, 45);
+            BtnInvCode.TabIndex = 13;
+            BtnInvCode.Text = "Copy mã mời";
+            BtnInvCode.Click += BtnInvCode_Click;
+            // 
             // HouseEdit
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
+            AutoScroll = true;
             AutoSize = true;
             Controls.Add(guna2ShadowPanel1);
             Controls.Add(guna2ShadowPanel2);
@@ -320,8 +344,8 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel lblHouseName;
         private Guna.UI2.WinForms.Guna2Button btnConfirm;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblHouseAddress;
-        private Guna.UI2.WinForms.Guna2TextBox txtHouseAddress;
-        private Guna.UI2.WinForms.Guna2TextBox txtHouseName;
+        private Guna.UI2.WinForms.Guna2TextBox txtDetail;
+        private Guna.UI2.WinForms.Guna2TextBox txtName;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2Button btnDelMember;
@@ -330,5 +354,6 @@
         private DataGridViewTextBoxColumn cellDisplayName;
         private DataGridViewTextBoxColumn cellPhoneNumber;
         private DataGridViewTextBoxColumn cellRole;
+        private Guna.UI2.WinForms.Guna2Button BtnInvCode;
     }
 }

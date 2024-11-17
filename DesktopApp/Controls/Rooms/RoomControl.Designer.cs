@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoomControl));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             addBtn = new Guna.UI2.WinForms.Guna2Button();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             fLayoutPanel = new FlowLayoutPanel();
@@ -41,7 +41,7 @@
             // 
             // addBtn
             // 
-            addBtn.CustomizableEdges = customizableEdges1;
+            addBtn.CustomizableEdges = customizableEdges5;
             addBtn.DisabledState.BorderColor = Color.DarkGray;
             addBtn.DisabledState.CustomBorderColor = Color.DarkGray;
             addBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -53,18 +53,19 @@
             addBtn.Location = new Point(3, 18);
             addBtn.Name = "addBtn";
             addBtn.PressedColor = Color.Transparent;
-            addBtn.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            addBtn.ShadowDecoration.CustomizableEdges = customizableEdges6;
             addBtn.Size = new Size(50, 29);
             addBtn.TabIndex = 0;
+            addBtn.Click += addBtn_Click;
             // 
             // guna2Panel1
             // 
             guna2Panel1.Controls.Add(addBtn);
-            guna2Panel1.CustomizableEdges = customizableEdges3;
+            guna2Panel1.CustomizableEdges = customizableEdges7;
             guna2Panel1.Dock = DockStyle.Right;
             guna2Panel1.Location = new Point(1146, 0);
             guna2Panel1.Name = "guna2Panel1";
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2Panel1.Size = new Size(72, 500);
             guna2Panel1.TabIndex = 4;
             // 
@@ -82,6 +83,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             Controls.Add(guna2Panel1);
             Controls.Add(fLayoutPanel);
             Name = "RoomControl";

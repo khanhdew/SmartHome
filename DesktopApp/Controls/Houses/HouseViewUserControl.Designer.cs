@@ -66,7 +66,7 @@
             btnSuaNha.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSuaNha.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnSuaNha.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnSuaNha.FillColor = Color.FromArgb(0, 118, 212);
+            btnSuaNha.FillColor = Color.FromArgb(60, 145, 230);
             btnSuaNha.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnSuaNha.ForeColor = Color.White;
             btnSuaNha.Image = (Image)resources.GetObject("btnSuaNha.Image");
@@ -84,7 +84,7 @@
             btnXoaNha.DisabledState.CustomBorderColor = Color.DarkGray;
             btnXoaNha.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnXoaNha.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnXoaNha.FillColor = Color.Red;
+            btnXoaNha.FillColor = Color.FromArgb(219, 80, 74);
             btnXoaNha.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnXoaNha.ForeColor = Color.White;
             btnXoaNha.Image = (Image)resources.GetObject("btnXoaNha.Image");
@@ -101,23 +101,23 @@
             lblThongtinNha.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblThongtinNha.Location = new Point(26, 54);
             lblThongtinNha.Name = "lblThongtinNha";
-            lblThongtinNha.Size = new Size(69, 23);
+            lblThongtinNha.Size = new Size(87, 30);
             lblThongtinNha.TabIndex = 1;
             lblThongtinNha.Text = "Thông tin";
             // 
             // lblTenNha
             // 
             lblTenNha.BackColor = Color.Transparent;
-            lblTenNha.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTenNha.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblTenNha.Location = new Point(26, 24);
             lblTenNha.Name = "lblTenNha";
-            lblTenNha.Size = new Size(55, 27);
+            lblTenNha.Size = new Size(66, 33);
             lblTenNha.TabIndex = 0;
             lblTenNha.Text = "Nhà 1";
             // 
             // HouseViewUserControl
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             Controls.Add(guna2ShadowPanel1);

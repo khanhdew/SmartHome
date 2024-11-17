@@ -29,8 +29,12 @@ namespace DesktopApp.Controls.Houses
 
         private void btnXoaNha_Click(object sender, EventArgs e)
         {
+            if (!_houseService.GetHouseOwner(house.ID).Id.Equals(MainForm.LoggedInUser.Id))
+            {
+                MessageBox.Show("Bạn không có quyền xóa nhà này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             DialogResult result = MessageBox.Show("Bạn có muốn xóa nhà này không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
             if (result == DialogResult.Yes)
             {
                 MessageBox.Show("Nhà đã được xóa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -33,17 +33,17 @@ namespace DesktopApp.Controls.Houses
 
         private void LoadInfo()
         {
-            txtHouseName.Text = House.Name;
-            txtHouseAddress.Text = House.Location;
+            txtName.Text = House.Name;
+            txtDetail.Text = House.Location;
         }
 
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            House.Name = txtHouseName.Text;
-            House.Location = txtHouseAddress.Text;
+            House.Name = txtName.Text;
+            House.Location = txtDetail.Text;
             _houseService.EditHouse(House);
-            MessageBox.Show("House updated successfully");
+            MessageBox.Show("Sửa thông tin nhà thành công!!");
             LoadInfo();
         }
 
@@ -72,6 +72,15 @@ namespace DesktopApp.Controls.Houses
                 _houseService.RemoveHouseMember(user.Id, House.ID);
                 LoadHouseMember();
             }
+        }
+
+        private void BtnInvCode_Click(object sender, EventArgs e)
+        {
+            // generate invitation code
+            var invitationCode =(String) _houseService.GenerateInvitationCode(House.ID);
+            // copy to clipboard
+            Clipboard.SetText(invitationCode);
+            MessageBox.Show("Mã mời đã được sao chép vào clipboard");
         }
     }
 }

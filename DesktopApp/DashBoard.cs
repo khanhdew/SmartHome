@@ -86,7 +86,7 @@ namespace DesktopApp
 
         private void menuDevice_Click(object sender, EventArgs e)
         {
-            GoiUserControl(new DeviceControl());
+            GoiUserControl(new DeviceControl(_serviceProvider));
         }
 
         private void menuSettings_Click(object sender, EventArgs e)
@@ -115,14 +115,14 @@ namespace DesktopApp
                         var houseControl = (HouseControl)userControl;
                         houseControl.SearchHouses(guna2TextBox1.Text);
                         break;
-                    //case "RoomControl":
-                    //    var roomControl = (RoomControl)PanelMain.Controls[0];
-                    //    roomControl.SearchRooms(guna2TextBox1.Text);
-                    //    break;
-                    //case "DeviceControl":
-                    //    var deviceControl = (DeviceControl)PanelMain.Controls[0];
-                    //    deviceControl.SearchDevices(guna2TextBox1.Text);
-                    //    break;
+                    case "RoomControl":
+                        var roomControl = (RoomControl)PanelMain.Controls[0];
+                        roomControl.SearchRooms(guna2TextBox1.Text);
+                        break;
+                    case "DeviceControl":
+                        var deviceControl = (DeviceControl)PanelMain.Controls[0];
+                        deviceControl.SearchDevices(guna2TextBox1.Text);
+                        break;
                     default:
                         break;
                 }
