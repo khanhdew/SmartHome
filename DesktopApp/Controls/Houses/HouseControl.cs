@@ -56,8 +56,9 @@ namespace DesktopApp.Controls.Houses
                             return;
                         }
                         var houseEdit = new HouseEdit(house.ID, _serviceProvider);
-                        Controls.Add(houseEdit);
                         Controls.Clear();
+                        Controls.Add(houseEdit);
+                       
                     };
                     houseViewControl.lblTenNha.Click += (sender, e) =>
                     {
