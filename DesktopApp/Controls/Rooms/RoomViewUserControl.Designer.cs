@@ -54,8 +54,8 @@
             guna2ShadowPanel1.Location = new Point(0, 0);
             guna2ShadowPanel1.Margin = new Padding(3, 2, 3, 2);
             guna2ShadowPanel1.Name = "guna2ShadowPanel1";
-            guna2ShadowPanel1.Radius = 5;
-            guna2ShadowPanel1.ShadowColor = Color.Black;
+            guna2ShadowPanel1.Radius = 10;
+            guna2ShadowPanel1.ShadowColor = Color.Silver;
             guna2ShadowPanel1.Size = new Size(268, 170);
             guna2ShadowPanel1.TabIndex = 0;
             // 
@@ -121,7 +121,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(guna2ShadowPanel1);
-            Margin = new Padding(3, 2, 3, 2);
+            Margin = new Padding(20, 2, 3, 2);
             Name = "RoomViewUserControl";
             Size = new Size(268, 170);
             guna2ShadowPanel1.ResumeLayout(false);

@@ -24,6 +24,8 @@ namespace DesktopApp
             _serviceProvider = serviceProvider;
             InitializeComponent();
             ColapseMenu();
+            CollapseAll();
+            menuHouse.Width += 30;
             GoiUserControl(new HouseControl(_serviceProvider));
         }
 
@@ -49,9 +51,9 @@ namespace DesktopApp
             }
             else
             {
-                PanelSideBar.Width = 210;
+                PanelSideBar.Width = 238;
                 btnLogo.Text = "Smart Home";
-                PanelLogo.Width = 210;
+                PanelLogo.Width = 238;
                 foreach (Button menuButton in PanelSideBar.Controls.OfType<Button>())
                 {
                     menuButton.Text = " " + menuButton.Tag.ToString();
@@ -65,6 +67,15 @@ namespace DesktopApp
 
         }
 
+        private void CollapseAll()
+        {
+            menuHouse.Width = 215;
+            menuRoom.Width = 215;
+            menuDevice.Width = 215;
+            menuSettings.Width = 215;
+            menuAdminPage.Width = 215;
+        }
+
         private void menuAdminPage_Click(object sender, EventArgs e)
         {
             var parentForm = this.Parent;
@@ -76,22 +87,32 @@ namespace DesktopApp
 
         private void menuHouse_Click(object sender, EventArgs e)
         {
+            CollapseAll();
+            menuHouse.Width += 30;
             GoiUserControl(new HouseControl(_serviceProvider));
         }
 
         private void menuRoom_Click(object sender, EventArgs e)
         {
+            CollapseAll();
+            menuRoom.Width += 30;
             GoiUserControl(new RoomControl(_serviceProvider));
         }
 
         private void menuDevice_Click(object sender, EventArgs e)
         {
+            CollapseAll();
+            menuDevice.Width += 30;
             GoiUserControl(new DeviceControl(_serviceProvider));
+
         }
 
         private void menuSettings_Click(object sender, EventArgs e)
         {
-            GoiUserControl(new SettingControl());
+            CollapseAll();
+            menuSettings.Width += 30;
+            var settingControl = new SettingControl(_serviceProvider);
+            GoiUserControl(settingControl);
         }
 
         private void GoiUserControl(UserControl userControl)

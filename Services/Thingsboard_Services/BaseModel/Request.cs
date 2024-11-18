@@ -72,6 +72,49 @@ public class Request<T>
         }
     }
 
+    public async Task<T?> PostAsync()
+    {
+        using HttpClient client = new HttpClient();
+
+        if (Token != null)
+        {
+            client.DefaultRequestHeaders.Add("X-Authorization", "Bearer " + Token.token);
+        }
+
+        var content = new StringContent(Body, Encoding.UTF8, "application/json");
+
+        try
+        {
+            var response = await client.PostAsync(Url, content);
+            Console.WriteLine($"\u001b[32mRequest URL: {Url}\u001b[0m");
+            Console.WriteLine($"\u001b[32mRequest Content: {Body}\u001b[0m");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorMessage = await response.Content.ReadAsStringAsync();
+                switch (response.StatusCode)
+                {
+                    case HttpStatusCode.Unauthorized:
+                        throw new UnauthorizedAccessException();
+                    case HttpStatusCode.BadRequest:
+                        throw new ArgumentException();
+                    case HttpStatusCode.NotFound:
+                        throw new KeyNotFoundException();
+                    case HttpStatusCode.GatewayTimeout:
+                        throw new TimeoutException();
+                }
+            }
+
+            var responseString = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<T>(responseString);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw;
+        }
+    }
+
 
     public async Task<T?> GetAsync()
     {

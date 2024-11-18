@@ -33,7 +33,6 @@ namespace DesktopApp.Controls.Rooms
             this.houseId = houseId;
             LoadHouses(houseId);
             LoadRooms(roomList);
-
         }
         public RoomControl(IServiceProvider serviceProvider)
         {

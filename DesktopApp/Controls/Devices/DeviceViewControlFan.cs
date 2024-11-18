@@ -1,5 +1,6 @@
 ﻿using DAO.Models.Devices;
 using Microsoft.Extensions.DependencyInjection;
+using Services.Services;
 using Services.Thingsboard_Services;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace DesktopApp.Controls.Devices
         private bool isOn = false;
         private double speed = 0;
         private readonly IThingsboardService thingsboardService;
+        private readonly IDeviceService deviceService;
         private readonly IServiceProvider serviceProvider;
         public DeviceViewControlFan(Fan fan, IServiceProvider serviceProvider)
         {
@@ -26,6 +28,7 @@ namespace DesktopApp.Controls.Devices
             this.fan = fan;
             this.serviceProvider = serviceProvider;
             thingsboardService = serviceProvider.GetRequiredService<IThingsboardService>();
+            deviceService = serviceProvider.GetRequiredService<IDeviceService>();
         }
 
         private void powerButton_Click(object sender, EventArgs e)
@@ -102,6 +105,37 @@ namespace DesktopApp.Controls.Devices
         {
             speed = 3;
             Control(speed);
+        }
+
+        private void btnXoaQuat_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                thingsboardService.DeleteDevice(fan.ID);
+                Parent.Controls.Remove(this);
+                deviceService.DeleteDevice(fan.ID);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MessageBox.Show("Unauthorized access", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (TimeoutException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

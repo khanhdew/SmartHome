@@ -42,5 +42,10 @@ namespace DesktopApp.Controls.Houses
                 Parent.Controls.Remove(this);
             }
         }
+
+        internal void btnSuaNha_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

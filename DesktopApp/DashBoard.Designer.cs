@@ -353,7 +353,7 @@
             PanelSideBar.Location = new Point(0, 0);
             PanelSideBar.Name = "PanelSideBar";
             PanelSideBar.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            PanelSideBar.Size = new Size(210, 567);
+            PanelSideBar.Size = new Size(238, 567);
             PanelSideBar.TabIndex = 0;
             // 
             // menuAdminPage
@@ -380,11 +380,11 @@
             menuAdminPage.ImageAlign = HorizontalAlignment.Left;
             menuAdminPage.ImageOffset = new Point(5, 0);
             menuAdminPage.ImageSize = new Size(35, 35);
-            menuAdminPage.Location = new Point(18, 390);
+            menuAdminPage.Location = new Point(17, 342);
             menuAdminPage.Name = "menuAdminPage";
             menuAdminPage.ShadowDecoration.BorderRadius = 10;
             menuAdminPage.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            menuAdminPage.Size = new Size(204, 50);
+            menuAdminPage.Size = new Size(215, 50);
             menuAdminPage.TabIndex = 4;
             menuAdminPage.Tag = "Admin";
             menuAdminPage.Text = "Admin";
@@ -399,7 +399,7 @@
             guna2Panel3.Location = new Point(0, 0);
             guna2Panel3.Name = "guna2Panel3";
             guna2Panel3.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            guna2Panel3.Size = new Size(210, 17);
+            guna2Panel3.Size = new Size(238, 17);
             guna2Panel3.TabIndex = 0;
             // 
             // menuSettings
@@ -426,11 +426,11 @@
             menuSettings.ImageAlign = HorizontalAlignment.Left;
             menuSettings.ImageOffset = new Point(5, 0);
             menuSettings.ImageSize = new Size(35, 35);
-            menuSettings.Location = new Point(18, 306);
+            menuSettings.Location = new Point(17, 277);
             menuSettings.Name = "menuSettings";
             menuSettings.ShadowDecoration.BorderRadius = 10;
             menuSettings.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            menuSettings.Size = new Size(204, 50);
+            menuSettings.Size = new Size(215, 50);
             menuSettings.TabIndex = 3;
             menuSettings.Tag = "Settings";
             menuSettings.Text = "Chỉnh sửa";
@@ -460,11 +460,11 @@
             menuDevice.ImageAlign = HorizontalAlignment.Left;
             menuDevice.ImageOffset = new Point(5, 0);
             menuDevice.ImageSize = new Size(35, 35);
-            menuDevice.Location = new Point(18, 228);
+            menuDevice.Location = new Point(17, 212);
             menuDevice.Name = "menuDevice";
             menuDevice.ShadowDecoration.BorderRadius = 10;
             menuDevice.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            menuDevice.Size = new Size(204, 50);
+            menuDevice.Size = new Size(215, 50);
             menuDevice.TabIndex = 2;
             menuDevice.Tag = "Device";
             menuDevice.Text = "Thiết bị";
@@ -494,11 +494,11 @@
             menuRoom.ImageAlign = HorizontalAlignment.Left;
             menuRoom.ImageOffset = new Point(5, 0);
             menuRoom.ImageSize = new Size(35, 35);
-            menuRoom.Location = new Point(18, 156);
+            menuRoom.Location = new Point(17, 146);
             menuRoom.Name = "menuRoom";
             menuRoom.ShadowDecoration.BorderRadius = 10;
             menuRoom.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            menuRoom.Size = new Size(204, 50);
+            menuRoom.Size = new Size(215, 50);
             menuRoom.TabIndex = 1;
             menuRoom.Tag = "Room";
             menuRoom.Text = "Phòng";
@@ -528,11 +528,11 @@
             menuHouse.ImageAlign = HorizontalAlignment.Left;
             menuHouse.ImageOffset = new Point(5, 0);
             menuHouse.ImageSize = new Size(35, 35);
-            menuHouse.Location = new Point(18, 76);
+            menuHouse.Location = new Point(17, 79);
             menuHouse.Name = "menuHouse";
             menuHouse.ShadowDecoration.BorderRadius = 10;
             menuHouse.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            menuHouse.Size = new Size(204, 50);
+            menuHouse.Size = new Size(215, 50);
             menuHouse.TabIndex = 0;
             menuHouse.Tag = "House";
             menuHouse.Text = "Nhà";
@@ -556,10 +556,10 @@
             PanelMain.BorderRadius = 10;
             PanelMain.CustomizableEdges = customizableEdges1;
             PanelMain.Dock = DockStyle.Fill;
-            PanelMain.Location = new Point(210, 0);
+            PanelMain.Location = new Point(238, 0);
             PanelMain.Name = "PanelMain";
             PanelMain.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            PanelMain.Size = new Size(1218, 567);
+            PanelMain.Size = new Size(1190, 567);
             PanelMain.TabIndex = 1;
             // 
             // guna2Elipse4

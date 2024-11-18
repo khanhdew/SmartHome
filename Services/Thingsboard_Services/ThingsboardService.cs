@@ -27,7 +27,7 @@ public class ThingsboardService : IThingsboardService
 
     public Token GetAdminToken()
     {
-        if(_adminToken != null) return _adminToken;
+        if (_adminToken != null) return _adminToken;
         return new Request<Token>(SystemConfiguration.ThingsboardServer + "api/auth/login", "{\"username\":\"" + SystemConfiguration.AdminUsername + "\",\"password\":\"" + SystemConfiguration.AdminPassword + "\"}", null).Post()!;
     }
 

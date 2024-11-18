@@ -21,57 +21,59 @@ namespace DesktopApp.Controls.Devices
         private readonly IDeviceService _deviceService;
         private readonly IRoomService _roomService;
         private readonly IHouseService _houseService;
-        List<Device> deviceList = new List<Device>();
-        private int roomId;
+        private readonly List<Device> _deviceList;
+        private readonly int _roomId;
+
         public DeviceControl(int roomId, IServiceProvider serviceProvider)
+            : this(serviceProvider)
         {
-            InitializeComponent();
-            this.roomId = roomId;
-            _serviceProvider = serviceProvider;
-            _deviceService = _serviceProvider.GetRequiredService<IDeviceService>();
-            _roomService = _serviceProvider.GetRequiredService<IRoomService>();
-            _houseService = _serviceProvider.GetRequiredService<IHouseService>();
-            GetDevices(roomId);
-            LoadDevices(deviceList);
+            _roomId = roomId;
+            LoadDevicesForRoom();
         }
+
         public DeviceControl(IServiceProvider serviceProvider)
         {
             InitializeComponent();
-            _serviceProvider = serviceProvider;
+            _deviceList = new List<Device>();
+            _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
             _deviceService = _serviceProvider.GetRequiredService<IDeviceService>();
             _roomService = _serviceProvider.GetRequiredService<IRoomService>();
             _houseService = _serviceProvider.GetRequiredService<IHouseService>();
-            GetDevices();
-            LoadDevices(deviceList);
-        }
 
-        private void GetDevices(int roomId)
-        {
-            deviceList = _roomService.GetDevicesByRoomId(roomId).ToList();
-        }
-
-        private void GetDevices()
-        {
-            // get all house user in
-            var houseList = _houseService.GetHousesByUserId(MainForm.LoggedInUser.Id);
-            foreach (var house in houseList)
+            if (_roomId == 0)
             {
-                // get all room in house
-                var roomList = _houseService.GetRooms(house.ID);
-                foreach (var room in roomList)
+                LoadAllDevices();
+            }
+        }
+
+        private void LoadDevicesForRoom()
+        {
+            _deviceList.Clear();
+            _deviceList.AddRange(_roomService.GetDevicesByRoomId(_roomId));
+            LoadDevices(_deviceList);
+        }
+
+        private void LoadAllDevices()
+        {
+            _deviceList.Clear();
+
+            
+            var houses = _houseService.GetHousesByUserId(MainForm.LoggedInUser.Id);
+            foreach (var house in houses)
+            {
+                var rooms = _houseService.GetRooms(house.ID);
+                foreach (var room in rooms)
                 {
-                    // get all device in room
-                    var devices = _roomService.GetDevicesByRoomId(room.ID);
-                    foreach (var device in devices)
-                    {
-                        deviceList.Add(device);
-                    }
+                    _deviceList.AddRange(_roomService.GetDevicesByRoomId(room.ID));
                 }
             }
 
-            // get all device user own
-            var userDevices = _deviceService.GetDevicesByUserId(MainForm.LoggedInUser.Id).Where(d => d.RoomID == null);
-            deviceList.AddRange(userDevices);
+            
+            var personalDevices = _deviceService.GetDevicesByUserId(MainForm.LoggedInUser.Id)
+                                             .Where(d => d.RoomID == null);
+            _deviceList.AddRange(personalDevices);
+
+            LoadDevices(_deviceList);
         }
 
         private void LoadDevices(IEnumerable<Device> devices)
@@ -79,88 +81,108 @@ namespace DesktopApp.Controls.Devices
             try
             {
                 fLayoutPanel.Controls.Clear();
+
                 foreach (var device in devices)
                 {
-                    switch (device.GetType().Name)
+                    var control = CreateDeviceControl(device);
+                    if (control != null)
                     {
-                        case "Light":
-                            var lightControl = new DeviceViewControlLight((Light)device, _serviceProvider)
-                            {
-                                lblTenThietBi = { Text = device.Name },
-                                Margin = new Padding(10)
-                            };
-                            lightControl.btnSua.Click += (sender, e) =>
-                            {
-                                var deviceEdit = new DeviceEdit(device, _serviceProvider);
-                                Controls.Clear();
-                                Controls.Add(deviceEdit);
-                            };
-                            fLayoutPanel.Controls.Add(lightControl);
-                            break;
-                        case "RgbLight":
-                            var rgbLightControl = new DeviceViewControlRgb((RgbLight)device, _serviceProvider)
-                            {
-                                lblTenThietBi = { Text = device.Name },
-                                Margin = new Padding(10)
-                            };
-                            rgbLightControl.btnSua.Click += (sender, e) =>
-                            {
-                                var deviceEdit = new DeviceEdit(device, _serviceProvider);
-                                Controls.Clear();
-                                Controls.Add(deviceEdit);
-                            };
-                            fLayoutPanel.Controls.Add(rgbLightControl);
-                            break;
-                        case "Fan":
-                            var fanControl = new DeviceViewControlFan((Fan)device, _serviceProvider)
-                            {
-                                lblTenThietBi = { Text = device.Name },
-                                Margin = new Padding(10)
-                            };
-                            fanControl.btnSua.Click += (sender, e) =>
-                            {
-                                var deviceEdit = new DeviceEdit(device, _serviceProvider);
-                                Controls.Clear();
-                                Controls.Add(deviceEdit);
-                            };
-                            fLayoutPanel.Controls.Add(fanControl);
-                            break;
+                        fLayoutPanel.Controls.Add(control);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                MessageBox.Show($"Lỗi khi tải thiết bị: {ex.Message}", "Lỗi",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        internal void SearchDevices(string text)
+        private Control CreateDeviceControl(Device device)
         {
-            var devices = deviceList;
+            Control deviceControl;
 
-            if (!string.IsNullOrEmpty(text))
+            switch (device)
             {
-                text = StringProcessHelper.RemoveDiacritics(text);
-                devices = devices.Where(r => StringProcessHelper.RemoveDiacritics(r.Name).Contains(text) || r.Type.ToLower().Equals(text)).ToList();
+                case Light light:
+                    deviceControl = new DeviceViewControlLight(light, _serviceProvider);
+                    break;
+                case RgbLight rgbLight:
+                    deviceControl = new DeviceViewControlRgb(rgbLight, _serviceProvider);
+                    break;
+                case Fan fan:
+                    deviceControl = new DeviceViewControlFan(fan, _serviceProvider);
+                    break;
+                default:
+                    return null;
             }
-            LoadDevices(devices);
+
+            ConfigureDeviceControl(deviceControl, device);
+            return deviceControl;
+        }
+
+        private void ConfigureDeviceControl(Control control, Device device)
+        {
+            if (control.Controls["lblTenThietBi"] is Label label)
+            {
+                label.Text = device.Name;
+            }
+
+            control.Margin = new Padding(10);
+
+            if (control.Controls["btnSua"] is Button editButton)
+            {
+                editButton.Click += (sender, e) => ShowDeviceEditForm(device);
+            }
+        }
+
+        private void ShowDeviceEditForm(Device device)
+        {
+            var deviceEdit = new DeviceEdit(device, _serviceProvider);
+            Controls.Clear();
+            Controls.Add(deviceEdit);
+        }
+
+        internal void SearchDevices(string searchText)
+        {
+            if (string.IsNullOrEmpty(searchText))
+            {
+                LoadDevices(_deviceList);
+                return;
+            }
+
+            var normalizedSearch = StringProcessHelper.RemoveDiacritics(searchText.ToLower());
+            var filteredDevices = _deviceList.Where(device =>
+                StringProcessHelper.RemoveDiacritics(device.Name.ToLower()).Contains(normalizedSearch) ||
+                device.Type.ToLower().Equals(normalizedSearch));
+
+            LoadDevices(filteredDevices);
         }
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            if(roomId != 0)
+            try
             {
-                var deviceAdd = new DeviceAdd(_serviceProvider, roomId);
-                deviceAdd.ShowDialog();
-                GetDevices(roomId);
-                LoadDevices(deviceList);
+                using var deviceAdd = _roomId != 0
+                    ? new DeviceAdd(_serviceProvider, _roomId)
+                    : new DeviceAdd(_serviceProvider);
+
+                if (deviceAdd.ShowDialog() == DialogResult.OK)
+                {
+                    if (_roomId != 0)
+                    {
+                        LoadDevicesForRoom();
+                    }
+                    else
+                    {
+                        LoadAllDevices();
+                    }
+                }
             }
-            else
+            catch (Exception ex)
             {
-                var deviceAdd = new DeviceAdd(_serviceProvider);
-                deviceAdd.ShowDialog();
-                GetDevices();
-                LoadDevices(deviceList);
+                MessageBox.Show($"Lỗi khi thêm thiết bị: {ex.Message}", "Lỗi",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
