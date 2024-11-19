@@ -16,6 +16,7 @@ namespace DesktopApp
         private List<Control> trangThaiControls;
         public AdminControl()
         {
+            lblNameUser.Text = MainForm.LoggedInUser.UserName;
             InitializeComponent();
             ColapseMenu();
             SaveControls();
