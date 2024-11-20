@@ -69,8 +69,8 @@
             guna2GradientButton2 = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             guna2GradientButton4 = new Guna.UI2.WinForms.Guna2GradientButton();
-            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
-            guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
+            btnSearchAdmin = new Guna.UI2.WinForms.Guna2TextBox();
+            btnAdminPro = new Guna.UI2.WinForms.Guna2GradientButton();
             btnMenuADmin = new Guna.UI2.WinForms.Guna2ImageButton();
             guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(components);
             PanelSB = new Guna.UI2.WinForms.Guna2GradientPanel();
@@ -117,8 +117,8 @@
             guna2GradientPanel1.Controls.Add(guna2GradientButton2);
             guna2GradientPanel1.Controls.Add(guna2CirclePictureBox1);
             guna2GradientPanel1.Controls.Add(guna2GradientButton4);
-            guna2GradientPanel1.Controls.Add(guna2TextBox1);
-            guna2GradientPanel1.Controls.Add(guna2GradientButton1);
+            guna2GradientPanel1.Controls.Add(btnSearchAdmin);
+            guna2GradientPanel1.Controls.Add(btnAdminPro);
             guna2GradientPanel1.Controls.Add(btnMenuADmin);
             guna2GradientPanel1.CustomizableEdges = customizableEdges13;
             guna2GradientPanel1.Dock = DockStyle.Top;
@@ -208,65 +208,75 @@
             guna2GradientButton4.Size = new Size(55, 54);
             guna2GradientButton4.TabIndex = 7;
             // 
-            // guna2TextBox1
+            // btnSearchAdmin
             // 
-            guna2TextBox1.BackColor = Color.Transparent;
-            guna2TextBox1.BorderColor = Color.FromArgb(60, 145, 230);
-            guna2TextBox1.BorderRadius = 18;
-            guna2TextBox1.CustomizableEdges = customizableEdges8;
-            guna2TextBox1.DefaultText = "";
-            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.Dock = DockStyle.Left;
-            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2TextBox1.ForeColor = Color.Black;
-            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.IconRight = (Image)resources.GetObject("guna2TextBox1.IconRight");
-            guna2TextBox1.IconRightOffset = new Point(3, 0);
-            guna2TextBox1.IconRightSize = new Size(28, 28);
-            guna2TextBox1.Location = new Point(246, 0);
-            guna2TextBox1.Margin = new Padding(3, 5, 3, 5);
-            guna2TextBox1.Name = "guna2TextBox1";
-            guna2TextBox1.PasswordChar = '\0';
-            guna2TextBox1.PlaceholderForeColor = Color.Black;
-            guna2TextBox1.PlaceholderText = "Search";
-            guna2TextBox1.SelectedText = "";
-            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges9;
-            guna2TextBox1.Size = new Size(545, 54);
-            guna2TextBox1.TabIndex = 6;
+            btnSearchAdmin.BackColor = Color.Transparent;
+            btnSearchAdmin.BorderColor = Color.FromArgb(60, 145, 230);
+            btnSearchAdmin.BorderRadius = 18;
+            btnSearchAdmin.CustomizableEdges = customizableEdges8;
+            btnSearchAdmin.DefaultText = "";
+            btnSearchAdmin.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            btnSearchAdmin.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            btnSearchAdmin.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            btnSearchAdmin.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            btnSearchAdmin.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            btnSearchAdmin.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSearchAdmin.ForeColor = Color.Black;
+            btnSearchAdmin.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            btnSearchAdmin.IconRight = (Image)resources.GetObject("btnSearchAdmin.IconRight");
+            btnSearchAdmin.IconRightOffset = new Point(3, 0);
+            btnSearchAdmin.IconRightSize = new Size(28, 28);
+            btnSearchAdmin.Location = new Point(252, 13);
+            btnSearchAdmin.Margin = new Padding(3, 5, 3, 5);
+            btnSearchAdmin.Name = "btnSearchAdmin";
+            btnSearchAdmin.PasswordChar = '\0';
+            btnSearchAdmin.PlaceholderForeColor = Color.Black;
+            btnSearchAdmin.PlaceholderText = "Search";
+            btnSearchAdmin.SelectedText = "";
+            btnSearchAdmin.ShadowDecoration.CustomizableEdges = customizableEdges9;
+            btnSearchAdmin.Size = new Size(345, 32);
+            btnSearchAdmin.TabIndex = 6;
+            btnSearchAdmin.TextChanged += btnSearchAdmin_TextChanged;
             // 
-            // guna2GradientButton1
+            // btnAdminPro
             // 
-            guna2GradientButton1.AllowDrop = true;
-            guna2GradientButton1.BackColor = Color.Transparent;
-            guna2GradientButton1.CustomizableEdges = customizableEdges10;
-            guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray;
-            guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2GradientButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2GradientButton1.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            guna2GradientButton1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2GradientButton1.Dock = DockStyle.Left;
-            guna2GradientButton1.FillColor = Color.Transparent;
-            guna2GradientButton1.FillColor2 = Color.Transparent;
-            guna2GradientButton1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
-            guna2GradientButton1.ForeColor = Color.FromArgb(60, 145, 230);
-            guna2GradientButton1.HoverState.BorderColor = Color.White;
-            guna2GradientButton1.HoverState.CustomBorderColor = Color.White;
-            guna2GradientButton1.HoverState.FillColor = Color.Transparent;
-            guna2GradientButton1.HoverState.FillColor2 = Color.Transparent;
-            guna2GradientButton1.HoverState.ForeColor = Color.Black;
-            guna2GradientButton1.Location = new Point(43, 0);
-            guna2GradientButton1.Margin = new Padding(3, 4, 3, 4);
-            guna2GradientButton1.Name = "guna2GradientButton1";
-            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges11;
-            guna2GradientButton1.Size = new Size(203, 54);
-            guna2GradientButton1.TabIndex = 1;
-            guna2GradientButton1.Text = "Admin Pro";
-            guna2GradientButton1.TextAlign = HorizontalAlignment.Left;
-            guna2GradientButton1.TextOffset = new Point(10, 0);
+            btnAdminPro.AllowDrop = true;
+            btnAdminPro.BackColor = Color.Transparent;
+            btnAdminPro.BorderColor = Color.Transparent;
+            btnAdminPro.Checked = true;
+            btnAdminPro.CheckedState.BorderColor = Color.Transparent;
+            btnAdminPro.CheckedState.CustomBorderColor = Color.Transparent;
+            btnAdminPro.CheckedState.FillColor = Color.Transparent;
+            btnAdminPro.CheckedState.FillColor2 = Color.Transparent;
+            btnAdminPro.CheckedState.ForeColor = Color.FromArgb(60, 145, 230);
+            btnAdminPro.CustomizableEdges = customizableEdges10;
+            btnAdminPro.DisabledState.BorderColor = Color.Transparent;
+            btnAdminPro.DisabledState.CustomBorderColor = Color.Transparent;
+            btnAdminPro.DisabledState.FillColor = Color.Transparent;
+            btnAdminPro.DisabledState.FillColor2 = Color.Transparent;
+            btnAdminPro.DisabledState.ForeColor = Color.Transparent;
+            btnAdminPro.Dock = DockStyle.Left;
+            btnAdminPro.FillColor = Color.Transparent;
+            btnAdminPro.FillColor2 = Color.Transparent;
+            btnAdminPro.FocusedColor = Color.Transparent;
+            btnAdminPro.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAdminPro.ForeColor = Color.FromArgb(60, 145, 230);
+            btnAdminPro.HoverState.BorderColor = Color.White;
+            btnAdminPro.HoverState.CustomBorderColor = Color.White;
+            btnAdminPro.HoverState.FillColor = Color.Transparent;
+            btnAdminPro.HoverState.FillColor2 = Color.Transparent;
+            btnAdminPro.HoverState.ForeColor = Color.FromArgb(60, 145, 230);
+            btnAdminPro.Location = new Point(43, 0);
+            btnAdminPro.Margin = new Padding(3, 4, 3, 4);
+            btnAdminPro.Name = "btnAdminPro";
+            btnAdminPro.PressedColor = Color.FromArgb(60, 145, 230);
+            btnAdminPro.ShadowDecoration.CustomizableEdges = customizableEdges11;
+            btnAdminPro.Size = new Size(203, 54);
+            btnAdminPro.TabIndex = 1;
+            btnAdminPro.Text = "Admin Pro";
+            btnAdminPro.TextAlign = HorizontalAlignment.Left;
+            btnAdminPro.TextOffset = new Point(10, 0);
+            btnAdminPro.Click += btnAdminPro_Click;
             // 
             // btnMenuADmin
             // 
@@ -284,7 +294,6 @@
             btnMenuADmin.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnMenuADmin.Size = new Size(43, 54);
             btnMenuADmin.TabIndex = 2;
-            btnMenuADmin.Click += btnMenu_Click;
             // 
             // guna2Elipse1
             // 
@@ -314,11 +323,11 @@
             PanelThongKe.Controls.Add(cbThongKe);
             PanelThongKe.CustomizableEdges = customizableEdges24;
             PanelThongKe.Dock = DockStyle.Top;
-            PanelThongKe.Location = new Point(0, 226);
+            PanelThongKe.Location = new Point(0, 218);
             PanelThongKe.Margin = new Padding(3, 4, 3, 4);
             PanelThongKe.Name = "PanelThongKe";
             PanelThongKe.ShadowDecoration.CustomizableEdges = customizableEdges25;
-            PanelThongKe.Size = new Size(246, 46);
+            PanelThongKe.Size = new Size(246, 38);
             PanelThongKe.TabIndex = 3;
             // 
             // btniconTK
@@ -336,7 +345,7 @@
             btniconTK.Name = "btniconTK";
             btniconTK.PressedState.ImageSize = new Size(64, 64);
             btniconTK.ShadowDecoration.CustomizableEdges = customizableEdges21;
-            btniconTK.Size = new Size(37, 42);
+            btniconTK.Size = new Size(43, 42);
             btniconTK.TabIndex = 3;
             // 
             // cbThongKe
@@ -356,11 +365,11 @@
             cbThongKe.HoverState.ForeColor = Color.Black;
             cbThongKe.ItemHeight = 30;
             cbThongKe.Items.AddRange(new object[] { "Thống kê", "Nhà", "Người dùng", "Thiết bị" });
-            cbThongKe.Location = new Point(37, 0);
+            cbThongKe.Location = new Point(43, 0);
             cbThongKe.Margin = new Padding(3, 4, 3, 4);
             cbThongKe.Name = "cbThongKe";
             cbThongKe.ShadowDecoration.CustomizableEdges = customizableEdges23;
-            cbThongKe.Size = new Size(209, 36);
+            cbThongKe.Size = new Size(203, 36);
             cbThongKe.StartIndex = 0;
             cbThongKe.TabIndex = 0;
             cbThongKe.TextOffset = new Point(28, 0);
@@ -372,7 +381,7 @@
             btncustoms.Dock = DockStyle.Top;
             btncustoms.Font = new Font("Segoe UI", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point);
             btncustoms.ForeColor = Color.FromArgb(60, 145, 230);
-            btncustoms.Location = new Point(0, 136);
+            btncustoms.Location = new Point(0, 128);
             btncustoms.Margin = new Padding(3, 4, 3, 4);
             btncustoms.Name = "btncustoms";
             btncustoms.Size = new Size(246, 90);
@@ -426,7 +435,7 @@
             PanelQuanLy.Margin = new Padding(3, 4, 3, 4);
             PanelQuanLy.Name = "PanelQuanLy";
             PanelQuanLy.ShadowDecoration.CustomizableEdges = customizableEdges32;
-            PanelQuanLy.Size = new Size(246, 46);
+            PanelQuanLy.Size = new Size(246, 38);
             PanelQuanLy.TabIndex = 2;
             // 
             // btniconQL
@@ -446,7 +455,7 @@
             btniconQL.Name = "btniconQL";
             btniconQL.PressedState.ImageSize = new Size(64, 64);
             btniconQL.ShadowDecoration.CustomizableEdges = customizableEdges28;
-            btniconQL.Size = new Size(43, 42);
+            btniconQL.Size = new Size(43, 36);
             btniconQL.TabIndex = 3;
             // 
             // cbQuanLy
@@ -660,9 +669,9 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
-        private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
+        private Guna.UI2.WinForms.Guna2GradientButton btnAdminPro;
         private Guna.UI2.WinForms.Guna2ImageButton btnMenuADmin;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox btnSearchAdmin;
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton4;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2GradientPanel PanelSB;
@@ -670,7 +679,6 @@
         private Label lblNameUser;
         private Label label1;
         private Guna.UI2.WinForms.Guna2HtmlLabel btnCore;
-        private Guna.UI2.WinForms.Guna2Panel PanelMainAdmin;
         private Guna.UI2.WinForms.Guna2GradientPanel PanelQuanLy;
         private Guna.UI2.WinForms.Guna2ComboBox cbQuanLy;
         private Guna.UI2.WinForms.Guna2GradientPanel PanelThongKe;
@@ -691,5 +699,6 @@
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton5;
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton2;
+        public Guna.UI2.WinForms.Guna2Panel PanelMainAdmin;
     }
 }

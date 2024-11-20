@@ -28,7 +28,7 @@ namespace DesktopApp
             menuHouse.Width += 30;
             GoiUserControl(new HouseControl(_serviceProvider));
         }
-
+       
         private void btnMenu_Click(object sender, EventArgs e)
         {
             ColapseMenu();
@@ -79,7 +79,7 @@ namespace DesktopApp
         private void menuAdminPage_Click(object sender, EventArgs e)
         {
             var parentForm = this.Parent;
-            var newUserControl = new AdminControl();
+            var newUserControl = new AdminControl(_serviceProvider,this);
             parentForm.Controls.Clear();
             parentForm.Controls.Add(newUserControl);
             newUserControl.Dock = DockStyle.Fill;

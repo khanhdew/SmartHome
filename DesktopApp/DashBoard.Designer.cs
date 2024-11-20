@@ -328,6 +328,7 @@
             btnLogo.TabIndex = 0;
             btnLogo.Text = "Smart Home";
             btnLogo.TextAlign = HorizontalAlignment.Right;
+            btnLogo.TextOffset = new Point(5, 0);
             // 
             // guna2Elipse1
             // 
@@ -388,6 +389,7 @@
             menuAdminPage.TabIndex = 4;
             menuAdminPage.Tag = "Admin";
             menuAdminPage.Text = "Admin";
+            menuAdminPage.TextOffset = new Point(5, 0);
             menuAdminPage.Visible = false;
             menuAdminPage.Click += menuAdminPage_Click;
             // 
@@ -434,6 +436,7 @@
             menuSettings.TabIndex = 3;
             menuSettings.Tag = "Settings";
             menuSettings.Text = "Chỉnh sửa";
+            menuSettings.TextOffset = new Point(5, 0);
             menuSettings.Click += menuSettings_Click;
             // 
             // menuDevice
@@ -468,6 +471,7 @@
             menuDevice.TabIndex = 2;
             menuDevice.Tag = "Device";
             menuDevice.Text = "Thiết bị";
+            menuDevice.TextOffset = new Point(5, 0);
             menuDevice.Click += menuDevice_Click;
             // 
             // menuRoom
@@ -582,18 +586,18 @@
             Accounts.RenderStyle.SelectionForeColor = Color.White;
             Accounts.RenderStyle.SeparatorColor = Color.Gainsboro;
             Accounts.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            Accounts.Size = new Size(212, 28);
+            Accounts.Size = new Size(252, 34);
             Accounts.Text = "Account";
             // 
             // Account
             // 
             Account.Name = "Account";
-            Account.Size = new Size(211, 24);
+            Account.Size = new Size(251, 30);
             Account.Text = "toolStripMenuItem1";
             // 
             // DashBoard
             // 
-            AutoScaleDimensions = new SizeF(9F, 17F);
+            AutoScaleDimensions = new SizeF(10F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.Stretch;

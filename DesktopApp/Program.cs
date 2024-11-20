@@ -36,7 +36,7 @@ static class Program
     
     static void ConfigureServices(IServiceCollection services)
     {
-        var connectionString = "Server=localhost;Database=SmartHome;Trusted_Connection=True;User Id=sa;Password=P@ssw0rd";
+        var connectionString = "Server=210.211.96.135;Database=SmartHome;User Id=sa;Password=P@ssw0rd";
         services.AddLogging();
         services.AddSingleton<IHttpContextAccessor, CustomHttpContextAccessor>();
 
