@@ -1,13 +1,4 @@
 ﻿using Services.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DesktopApp.Controls.Rooms
 {
@@ -25,7 +16,7 @@ namespace DesktopApp.Controls.Rooms
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if(houseId == 0)
+            if (houseId == 0)
             {
                 MessageBox.Show("Please select a house first");
                 return;
@@ -37,7 +28,7 @@ namespace DesktopApp.Controls.Rooms
             };
             try
             {
-                var newRoom = _houseService.AddRoomToHouse(houseId,room);
+                var newRoom = _houseService.AddRoomToHouse(houseId, room);
                 MessageBox.Show("Room added successfully");
                 Dispose();
             }

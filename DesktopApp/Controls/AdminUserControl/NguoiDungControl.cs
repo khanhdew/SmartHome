@@ -1,17 +1,8 @@
 ﻿using DAO.BaseModels;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Services.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DesktopApp.Controls.AdminUserControl
 {
@@ -51,7 +42,7 @@ namespace DesktopApp.Controls.AdminUserControl
                 foreach (var user in users)
                 {
                     // Thêm dữ liệu vào DataGridView
-                    dgvNguoiDung.Rows.Add(user.UserName, user.Email,user.DisplayName , user.PhoneNumber);
+                    dgvNguoiDung.Rows.Add(user.UserName, user.Email, user.DisplayName, user.PhoneNumber);
                 }
             }
             catch (Exception ex)
@@ -94,8 +85,8 @@ namespace DesktopApp.Controls.AdminUserControl
             {
                 // Kiểm tra Parent
                 var parent = this.Parent;
-                
-                var newUserControl = new UserEditControl(selectedUser, _serviceProvider );
+
+                var newUserControl = new UserEditControl(selectedUser, _serviceProvider);
                 parent.Controls.Clear();
                 parent.Controls.Add(newUserControl);
                 newUserControl.Dock = DockStyle.Fill;

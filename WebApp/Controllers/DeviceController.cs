@@ -1,9 +1,9 @@
-﻿using System.Text.Json;
-using DAO.BaseModels;
+﻿using DAO.BaseModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Services;
 using Services.Thingsboard_Services;
+using System.Text.Json;
 using WebApp.Utils;
 
 namespace WebApp.Controllers;
@@ -31,9 +31,9 @@ public class DeviceController : Controller
     [Authorize]
     public IActionResult Index(int? roomId)
     {
-        
-        Dictionary<int,int> deviceMap = new Dictionary<int, int>();
-        
+
+        Dictionary<int, int> deviceMap = new Dictionary<int, int>();
+
         IEnumerable<Device> devices;
         if (roomId != null)
         {
@@ -68,15 +68,15 @@ public class DeviceController : Controller
                 }
             }
         }
-      
+
         return View(devices.Take(10).ToList());
     }
 
     [Authorize]
     public IActionResult LoadMoreDevices(int? roomId, int skip, int take)
     {
-        Dictionary<int,int> deviceMap = new Dictionary<int, int>();
-        
+        Dictionary<int, int> deviceMap = new Dictionary<int, int>();
+
         IEnumerable<Device> devices;
         if (roomId != null)
         {
@@ -117,8 +117,8 @@ public class DeviceController : Controller
     [Authorize]
     public IActionResult Search(int? roomId, string keyword)
     {
-        Dictionary<int,int> deviceMap = new Dictionary<int, int>();
-        
+        Dictionary<int, int> deviceMap = new Dictionary<int, int>();
+
         IEnumerable<Device> devices;
         if (roomId != null)
         {
@@ -185,7 +185,7 @@ public class DeviceController : Controller
     public IActionResult Edit(int id)
     {
         var device = _deviceService.GetDeviceById(id);
-        if(!_deviceService.IsDeviceOwner(_userService.GetCurrentUserId(), id))
+        if (!_deviceService.IsDeviceOwner(_userService.GetCurrentUserId(), id))
         {
             return RedirectToAction("AccessDenied", "Account");
         }
@@ -201,7 +201,7 @@ public class DeviceController : Controller
 
     public IActionResult Delete(int id)
     {
-        if(!_deviceService.IsDeviceOwner(_userService.GetCurrentUserId(), id))
+        if (!_deviceService.IsDeviceOwner(_userService.GetCurrentUserId(), id))
         {
             return RedirectToAction("AccessDenied", "Account");
         }

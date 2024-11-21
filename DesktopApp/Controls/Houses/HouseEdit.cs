@@ -1,16 +1,7 @@
 ﻿using DAO.BaseModels;
-using Guna.UI2.WinForms;
 using Microsoft.Extensions.DependencyInjection;
 using Services.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DesktopApp.Controls.Houses
 {
@@ -77,7 +68,7 @@ namespace DesktopApp.Controls.Houses
         private void BtnInvCode_Click(object sender, EventArgs e)
         {
             // generate invitation code
-            var invitationCode =(String) _houseService.GenerateInvitationCode(House.ID);
+            var invitationCode = (String)_houseService.GenerateInvitationCode(House.ID);
             // copy to clipboard
             Clipboard.SetText(invitationCode);
             MessageBox.Show("Mã mời đã được sao chép vào clipboard");

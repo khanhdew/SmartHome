@@ -1,12 +1,11 @@
 using DAO.BaseModels;
+using DAO.Context;
 using DAO.Reposistories_Impl;
 using DAO.Repositories;
-using DAO.Context;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
-using Services.Services_Impl;
-using Services.Services;
 using Microsoft.EntityFrameworkCore;
+using Services.Services;
+using Services.Services_Impl;
 using Services.Thingsboard_Services;
 
 var builder = WebApplication.CreateBuilder(args);

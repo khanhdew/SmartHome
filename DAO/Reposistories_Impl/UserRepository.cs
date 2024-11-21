@@ -1,13 +1,13 @@
-﻿using DAO.Context;
+﻿using DAO.BaseModels;
+using DAO.Context;
 using DAO.Exceptions.UserExceptions;
 using DAO.Repositories;
-using Microsoft.Data.SqlClient;
-using DAO.BaseModels;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Data.SqlClient;
 
 namespace DAO.Reposistories_Impl
 {
-    
+
     public class UserRepository : IUserRepository
     {
         private readonly SmartHomeContext _context;
@@ -23,7 +23,8 @@ namespace DAO.Reposistories_Impl
             {
                 _context.Users.Add(user);
                 _context.SaveChanges();
-            }catch (SqlException e)
+            }
+            catch (SqlException e)
             {
                 throw new UserExistException("Error while adding user");
             }
@@ -79,7 +80,7 @@ namespace DAO.Reposistories_Impl
             var properties = user.GetType().GetProperties();
             foreach (var property in properties)
             {
-                if (property.Name == "Id" || property.Name == "UserName"||property.Name =="Email" || property.GetValue(user) == null )
+                if (property.Name == "Id" || property.Name == "UserName" || property.Name == "Email" || property.GetValue(user) == null)
                 {
                     continue;
                 }

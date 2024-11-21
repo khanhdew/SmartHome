@@ -201,6 +201,7 @@
             btnLogin.Size = new Size(260, 42);
             btnLogin.TabIndex = 28;
             btnLogin.Text = "LOGIN";
+            btnLogin.Click += btnLogin_Click;
             // 
             // checkLogin
             // 
@@ -296,7 +297,6 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "Login";
             Size = new Size(941, 452);
-            Load += Login_Load;
             guna2Panel1.ResumeLayout(false);
             guna2Panel1.PerformLayout();
             ResumeLayout(false);

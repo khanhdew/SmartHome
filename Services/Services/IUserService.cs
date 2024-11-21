@@ -15,6 +15,6 @@ public interface IUserService
     void SetHttpContext(ClaimsPrincipal user);
 
     Task Login(string username, string password, bool persistent);
-    Task SignUp(string username, string password, string email,string confirmPassword);
+    Task SignUp(string username, string password, string email, string confirmPassword);
     void Logout();
 }

@@ -1,20 +1,4 @@
-﻿using DAO.BaseModels;
-using DesktopApp.Controls.AdminUserControl;
-using DesktopApp.Controls.Devices;
-using DesktopApp.Controls.Houses;
-using DesktopApp.Controls.Rooms;
-using Guna.UI2.WinForms;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using DesktopApp.Controls.AdminUserControl;
 
 namespace DesktopApp
 {
@@ -135,6 +119,6 @@ namespace DesktopApp
             showDropdownMenu();
             Panel4DropdownMenu.BringToFront();
         }
-        
+
     }
 }

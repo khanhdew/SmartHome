@@ -1,15 +1,6 @@
 ﻿using DAO.Models.Devices;
 using Microsoft.Extensions.DependencyInjection;
 using Services.Thingsboard_Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DesktopApp.Controls.Devices
 {
@@ -32,7 +23,7 @@ namespace DesktopApp.Controls.Devices
             colorDialog.ShowDialog();
             var color = colorDialog.Color;
             colorPicker.FillColor = color;
-            if(colorPicker.FillColor == Color.Black)
+            if (colorPicker.FillColor == Color.Black)
             {
                 isOn = false;
             }
@@ -42,7 +33,7 @@ namespace DesktopApp.Controls.Devices
             }
             try
             {
-                thingsboardService.ControlDevice(rgbLight.ID, rgbLight.SetColor(color.R,color.G,color.B));
+                thingsboardService.ControlDevice(rgbLight.ID, rgbLight.SetColor(color.R, color.G, color.B));
             }
             catch (UnauthorizedAccessException ex)
             {
@@ -71,7 +62,7 @@ namespace DesktopApp.Controls.Devices
             var color = colorPicker.FillColor;
             try
             {
-                thingsboardService.ControlDevice(rgbLight.ID, isOn ? rgbLight.SetColor(color.R,color.G,color.B) : rgbLight.SetColor(0,0,0));
+                thingsboardService.ControlDevice(rgbLight.ID, isOn ? rgbLight.SetColor(color.R, color.G, color.B) : rgbLight.SetColor(0, 0, 0));
                 isOn = !isOn;
             }
             catch (UnauthorizedAccessException ex)

@@ -1,16 +1,7 @@
 ﻿using DAO.BaseModels;
 using Microsoft.Extensions.DependencyInjection;
 using Services.Services;
-using Services.Services_Impl;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DesktopApp.Controls.Rooms
 {
@@ -20,7 +11,7 @@ namespace DesktopApp.Controls.Rooms
         private readonly IDeviceService _deviceService;
         private readonly IRoomService _roomService;
         private Room _room;
-        
+
         public RoomEdit(Room room, IServiceProvider serviceProvider)
         {
             InitializeComponent();
@@ -72,7 +63,7 @@ namespace DesktopApp.Controls.Rooms
                 .ToList();
 
             devices.AddRange(userDevices);
-            
+
             dgvDevice.DataSource = devices;
 
         }
@@ -82,9 +73,9 @@ namespace DesktopApp.Controls.Rooms
             // check if cellAction column is "Add" or "Remove"
             if (dgvDevice.Rows[e.RowIndex].Cells["cellAction"].Value.ToString() == "Add")
             {
-                var deviceId =(int) dgvDevice.Rows[e.RowIndex].Cells["Id"].Value;
+                var deviceId = (int)dgvDevice.Rows[e.RowIndex].Cells["Id"].Value;
                 var device = _deviceService.GetDeviceById(deviceId);
-                _roomService.AddDeviceToRoom(_room.ID,device);
+                _roomService.AddDeviceToRoom(_room.ID, device);
                 MessageBox.Show("Thêm thiết bị vào phòng thành công!!");
             }
             else
@@ -95,6 +86,6 @@ namespace DesktopApp.Controls.Rooms
             }
             LoadDevices();
         }
-        
+
     }
 }

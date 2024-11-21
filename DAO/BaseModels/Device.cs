@@ -1,7 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DAO.Models.Devices;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using DAO.Models;
-using DAO.Models.Devices;
 
 namespace DAO.BaseModels
 {

@@ -200,7 +200,7 @@
             // 
             // btnDropdownMenuAdmin
             // 
-            btnDropdownMenuAdmin.CustomizableEdges = customizableEdges6;
+            //btnDropdownMenuAdmin.CustomizableEdges = customizableEdges6;
             btnDropdownMenuAdmin.DisabledState.BorderColor = Color.DarkGray;
             btnDropdownMenuAdmin.DisabledState.CustomBorderColor = Color.DarkGray;
             btnDropdownMenuAdmin.DisabledState.FillColor = Color.FromArgb(169, 169, 169);

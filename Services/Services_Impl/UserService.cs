@@ -1,9 +1,9 @@
 ﻿using DAO.Exceptions.UserExceptions;
+using DAO.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using System.Security.Claims;
-using DAO.Repositories;
 using Services.Services;
+using System.Security.Claims;
 using User = DAO.BaseModels.User;
 
 namespace Services.Services_Impl;
@@ -95,8 +95,8 @@ public class UserService : IUserService
 
     public async Task SignUp(string username, string password, string email, string confirmPassword)
     {
-        var user = new User { UserName = username, Email = email};
-        if(password != confirmPassword)
+        var user = new User { UserName = username, Email = email };
+        if (password != confirmPassword)
         {
             throw new ArgumentException("Passwords do not match");
         }

@@ -1,5 +1,4 @@
 ﻿using DAO.BaseModels;
-using DAO.Models.Devices;
 
 namespace Services.Services;
 

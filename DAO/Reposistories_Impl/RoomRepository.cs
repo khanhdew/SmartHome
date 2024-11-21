@@ -1,13 +1,7 @@
 ﻿using DAO.BaseModels;
 using DAO.Context;
-using DAO.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DAO.Models;
-using DAO.Models.Devices;
+using DAO.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAO.Reposistories_Impl
@@ -82,7 +76,7 @@ namespace DAO.Reposistories_Impl
                 {
                     throw new Exception("Room not found");
                 }
-                
+
                 foreach (var roomDevice in room.Devices)
                 {
                     roomDevice.RoomID = null;
