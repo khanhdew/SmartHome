@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Menu;
 
 namespace DesktopApp
 {
@@ -28,7 +29,7 @@ namespace DesktopApp
             menuHouse.Width += 30;
             GoiUserControl(new HouseControl(_serviceProvider));
         }
-
+       
         private void btnMenu_Click(object sender, EventArgs e)
         {
             ColapseMenu();
@@ -59,8 +60,6 @@ namespace DesktopApp
                     menuButton.Text = " " + menuButton.Tag.ToString();
                     menuButton.ImageAlign = ContentAlignment.MiddleLeft;
 
-
-
                 }
 
             }
@@ -79,7 +78,7 @@ namespace DesktopApp
         private void menuAdminPage_Click(object sender, EventArgs e)
         {
             var parentForm = this.Parent;
-            var newUserControl = new AdminControl();
+            var newUserControl = new AdminControl(_serviceProvider,this);
             parentForm.Controls.Clear();
             parentForm.Controls.Add(newUserControl);
             newUserControl.Dock = DockStyle.Fill;
@@ -149,5 +148,35 @@ namespace DesktopApp
                 }
             }
         }
+        private void DashBoard_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void showDropdownMenu()
+        {
+
+            if (Panel4DropdownMenu.Visible == false)
+            {
+                Panel4DropdownMenu.Visible = true;
+            }
+            else
+            {
+                Panel4DropdownMenu.Visible = false;
+            }
+        }
+
+        private void btndropdownMenu_Click(object sender, EventArgs e)
+        {
+            showDropdownMenu();
+            Panel4DropdownMenu.BringToFront();
+        }
+
+        private void btnDangxuat_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Đăng xuất thành công");
+            Panel4DropdownMenu.Visible = false;
+        }
+        
     }
 }
