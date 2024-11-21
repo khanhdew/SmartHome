@@ -21,22 +21,22 @@ namespace DesktopApp
     public partial class AdminControl : UserControl
     {
         private List<Control> trangThaiControls;
-       
+
         private DashBoard _dashBoard;
         private readonly IServiceProvider _serviceProvider;
-     
+
         public AdminControl(IServiceProvider serviceProvider, DashBoard dashBoard)
         {
             InitializeComponent();
             _dashBoard = dashBoard;
             lblNameUser.Text = MainForm.LoggedInUser.UserName;
             _serviceProvider = serviceProvider;
-          
+
             SaveControls();
-           
+
 
         }
-       
+
         // Hiển thị UserControl tương ứng 
         private void GoiUserControl(UserControl userControl)
         {
@@ -66,17 +66,17 @@ namespace DesktopApp
             else
             if (cbQuanLy.SelectedItem.ToString() == "Người dùng")
             {
-               
-                GoiUserControl( new NguoiDungControl(_serviceProvider));
-               
+
+                GoiUserControl(new NguoiDungControl(_serviceProvider));
+
             }
             else if (cbQuanLy.SelectedItem.ToString() == "Nhà")
             {
-                GoiUserControl( new NhaControl(_serviceProvider));
+                GoiUserControl(new NhaControl(_serviceProvider));
             }
             else if (cbQuanLy.SelectedItem.ToString() == "Thiết bị")
             {
-                GoiUserControl( new ThietBiControl(_serviceProvider));
+                GoiUserControl(new ThietBiControl(_serviceProvider));
             }
         }
 
@@ -89,7 +89,7 @@ namespace DesktopApp
                 return;
             }
             parentForm.Controls.Clear();
-            parentForm.Controls.Add(_dashBoard); 
+            parentForm.Controls.Add(_dashBoard);
             _dashBoard.Dock = DockStyle.Fill;
         }
 
@@ -104,11 +104,11 @@ namespace DesktopApp
             {
                 case "NguoiDungControl":
                     var nguoidungControl = (NguoiDungControl)userControl;
-                    nguoidungControl.SearchUser(searchTerm); 
+                    nguoidungControl.SearchUser(searchTerm);
                     break;
                 case "NhaControl":
                     var nhaControl = (NhaControl)PanelMainAdmin.Controls[0];
-                    nhaControl.SearchHouses(searchTerm);  
+                    nhaControl.SearchHouses(searchTerm);
                     break;
                 case "ThietBiControl":
                     var thietbiControl = (ThietBiControl)userControl;
@@ -118,5 +118,23 @@ namespace DesktopApp
                     break;
             }
         }
+        private void showDropdownMenu()
+        {
+
+            if (Panel4DropdownMenu.Visible == false)
+            {
+                Panel4DropdownMenu.Visible = true;
+            }
+            else
+            {
+                Panel4DropdownMenu.Visible = false;
+            }
+        }
+        private void btnDropdownMenuAdmin_Click(object sender, EventArgs e)
+        {
+            showDropdownMenu();
+            Panel4DropdownMenu.BringToFront();
+        }
+        
     }
 }
