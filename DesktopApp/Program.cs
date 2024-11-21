@@ -90,11 +90,13 @@ static class Program
         services.AddSingleton<IThingsboardService, ThingsboardService>();
         services.AddSingleton<SignInManager<User>>();
         services.AddSingleton<UserManager<User>>();
+        services.AddSingleton<RoleManager<IdentityRole>>();
         //add views
         services.AddScoped<Login>();
         services.AddScoped<SignUp>();
         services.AddScoped<MainForm>();
         services.AddScoped<DashBoard>();
         //add service 
+
     }
 }

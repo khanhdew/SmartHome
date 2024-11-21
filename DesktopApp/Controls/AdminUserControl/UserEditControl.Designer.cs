@@ -128,7 +128,6 @@
             cbRoleUser.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cbRoleUser.ForeColor = Color.FromArgb(68, 88, 112);
             cbRoleUser.ItemHeight = 30;
-            cbRoleUser.Items.AddRange(new object[] { "Admin", "User" });
             cbRoleUser.Location = new Point(23, 388);
             cbRoleUser.Name = "cbRoleUser";
             cbRoleUser.ShadowDecoration.CustomizableEdges = customizableEdges6;

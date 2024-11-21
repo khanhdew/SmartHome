@@ -226,7 +226,7 @@
             guna2GradientButton1.Margin = new Padding(3, 4, 3, 4);
             guna2GradientButton1.Name = "guna2GradientButton1";
             guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            guna2GradientButton1.Size = new Size(37, 47);
+            guna2GradientButton1.Size = new Size(37, 40);
             guna2GradientButton1.TabIndex = 7;
             // 
             // guna2HtmlLabel1

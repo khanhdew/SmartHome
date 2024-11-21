@@ -240,13 +240,14 @@
             guna2GradientButton1.Margin = new Padding(3, 4, 3, 4);
             guna2GradientButton1.Name = "guna2GradientButton1";
             guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            guna2GradientButton1.Size = new Size(37, 47);
+            guna2GradientButton1.Size = new Size(37, 42);
             guna2GradientButton1.TabIndex = 7;
             // 
             // NguoiDungControl
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(120F, 120F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoSize = true;
             BackColor = Color.FromArgb(229, 232, 239);
             Controls.Add(guna2GroupBox1);
             Controls.Add(guna2HtmlLabel1);

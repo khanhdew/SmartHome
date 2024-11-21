@@ -47,7 +47,8 @@ namespace DesktopApp.Controls.AdminUserControl
                 // Duyệt qua danh sách người dùng và thêm vào DataGridView
                 foreach (var home in houses)
                 {
-                    dgvNha.Rows.Add(home.ID, home.Name, home.Location);
+                    var owner = _houseService.GetHouseOwner(home.ID);
+                    dgvNha.Rows.Add(home.ID, home.Name, home.Location, owner.UserName);
                 }
             }
             catch (Exception ex)
@@ -63,6 +64,7 @@ namespace DesktopApp.Controls.AdminUserControl
             dgvNha.Columns.Add("ID", "ID Nhà");
             dgvNha.Columns.Add("Name", "Tên Nhà");
             dgvNha.Columns.Add("Location", "Vị trí");
+            dgvNha.Columns.Add("Owner", "Chủ nhà");
 
             // Đặt các thuộc tính khác nếu cần
             dgvNha.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

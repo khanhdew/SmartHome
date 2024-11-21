@@ -20,7 +20,8 @@ namespace DesktopApp.Controls.AdminUserControl
         private readonly IUserService _userService;
         private readonly IServiceProvider _serviceProvider;
         IEnumerable<User> userList;
-        
+        private readonly RoleManager<IdentityRole> _roleManager;
+
         private User selectedUser;
         public NguoiDungControl(IServiceProvider serviceProvider)
         {
@@ -28,7 +29,7 @@ namespace DesktopApp.Controls.AdminUserControl
             _serviceProvider = serviceProvider;
             _userService = _serviceProvider.GetRequiredService<IUserService>();
             userList = _userService.GetUsers();
-            
+            _roleManager = _serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
         }
 
 

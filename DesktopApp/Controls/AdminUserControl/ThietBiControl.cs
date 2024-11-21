@@ -19,6 +19,7 @@ namespace DesktopApp.Controls.AdminUserControl
         private readonly IDeviceService _deviceService;
         private IEnumerable<Device> deviceList;
         private Device selectDevice;
+        
         public ThietBiControl(IServiceProvider serviceProvider)
         {
             InitializeComponent();
@@ -43,7 +44,8 @@ namespace DesktopApp.Controls.AdminUserControl
                 // Duyệt qua danh sách người dùng và thêm vào DataGridView
                 foreach (var device in devices)
                 {
-                    dgvThietBi.Rows.Add(device.ID,device.Name, device.Type, device.DeviceToken, device.Status);
+
+                    dgvThietBi.Rows.Add(device.ID,device.Name, device.Type, device.DeviceToken, device.Status, device.User.UserName);
                 }
             }
             catch (Exception ex)
@@ -60,6 +62,7 @@ namespace DesktopApp.Controls.AdminUserControl
             dgvThietBi.Columns.Add("Type", "Loại thiết bị");
             dgvThietBi.Columns.Add("DeviceToken", "Mã thiết bị");
             dgvThietBi.Columns.Add("Status", "Trạng thái");
+            dgvThietBi.Columns.Add("Owner", "Chủ sở hữu");
 
             dgvThietBi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
