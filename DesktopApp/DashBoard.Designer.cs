@@ -219,7 +219,7 @@
             btnNameUser.ShadowDecoration.CustomizableEdges = customizableEdges34;
             btnNameUser.Size = new Size(200, 66);
             btnNameUser.TabIndex = 6;
-            btnNameUser.Text = "Hello, Cuong";
+            btnNameUser.Text = "Hello";
             btnNameUser.TextAlign = HorizontalAlignment.Left;
             // 
             // guna2CirclePictureBox1
@@ -375,6 +375,7 @@
             // 
             // guna2Button3
             // 
+            guna2Button3.BorderRadius = 5;
             guna2Button3.CustomizableEdges = customizableEdges1;
             guna2Button3.DisabledState.BorderColor = Color.DarkGray;
             guna2Button3.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -390,10 +391,11 @@
             guna2Button3.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2Button3.Size = new Size(115, 56);
             guna2Button3.TabIndex = 2;
-            guna2Button3.Text = "Help";
+            guna2Button3.Text = "Trợ giúp";
             // 
             // btnDangxuat
             // 
+            btnDangxuat.BorderRadius = 5;
             btnDangxuat.CustomizableEdges = customizableEdges3;
             btnDangxuat.DisabledState.BorderColor = Color.DarkGray;
             btnDangxuat.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -413,6 +415,7 @@
             // 
             // btnTaikhoan
             // 
+            btnTaikhoan.BorderRadius = 5;
             btnTaikhoan.CustomizableEdges = customizableEdges5;
             btnTaikhoan.DisabledState.BorderColor = Color.DarkGray;
             btnTaikhoan.DisabledState.CustomBorderColor = Color.DarkGray;
