@@ -123,10 +123,9 @@
             guna2GradientPanel1.CustomizableEdges = customizableEdges13;
             guna2GradientPanel1.Dock = DockStyle.Top;
             guna2GradientPanel1.Location = new Point(0, 0);
-            guna2GradientPanel1.Margin = new Padding(3, 4, 3, 4);
             guna2GradientPanel1.Name = "guna2GradientPanel1";
             guna2GradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            guna2GradientPanel1.Size = new Size(1229, 54);
+            guna2GradientPanel1.Size = new Size(1075, 40);
             guna2GradientPanel1.TabIndex = 0;
             // 
             // guna2GradientButton5
@@ -144,11 +143,10 @@
             guna2GradientButton5.ForeColor = Color.White;
             guna2GradientButton5.Image = (Image)resources.GetObject("guna2GradientButton5.Image");
             guna2GradientButton5.ImageSize = new Size(25, 25);
-            guna2GradientButton5.Location = new Point(965, 0);
-            guna2GradientButton5.Margin = new Padding(3, 4, 3, 4);
+            guna2GradientButton5.Location = new Point(843, 0);
             guna2GradientButton5.Name = "guna2GradientButton5";
             guna2GradientButton5.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2GradientButton5.Size = new Size(67, 54);
+            guna2GradientButton5.Size = new Size(59, 40);
             guna2GradientButton5.TabIndex = 12;
             // 
             // guna2GradientButton2
@@ -166,11 +164,10 @@
             guna2GradientButton2.ForeColor = Color.White;
             guna2GradientButton2.Image = (Image)resources.GetObject("guna2GradientButton2.Image");
             guna2GradientButton2.ImageSize = new Size(25, 25);
-            guna2GradientButton2.Location = new Point(1032, 0);
-            guna2GradientButton2.Margin = new Padding(3, 4, 3, 4);
+            guna2GradientButton2.Location = new Point(902, 0);
             guna2GradientButton2.Name = "guna2GradientButton2";
             guna2GradientButton2.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2GradientButton2.Size = new Size(84, 54);
+            guna2GradientButton2.Size = new Size(74, 40);
             guna2GradientButton2.TabIndex = 11;
             // 
             // guna2CirclePictureBox1
@@ -178,11 +175,12 @@
             guna2CirclePictureBox1.Dock = DockStyle.Right;
             guna2CirclePictureBox1.Image = (Image)resources.GetObject("guna2CirclePictureBox1.Image");
             guna2CirclePictureBox1.ImageRotate = 0F;
-            guna2CirclePictureBox1.Location = new Point(1116, 0);
+            guna2CirclePictureBox1.Location = new Point(976, 0);
+            guna2CirclePictureBox1.Margin = new Padding(3, 2, 3, 2);
             guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
             guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges5;
             guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            guna2CirclePictureBox1.Size = new Size(58, 54);
+            guna2CirclePictureBox1.Size = new Size(51, 40);
             guna2CirclePictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             guna2CirclePictureBox1.TabIndex = 9;
             guna2CirclePictureBox1.TabStop = false;
@@ -201,11 +199,10 @@
             guna2GradientButton4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             guna2GradientButton4.ForeColor = Color.White;
             guna2GradientButton4.Image = (Image)resources.GetObject("guna2GradientButton4.Image");
-            guna2GradientButton4.Location = new Point(1174, 0);
-            guna2GradientButton4.Margin = new Padding(3, 4, 3, 4);
+            guna2GradientButton4.Location = new Point(1027, 0);
             guna2GradientButton4.Name = "guna2GradientButton4";
             guna2GradientButton4.ShadowDecoration.CustomizableEdges = customizableEdges7;
-            guna2GradientButton4.Size = new Size(55, 54);
+            guna2GradientButton4.Size = new Size(48, 40);
             guna2GradientButton4.TabIndex = 7;
             // 
             // guna2TextBox1
@@ -227,15 +224,15 @@
             guna2TextBox1.IconRight = (Image)resources.GetObject("guna2TextBox1.IconRight");
             guna2TextBox1.IconRightOffset = new Point(3, 0);
             guna2TextBox1.IconRightSize = new Size(28, 28);
-            guna2TextBox1.Location = new Point(246, 0);
-            guna2TextBox1.Margin = new Padding(3, 5, 3, 5);
+            guna2TextBox1.Location = new Point(216, 0);
+            guna2TextBox1.Margin = new Padding(3, 4, 3, 4);
             guna2TextBox1.Name = "guna2TextBox1";
             guna2TextBox1.PasswordChar = '\0';
             guna2TextBox1.PlaceholderForeColor = Color.Black;
             guna2TextBox1.PlaceholderText = "Search";
             guna2TextBox1.SelectedText = "";
             guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges9;
-            guna2TextBox1.Size = new Size(545, 54);
+            guna2TextBox1.Size = new Size(477, 40);
             guna2TextBox1.TabIndex = 6;
             // 
             // guna2GradientButton1
@@ -258,11 +255,10 @@
             guna2GradientButton1.HoverState.FillColor = Color.Transparent;
             guna2GradientButton1.HoverState.FillColor2 = Color.Transparent;
             guna2GradientButton1.HoverState.ForeColor = Color.Black;
-            guna2GradientButton1.Location = new Point(43, 0);
-            guna2GradientButton1.Margin = new Padding(3, 4, 3, 4);
+            guna2GradientButton1.Location = new Point(38, 0);
             guna2GradientButton1.Name = "guna2GradientButton1";
             guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges11;
-            guna2GradientButton1.Size = new Size(203, 54);
+            guna2GradientButton1.Size = new Size(178, 40);
             guna2GradientButton1.TabIndex = 1;
             guna2GradientButton1.Text = "Admin Pro";
             guna2GradientButton1.TextAlign = HorizontalAlignment.Left;
@@ -278,11 +274,10 @@
             btnMenuADmin.ImageRotate = 0F;
             btnMenuADmin.ImageSize = new Size(35, 35);
             btnMenuADmin.Location = new Point(0, 0);
-            btnMenuADmin.Margin = new Padding(3, 4, 3, 4);
             btnMenuADmin.Name = "btnMenuADmin";
             btnMenuADmin.PressedState.ImageSize = new Size(64, 64);
             btnMenuADmin.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            btnMenuADmin.Size = new Size(43, 54);
+            btnMenuADmin.Size = new Size(38, 40);
             btnMenuADmin.TabIndex = 2;
             btnMenuADmin.Click += btnMenu_Click;
             // 
@@ -301,11 +296,10 @@
             PanelSB.Controls.Add(btnCore);
             PanelSB.CustomizableEdges = customizableEdges33;
             PanelSB.Dock = DockStyle.Left;
-            PanelSB.Location = new Point(0, 54);
-            PanelSB.Margin = new Padding(3, 4, 3, 4);
+            PanelSB.Location = new Point(0, 40);
             PanelSB.Name = "PanelSB";
             PanelSB.ShadowDecoration.CustomizableEdges = customizableEdges34;
-            PanelSB.Size = new Size(246, 691);
+            PanelSB.Size = new Size(215, 519);
             PanelSB.TabIndex = 4;
             // 
             // PanelThongKe
@@ -314,11 +308,10 @@
             PanelThongKe.Controls.Add(cbThongKe);
             PanelThongKe.CustomizableEdges = customizableEdges24;
             PanelThongKe.Dock = DockStyle.Top;
-            PanelThongKe.Location = new Point(0, 226);
-            PanelThongKe.Margin = new Padding(3, 4, 3, 4);
+            PanelThongKe.Location = new Point(0, 170);
             PanelThongKe.Name = "PanelThongKe";
             PanelThongKe.ShadowDecoration.CustomizableEdges = customizableEdges25;
-            PanelThongKe.Size = new Size(246, 46);
+            PanelThongKe.Size = new Size(215, 34);
             PanelThongKe.TabIndex = 3;
             // 
             // btniconTK
@@ -332,11 +325,10 @@
             btniconTK.ImageRotate = 0F;
             btniconTK.ImageSize = new Size(45, 40);
             btniconTK.Location = new Point(0, 0);
-            btniconTK.Margin = new Padding(3, 4, 3, 4);
             btniconTK.Name = "btniconTK";
             btniconTK.PressedState.ImageSize = new Size(64, 64);
             btniconTK.ShadowDecoration.CustomizableEdges = customizableEdges21;
-            btniconTK.Size = new Size(37, 42);
+            btniconTK.Size = new Size(32, 32);
             btniconTK.TabIndex = 3;
             // 
             // cbThongKe
@@ -356,11 +348,10 @@
             cbThongKe.HoverState.ForeColor = Color.Black;
             cbThongKe.ItemHeight = 30;
             cbThongKe.Items.AddRange(new object[] { "Thống kê", "Nhà", "Người dùng", "Thiết bị" });
-            cbThongKe.Location = new Point(37, 0);
-            cbThongKe.Margin = new Padding(3, 4, 3, 4);
+            cbThongKe.Location = new Point(32, 0);
             cbThongKe.Name = "cbThongKe";
             cbThongKe.ShadowDecoration.CustomizableEdges = customizableEdges23;
-            cbThongKe.Size = new Size(209, 36);
+            cbThongKe.Size = new Size(183, 36);
             cbThongKe.StartIndex = 0;
             cbThongKe.TabIndex = 0;
             cbThongKe.TextOffset = new Point(28, 0);
@@ -372,10 +363,9 @@
             btncustoms.Dock = DockStyle.Top;
             btncustoms.Font = new Font("Segoe UI", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point);
             btncustoms.ForeColor = Color.FromArgb(60, 145, 230);
-            btncustoms.Location = new Point(0, 136);
-            btncustoms.Margin = new Padding(3, 4, 3, 4);
+            btncustoms.Location = new Point(0, 102);
             btncustoms.Name = "btncustoms";
-            btncustoms.Size = new Size(246, 90);
+            btncustoms.Size = new Size(215, 68);
             btncustoms.TabIndex = 7;
             btncustoms.Text = "Customs";
             btncustoms.TextAlignment = ContentAlignment.BottomLeft;
@@ -386,11 +376,10 @@
             guna2Panel1.Controls.Add(label1);
             guna2Panel1.CustomizableEdges = customizableEdges26;
             guna2Panel1.Dock = DockStyle.Bottom;
-            guna2Panel1.Location = new Point(0, 596);
-            guna2Panel1.Margin = new Padding(3, 4, 3, 4);
+            guna2Panel1.Location = new Point(0, 448);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges27;
-            guna2Panel1.Size = new Size(246, 95);
+            guna2Panel1.Size = new Size(215, 71);
             guna2Panel1.TabIndex = 0;
             // 
             // lblNameUser
@@ -398,9 +387,9 @@
             lblNameUser.Dock = DockStyle.Fill;
             lblNameUser.FlatStyle = FlatStyle.Flat;
             lblNameUser.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblNameUser.Location = new Point(0, 38);
+            lblNameUser.Location = new Point(0, 28);
             lblNameUser.Name = "lblNameUser";
-            lblNameUser.Size = new Size(246, 57);
+            lblNameUser.Size = new Size(215, 43);
             lblNameUser.TabIndex = 0;
             lblNameUser.Text = "Label2";
             lblNameUser.TextAlign = ContentAlignment.MiddleLeft;
@@ -409,9 +398,9 @@
             // 
             label1.Dock = DockStyle.Top;
             label1.Location = new Point(0, 0);
-            label1.Margin = new Padding(11, 12, 11, 12);
+            label1.Margin = new Padding(10, 9, 10, 9);
             label1.Name = "label1";
-            label1.Size = new Size(246, 38);
+            label1.Size = new Size(215, 28);
             label1.TabIndex = 0;
             label1.Text = "Logged in as:";
             label1.TextAlign = ContentAlignment.MiddleLeft;
@@ -422,11 +411,10 @@
             PanelQuanLy.Controls.Add(cbQuanLy);
             PanelQuanLy.CustomizableEdges = customizableEdges31;
             PanelQuanLy.Dock = DockStyle.Top;
-            PanelQuanLy.Location = new Point(0, 90);
-            PanelQuanLy.Margin = new Padding(3, 4, 3, 4);
+            PanelQuanLy.Location = new Point(0, 68);
             PanelQuanLy.Name = "PanelQuanLy";
             PanelQuanLy.ShadowDecoration.CustomizableEdges = customizableEdges32;
-            PanelQuanLy.Size = new Size(246, 46);
+            PanelQuanLy.Size = new Size(215, 34);
             PanelQuanLy.TabIndex = 2;
             // 
             // btniconQL
@@ -442,11 +430,10 @@
             btniconQL.ImageRotate = 0F;
             btniconQL.ImageSize = new Size(40, 35);
             btniconQL.Location = new Point(0, 0);
-            btniconQL.Margin = new Padding(3, 4, 3, 4);
             btniconQL.Name = "btniconQL";
             btniconQL.PressedState.ImageSize = new Size(64, 64);
             btniconQL.ShadowDecoration.CustomizableEdges = customizableEdges28;
-            btniconQL.Size = new Size(43, 42);
+            btniconQL.Size = new Size(37, 32);
             btniconQL.TabIndex = 3;
             // 
             // cbQuanLy
@@ -466,11 +453,10 @@
             cbQuanLy.HoverState.ForeColor = Color.Black;
             cbQuanLy.ItemHeight = 30;
             cbQuanLy.Items.AddRange(new object[] { "Quản lý", "Người dùng", "Nhà", "Thiết bị" });
-            cbQuanLy.Location = new Point(43, 0);
-            cbQuanLy.Margin = new Padding(3, 4, 3, 4);
+            cbQuanLy.Location = new Point(37, 0);
             cbQuanLy.Name = "cbQuanLy";
             cbQuanLy.ShadowDecoration.CustomizableEdges = customizableEdges30;
-            cbQuanLy.Size = new Size(203, 36);
+            cbQuanLy.Size = new Size(178, 36);
             cbQuanLy.StartIndex = 0;
             cbQuanLy.TabIndex = 1;
             cbQuanLy.TextOffset = new Point(28, 0);
@@ -484,9 +470,8 @@
             btnCore.Font = new Font("Segoe UI", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point);
             btnCore.ForeColor = Color.FromArgb(60, 145, 230);
             btnCore.Location = new Point(0, 0);
-            btnCore.Margin = new Padding(3, 4, 3, 4);
             btnCore.Name = "btnCore";
-            btnCore.Size = new Size(246, 90);
+            btnCore.Size = new Size(215, 68);
             btnCore.TabIndex = 2;
             btnCore.Text = "Core";
             btnCore.TextAlignment = ContentAlignment.BottomLeft;
@@ -499,11 +484,10 @@
             PanelMainAdmin.Controls.Add(guna2Panel3);
             PanelMainAdmin.CustomizableEdges = customizableEdges19;
             PanelMainAdmin.Dock = DockStyle.Fill;
-            PanelMainAdmin.Location = new Point(246, 54);
-            PanelMainAdmin.Margin = new Padding(3, 4, 3, 4);
+            PanelMainAdmin.Location = new Point(215, 40);
             PanelMainAdmin.Name = "PanelMainAdmin";
             PanelMainAdmin.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            PanelMainAdmin.Size = new Size(983, 691);
+            PanelMainAdmin.Size = new Size(860, 519);
             PanelMainAdmin.TabIndex = 5;
             // 
             // guna2Panel4
@@ -516,31 +500,28 @@
             guna2Panel4.Controls.Add(guna2HtmlLabel3);
             guna2Panel4.CustomizableEdges = customizableEdges15;
             guna2Panel4.Dock = DockStyle.Fill;
-            guna2Panel4.Location = new Point(0, 278);
-            guna2Panel4.Margin = new Padding(3, 4, 3, 4);
+            guna2Panel4.Location = new Point(0, 208);
             guna2Panel4.Name = "guna2Panel4";
             guna2Panel4.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            guna2Panel4.Size = new Size(983, 413);
+            guna2Panel4.Size = new Size(860, 311);
             guna2Panel4.TabIndex = 2;
             // 
             // pictureBox3
             // 
             pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
             pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox3.Location = new Point(663, 62);
-            pictureBox3.Margin = new Padding(3, 4, 3, 4);
+            pictureBox3.Location = new Point(580, 46);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(300, 235);
+            pictureBox3.Size = new Size(262, 176);
             pictureBox3.TabIndex = 7;
             pictureBox3.TabStop = false;
             // 
             // guna2HtmlLabel5
             // 
             guna2HtmlLabel5.BackColor = Color.Transparent;
-            guna2HtmlLabel5.Location = new Point(737, 327);
-            guna2HtmlLabel5.Margin = new Padding(3, 4, 3, 4);
+            guna2HtmlLabel5.Location = new Point(645, 245);
             guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            guna2HtmlLabel5.Size = new Size(168, 22);
+            guna2HtmlLabel5.Size = new Size(134, 17);
             guna2HtmlLabel5.TabIndex = 6;
             guna2HtmlLabel5.Text = "Multipurpose Dashboard";
             // 
@@ -548,20 +529,18 @@
             // 
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
             pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox2.Location = new Point(341, 62);
-            pictureBox2.Margin = new Padding(3, 4, 3, 4);
+            pictureBox2.Location = new Point(298, 46);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(300, 235);
+            pictureBox2.Size = new Size(262, 176);
             pictureBox2.TabIndex = 5;
             pictureBox2.TabStop = false;
             // 
             // guna2HtmlLabel4
             // 
             guna2HtmlLabel4.BackColor = Color.Transparent;
-            guna2HtmlLabel4.Location = new Point(433, 327);
-            guna2HtmlLabel4.Margin = new Padding(3, 4, 3, 4);
+            guna2HtmlLabel4.Location = new Point(379, 245);
             guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            guna2HtmlLabel4.Size = new Size(133, 22);
+            guna2HtmlLabel4.Size = new Size(104, 17);
             guna2HtmlLabel4.TabIndex = 4;
             guna2HtmlLabel4.Text = "Affiliate Dashboard";
             // 
@@ -569,10 +548,9 @@
             // 
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(20, 62);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Location = new Point(18, 46);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(300, 235);
+            pictureBox1.Size = new Size(262, 176);
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
@@ -581,10 +559,9 @@
             // 
             guna2HtmlLabel3.AutoSize = false;
             guna2HtmlLabel3.BackColor = Color.Transparent;
-            guna2HtmlLabel3.Location = new Point(93, 327);
-            guna2HtmlLabel3.Margin = new Padding(3, 4, 3, 4);
+            guna2HtmlLabel3.Location = new Point(81, 245);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            guna2HtmlLabel3.Size = new Size(129, 22);
+            guna2HtmlLabel3.Size = new Size(113, 16);
             guna2HtmlLabel3.TabIndex = 1;
             guna2HtmlLabel3.Text = "Default Dashboard";
             // 
@@ -594,10 +571,10 @@
             guna2HtmlLabel2.BackColor = Color.Transparent;
             guna2HtmlLabel2.Dock = DockStyle.Top;
             guna2HtmlLabel2.Font = new Font("Segoe UI", 14.2641506F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2HtmlLabel2.Location = new Point(0, 182);
-            guna2HtmlLabel2.Margin = new Padding(11, 12, 11, 12);
+            guna2HtmlLabel2.Location = new Point(0, 136);
+            guna2HtmlLabel2.Margin = new Padding(10, 9, 10, 9);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new Size(983, 96);
+            guna2HtmlLabel2.Size = new Size(860, 72);
             guna2HtmlLabel2.TabIndex = 1;
             guna2HtmlLabel2.Text = "Dashboards";
             guna2HtmlLabel2.TextAlignment = ContentAlignment.MiddleLeft;
@@ -610,10 +587,9 @@
             guna2Panel3.Dock = DockStyle.Top;
             guna2Panel3.FillColor = Color.FromArgb(60, 145, 230);
             guna2Panel3.Location = new Point(0, 0);
-            guna2Panel3.Margin = new Padding(3, 4, 3, 4);
             guna2Panel3.Name = "guna2Panel3";
             guna2Panel3.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            guna2Panel3.Size = new Size(983, 182);
+            guna2Panel3.Size = new Size(860, 136);
             guna2Panel3.TabIndex = 0;
             // 
             // guna2HtmlLabel1
@@ -624,23 +600,21 @@
             guna2HtmlLabel1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
             guna2HtmlLabel1.ForeColor = Color.White;
             guna2HtmlLabel1.Location = new Point(0, 0);
-            guna2HtmlLabel1.Margin = new Padding(3, 4, 3, 4);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(983, 182);
+            guna2HtmlLabel1.Size = new Size(860, 136);
             guna2HtmlLabel1.TabIndex = 0;
             guna2HtmlLabel1.Text = "Welcome to Admin Panel";
             guna2HtmlLabel1.TextAlignment = ContentAlignment.MiddleCenter;
             // 
             // AdminControl
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(PanelMainAdmin);
             Controls.Add(PanelSB);
             Controls.Add(guna2GradientPanel1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "AdminControl";
-            Size = new Size(1229, 745);
+            Size = new Size(1075, 559);
             guna2GradientPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).EndInit();
             PanelSB.ResumeLayout(false);
