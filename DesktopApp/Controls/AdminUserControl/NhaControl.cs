@@ -21,7 +21,7 @@ namespace DesktopApp.Controls.AdminUserControl
         private readonly IHouseService _houseService;
         private readonly IServiceProvider _serviceProvider;
         IEnumerable<House> houseList;
-        private House selectHouse;
+      
         public NhaControl(IServiceProvider serviceProvider)
         {
             InitializeComponent();
@@ -48,7 +48,7 @@ namespace DesktopApp.Controls.AdminUserControl
                 foreach (var home in houses)
                 {
                     var owner = _houseService.GetHouseOwner(home.ID);
-                    dgvNha.Rows.Add(home.ID, home.Name, home.Location, owner.UserName);
+                    dgvNha.Rows.Add(home.Name, home.Location, owner.UserName);
                 }
             }
             catch (Exception ex)
@@ -60,8 +60,6 @@ namespace DesktopApp.Controls.AdminUserControl
         {
             // Xóa các cột cũ nếu có
             dgvNha.Columns.Clear();
-
-            dgvNha.Columns.Add("ID", "ID Nhà");
             dgvNha.Columns.Add("Name", "Tên Nhà");
             dgvNha.Columns.Add("Location", "Vị trí");
             dgvNha.Columns.Add("Owner", "Chủ nhà");
@@ -87,24 +85,9 @@ namespace DesktopApp.Controls.AdminUserControl
                 if (e.RowIndex >= 0)
                 {
                     DataGridViewRow row = this.dgvNha.Rows[e.RowIndex];
-
-
-                    // Lấy các giá trị từ các ô trong dòng
-                    int houseId = Convert.ToInt32(row.Cells["ID"].Value);
-                    
                     string houseName = row.Cells["Name"].Value?.ToString(); 
                     string houseLocation = row.Cells["Location"].Value?.ToString(); 
-                   
-
-                    // Tạo một đối tượng House mới và lưu dữ liệu vào
-                    House selectedHouse = new House
-                    {
-                        ID = houseId,
-                        Name = houseName,
-                        Location = houseLocation
-                      
-                    };
-                    this.selectHouse = selectedHouse;
+                    string houseOwner = row.Cells["Owner"].Value?.ToString();
                 }
 
             }
@@ -115,19 +98,19 @@ namespace DesktopApp.Controls.AdminUserControl
         }
 
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            DialogResult result= MessageBox.Show("Bạn có chắc chắn muốn xóa nhà này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (selectHouse != null && result==DialogResult.Yes)
-            {
-                _houseService.DeleteHouse(selectHouse.ID);
-                LoadData(_houseService.GetHouses());
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn nhà cần xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //private void btnDelete_Click(object sender, EventArgs e)
+        //{
+        //    DialogResult result= MessageBox.Show("Bạn có chắc chắn muốn xóa nhà này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        //    if (selectHouse != null && result==DialogResult.Yes)
+        //    {
+        //        _houseService.DeleteHouse(selectHouse.ID);
+        //        LoadData(_houseService.GetHouses());
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Vui lòng chọn nhà cần xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
 
     }
 }

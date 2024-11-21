@@ -45,7 +45,7 @@ namespace DesktopApp.Controls.AdminUserControl
                 foreach (var device in devices)
                 {
 
-                    dgvThietBi.Rows.Add(device.ID,device.Name, device.Type, device.DeviceToken, device.Status, device.User.UserName);
+                    dgvThietBi.Rows.Add(device.Name, device.Type, device.DeviceToken, device.Status, device.User.UserName);
                 }
             }
             catch (Exception ex)
@@ -57,7 +57,7 @@ namespace DesktopApp.Controls.AdminUserControl
         private void SetupDataGridView()
         {
             dgvThietBi.Columns.Clear();
-            dgvThietBi.Columns.Add("ID", "ID");
+            
             dgvThietBi.Columns.Add("Name", "Tên thiết bị");
             dgvThietBi.Columns.Add("Type", "Loại thiết bị");
             dgvThietBi.Columns.Add("DeviceToken", "Mã thiết bị");
@@ -87,7 +87,6 @@ namespace DesktopApp.Controls.AdminUserControl
                 if (e.RowIndex >= 0)
                 {
                     var row = dgvThietBi.Rows[e.RowIndex];
-                    var id = row.Cells["ID"].Value.ToString();
                     var name = row.Cells["Name"].Value?.ToString();
                     var type = row.Cells["Type"].Value?.ToString();
                     var deviceToken = row.Cells["DeviceToken"].Value?.ToString();
@@ -95,7 +94,6 @@ namespace DesktopApp.Controls.AdminUserControl
 
                     Device tbi = new Device
                     {
-                        ID = Convert.ToInt32(id),
                         Name = name,
                         Type = type,
                         DeviceToken = deviceToken,
@@ -109,25 +107,25 @@ namespace DesktopApp.Controls.AdminUserControl
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
         }
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-           DialogResult result= MessageBox.Show("Bạn có chắc chắn muốn xóa thiết bị này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (selectDevice != null && result==DialogResult.Yes)
-            {
-                try
-                {
-                    _deviceService.DeleteDevice(selectDevice.ID);
-                    LoadData(_deviceService.GetDevices());
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn thiết bị cần xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //private void btnDelete_Click(object sender, EventArgs e)
+        //{
+        //   DialogResult result= MessageBox.Show("Bạn có chắc chắn muốn xóa thiết bị này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        //    if (selectDevice != null && result==DialogResult.Yes)
+        //    {
+        //        try
+        //        {
+        //            _deviceService.DeleteDevice(selectDevice.ID);
+        //            LoadData(_deviceService.GetDevices());
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show($"An error occurred: {ex.Message}");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Vui lòng chọn thiết bị cần xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
     }
 }

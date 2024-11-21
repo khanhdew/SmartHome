@@ -1,6 +1,6 @@
 ﻿namespace DesktopApp
 {
-    partial class DashBoard1
+    partial class DashBoard
     {
         /// <summary> 
         /// Required designer variable.
@@ -62,7 +62,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashBoard1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashBoard));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -149,7 +149,7 @@
             guna2Panel2.Controls.Add(guna2ToggleSwitch1);
             guna2Panel2.CustomizableEdges = customizableEdges29;
             guna2Panel2.Dock = DockStyle.Right;
-            guna2Panel2.Location = new Point(1050, 0);
+            guna2Panel2.Location = new Point(992, 0);
             guna2Panel2.Name = "guna2Panel2";
             guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges30;
             guna2Panel2.Size = new Size(78, 66);
@@ -191,7 +191,7 @@
             guna2GradientButton3.ForeColor = Color.White;
             guna2GradientButton3.Image = (Image)resources.GetObject("guna2GradientButton3.Image");
             guna2GradientButton3.ImageSize = new Size(25, 25);
-            guna2GradientButton3.Location = new Point(1128, 0);
+            guna2GradientButton3.Location = new Point(1070, 0);
             guna2GradientButton3.Name = "guna2GradientButton3";
             guna2GradientButton3.ShadowDecoration.CustomizableEdges = customizableEdges32;
             guna2GradientButton3.Size = new Size(37, 66);
@@ -214,10 +214,10 @@
             btnNameUser.ImageAlign = HorizontalAlignment.Right;
             btnNameUser.ImageSize = new Size(45, 45);
             btnNameUser.IndicateFocus = true;
-            btnNameUser.Location = new Point(1165, 0);
+            btnNameUser.Location = new Point(1107, 0);
             btnNameUser.Name = "btnNameUser";
             btnNameUser.ShadowDecoration.CustomizableEdges = customizableEdges34;
-            btnNameUser.Size = new Size(142, 66);
+            btnNameUser.Size = new Size(200, 66);
             btnNameUser.TabIndex = 6;
             btnNameUser.Text = "Hello, Cuong";
             btnNameUser.TextAlign = HorizontalAlignment.Left;
@@ -697,17 +697,18 @@
             Account.Size = new Size(251, 30);
             Account.Text = "toolStripMenuItem1";
             // 
-            // DashBoard1
+            // DashBoard
             // 
-            AutoScaleDimensions = new SizeF(10F, 21F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(120F, 120F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoScroll = true;
             BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.Stretch;
             Controls.Add(guna2Panel1);
             Controls.Add(PanelTitle);
             Font = new Font("Century", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4, 3, 4, 3);
-            Name = "DashBoard1";
+            Name = "DashBoard";
             Size = new Size(1428, 633);
             Load += DashBoard_Load;
             PanelTitle.ResumeLayout(false);

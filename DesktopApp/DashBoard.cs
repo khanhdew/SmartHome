@@ -17,10 +17,10 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Menu;
 
 namespace DesktopApp
 {
-    public partial class DashBoard1 : UserControl
+    public partial class DashBoard : UserControl
     {
         private readonly IServiceProvider _serviceProvider;
-        public DashBoard1(IServiceProvider serviceProvider)
+        public DashBoard(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
             InitializeComponent();

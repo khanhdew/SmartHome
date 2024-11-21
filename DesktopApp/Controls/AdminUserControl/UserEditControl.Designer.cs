@@ -242,8 +242,9 @@
             // 
             // UserEditControl
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(120F, 120F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoSize = true;
             Controls.Add(guna2ShadowPanel1);
             Name = "UserEditControl";
             Size = new Size(980, 687);
