@@ -20,7 +20,7 @@ namespace DesktopApp.Controls.AdminUserControl
         private readonly IUserService _userService;
         private readonly IServiceProvider _serviceProvider;
         IEnumerable<User> userList;
-        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly UserManager<User> _userManager;
 
         private User selectedUser;
         public NguoiDungControl(IServiceProvider serviceProvider)
@@ -29,7 +29,7 @@ namespace DesktopApp.Controls.AdminUserControl
             _serviceProvider = serviceProvider;
             _userService = _serviceProvider.GetRequiredService<IUserService>();
             userList = _userService.GetUsers();
-            _roleManager = _serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            _userManager = _serviceProvider.GetRequiredService<UserManager<User>>();
         }
 
 
@@ -50,8 +50,10 @@ namespace DesktopApp.Controls.AdminUserControl
                 // Duyệt qua danh sách người dùng và thêm vào DataGridView
                 foreach (var user in users)
                 {
+                    var roles = await _userManager.GetRolesAsync(user);
+                    var rolesString = string.Join(", ", roles);
                     // Thêm dữ liệu vào DataGridView
-                    dgvNguoiDung.Rows.Add(user.UserName, user.Email,user.DisplayName , user.PhoneNumber);
+                    dgvNguoiDung.Rows.Add(user.UserName, user.Email,user.DisplayName , user.PhoneNumber, rolesString);
                 }
             }
             catch (Exception ex)
@@ -69,7 +71,7 @@ namespace DesktopApp.Controls.AdminUserControl
             dgvNguoiDung.Columns.Add("Email", "Email");
             dgvNguoiDung.Columns.Add("DisplayName", "Display Name");
             dgvNguoiDung.Columns.Add("PhoneNumber", "Phone Number");
-
+            dgvNguoiDung.Columns.Add("Roles", "Roles");
             // Đặt các thuộc tính khác nếu cần
             dgvNguoiDung.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
