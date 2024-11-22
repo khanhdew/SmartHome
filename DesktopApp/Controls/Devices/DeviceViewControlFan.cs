@@ -103,6 +103,11 @@ namespace DesktopApp.Controls.Devices
 
             try
             {
+                var confirmResult = MessageBox.Show("Bạn có chắc chắn muốn xóa thiết bị này?",
+                    "Xác nhận xóa",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmResult != DialogResult.Yes)
+                    return;
                 thingsboardService.DeleteDevice(fan.ID);
                 Parent.Controls.Remove(this);
                 deviceService.DeleteDevice(fan.ID);

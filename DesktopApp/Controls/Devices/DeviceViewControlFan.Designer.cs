@@ -200,6 +200,7 @@
             btnXoaQuat.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btnXoaQuat.Size = new Size(40, 28);
             btnXoaQuat.TabIndex = 20;
+            btnXoaQuat.Click += btnXoaQuat_Click;
             // 
             // lblTenThietBi
             // 
