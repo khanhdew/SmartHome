@@ -1,10 +1,10 @@
-﻿using System.Text.Json;
-using Configuration;
+﻿using Configuration;
 using DAO.BaseModels;
 using DAO.Models.Devices;
 using Microsoft.Extensions.Logging;
 using Services.Services;
 using Services.Thingsboard_Services.BaseModel;
+using System.Text.Json;
 
 namespace Services.Thingsboard_Services;
 
@@ -110,7 +110,7 @@ public class ThingsboardService : IThingsboardService
                 SystemConfiguration.ThingsboardServer + $"api/rpc/oneway/{temp.TbDeviceId}",
                 command,
                 _adminToken).Post();
-            
+
             TelemetryData telemetryData = new()
             {
                 DeviceID = temp.ID,
@@ -150,7 +150,7 @@ public class ThingsboardService : IThingsboardService
                 SystemConfiguration.ThingsboardServer + $"api/rpc/oneway/{temp.TbDeviceId}",
                 JsonSerializer.Serialize(command),
                 _adminToken).Post();
-            
+
             TelemetryData telemetryData = new()
             {
                 DeviceID = temp.ID,
@@ -181,7 +181,7 @@ public class ThingsboardService : IThingsboardService
         }
     }
 
-    private object decodeControlCommand(Device device,string command, int? dim = null, int? R = null, int? G = null, int? B = null)
+    private object decodeControlCommand(Device device, string command, int? dim = null, int? R = null, int? G = null, int? B = null)
     {
         switch (command)
         {
@@ -216,7 +216,7 @@ public class ThingsboardService : IThingsboardService
                 return null;
         }
     }
-    
+
     public object? ControlDevice(int deviceId, string command, int? dim = null, int? R = null, int? G = null, int? B = null)
     {
         var temp = _deviceService.GetDeviceById(deviceId);

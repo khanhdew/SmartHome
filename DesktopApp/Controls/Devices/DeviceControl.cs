@@ -3,15 +3,7 @@ using DAO.Models.Devices;
 using DesktopApp.Utils;
 using Microsoft.Extensions.DependencyInjection;
 using Services.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DesktopApp.Controls.Devices
 {
@@ -57,7 +49,7 @@ namespace DesktopApp.Controls.Devices
         {
             _deviceList.Clear();
 
-            
+
             var houses = _houseService.GetHousesByUserId(MainForm.LoggedInUser.Id);
             foreach (var house in houses)
             {
@@ -68,7 +60,7 @@ namespace DesktopApp.Controls.Devices
                 }
             }
 
-            
+
             var personalDevices = _deviceService.GetDevicesByUserId(MainForm.LoggedInUser.Id)
                                              .Where(d => d.RoomID == null);
             _deviceList.AddRange(personalDevices);

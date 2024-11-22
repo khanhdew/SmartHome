@@ -1,17 +1,7 @@
-﻿using DAO.BaseModels;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualBasic.ApplicationServices;
 using Services.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using User = DAO.BaseModels.User;
 
 namespace DesktopApp.Controls.AdminUserControl
@@ -33,25 +23,23 @@ namespace DesktopApp.Controls.AdminUserControl
             _userManager = _serviceProvider.GetRequiredService<UserManager<User>>();
             LoadUserData();
             this.AutoScaleMode = AutoScaleMode.None;
-           
+
 
         }
         private async void btnSaveUser_Click(object sender, EventArgs e)
         {
             try
             {
-                // Lấy thông tin người dùng từ database
-                var existingUser = await _userManager.FindByIdAsync(_user.Id);
+                // Lấy dữ liệu từ các điều khiển trên giao diện
+                string name = txtNameUser.Text;  // TextBox cho tên hiển thị
+                string email = txtEmailNguoiDung.Text;  // TextBox cho email
+                string phoneNumber = txtSoDienThoai.Text;  // TextBox cho số điện thoại
 
-                if (existingUser != null)
-                {
-                    // Cập nhật các thông tin cần thay đổi
-                    existingUser.DisplayName = txtNameUser.Text;
-                    existingUser.Email = txtEmailNguoiDung.Text;
-                    existingUser.PhoneNumber = txtSoDienThoai.Text;
 
-                    // Cập nhật người dùng
-                    var updateResult = await _userManager.UpdateAsync(existingUser);
+                _user.DisplayName = name;
+                _user.Email = email;
+                _user.PhoneNumber = phoneNumber;
+                var updateResult = _userService.EditUser(_user);
 
                     if (updateResult.Succeeded)
                     {
@@ -93,7 +81,7 @@ namespace DesktopApp.Controls.AdminUserControl
             }
             catch (Exception ex)
             {
-               
+
                 MessageBox.Show($"An error occurred: {ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

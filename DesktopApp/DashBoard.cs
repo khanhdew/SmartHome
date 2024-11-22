@@ -2,18 +2,6 @@
 using DesktopApp.Controls.Houses;
 using DesktopApp.Controls.Rooms;
 using DesktopApp.Controls.Setting;
-using Services.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Menu;
 
 namespace DesktopApp
 {
@@ -29,7 +17,7 @@ namespace DesktopApp
             menuHouse.Width += 30;
             GoiUserControl(new HouseControl(_serviceProvider));
         }
-       
+
         private void btnMenu_Click(object sender, EventArgs e)
         {
             ColapseMenu();
@@ -78,7 +66,7 @@ namespace DesktopApp
         private void menuAdminPage_Click(object sender, EventArgs e)
         {
             var parentForm = this.Parent;
-            var newUserControl = new AdminControl(_serviceProvider,this);
+            var newUserControl = new AdminControl(_serviceProvider, this);
             parentForm.Controls.Clear();
             parentForm.Controls.Add(newUserControl);
             newUserControl.Dock = DockStyle.Fill;
@@ -177,6 +165,6 @@ namespace DesktopApp
             MessageBox.Show("Đăng xuất thành công");
             Panel4DropdownMenu.Visible = false;
         }
-        
+
     }
 }

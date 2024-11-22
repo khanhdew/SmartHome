@@ -1,10 +1,7 @@
-﻿using System.Security.Claims;
-using DAO.BaseModels;
+﻿using DAO.BaseModels;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Services.Services;
-using WebApp.Models;
 using WebApp.Utils;
 
 namespace WebApp.Controllers
@@ -62,7 +59,7 @@ namespace WebApp.Controllers
 
             return PartialView("Create");
         }
-        
+
         [Authorize]
         [HttpGet]
         public IActionResult Edit(int houseId)
@@ -91,11 +88,11 @@ namespace WebApp.Controllers
         {
             if (!_houseService.IsHouseOwner(_userService.GetCurrentUserId(), houseId))
                 return RedirectToAction("AccessDenied", "Account");
-            
-            return View( _houseService.GetHouseById(houseId));
+
+            return View(_houseService.GetHouseById(houseId));
         }
-        
-        
+
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteHouse(int houseId)
@@ -122,7 +119,7 @@ namespace WebApp.Controllers
                 return RedirectToAction("AccessDenied", "Account");
             Console.WriteLine("House ID: " + houseId + " User ID: " + userId);
             _houseService.RemoveHouseMember(userId, houseId);
-            return RedirectToAction("Edit", new {houseId});
+            return RedirectToAction("Edit", new { houseId });
         }
 
         [HttpGet, ActionName("JoinHouse")]
@@ -130,7 +127,7 @@ namespace WebApp.Controllers
         {
             if (!_houseService.IsHouseOwner(_userService.GetUserById(ownerid)!.Id, houseid))
                 return RedirectToAction("AccessDenied", "Account");
-            
+
             _houseService.AddHouseMember(_userService.GetCurrentUserId(), houseid, "Member");
             return RedirectToAction("Index");
         }

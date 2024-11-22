@@ -1,11 +1,6 @@
 ﻿using DAO.BaseModels;
 using DAO.Context;
 using DAO.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAO.Reposistories_Impl
@@ -60,7 +55,7 @@ namespace DAO.Reposistories_Impl
                 {
                     throw new Exception("User not found");
                 }
-                
+
                 // Check if the user is already a member of the house
                 var houseMember = _context.HouseMembers.FirstOrDefault(hm => hm.UserID == userId && hm.HouseID == houseId);
                 if (houseMember != null)
@@ -215,7 +210,7 @@ namespace DAO.Reposistories_Impl
             _context.SaveChanges();
             return houseToUpdate;
         }
-        
+
         public bool IsHouseOwner(string userId, int houseId)
         {
             var houseMember = _context.HouseMembers.FirstOrDefault(hm => hm.UserID == userId && hm.HouseID == houseId);
@@ -228,7 +223,7 @@ namespace DAO.Reposistories_Impl
 
         public User GetHouseOwner(int houseId)
         {
-            var houseMember = _context.HouseMembers.Include(hm=>hm.User).FirstOrDefault(hm => hm.HouseID == houseId && hm.Role == "Owner");
+            var houseMember = _context.HouseMembers.Include(hm => hm.User).FirstOrDefault(hm => hm.HouseID == houseId && hm.Role == "Owner");
             if (houseMember == null)
             {
                 throw new Exception("House owner not found");

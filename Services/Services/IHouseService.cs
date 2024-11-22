@@ -20,5 +20,5 @@ public interface IHouseService
     public IEnumerable<HouseMember?> GetHouseMembers(int houseId);
     public bool IsHouseOwner(string userId, int houseId);
     object GenerateInvitationCode(int iD);
-    HouseMember AddHouseMember(string userId,  string invitationCode, string role);
+    HouseMember AddHouseMember(string userId, string invitationCode, string role);
 }

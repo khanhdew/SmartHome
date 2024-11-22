@@ -1,19 +1,9 @@
 ﻿using DAO.BaseModels;
 using DesktopApp.Controls.Devices;
-using DesktopApp.Controls.Houses;
 using DesktopApp.Utils;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualBasic.Devices;
 using Services.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DesktopApp.Controls.Rooms
 {
@@ -40,7 +30,7 @@ namespace DesktopApp.Controls.Rooms
             _serviceProvider = serviceProvider;
             _roomService = _serviceProvider.GetRequiredService<IRoomService>();
             _houseService = _serviceProvider.GetRequiredService<IHouseService>();
-            LoadHouses();
+            LoadHouses(houseId);
             LoadRooms(roomList);
 
         }
@@ -58,21 +48,23 @@ namespace DesktopApp.Controls.Rooms
             }
         }
 
-        private void LoadHouses()
-        {
-            var houses = _houseService.GetHousesByUserId(MainForm.LoggedInUser.Id);
-
-            foreach (var house in houses)
-            {
-                var rooms = _houseService.GetRooms(house.ID);
-                roomList.AddRange(rooms);
-            }
-
-        }
-
         private void LoadHouses(int houseId)
         {
-            roomList = _houseService.GetRooms(houseId).ToList();
+            if (houseId != 0)
+            {
+                var rooms = _houseService.GetRooms(houseId);
+                roomList.AddRange(rooms);
+            }
+            else
+            {
+                var houses = _houseService.GetHousesByUserId(MainForm.LoggedInUser.Id);
+
+                foreach (var house in houses)
+                {
+                    var rooms = _houseService.GetRooms(house.ID);
+                    roomList.AddRange(rooms);
+                }
+            }
         }
 
         private void LoadRooms(IEnumerable<Room> rooms)
@@ -129,6 +121,7 @@ namespace DesktopApp.Controls.Rooms
             var roomAddControl = new RoomAdd(_houseService, houseId);
             roomAddControl.ShowDialog();
             LoadHouses(houseId);
+            LoadRooms(roomList);
         }
 
     }

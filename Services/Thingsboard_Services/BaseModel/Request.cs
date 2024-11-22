@@ -53,7 +53,7 @@ public class Request<T>
                     throw new KeyNotFoundException();
                 case HttpStatusCode.GatewayTimeout:
                     throw new TimeoutException();
-                
+
             }
         }
 
@@ -175,7 +175,7 @@ public class Request<T>
                     throw new KeyNotFoundException();
                 case HttpStatusCode.GatewayTimeout:
                     throw new TimeoutException();
-                
+
             }
         }
 

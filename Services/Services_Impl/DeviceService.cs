@@ -1,15 +1,13 @@
-﻿using System.Text.Json;
-using DAO.BaseModels;
+﻿using DAO.BaseModels;
 using DAO.Repositories;
 using Services.Services;
-using Services.Thingsboard_Services;
 
 namespace Services.Services_Impl;
 
 public class DeviceService : IDeviceService
 {
     private readonly IDeviceRepository _deviceRepository;
-    
+
     public DeviceService(IDeviceRepository deviceRepository)
     {
         _deviceRepository = deviceRepository;
@@ -18,9 +16,9 @@ public class DeviceService : IDeviceService
     {
         try
         {
-            var deviceCreated =(Device) _deviceRepository.AddDevice(device);
-            
-            
+            var deviceCreated = (Device)_deviceRepository.AddDevice(device);
+
+
             _deviceRepository.UpdateDevice(deviceCreated);
             return deviceCreated;
         }
@@ -110,7 +108,7 @@ public class DeviceService : IDeviceService
     {
         throw new NotImplementedException();
     }
-    
+
     public bool IsDeviceOwner(string userId, int deviceId)
     {
         return _deviceRepository.IsDeviceOwner(userId, deviceId);

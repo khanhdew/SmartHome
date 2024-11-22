@@ -11,7 +11,7 @@ public class DeviceTelemetryViewComponent : ViewComponent
     {
         _deviceService = deviceService;
     }
-    
+
     public async Task<IViewComponentResult> InvokeAsync(int deviceId)
     {
         // take last 15 telemetry data

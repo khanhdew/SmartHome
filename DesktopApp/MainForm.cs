@@ -12,19 +12,19 @@ public partial class MainForm : Form
         InitializeComponent();
         this.login = login;
         ShowLogin();
-        
+
     }
 
 
 
     private void ShowLogin()
     {
-      
+
         Panel.Controls.Clear();
         login.Dock = DockStyle.Fill;
         Panel.Controls.Add(login);
 
     }
 
-    
+
 }

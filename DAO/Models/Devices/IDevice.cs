@@ -1,8 +1,6 @@
-﻿using DAO.BaseModels;
+﻿namespace DAO.Models.Devices;
 
-namespace DAO.Models.Devices;
-
-public interface IDevice  
+public interface IDevice
 {
     object TurnOn();
     object TurnOff();

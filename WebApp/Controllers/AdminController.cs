@@ -31,27 +31,27 @@ public class AdminController : Controller
     {
         return View();
     }
-    
+
     public IActionResult ManageUsers()
     {
         var users = _userService.GetUsers();
         return View(users);
     }
-    
-    
+
+
     public IActionResult ManageHouses()
     {
         var houses = _houseService.GetHouses();
         return View(houses);
     }
-    
-    
+
+
     public IActionResult ManageDevices()
     {
         var devices = _deviceService.GetDevices();
         return View(devices);
     }
-    
+
     public async Task<IActionResult> LoginAsUser(string id)
     {
         var user = await _userManager.FindByIdAsync(id);
@@ -65,7 +65,7 @@ public class AdminController : Controller
 
         return RedirectToAction("Index", "House");
     }
-    
+
     public async Task<IActionResult> EditUser(string id)
     {
         var user = await _userManager.FindByIdAsync(id);
@@ -83,10 +83,10 @@ public class AdminController : Controller
         ViewBag.Roles = roles;
         return View(user);
     }
-    
+
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> UpdateUserAndAddRole(string userId, string newDisplayName, string newPhoneNumber,string newEmail, string roleName)
+    public async Task<IActionResult> UpdateUserAndAddRole(string userId, string newDisplayName, string newPhoneNumber, string newEmail, string roleName)
     {
         var user = await _userManager.FindByIdAsync(userId);
         if (user == null)
@@ -117,12 +117,12 @@ public class AdminController : Controller
         // clear user roles
         var userRoles = await _userManager.GetRolesAsync(user);
         var removeRoleResult = await _userManager.RemoveFromRolesAsync(user, userRoles);
-        
-        
+
+
         // add new role
         var addRoleResult = await _userManager.AddToRoleAsync(user, roleName);
 
         return RedirectToAction("ManageUsers");
     }
-    
+
 }

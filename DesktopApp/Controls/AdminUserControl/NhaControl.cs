@@ -1,18 +1,7 @@
 ﻿using DAO.BaseModels;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualBasic.ApplicationServices;
 using Services.Services;
-using Services.Services_Impl;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DesktopApp.Controls.AdminUserControl
 {
@@ -21,7 +10,7 @@ namespace DesktopApp.Controls.AdminUserControl
         private readonly IHouseService _houseService;
         private readonly IServiceProvider _serviceProvider;
         IEnumerable<House> houseList;
-      
+
         public NhaControl(IServiceProvider serviceProvider)
         {
             InitializeComponent();
@@ -81,12 +70,13 @@ namespace DesktopApp.Controls.AdminUserControl
 
         private void dgvNha_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try {
+            try
+            {
                 if (e.RowIndex >= 0)
                 {
                     DataGridViewRow row = this.dgvNha.Rows[e.RowIndex];
-                    string houseName = row.Cells["Name"].Value?.ToString(); 
-                    string houseLocation = row.Cells["Location"].Value?.ToString(); 
+                    string houseName = row.Cells["Name"].Value?.ToString();
+                    string houseLocation = row.Cells["Location"].Value?.ToString();
                     string houseOwner = row.Cells["Owner"].Value?.ToString();
                 }
 

@@ -1,19 +1,9 @@
 ﻿using DAO.BaseModels;
 using DesktopApp.Controls.Rooms;
 using DesktopApp.Utils;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualBasic.Devices;
 using Services.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DesktopApp.Controls.Houses
 {
@@ -58,7 +48,7 @@ namespace DesktopApp.Controls.Houses
                         var houseEdit = new HouseEdit(house.ID, _serviceProvider);
                         Controls.Clear();
                         Controls.Add(houseEdit);
-                       
+
                     };
                     houseViewControl.lblTenNha.Click += (sender, e) =>
                     {
@@ -66,7 +56,7 @@ namespace DesktopApp.Controls.Houses
                         roomControl.Dock = DockStyle.Fill;
                         Controls.Clear();
                         Controls.Add(roomControl);
-                        
+
                     };
                     fLayoutPanel.Controls.Add(houseViewControl);
                 }
@@ -81,6 +71,7 @@ namespace DesktopApp.Controls.Houses
         {
             var houseAddControl = new HouseAdd(_houseService);
             houseAddControl.ShowDialog();
+            houseList = _houseService.GetHousesByUserId(MainForm.LoggedInUser.Id);
             LoadHouses(houseList);
         }
 

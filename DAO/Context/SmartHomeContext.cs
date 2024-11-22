@@ -1,6 +1,6 @@
 ﻿using DAO.BaseModels;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAO.Context
 {
@@ -86,7 +86,7 @@ namespace DAO.Context
                     .HasForeignKey(d => d.UserID)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK__HouseMemb__UserI__4D94879B");
-                
+
             }));
 
             modelBuilder.Entity<Room>(entity =>
@@ -121,12 +121,12 @@ namespace DAO.Context
             foreach (var item in modelBuilder.Model.GetEntityTypes())
             {
                 var tableName = item.GetTableName();
-                if(tableName != null && tableName.StartsWith("AspNet"))
+                if (tableName != null && tableName.StartsWith("AspNet"))
                 {
                     item.SetTableName(tableName.Substring(6));
                 }
             }
-            
+
             OnModelCreatingPartial(modelBuilder);
         }
 

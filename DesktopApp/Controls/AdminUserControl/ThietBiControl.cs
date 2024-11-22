@@ -1,15 +1,7 @@
 ﻿using DAO.BaseModels;
 using Microsoft.Extensions.DependencyInjection;
 using Services.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DesktopApp.Controls.AdminUserControl
 {
@@ -19,7 +11,7 @@ namespace DesktopApp.Controls.AdminUserControl
         private readonly IDeviceService _deviceService;
         private IEnumerable<Device> deviceList;
         private Device selectDevice;
-        
+
         public ThietBiControl(IServiceProvider serviceProvider)
         {
             InitializeComponent();
@@ -57,7 +49,7 @@ namespace DesktopApp.Controls.AdminUserControl
         private void SetupDataGridView()
         {
             dgvThietBi.Columns.Clear();
-            
+
             dgvThietBi.Columns.Add("Name", "Tên thiết bị");
             dgvThietBi.Columns.Add("Type", "Loại thiết bị");
             dgvThietBi.Columns.Add("DeviceToken", "Mã thiết bị");

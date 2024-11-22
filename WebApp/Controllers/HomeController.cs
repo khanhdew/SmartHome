@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using System.Security.Claims;
 using WebApp.Models;
 
 namespace WebApp.Controllers
@@ -15,7 +14,7 @@ namespace WebApp.Controllers
             _logger = logger;
         }
 
-        
+
         public IActionResult Index()
         {
             // // show claims

@@ -2,15 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Services.Services;
 using Services.Thingsboard_Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DesktopApp.Controls.Devices
 {
