@@ -50,7 +50,7 @@
             dgvNguoiDung = new Guna.UI2.WinForms.Guna2DataGridView();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             btnEdit = new Guna.UI2.WinForms.Guna2GradientButton();
-            btnLogginasUser = new Guna.UI2.WinForms.Guna2GradientButton();
+            btnLoginasUser = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GroupBox1.SuspendLayout();
             guna2Panel2.SuspendLayout();
@@ -169,7 +169,7 @@
             // 
             guna2Panel1.BackColor = Color.Transparent;
             guna2Panel1.Controls.Add(btnEdit);
-            guna2Panel1.Controls.Add(btnLogginasUser);
+            guna2Panel1.Controls.Add(btnLoginasUser);
             guna2Panel1.CustomizableEdges = customizableEdges7;
             guna2Panel1.Dock = DockStyle.Top;
             guna2Panel1.Location = new Point(0, 40);
@@ -201,26 +201,27 @@
             btnEdit.Text = "Edit";
             btnEdit.Click += btnEdit_Click;
             // 
-            // btnLogginasUser
+            // btnLoginasUser
             // 
-            btnLogginasUser.BorderRadius = 5;
-            btnLogginasUser.CustomizableEdges = customizableEdges5;
-            btnLogginasUser.DisabledState.BorderColor = Color.DarkGray;
-            btnLogginasUser.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnLogginasUser.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnLogginasUser.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            btnLogginasUser.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnLogginasUser.Dock = DockStyle.Right;
-            btnLogginasUser.FillColor = Color.Blue;
-            btnLogginasUser.FillColor2 = Color.Blue;
-            btnLogginasUser.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLogginasUser.ForeColor = Color.White;
-            btnLogginasUser.Location = new Point(837, 0);
-            btnLogginasUser.Name = "btnLogginasUser";
-            btnLogginasUser.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnLogginasUser.Size = new Size(146, 46);
-            btnLogginasUser.TabIndex = 0;
-            btnLogginasUser.Text = "Loggin as User";
+            btnLoginasUser.BorderRadius = 5;
+            btnLoginasUser.CustomizableEdges = customizableEdges5;
+            btnLoginasUser.DisabledState.BorderColor = Color.DarkGray;
+            btnLoginasUser.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnLoginasUser.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnLoginasUser.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            btnLoginasUser.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnLoginasUser.Dock = DockStyle.Right;
+            btnLoginasUser.FillColor = Color.Blue;
+            btnLoginasUser.FillColor2 = Color.Blue;
+            btnLoginasUser.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLoginasUser.ForeColor = Color.White;
+            btnLoginasUser.Location = new Point(837, 0);
+            btnLoginasUser.Name = "btnLoginasUser";
+            btnLoginasUser.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnLoginasUser.Size = new Size(146, 46);
+            btnLoginasUser.TabIndex = 0;
+            btnLoginasUser.Text = "Login as User";
+            btnLoginasUser.Click += btnLoginasUser_Click;
             // 
             // guna2GradientButton1
             // 
@@ -270,7 +271,7 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2DataGridView dgvNguoiDung;
-        private Guna.UI2.WinForms.Guna2GradientButton btnLogginasUser;
+        private Guna.UI2.WinForms.Guna2GradientButton btnLoginasUser;
         private Guna.UI2.WinForms.Guna2GradientButton btnEdit;
     }
 }

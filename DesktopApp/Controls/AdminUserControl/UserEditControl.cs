@@ -40,27 +40,52 @@ namespace DesktopApp.Controls.AdminUserControl
         {
             try
             {
-                // Lấy dữ liệu từ các điều khiển trên giao diện
-                string name = txtNameUser.Text;  // TextBox cho tên hiển thị
-                string email = txtEmailNguoiDung.Text;  // TextBox cho email
-                string phoneNumber = txtSoDienThoai.Text;  // TextBox cho số điện thoại
-               
-                
-                _user.DisplayName = name;
-                _user.Email = email;
-                _user.PhoneNumber = phoneNumber;
-                var updateResult = _userService.EditUser(_user);
+                // Lấy thông tin người dùng từ database
+                var existingUser = await _userManager.FindByIdAsync(_user.Id);
 
-                if (updateResult != null)
+                if (existingUser != null)
                 {
+                    // Cập nhật các thông tin cần thay đổi
+                    existingUser.DisplayName = txtNameUser.Text;
+                    existingUser.Email = txtEmailNguoiDung.Text;
+                    existingUser.PhoneNumber = txtSoDienThoai.Text;
 
-                    // clear user roles
-                    var userRoles = await _userManager.GetRolesAsync(_user);
-                    var removeRoleResult = await _userManager.RemoveFromRolesAsync(_user, userRoles);
-                    // add new role
-                    var addRoleResult = await _userManager.AddToRoleAsync(_user, cbRoleUser.Text);
-                    MessageBox.Show("Cập nhật thông tin người dùng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Cập nhật người dùng
+                    var updateResult = await _userManager.UpdateAsync(existingUser);
 
+                    if (updateResult.Succeeded)
+                    {
+                        // Xóa các role hiện tại
+                        var userRoles = await _userManager.GetRolesAsync(existingUser);
+                        var removeRoleResult = await _userManager.RemoveFromRolesAsync(existingUser, userRoles);
+
+                        if (removeRoleResult.Succeeded)
+                        {
+                            // Thêm role mới
+                            var addRoleResult = await _userManager.AddToRoleAsync(existingUser, cbRoleUser.Text);
+                            if (addRoleResult.Succeeded)
+                            {
+                                MessageBox.Show("Cập nhật thông tin người dùng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Lỗi khi thêm quyền: {string.Join(", ", addRoleResult.Errors.Select(e => e.Description))}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Lỗi khi xóa quyền: {string.Join(", ", removeRoleResult.Errors.Select(e => e.Description))}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Lỗi khi cập nhật người dùng: {string.Join(", ", updateResult.Errors.Select(e => e.Description))}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("User not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 QuayLaiData();

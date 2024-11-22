@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace DesktopApp.Controls.AdminUserControl
 {
@@ -20,6 +21,7 @@ namespace DesktopApp.Controls.AdminUserControl
         private readonly IUserService _userService;
         private readonly IServiceProvider _serviceProvider;
         IEnumerable<User> userList;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<User> _userManager;
 
         private User selectedUser;
@@ -29,6 +31,7 @@ namespace DesktopApp.Controls.AdminUserControl
             _serviceProvider = serviceProvider;
             _userService = _serviceProvider.GetRequiredService<IUserService>();
             userList = _userService.GetUsers();
+            _roleManager = _serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             _userManager = _serviceProvider.GetRequiredService<UserManager<User>>();
         }
 
@@ -44,17 +47,23 @@ namespace DesktopApp.Controls.AdminUserControl
             {
 
                 SetupDataGridView();
-                // Xóa hết dữ liệu cũ trong DataGridView
-                dgvNguoiDung.Rows.Clear();
 
                 // Duyệt qua danh sách người dùng và thêm vào DataGridView
                 foreach (var user in users)
                 {
-                    var roles = await _userManager.GetRolesAsync(user);
-                    var rolesString = string.Join(", ", roles);
-                    // Thêm dữ liệu vào DataGridView
-                    dgvNguoiDung.Rows.Add(user.UserName, user.Email,user.DisplayName , user.PhoneNumber, rolesString);
+                    var userRoles = await _userManager.GetRolesAsync(user);
+                    string role = "";
+                    foreach (var userRole in userRoles)
+                    {
+                        // Thêm dữ liệu vào DataGridView
+                        role += userRole;
+                        dgvNguoiDung.Rows.Add(user.UserName, user.Email, user.DisplayName, user.PhoneNumber, role);
+                        // Thêm UserID vào DataGridView (cột ẩn)
+                        dgvNguoiDung.Rows[dgvNguoiDung.Rows.Count - 1].Cells["UserID"].Value = user.Id;
+                    }
+
                 }
+
             }
             catch (Exception ex)
             {
@@ -72,6 +81,12 @@ namespace DesktopApp.Controls.AdminUserControl
             dgvNguoiDung.Columns.Add("DisplayName", "Display Name");
             dgvNguoiDung.Columns.Add("PhoneNumber", "Phone Number");
             dgvNguoiDung.Columns.Add("Roles", "Roles");
+
+            // Thêm cột UserID nhưng không hiển thị
+            DataGridViewTextBoxColumn userIdColumn = new DataGridViewTextBoxColumn();
+            userIdColumn.Name = "UserID";  // Tên cột dùng sau này
+            userIdColumn.Visible = false;  // Đặt cột này ẩn, không hiển thị trên giao diện
+            dgvNguoiDung.Columns.Add(userIdColumn);
             // Đặt các thuộc tính khác nếu cần
             dgvNguoiDung.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
@@ -96,8 +111,8 @@ namespace DesktopApp.Controls.AdminUserControl
             {
                 // Kiểm tra Parent
                 var parent = this.Parent;
-                
-                var newUserControl = new UserEditControl(selectedUser, _serviceProvider );
+
+                var newUserControl = new UserEditControl(selectedUser, _serviceProvider);
                 parent.Controls.Clear();
                 parent.Controls.Add(newUserControl);
                 newUserControl.Dock = DockStyle.Fill;
@@ -129,12 +144,79 @@ namespace DesktopApp.Controls.AdminUserControl
                 // Lưu thông tin để sử dụng khi chuyển đến UserControl mới
                 selectedUser = new User
                 {
+                    Id = dgvNguoiDung.Rows[e.RowIndex].Cells["UserID"].Value?.ToString(),
                     UserName = userName,
                     Email = email,
                     PhoneNumber = phoneNumber,
                     DisplayName = displayName,
+
                 };
             }
         }
+
+        private async void btnLoginasUser_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Kiểm tra xem người dùng đã chọn chưa
+                if (selectedUser == null)
+                {
+                    MessageBox.Show("Vui lòng chọn một người dùng trước khi đăng nhập.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Tìm người dùng dựa trên ID
+                var user = await _userManager.FindByIdAsync(selectedUser.Id);
+
+                if (user == null)
+                {
+                    // Người dùng không tìm thấy, hiển thị thông báo lỗi
+                    MessageBox.Show("Không tìm thấy người dùng với ID này.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Đặt người dùng đã đăng nhập
+                MainForm.LoggedInUser = user;
+
+                // Hiển thị thông báo thành công
+                MessageBox.Show("Đăng nhập thành công với người dùng này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                var newUserControl = _serviceProvider.GetRequiredService<DashBoard>();
+                // Cập nhật tên người dùng hiển thị trên dashboard
+                newUserControl.btnNameUser.Text = "Hello, " + user.UserName;
+
+                // Kiểm tra vai trò người dùng
+                var userRole = await _userManager.GetRolesAsync(user);
+                if (userRole.Contains("Admin"))
+                {
+                    newUserControl.menuAdminPage.Visible = true;
+                }
+                else
+                {
+                    newUserControl.menuAdminPage.Visible = false;
+                }
+                var mainForm = this.FindForm() as MainForm;
+                if (mainForm != null)
+                {
+                    // Xóa tất cả các điều khiển cũ trong panelMain
+                    mainForm.Panel.Controls.Clear();
+                    
+                    // Thêm DashBoard mới vào panelMain
+                    mainForm.Panel.Controls.Add(newUserControl);
+                    newUserControl.Dock = DockStyle.Fill;
+                }
+                else
+                {
+                    MessageBox.Show("Không thể tìm thấy MainForm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ nếu có lỗi xảy ra
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        
     }
 }
