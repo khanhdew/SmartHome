@@ -11,7 +11,6 @@ namespace DesktopApp.Controls.AdminUserControl
         private readonly IUserService _userService;
         private readonly IServiceProvider _serviceProvider;
         IEnumerable<User> userList;
-        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<User> _userManager;
 
         private User selectedUser;
@@ -21,7 +20,6 @@ namespace DesktopApp.Controls.AdminUserControl
             _serviceProvider = serviceProvider;
             _userService = _serviceProvider.GetRequiredService<IUserService>();
             userList = _userService.GetUsers();
-            _roleManager = _serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             _userManager = _serviceProvider.GetRequiredService<UserManager<User>>();
         }
 
@@ -35,7 +33,6 @@ namespace DesktopApp.Controls.AdminUserControl
         {
             try
             {
-
                 SetupDataGridView();
 
                 // Duyệt qua danh sách người dùng và thêm vào DataGridView
@@ -50,8 +47,7 @@ namespace DesktopApp.Controls.AdminUserControl
                         
                     }
                     dgvNguoiDung.Rows.Add(user.UserName, user.Email, user.DisplayName, user.PhoneNumber, role);
-                    // Thêm UserID vào DataGridView (cột ẩn)
-                    dgvNguoiDung.Rows[dgvNguoiDung.Rows.Count - 1].Cells["UserID"].Value = user.Id;
+                
                 }
 
             }
@@ -71,12 +67,6 @@ namespace DesktopApp.Controls.AdminUserControl
             dgvNguoiDung.Columns.Add("DisplayName", "Display Name");
             dgvNguoiDung.Columns.Add("PhoneNumber", "Phone Number");
             dgvNguoiDung.Columns.Add("Roles", "Roles");
-
-            // Thêm cột UserID nhưng không hiển thị
-            DataGridViewTextBoxColumn userIdColumn = new DataGridViewTextBoxColumn();
-            userIdColumn.Name = "UserID";  // Tên cột dùng sau này
-            userIdColumn.Visible = false;  // Đặt cột này ẩn, không hiển thị trên giao diện
-            dgvNguoiDung.Columns.Add(userIdColumn);
             // Đặt các thuộc tính khác nếu cần
             dgvNguoiDung.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }

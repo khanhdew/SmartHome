@@ -70,7 +70,7 @@ namespace DesktopApp.Controls.AdminUserControl
                 {
                     MessageBox.Show($"Lỗi khi cập nhật người dùng: {string.Join(", ", updateResult.Errors.Select(e => e.Description))}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                //QuayLaiData();
+                QuayLaiData();
             }
             
                
