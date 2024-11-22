@@ -47,11 +47,11 @@ namespace DesktopApp.Controls.AdminUserControl
                     {
                         // Thêm dữ liệu vào DataGridView
                         role += userRole;
-                        dgvNguoiDung.Rows.Add(user.UserName, user.Email, user.DisplayName, user.PhoneNumber, role);
-                        // Thêm UserID vào DataGridView (cột ẩn)
-                        dgvNguoiDung.Rows[dgvNguoiDung.Rows.Count - 1].Cells["UserID"].Value = user.Id;
+                        
                     }
-
+                    dgvNguoiDung.Rows.Add(user.UserName, user.Email, user.DisplayName, user.PhoneNumber, role);
+                    // Thêm UserID vào DataGridView (cột ẩn)
+                    dgvNguoiDung.Rows[dgvNguoiDung.Rows.Count - 1].Cells["UserID"].Value = user.Id;
                 }
 
             }
@@ -114,7 +114,7 @@ namespace DesktopApp.Controls.AdminUserControl
             }
 
         }
-        private void dgvNguoiDung_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvNguoiDung_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Kiểm tra xem người dùng có chọn một dòng hợp lệ không
             if (e.RowIndex >= 0)
@@ -132,15 +132,7 @@ namespace DesktopApp.Controls.AdminUserControl
                 var displayName = displayNameCell?.Value?.ToString();
 
                 // Lưu thông tin để sử dụng khi chuyển đến UserControl mới
-                selectedUser = new User
-                {
-                    Id = dgvNguoiDung.Rows[e.RowIndex].Cells["UserID"].Value?.ToString(),
-                    UserName = userName,
-                    Email = email,
-                    PhoneNumber = phoneNumber,
-                    DisplayName = displayName,
-
-                };
+                selectedUser = await _userManager.FindByNameAsync(userName);
             }
         }
 

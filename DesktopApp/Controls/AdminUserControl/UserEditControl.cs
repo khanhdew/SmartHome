@@ -39,50 +39,46 @@ namespace DesktopApp.Controls.AdminUserControl
                 _user.DisplayName = name;
                 _user.Email = email;
                 _user.PhoneNumber = phoneNumber;
-                var updateResult = _userService.EditUser(_user);
+                var updateResult = await _userManager.UpdateAsync(_user);
 
-                    if (updateResult.Succeeded)
+                if (updateResult.Succeeded)
+                {
+                    // Xóa các role hiện tại
+                    var userRoles = await _userManager.GetRolesAsync(_user);
+                    var removeRoleResult = await _userManager.RemoveFromRolesAsync(_user, userRoles);
+
+                    if (removeRoleResult.Succeeded)
                     {
-                        // Xóa các role hiện tại
-                        var userRoles = await _userManager.GetRolesAsync(existingUser);
-                        var removeRoleResult = await _userManager.RemoveFromRolesAsync(existingUser, userRoles);
-
-                        if (removeRoleResult.Succeeded)
+                        // Thêm role mới
+                        var addRoleResult = await _userManager.AddToRoleAsync(_user, cbRoleUser.Text);
+                        if (addRoleResult.Succeeded)
                         {
-                            // Thêm role mới
-                            var addRoleResult = await _userManager.AddToRoleAsync(existingUser, cbRoleUser.Text);
-                            if (addRoleResult.Succeeded)
-                            {
-                                MessageBox.Show("Cập nhật thông tin người dùng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show($"Lỗi khi thêm quyền: {string.Join(", ", addRoleResult.Errors.Select(e => e.Description))}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                            }
+                            MessageBox.Show("Cập nhật thông tin người dùng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            MessageBox.Show($"Lỗi khi xóa quyền: {string.Join(", ", removeRoleResult.Errors.Select(e => e.Description))}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show($"Lỗi khi thêm quyền: {string.Join(", ", addRoleResult.Errors.Select(e => e.Description))}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                         }
                     }
                     else
                     {
-                        MessageBox.Show($"Lỗi khi cập nhật người dùng: {string.Join(", ", updateResult.Errors.Select(e => e.Description))}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Lỗi khi xóa quyền: {string.Join(", ", removeRoleResult.Errors.Select(e => e.Description))}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("User not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Lỗi khi cập nhật người dùng: {string.Join(", ", updateResult.Errors.Select(e => e.Description))}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-                QuayLaiData();
-
+                //QuayLaiData();
             }
+            
+               
             catch (Exception ex)
             {
 
-                MessageBox.Show($"An error occurred: {ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -96,6 +92,7 @@ namespace DesktopApp.Controls.AdminUserControl
                 txtSoDienThoai.Text = _user.PhoneNumber;
                 var roles = _roleManager.Roles.ToList();
                 cbRoleUser.Items.AddRange(roles.Select(r => r.Name).ToArray());
+                cbRoleUser.SelectedItem = roles[0].Name;
             }
             else
             {
