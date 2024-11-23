@@ -91,7 +91,7 @@ namespace DesktopApp
                     nguoidungControl.SearchUser(searchTerm);
                     break;
                 case "NhaControl":
-                    var nhaControl = (NhaControl)PanelMainAdmin.Controls[0];
+                    var nhaControl = (NhaControl)userControl;
                     nhaControl.SearchHouses(searchTerm);
                     break;
                 case "ThietBiControl":
@@ -116,8 +116,9 @@ namespace DesktopApp
         }
         private void btnDropdownMenuAdmin_Click(object sender, EventArgs e)
         {
-            showDropdownMenu();
             Panel4DropdownMenu.BringToFront();
+            showDropdownMenu();
+           
         }
 
     }

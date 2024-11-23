@@ -355,8 +355,7 @@
             btnLogo.Size = new Size(210, 66);
             btnLogo.TabIndex = 0;
             btnLogo.Text = "Smart Home";
-            btnLogo.TextAlign = HorizontalAlignment.Right;
-            btnLogo.TextOffset = new Point(5, 0);
+            btnLogo.TextOffset = new Point(25, 0);
             // 
             // Panel4DropdownMenu
             // 
@@ -412,6 +411,7 @@
             btnDangxuat.Size = new Size(115, 58);
             btnDangxuat.TabIndex = 1;
             btnDangxuat.Text = "Đăng xuất";
+            btnDangxuat.Click += btnDangxuat_Click_1;
             // 
             // btnTaikhoan
             // 

@@ -167,10 +167,10 @@ namespace DesktopApp.Controls.AdminUserControl
                 {
                     newUserControl.menuAdminPage.Visible = false;
                 }
+                // Tìm MainForm
                 var mainForm = this.FindForm() as MainForm;
                 if (mainForm != null)
                 {
-                    // Xóa tất cả các điều khiển cũ trong panelMain
                     mainForm.Panel.Controls.Clear();
                     
                     // Thêm DashBoard mới vào panelMain

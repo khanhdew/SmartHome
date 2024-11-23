@@ -36,7 +36,6 @@ namespace DesktopApp
                     menuButton.Padding = new Padding(0);
                 }
 
-
             }
             else
             {
@@ -138,33 +137,41 @@ namespace DesktopApp
         }
         private void DashBoard_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         private void showDropdownMenu()
         {
 
-            if (Panel4DropdownMenu.Visible == false)
+            if (Panel4DropdownMenu.Visible == true)
             {
-                Panel4DropdownMenu.Visible = true;
+                Panel4DropdownMenu.Visible = false;
             }
             else
             {
-                Panel4DropdownMenu.Visible = false;
+                Panel4DropdownMenu.Visible = true;
             }
         }
 
         private void btndropdownMenu_Click(object sender, EventArgs e)
         {
+          
             showDropdownMenu();
             Panel4DropdownMenu.BringToFront();
         }
 
-        private void btnDangxuat_Click(object sender, EventArgs e)
+
+        private void btnDangxuat_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show("Đăng xuất thành công");
-            Panel4DropdownMenu.Visible = false;
-        }
+          
+            var parentForm = this.Parent;
+           parentForm.Controls.Clear();
+            Login login = new Login(_serviceProvider);
+            parentForm.Controls.Add(login);
+            login.Dock = DockStyle.Fill;
+            showDropdownMenu();
 
+        }
     }
 }
