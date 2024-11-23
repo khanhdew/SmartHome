@@ -1,6 +1,7 @@
 ﻿using DAO.BaseModels;
 using DAO.Models.Devices;
 using DesktopApp.Utils;
+using Guna.UI2.WinForms;
 using Microsoft.Extensions.DependencyInjection;
 using Services.Services;
 using System.Data;
@@ -90,27 +91,29 @@ namespace DesktopApp.Controls.Devices
             }
         }
 
-        private Control CreateDeviceControl(Device device)
+        private Control? CreateDeviceControl(Device device)
         {
-            Control deviceControl;
-
             switch (device)
             {
                 case Light light:
-                    deviceControl = new DeviceViewControlLight(light, _serviceProvider);
-                    break;
+                    var lightControl = new DeviceViewControlLight(light, _serviceProvider);
+                    lightControl.btnSua.Click += (sender, e) => ShowDeviceEditForm(device);
+                    ConfigureDeviceControl(lightControl, device);
+                    return lightControl;
                 case RgbLight rgbLight:
-                    deviceControl = new DeviceViewControlRgb(rgbLight, _serviceProvider);
-                    break;
+                    var rgbLightControl = new DeviceViewControlRgb(rgbLight, _serviceProvider);
+                    rgbLightControl.btnSua.Click += (sender, e) => ShowDeviceEditForm(device);
+                    ConfigureDeviceControl(rgbLightControl, device);
+                    return rgbLightControl;
                 case Fan fan:
-                    deviceControl = new DeviceViewControlFan(fan, _serviceProvider);
-                    break;
+                    var fanControl = new DeviceViewControlFan(fan, _serviceProvider);
+                    fanControl.btnSua.Click += (sender, e) => ShowDeviceEditForm(device);
+                    ConfigureDeviceControl(fanControl, device);
+                    return fanControl;
                 default:
                     return null;
             }
-
-            ConfigureDeviceControl(deviceControl, device);
-            return deviceControl;
+            
         }
 
         private void ConfigureDeviceControl(Control control, Device device)
@@ -121,11 +124,6 @@ namespace DesktopApp.Controls.Devices
             }
 
             control.Margin = new Padding(10);
-
-            if (control.Controls["btnSua"] is Button editButton)
-            {
-                editButton.Click += (sender, e) => ShowDeviceEditForm(device);
-            }
         }
 
         private void ShowDeviceEditForm(Device device)
