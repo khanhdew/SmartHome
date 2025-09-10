@@ -39,10 +39,10 @@ public class DbInitializer
             User adminUser = new User
             {
                 Id = "ID1",
-                UserName = "admin@rangdong.com.vn",
-                NormalizedUserName = "ADMIN@RANGDONG.COM.VN",
-                Email = "admin@rangdong.com.vn",
-                NormalizedEmail = "ADMIN@RANGDONG.COM.VN",
+                UserName = "admin@admin.com",
+                NormalizedUserName = "ADMIN@ADMIN.COM",
+                Email = "admin@admin.com",
+                NormalizedEmail = "ADMIN@ADMIN.COM",
                 EmailConfirmed = true,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 ConcurrencyStamp = Guid.NewGuid().ToString(),
