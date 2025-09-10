@@ -1,6 +1,6 @@
 ﻿using DAO.BaseModels;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAO.Context
 {
@@ -29,7 +29,7 @@ namespace DAO.Context
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Name=ConnectionStrings:SmartHomeContextConnection");
+                optionsBuilder.UseSqlServer("Name=ConnectionStrings:SmartHomeContext");
             }
         }
 
@@ -86,7 +86,7 @@ namespace DAO.Context
                     .HasForeignKey(d => d.UserID)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK__HouseMemb__UserI__4D94879B");
-                
+
             }));
 
             modelBuilder.Entity<Room>(entity =>
@@ -121,12 +121,12 @@ namespace DAO.Context
             foreach (var item in modelBuilder.Model.GetEntityTypes())
             {
                 var tableName = item.GetTableName();
-                if(tableName != null && tableName.StartsWith("AspNet"))
+                if (tableName != null && tableName.StartsWith("AspNet"))
                 {
                     item.SetTableName(tableName.Substring(6));
                 }
             }
-            
+
             OnModelCreatingPartial(modelBuilder);
         }
 

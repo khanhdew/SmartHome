@@ -1,6 +1,5 @@
 using DAO.BaseModels;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -40,22 +39,22 @@ public class DbInitializer
             User adminUser = new User
             {
                 Id = "ID1",
-                UserName = "admin@rangdong.com.vn",
-                NormalizedUserName = "ADMIN@RANGDONG.COM.VN",
-                Email = "admin@rangdong.com.vn",
-                NormalizedEmail = "ADMIN@RANGDONG.COM.VN",
+                UserName = "admin@admin.com",
+                NormalizedUserName = "ADMIN@ADMIN.COM",
+                Email = "admin@admin.com",
+                NormalizedEmail = "ADMIN@ADMIN.COM",
                 EmailConfirmed = true,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 ConcurrencyStamp = Guid.NewGuid().ToString(),
                 PhoneNumber = "0123456789",
                 PhoneNumberConfirmed = true
             };
-            
+
             PasswordHasher<User> passwordHasher = new PasswordHasher<User>();
             adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, "admin");
             context.Users.Add(adminUser);
             context.SaveChanges();
-            
+
             // Add user role with houses
             User houseOwner = new User
             {
@@ -73,7 +72,7 @@ public class DbInitializer
             houseOwner.PasswordHash = passwordHasher.HashPassword(houseOwner, "user");
             context.Users.Add(houseOwner);
             context.SaveChanges();
-            
+
             // create guest user
             User gUser = new User
             {
@@ -88,48 +87,48 @@ public class DbInitializer
                 PhoneNumber = "0987654321",
                 PhoneNumberConfirmed = true
             };
-            
+
             gUser.PasswordHash = passwordHasher.HashPassword(gUser, "guest");
             context.Users.Add(gUser);
             context.SaveChanges();
-            
+
             // add houses for house owner
             var house = new House
             {
                 Name = "House 1",
                 Location = "123 Nguyen Luong Bang"
             };
-            
+
             context.Houses.Add(house);
             context.SaveChanges();
-            
+
             var houseOwnerHouse = new HouseMember()
             {
                 HouseID = house.ID,
                 UserID = houseOwner.Id
             };
-            
+
             var houseOwnerHouse2 = new HouseMember()
             {
                 HouseID = house.ID,
                 UserID = gUser.Id
             };
-            
+
             context.HouseMembers.AddRange(houseOwnerHouse, houseOwnerHouse2);
             context.SaveChanges();
-            
+
             // add rooms for the house
             var room = new Room
             {
                 Name = "Room 1",
                 HouseID = house.ID
             };
-            
+
             context.Rooms.Add(room);
             context.SaveChanges();
-            
+
             // add devices for the room
-            
+
             var device = new Device
             {
                 Name = "Device 1",
@@ -137,11 +136,11 @@ public class DbInitializer
                 Type = "Light",
                 DeviceToken = "token"
             };
-            
+
             context.Devices.Add(device);
             context.SaveChanges();
-            
-            
+
+
             var userRole = new IdentityUserRole<string>
             {
                 RoleId = "ID1",
@@ -162,5 +161,5 @@ public class DbInitializer
             context.SaveChanges();
         }
     }
-    
+
 }

@@ -23,6 +23,6 @@ public class RgbLight : Device, IRgbLight
     {
         // return an object with method name and parameters
         var color = new { r, g, b };
-        return new { method = "setColor", parameters = new { color } };
+        return new { method = "setRgbColor", @params = color };
     }
 }

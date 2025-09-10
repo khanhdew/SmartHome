@@ -2,16 +2,6 @@
 using DAO.Exceptions.UserExceptions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using Services.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DesktopApp
 {
@@ -28,26 +18,20 @@ namespace DesktopApp
 
             InitializeComponent();
             AutoScaleMode = AutoScaleMode.None;
-          
-        }
 
-        private void Login_Load(object sender, EventArgs e)
-        {
-            btnLogin.Click += async (sender, e) => await btnLogin_Click(sender, e);
-            Click += async (sender, e) => await btnLogin_Click(sender, e);
         }
 
         private void lblSignup_Click(object sender, EventArgs e)
         {
-            var parentForm = this.Parent ;
+            var parentForm = this.Parent;
             var newUserControl = _serviceProvider.GetRequiredService<SignUp>();
             parentForm.Controls.Clear();
             parentForm.Controls.Add(newUserControl);
             newUserControl.Dock = DockStyle.Fill;
-          
+
         }
 
-        private async Task btnLogin_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
             var parentForm = this.Parent;
             var username = txtUsername.Text;
@@ -55,8 +39,8 @@ namespace DesktopApp
             var persistent = checkLogin.Checked;
             try
             {
-                var user = await  _userManager.FindByNameAsync(username);
-                if (user!=null)
+                var user = await _userManager.FindByNameAsync(username);
+                if (user != null)
                 {
                     var result = await _userManager.CheckPasswordAsync(user, password);
                     if (result)
@@ -73,7 +57,8 @@ namespace DesktopApp
                         parentForm.Controls.Clear();
                         parentForm.Controls.Add(newUserControl);
                         newUserControl.Dock = DockStyle.Fill;
-                    }else
+                    }
+                    else
                     {
                         MessageBox.Show("Đăng nhập không thành công", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }

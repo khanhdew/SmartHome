@@ -1,15 +1,7 @@
 ﻿using DAO.Models.Devices;
 using Microsoft.Extensions.DependencyInjection;
+using Services.Services;
 using Services.Thingsboard_Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DesktopApp.Controls.Devices
 {
@@ -18,6 +10,7 @@ namespace DesktopApp.Controls.Devices
         private readonly Light light;
         private bool isOn = false;
         private readonly IThingsboardService thingsboardService;
+        private readonly IDeviceService deviceService;
         private readonly IServiceProvider serviceProvider;
         public DeviceViewControlLight(Light light, IServiceProvider serviceProvider)
         {
@@ -25,6 +18,7 @@ namespace DesktopApp.Controls.Devices
             this.light = light;
             this.serviceProvider = serviceProvider;
             thingsboardService = serviceProvider.GetRequiredService<IThingsboardService>();
+            deviceService = serviceProvider.GetRequiredService<IDeviceService>();
         }
 
         private void powerButton_Click(object sender, EventArgs e)
@@ -36,7 +30,7 @@ namespace DesktopApp.Controls.Devices
             }
             catch (UnauthorizedAccessException ex)
             {
-                MessageBox.Show("Unauthorized access","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Unauthorized access", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (ArgumentException ex)
             {
@@ -60,7 +54,42 @@ namespace DesktopApp.Controls.Devices
         {
             try
             {
-                thingsboardService.ControlDevice(light.ID, light.SetDim((int)(TrackBarLight.Value * 25.5)));
+                thingsboardService.ControlDevice(light.ID, light.SetDim(TrackBarLight.Value));
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MessageBox.Show("Unauthorized access", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (TimeoutException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var confirmResult = MessageBox.Show("Bạn có chắc chắn muốn xóa thiết bị này?",
+                    "Xác nhận xóa",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmResult != DialogResult.Yes)
+                    return;
+                thingsboardService.DeleteDevice(light.ID);
+                Parent.Controls.Remove(this);
+                deviceService.DeleteDevice(light.ID);
             }
             catch (UnauthorizedAccessException ex)
             {

@@ -1,7 +1,4 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
-
-namespace Configuration
+﻿namespace Configuration
 {
     public class SystemConfiguration
     {
@@ -11,6 +8,6 @@ namespace Configuration
         public SystemConfiguration()
         {
         }
-        
+
     }
 }

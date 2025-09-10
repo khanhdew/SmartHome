@@ -62,7 +62,7 @@
             guna2ShadowPanel1.Location = new Point(0, 0);
             guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             guna2ShadowPanel1.Radius = 10;
-            guna2ShadowPanel1.ShadowColor = Color.Gray;
+            guna2ShadowPanel1.ShadowColor = Color.Silver;
             guna2ShadowPanel1.Size = new Size(219, 225);
             guna2ShadowPanel1.TabIndex = 0;
             // 
@@ -153,6 +153,7 @@
             btnXoa.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnXoa.Size = new Size(40, 28);
             btnXoa.TabIndex = 11;
+            btnXoa.Click += btnXoa_Click;
             // 
             // lblTenThietBi
             // 

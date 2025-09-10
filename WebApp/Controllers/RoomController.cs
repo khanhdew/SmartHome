@@ -42,10 +42,10 @@ public class RoomController : Controller
                 housesWithRooms[house] = rooms;
             }
         }
-        
+
         return View(housesWithRooms);
     }
-    
+
     public IActionResult LoadMoreRoom(int? houseId, int skip, int take)
     {
         var housesWithRooms = new Dictionary<House, IEnumerable<Room>>();
@@ -72,10 +72,10 @@ public class RoomController : Controller
         }
         return PartialView("RoomSection", housesWithRooms);
     }
-    
+
     public IActionResult Search(int? houseId, string keyword)
     {
-        
+
         var houses = _houseService.GetHousesByUserId(_userService.GetCurrentUserId());
         var roomsWithHouse = new Dictionary<House, IEnumerable<Room>>();
         foreach (var house in houses)
@@ -85,10 +85,10 @@ public class RoomController : Controller
                 .ToList();
             roomsWithHouse[house] = rooms;
         }
-        
+
         return PartialView("RoomSection", roomsWithHouse);
     }
-    
+
     [HttpPost]
     public IActionResult Create(int houseId, string name, string detail)
     {
@@ -97,7 +97,7 @@ public class RoomController : Controller
             var newRoom = _houseService.AddRoomToHouse(houseId, new Room { Name = name, Detail = detail });
             return RedirectToAction("Index", new { houseId = houseId });
         }
-        
+
         return View("Index");
     }
     [Authorize]
@@ -112,7 +112,7 @@ public class RoomController : Controller
         }
         return View("Edit", _roomService.GetRoomById(roomId));
     }
-    
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult Edit(Room room)
@@ -124,7 +124,7 @@ public class RoomController : Controller
         }
         return View("Edit", room);
     }
-    
+
     public IActionResult Delete(int roomId)
     {
         // check if user is owner of the house
@@ -136,24 +136,24 @@ public class RoomController : Controller
         }
         return View("Delete", _roomService.GetRoomById(roomId));
     }
-    
+
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public IActionResult DeleteRoom(int roomId)
     {
-        
+
         _roomService.DeleteRoom(roomId);
         return RedirectToAction("Index");
     }
 
-    
+
     public IActionResult RemoveDeviceFromRoom(int roomId, int deviceId)
     {
         _roomService.RemoveDeviceFromRoom(roomId, deviceId);
         return RedirectToAction("Edit", new { roomId });
     }
 
-    
+
     public IActionResult AddDeviceToRoom(int roomId, int deviceId)
     {
         var device = _deviceService.GetDeviceById(deviceId);

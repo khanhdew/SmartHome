@@ -1,4 +1,3 @@
-using System.Security.Claims;
 using DAO.BaseModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -6,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Services.Services;
+using System.Security.Claims;
 using WebApp.Models;
 
 namespace WebApp.Controllers
@@ -70,7 +70,7 @@ namespace WebApp.Controllers
                     };
                     // Add role claims
                     // claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
-                    
+
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     var authProperties = new AuthenticationProperties
                     {
@@ -223,7 +223,7 @@ namespace WebApp.Controllers
             ModelState.AddModelError("", "Failed to update user information.");
             return View("Index", user);
         }
-        
+
         [HttpGet("forgotpassword")]
         [AllowAnonymous]
         public IActionResult ForgotPassword()

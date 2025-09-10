@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAO.BaseModels;
+﻿using DAO.BaseModels;
 using DAO.Context;
 using DAO.Models;
-using DAO.Models.Devices;
 using DAO.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,12 +9,12 @@ namespace DAO.Reposistories_Impl
     public class DeviceRepository : IDeviceRepository
     {
         private readonly SmartHomeContext _context;
-        
+
         public DeviceRepository(SmartHomeContext context)
         {
             _context = context;
         }
-        
+
         public Device AddDevice(Device device)
         {
             try
@@ -81,7 +75,7 @@ namespace DAO.Reposistories_Impl
                 throw;
             }
         }
-        
+
         public Device GetDeviceById(int deviceId)
         {
             try
@@ -103,7 +97,7 @@ namespace DAO.Reposistories_Impl
 
         public IEnumerable<Device> GetDevicesByUserId(string userId)
         {
-            
+
             try
             {
                 var user = _context.Users.FirstOrDefault(u => u.Id == userId);

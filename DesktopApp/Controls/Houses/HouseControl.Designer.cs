@@ -46,6 +46,7 @@
             fLayoutPanel.Dock = DockStyle.Fill;
             fLayoutPanel.Location = new Point(0, 0);
             fLayoutPanel.Name = "fLayoutPanel";
+            fLayoutPanel.Padding = new Padding(20);
             fLayoutPanel.Size = new Size(1218, 500);
             fLayoutPanel.TabIndex = 1;
             // 

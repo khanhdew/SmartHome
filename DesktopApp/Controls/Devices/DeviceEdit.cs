@@ -1,15 +1,7 @@
 ﻿using DAO.BaseModels;
 using Microsoft.Extensions.DependencyInjection;
 using Services.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DesktopApp.Controls.Devices
 {
@@ -53,7 +45,8 @@ namespace DesktopApp.Controls.Devices
 
         private void LoadTelemetry()
         {
-            var telemetry = _deviceService.GetTelemetryDataByDeviceId(device.ID).Select(t => new {
+            var telemetry = _deviceService.GetTelemetryDataByDeviceId(device.ID).Select(t => new
+            {
                 Body = t.Body,
                 TimeStamp = t.Timestamp
             });

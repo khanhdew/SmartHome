@@ -4,7 +4,7 @@ using Services.Services;
 
 namespace Services.Services_Impl;
 
-public class HouseService: IHouseService
+public class HouseService : IHouseService
 {
     private readonly IHouseRepository _houseRepository;
     public HouseService(IHouseRepository houseRepository)
@@ -29,7 +29,7 @@ public class HouseService: IHouseService
         // {
         //     throw new HouseNotFoundException("House not found");
         // }
-        
+
         houseToUpdate = house;
         _houseRepository.UpdateHouse(houseToUpdate);
         return houseToUpdate;
@@ -94,7 +94,7 @@ public class HouseService: IHouseService
     {
         return _houseRepository.GetHouseMembers(houseId);
     }
-    
+
     public bool IsHouseOwner(string userId, int houseId)
     {
         return _houseRepository.IsHouseOwner(userId, houseId);
@@ -102,7 +102,7 @@ public class HouseService: IHouseService
 
     public object GenerateInvitationCode(int houseId)
     {
-        return GetHouseOwner(houseId).Id+houseId.ToString();
+        return GetHouseOwner(houseId).Id + houseId.ToString();
     }
 
 
@@ -112,7 +112,7 @@ public class HouseService: IHouseService
         var houseId = int.Parse(invitationCode.Substring(36));
         if (houseId == 0)
             throw new Exception("Invalid invitation code");
-        if( ownerId != GetHouseOwner(houseId).Id)
+        if (ownerId != GetHouseOwner(houseId).Id)
             throw new Exception("Invalid invitation code");
         return _houseRepository.AddHouseMember(userId, houseId, role);
 

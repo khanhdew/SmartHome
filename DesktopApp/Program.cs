@@ -2,14 +2,14 @@ using DAO.BaseModels;
 using DAO.Context;
 using DAO.Reposistories_Impl;
 using DAO.Repositories;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
-using Services.Services_Impl;
-using Services.Services;
-using Services.Thingsboard_Services;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Http;
 using DesktopApp.Utils;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Services.Services;
+using Services.Services_Impl;
+using Services.Thingsboard_Services;
 
 namespace DesktopApp;
 
@@ -24,19 +24,19 @@ static class Program
     {
         // To customize application configuration such as set high DPI settings or default font,
         // see https://aka.ms/applicationconfiguration.
-        
+
         var serviceCollection = new ServiceCollection();
         ConfigureServices(serviceCollection);
         ServiceProvider = serviceCollection.BuildServiceProvider();
-        
+
         ApplicationConfiguration.Initialize();
         var mainForm = ServiceProvider.GetRequiredService<MainForm>();
         Application.Run(mainForm);
     }
-    
+
     static void ConfigureServices(IServiceCollection services)
     {
-        var connectionString = "Server=localhost;Database=SmartHome;Trusted_Connection=True;User Id=sa;Password=P@ssw0rd";
+        var connectionString = "Server=210.211.96.135;Database=SmartHome;User Id=sa;Password=P@ssw0rd;MultipleActiveResultSets=True";
         services.AddLogging();
         services.AddSingleton<IHttpContextAccessor, CustomHttpContextAccessor>();
 
@@ -90,11 +90,13 @@ static class Program
         services.AddSingleton<IThingsboardService, ThingsboardService>();
         services.AddSingleton<SignInManager<User>>();
         services.AddSingleton<UserManager<User>>();
+        services.AddSingleton<RoleManager<IdentityRole>>();
         //add views
         services.AddScoped<Login>();
         services.AddScoped<SignUp>();
         services.AddScoped<MainForm>();
         services.AddScoped<DashBoard>();
         //add service 
+
     }
 }

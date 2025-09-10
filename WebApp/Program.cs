@@ -3,11 +3,14 @@ using DAO.Reposistories_Impl;
 using DAO.Repositories;
 using DAO.Context;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
 using Services.Services_Impl;
 using Services.Services;
 using Microsoft.EntityFrameworkCore;
 using Services.Thingsboard_Services;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("SmartHomeContextConnection") ?? throw new InvalidOperationException("Connection string 'SmartHomeContextConnection' not found.");
@@ -44,11 +47,47 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.SignIn.RequireConfirmedPhoneNumber = false;
 });
 
-builder.Services.ConfigureApplicationCookie(options =>
+// builder.Services.AddAuthentication().AddGoogle(
+//     options =>
+//     {
+//         options.ClientId = builder.Configuration["Google:ClientId"];
+//         options.ClientSecret = builder.Configuration["Google:ClientSecret"];
+//         options.CallbackPath = "/signin-google";
+//     });
+
+builder.Services.AddAuthentication().AddGoogle(
+    options =>
+    {
+        options.ClientId = "1052818535998-29qp83oac8fok6u25dmo3eteeirap0al.apps.googleusercontent.com";
+        options.ClientSecret = "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";
+        options.CallbackPath = "/signin-google";
+    });
+
+// Configure Authentication with both Cookie and JWT
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+})
+.AddCookie(options =>
 {
     options.LoginPath = "/Login";
     options.LogoutPath = "/Logout";
     options.AccessDeniedPath = "/AccessDenied";
+})
+.AddJwtBearer("Bearer", options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+    };
 });
 
 // Add other services
@@ -72,6 +111,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddDistributedMemoryCache();
 
+// Add API Controllers
+builder.Services.AddControllers();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline
@@ -93,5 +135,8 @@ app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=House}/{action=Index}");
+
+// Map API routes
+app.MapControllers();
 
 app.Run();

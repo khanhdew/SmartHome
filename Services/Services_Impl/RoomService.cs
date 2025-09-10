@@ -1,5 +1,4 @@
 ﻿using DAO.BaseModels;
-using DAO.Models.Devices;
 using DAO.Repositories;
 using Services.Services;
 

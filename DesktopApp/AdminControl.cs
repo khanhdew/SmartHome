@@ -1,62 +1,34 @@
 ﻿using DesktopApp.Controls.AdminUserControl;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DesktopApp
 {
     public partial class AdminControl : UserControl
     {
         private List<Control> trangThaiControls;
-        public AdminControl()
+
+        private DashBoard _dashBoard;
+        private readonly IServiceProvider _serviceProvider;
+
+        public AdminControl(IServiceProvider serviceProvider, DashBoard dashBoard)
         {
             InitializeComponent();
-            ColapseMenu();
+            _dashBoard = dashBoard;
+            lblNameUser.Text = MainForm.LoggedInUser.UserName;
+            _serviceProvider = serviceProvider;
+
             SaveControls();
+
+
         }
 
-        private void btnMenu_Click(object sender, EventArgs e)
-        {
-            ColapseMenu();
-        }
-
-        private void ColapseMenu()
-        {
-            if (PanelSB.Width >= 210)
-            {
-                PanelSB.Width = 60;
-                
-                cbQuanLy.Visible = false;
-                cbThongKe.Visible = false;
-                
-                
-            }
-            else
-            {
-                PanelSB.Width = 215;
-                PanelQuanLy.Dock = DockStyle.Top;
-                PanelThongKe.Dock = DockStyle.Top;
-                btniconQL.Dock = DockStyle.Top;
-                btniconTK.Dock = DockStyle.Top;
-                cbQuanLy.Visible = true;
-                cbThongKe.Visible = true;
-
-            }
-        }
         // Hiển thị UserControl tương ứng 
-        private void GoiUserControl(Panel p,UserControl userControl)
+        private void GoiUserControl(UserControl userControl)
         {
-            p.Controls.Clear();
+            PanelMainAdmin.Controls.Clear();
             userControl.Dock = DockStyle.Fill;
-            p.Controls.Add(userControl);
+            PanelMainAdmin.Controls.Add(userControl);
         }
-       
+
         private void SaveControls()
         {
             trangThaiControls = new List<Control>();
@@ -78,16 +50,76 @@ namespace DesktopApp
             else
             if (cbQuanLy.SelectedItem.ToString() == "Người dùng")
             {
-                GoiUserControl(PanelMainAdmin, new NguoiDungControl());
+
+                GoiUserControl(new NguoiDungControl(_serviceProvider));
+
             }
             else if (cbQuanLy.SelectedItem.ToString() == "Nhà")
             {
-               GoiUserControl(PanelMainAdmin, new NhaControl());
+                GoiUserControl(new NhaControl(_serviceProvider));
             }
-            else if (cbQuanLy.SelectedItem.ToString()=="Thiết bị") 
+            else if (cbQuanLy.SelectedItem.ToString() == "Thiết bị")
             {
-               GoiUserControl(PanelMainAdmin, new ThietBiControl());
+                GoiUserControl(new ThietBiControl(_serviceProvider));
             }
         }
+
+        private void btnAdminPro_Click(object sender, EventArgs e)
+        {
+            var parentForm = this.Parent;
+            if (parentForm == null)
+            {
+                MessageBox.Show("Parent form is null. Cannot navigate to DashBoard.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            parentForm.Controls.Clear();
+            parentForm.Controls.Add(_dashBoard);
+            _dashBoard.Dock = DockStyle.Fill;
+        }
+
+        private void btnSearchAdmin_TextChanged(object sender, EventArgs e)
+        {
+            // Lấy giá trị từ ô tìm kiếm
+            string searchTerm = btnSearchAdmin.Text.Trim().ToLower();
+
+            // Lấy user control hiện tại
+            var userControl = PanelMainAdmin.Controls[0];
+            switch (userControl.GetType().Name)
+            {
+                case "NguoiDungControl":
+                    var nguoidungControl = (NguoiDungControl)userControl;
+                    nguoidungControl.SearchUser(searchTerm);
+                    break;
+                case "NhaControl":
+                    var nhaControl = (NhaControl)userControl;
+                    nhaControl.SearchHouses(searchTerm);
+                    break;
+                case "ThietBiControl":
+                    var thietbiControl = (ThietBiControl)userControl;
+                    thietbiControl.SearchThietBi(searchTerm);
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void showDropdownMenu()
+        {
+
+            if (Panel4DropdownMenu.Visible == false)
+            {
+                Panel4DropdownMenu.Visible = true;
+            }
+            else
+            {
+                Panel4DropdownMenu.Visible = false;
+            }
+        }
+        private void btnDropdownMenuAdmin_Click(object sender, EventArgs e)
+        {
+            Panel4DropdownMenu.BringToFront();
+            showDropdownMenu();
+           
+        }
+
     }
 }

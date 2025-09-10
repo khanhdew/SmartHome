@@ -1,17 +1,6 @@
 ﻿using DAO.BaseModels;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualBasic.Devices;
 using Services.Services;
-using Services.Services_Impl;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DesktopApp.Controls.Rooms
 {
@@ -33,7 +22,7 @@ namespace DesktopApp.Controls.Rooms
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            
+
             if (!_houseService.GetHouseOwner(room.House.ID).Id.Equals(MainForm.LoggedInUser.Id))
             {
                 MessageBox.Show("Bạn không có quyền phòng nhà này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

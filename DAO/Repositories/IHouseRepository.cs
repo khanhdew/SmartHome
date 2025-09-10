@@ -1,9 +1,4 @@
 ﻿using DAO.BaseModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAO.Repositories
 {
@@ -17,7 +12,7 @@ namespace DAO.Repositories
         House GetHouseById(int houseId);
         HouseMember AddHouseMember(string userId, int houseId, string role);
         IEnumerable<HouseMember?> GetHouseMembers(int houseId);
-        
+
         void RemoveHouseMember(string userId, int houseId);
         Room AddRoomToHouse(int houseId, Room room);
         void RemoveRoomFromHouse(int houseId, int roomId);
