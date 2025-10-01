@@ -16,19 +16,22 @@ namespace WebApp.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
         private readonly IUserService _userService;
+        private ILogger<AccountController> _logger;
 
         public AccountController(UserManager<User> userManager, SignInManager<User> signInManager,
-            IUserService userService)
+            IUserService userService, ILogger<AccountController> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _userService = userService;
+            _logger = logger;
         }
 
         [HttpGet("login")]
         [AllowAnonymous]
         public IActionResult Login()
         {
+            _logger.LogInformation(User.Identity.Name, "User logged in.");
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Home");
