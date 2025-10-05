@@ -8,6 +8,10 @@ using Services.Services_Impl;
 using Services.Services;
 using Microsoft.EntityFrameworkCore;
 using Services.Thingsboard_Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Services.Thingsboard_Services.BaseModel;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("SmartHomeContextConnection") ?? throw new InvalidOperationException("Connection string 'SmartHomeContextConnection' not found.");
@@ -19,6 +23,7 @@ builder.Services.AddDbContext<SmartHomeContext>(options =>
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<SmartHomeContext>()
     .AddDefaultTokenProviders();
+
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -51,6 +56,32 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = "/AccessDenied";
 });
 
+// Đăng ký JWT Bearer authentication
+var jwtSecret = builder.Configuration["Jwt:Secret"];
+if (string.IsNullOrWhiteSpace(jwtSecret) || jwtSecret.Length < 32)
+{
+    throw new InvalidOperationException("JWT Secret is missing or too short. Please set Jwt:Secret in appsettings.json to a string with at least 32 characters.");
+}
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"] ?? "yourIssuer",
+        ValidAudience = builder.Configuration["Jwt:Audience"] ?? "yourAudience",
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret))
+    };
+});
+
 // Add other services
 builder.Services.AddScoped<SmartHomeContext>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -64,7 +95,11 @@ builder.Services.AddScoped<IRoomService, RoomService>();
 builder.Services.AddScoped<IDeviceRepository, DeviceRepository>();
 builder.Services.AddScoped<IDeviceService, DeviceService>();
 builder.Services.AddScoped<IThingsboardService, ThingsboardService>();
-
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+    });
 
 
 // Add MVC services
@@ -89,6 +124,7 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+app.MapControllers();
 app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",

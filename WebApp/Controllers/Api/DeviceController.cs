@@ -5,6 +5,7 @@ using Services.Services;
 using Services.Thingsboard_Services;
 using System.Text.Json;
 using WebApp.Utils;
+using WebApp.Models;
 
 namespace WebApp.Controllers.Api
 {
@@ -78,7 +79,14 @@ namespace WebApp.Controllers.Api
                     }
                 }
 
-                var result = devices.Skip(skip).Take(take).ToList();
+                var result = devices.Skip(skip).Take(take)
+                    .Select(d => new DeviceDTO
+                    {
+                        Id = d.ID,
+                        Name = d.Name,
+                        UserId = d.UserID
+                    })
+                    .ToList();
                 return Ok(new
                 {
                     devices = result,
@@ -143,7 +151,14 @@ namespace WebApp.Controllers.Api
                     }
                 }
 
-                var result = devices.Skip(skip).Take(take).ToList();
+                var result = devices.Skip(skip).Take(take)
+                    .Select(d => new DeviceDTO
+                    {
+                        Id = d.ID,
+                        Name = d.Name,
+                        UserId = d.UserID
+                    })
+                    .ToList();
                 return Ok(new
                 {
                     devices = result,
@@ -183,21 +198,31 @@ namespace WebApp.Controllers.Api
         [HttpPost]
         public IActionResult CreateDevice([FromBody] Device device)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new {
+                    message = "Invalid device data.",
+                    errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)
+                });
+            }
             try
             {
-                if (!ModelState.IsValid)
-                    return BadRequest(ModelState);
-
                 var tempDevice = device;
                 tempDevice.Name = StringProcessHelper.RemoveDiacritics(device.Name);
-                
                 var tbDevice = _thingsboardService.CreateDevice(tempDevice);
                 var root = JsonDocument.Parse(tbDevice.ToString()).RootElement;
                 device.TbDeviceId = root.GetProperty("id").GetProperty("id").GetString();
-                
                 var deviceCreated = _deviceService.CreateDevice(device);
-                
-                return CreatedAtAction(nameof(GetDevice), new { id = deviceCreated.ID }, deviceCreated);
+                return CreatedAtAction(nameof(GetDevice), new { id = deviceCreated.ID }, new {
+                    id = deviceCreated.ID,
+                    name = deviceCreated.Name,
+                    type = deviceCreated.Type,
+                    deviceToken = deviceCreated.DeviceToken,
+                    userID = deviceCreated.UserID,
+                    roomID = deviceCreated.RoomID,
+                    status = deviceCreated.Status,
+                    tbDeviceId = deviceCreated.TbDeviceId
+                });
             }
             catch (Exception ex)
             {
@@ -290,4 +315,4 @@ namespace WebApp.Controllers.Api
     {
         public string Command { get; set; }
     }
-} 
+}
