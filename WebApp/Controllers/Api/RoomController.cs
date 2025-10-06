@@ -29,7 +29,7 @@ namespace WebApp.Controllers.Api
         {
             try
             {
-                var housesWithRooms = new Dictionary<House, IEnumerable<Room>>();
+                var housesWithRooms = new Dictionary<int, IEnumerable<Room>>();
 
                 if (houseId != null)
                 {
@@ -46,7 +46,7 @@ namespace WebApp.Controllers.Api
                         .Skip(skip)
                         .Take(take)
                         .ToList();
-                    housesWithRooms[house] = rooms;
+                    housesWithRooms[house.ID] = rooms;
                 }
                 else
                 {
@@ -57,7 +57,7 @@ namespace WebApp.Controllers.Api
                             .Skip(skip)
                             .Take(take)
                             .ToList();
-                        housesWithRooms[house] = rooms;
+                        housesWithRooms[house.ID] = rooms;
                     }
                 }
 
@@ -80,7 +80,7 @@ namespace WebApp.Controllers.Api
             try
             {
                 var houses = _houseService.GetHousesByUserId(_userService.GetCurrentUserId());
-                var roomsWithHouse = new Dictionary<House, IEnumerable<Room>>();
+                var roomsWithHouse = new Dictionary<int, IEnumerable<Room>>();
                 
                 foreach (var house in houses)
                 {
@@ -88,7 +88,7 @@ namespace WebApp.Controllers.Api
                         .Where(r => StringProcessHelper.RemoveDiacritics(r.Name).ToLower()
                             .Contains(StringProcessHelper.RemoveDiacritics(keyword).ToLower()))
                         .ToList();
-                    roomsWithHouse[house] = rooms;
+                    roomsWithHouse[house.ID] = rooms;
                 }
 
                 return Ok(new { roomsWithHouse = roomsWithHouse });
@@ -275,4 +275,4 @@ namespace WebApp.Controllers.Api
         public string Name { get; set; }
         public string Detail { get; set; }
     }
-} 
+}
