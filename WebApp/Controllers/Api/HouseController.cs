@@ -235,9 +235,9 @@ namespace WebApp.Controllers.Api
                     return NotFound(new { message = "House not found" });
 
                 // Check if user has access to this house
-                var houseMembers = _houseService.GetHouseMembers(id);
-                if (!houseMembers.Any(hm => hm.UserID == _userService.GetCurrentUserId()))
-                    return Forbid();
+                // var houseMembers = _houseService.GetHouseMembers(id);
+                // if (!houseMembers.Any(hm => hm.UserID == _userService.GetCurrentUserId()))
+                //     return Forbid();
 
                 var rooms = _roomService.GetRoomsByHouseId(id);
                 return Ok(new { rooms = rooms });
