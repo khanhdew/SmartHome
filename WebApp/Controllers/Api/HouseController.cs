@@ -228,18 +228,19 @@ namespace WebApp.Controllers.Api
         [HttpGet("{id}/rooms")]
         public IActionResult GetRoomsByHouse(int id)
         {
+            
             try
             {
-                var house = _houseService.GetHouseById(id);
-                if (house == null)
-                    return NotFound(new { message = "House not found" });
+                var rooms = _houseService.GetRooms(id);
+                // if (house == null)
+                //     return NotFound(new { message = "House not found" });
 
                 // Check if user has access to this house
                 // var houseMembers = _houseService.GetHouseMembers(id);
                 // if (!houseMembers.Any(hm => hm.UserID == _userService.GetCurrentUserId()))
                 //     return Forbid();
 
-                var rooms = _roomService.GetRoomsByHouseId(id);
+                // var rooms = _roomService.GetRoomsByHouseId(id);
                 return Ok(new { rooms = rooms });
             }
             catch (Exception ex)
