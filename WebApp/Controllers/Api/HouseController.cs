@@ -13,11 +13,13 @@ namespace WebApp.Controllers.Api
     {
         private readonly IHouseService _houseService;
         private readonly IUserService _userService;
+        private readonly IRoomService _roomService;
 
-        public HouseController(IHouseService houseService, IUserService userService)
+        public HouseController(IHouseService houseService, IUserService userService, IRoomService roomService)
         {
             _houseService = houseService;
             _userService = userService;
+            _roomService = roomService;
         }
 
         [HttpGet]
@@ -222,6 +224,29 @@ namespace WebApp.Controllers.Api
                 return StatusCode(500, new { message = "Internal server error" });
             }
         }
+
+        [HttpGet("{id}/rooms")]
+        public IActionResult GetRoomsByHouse(int id)
+        {
+            try
+            {
+                var house = _houseService.GetHouseById(id);
+                if (house == null)
+                    return NotFound(new { message = "House not found" });
+
+                // Check if user has access to this house
+                var houseMembers = _houseService.GetHouseMembers(id);
+                if (!houseMembers.Any(hm => hm.UserID == _userService.GetCurrentUserId()))
+                    return Forbid();
+
+                var rooms = _roomService.GetRoomsByHouseId(id);
+                return Ok(new { rooms = rooms });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal server error" });
+            }
+        }
     }
 
     public class CreateHouseRequest
@@ -241,4 +266,4 @@ namespace WebApp.Controllers.Api
         public string OwnerId { get; set; }
         public int HouseId { get; set; }
     }
-} 
+}
