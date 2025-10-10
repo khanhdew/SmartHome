@@ -84,7 +84,8 @@ namespace WebApp.Controllers.Api
                     {
                         Id = d.ID,
                         Name = d.Name,
-                        UserId = d.UserID
+                        UserId = d.UserID,
+                        Type = d.Type,
                     })
                     .ToList();
                 return Ok(new
@@ -156,7 +157,8 @@ namespace WebApp.Controllers.Api
                     {
                         Id = d.ID,
                         Name = d.Name,
-                        UserId = d.UserID
+                        UserId = d.UserID,
+                        Type = d.Type,
                     })
                     .ToList();
                 return Ok(new
