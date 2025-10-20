@@ -121,6 +121,15 @@ namespace WebApp.Controllers.Api
                     return Forbid();
 
                 house.ID = id;
+                var houseToUpdate = _houseService.GetHouseById(id);
+                if (houseToUpdate == null)
+                    return NotFound(new { message = "House not found" });
+                
+                if(!string.IsNullOrEmpty(house.Name))
+                    houseToUpdate.Name = house.Name;
+                if(!string.IsNullOrEmpty(house.Location))
+                    houseToUpdate.Location = house.Location;
+                
                 _houseService.EditHouse(house);
 
                 return Ok(house);

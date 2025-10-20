@@ -245,6 +245,13 @@ namespace WebApp.Controllers.Api
                     return Forbid();
 
                 device.ID = id;
+                
+                var deviceToUpdate = _deviceService.GetDeviceById(id);
+                if (!string.IsNullOrWhiteSpace(device.Name))
+                    deviceToUpdate.Name = device.Name;
+                if (!string.IsNullOrWhiteSpace(device.DeviceToken))
+                    deviceToUpdate.RoomID = device.RoomID;  
+                
                 _deviceService.EditDevice(device);
                 
                 return Ok(device);
