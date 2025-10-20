@@ -130,9 +130,9 @@ namespace WebApp.Controllers.Api
                 if(!string.IsNullOrEmpty(house.Location))
                     houseToUpdate.Location = house.Location;
                 
-                _houseService.EditHouse(house);
+                _houseService.EditHouse(houseToUpdate);
 
-                return Ok(house);
+                return Ok(houseToUpdate);
             }
             catch (Exception ex)
             {

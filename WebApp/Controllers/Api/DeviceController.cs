@@ -252,9 +252,9 @@ namespace WebApp.Controllers.Api
                 if (!string.IsNullOrWhiteSpace(device.DeviceToken))
                     deviceToUpdate.RoomID = device.RoomID;  
                 
-                _deviceService.EditDevice(device);
+                _deviceService.EditDevice(deviceToUpdate);
                 
-                return Ok(device);
+                return Ok(deviceToUpdate);
             }
             catch (Exception ex)
             {
