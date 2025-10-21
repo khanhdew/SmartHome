@@ -251,6 +251,8 @@ namespace WebApp.Controllers.Api
                     deviceToUpdate.Name = device.Name;
                 if (!string.IsNullOrWhiteSpace(device.DeviceToken))
                     deviceToUpdate.RoomID = device.RoomID;  
+                if (device.RoomID != deviceToUpdate.RoomID)
+                    deviceToUpdate.RoomID = device.RoomID;
                 
                 _deviceService.EditDevice(deviceToUpdate);
                 
@@ -260,6 +262,28 @@ namespace WebApp.Controllers.Api
             {
                 _logger.LogError(ex, "Error updating device {DeviceId}", id);
                 return StatusCode(500, new { message = "Internal server error" });
+            }
+        }
+        
+        [HttpPost("anonymous")]
+        [AllowAnonymous]
+        public IActionResult AddDevAno(int id, [FromBody] Device device)
+        {
+            try
+            {
+                _logger.LogInformation("Adding anonymous device: {@Device}", device);
+                var tempDevice = device;
+                tempDevice.Name = StringProcessHelper.RemoveDiacritics(device.Name);
+                // var tbDevice = _thingsboardService.CreateDevice(tempDevice);
+                // var root = JsonDocument.Parse(tbDevice.ToString()).RootElement;
+                // device.TbDeviceId = root.GetProperty("id").GetProperty("id").GetString();
+                var deviceCreated = _deviceService.CreateDevice(device);
+                return Ok(deviceCreated);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error creating device");
+                return StatusCode(500, new { message = "Error while creating device", details = ex.Message });
             }
         }
 
