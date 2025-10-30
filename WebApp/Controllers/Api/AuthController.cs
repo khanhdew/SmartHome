@@ -95,7 +95,7 @@ namespace WebApp.Controllers.Api
                         roles = roles
                     }
                 });
-            }
+            }   
 
             return BadRequest(new { errors = result.Errors.Select(e => e.Description) });
         }
@@ -150,8 +150,18 @@ namespace WebApp.Controllers.Api
             {
                 return BadRequest(ModelState);
             }
-
-            var updatedUser = _userService.EditUser(userUpdate);
+            
+            // get current user
+            var currentUser = _userService.GetLoggedInUser();
+            if (currentUser == null || currentUser.Id != userUpdate.Id)
+            {
+                return Unauthorized(new { message = "You can only update your own profile." });
+            }
+            currentUser.DisplayName = userUpdate.DisplayName;
+            currentUser.PhoneNumber = userUpdate.PhoneNumber;
+            
+            
+            var updatedUser = _userService.EditUser(currentUser);
             if (updatedUser != null)
             {
                 return Ok(new
@@ -178,7 +188,7 @@ namespace WebApp.Controllers.Api
             // Add role claims
             claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(

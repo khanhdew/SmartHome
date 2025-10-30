@@ -10,7 +10,7 @@ using WebApp.Models;
 
 namespace WebApp.Controllers
 {
-    [Route("")]
+    [Route("Account/")]
     public class AccountController : Controller
     {
         private readonly SignInManager<User> _signInManager;

@@ -2,6 +2,7 @@
 @using DAO.Context
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @using Microsoft.EntityFrameworkCore
+@inject SmartHomeContext context
 @model IEnumerable<DAO.BaseModels.Device>
 @{
     var roomId = ViewBag.RoomId;
@@ -45,7 +46,7 @@
         </tr>
     }
     @{
-        SmartHomeContext context = new SmartHomeContext();
+        // from DI container get the SmartHomeContext
         var unAssignedDevices = context.Devices.Include(d => d.User).Where(d => d.RoomID == null && d.UserID == User.FindFirstValue(ClaimTypes.NameIdentifier)).ToList();
         foreach (var device in unAssignedDevices)
         {
