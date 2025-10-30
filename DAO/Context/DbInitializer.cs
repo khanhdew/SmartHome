@@ -38,7 +38,7 @@ public class DbInitializer
             // Create admin user
             User adminUser = new User
             {
-                Id = "ID1",
+                Id = "8126108d-3c21-4508-b8fc-2c6720fbffbe",
                 UserName = "admin@rangdong.com.vn",
                 NormalizedUserName = "ADMIN@RANGDONG.COM.VN",
                 Email = "admin@rangdong.com.vn",
@@ -58,7 +58,7 @@ public class DbInitializer
             // Add user role with houses
             User houseOwner = new User
             {
-                Id = "ID2",
+                Id = "7fc44614-9f88-4076-84d8-1e439a1943fe",
                 UserName = "user@randong.com.vn",
                 NormalizedUserName = "USER@RANGDONG.COM.VN",
                 Email = "user@rangdong.com.vn",
@@ -76,7 +76,7 @@ public class DbInitializer
             // create guest user
             User gUser = new User
             {
-                Id = "ID3",
+                Id = "935f6194-5165-4dcb-a087-d6d82d25629e",
                 UserName = "guest@randong.com.vn",
                 NormalizedUserName = "GUEST@RANGDONG.COM.VN",
                 Email = "guest@randong.com.vn",
@@ -144,17 +144,17 @@ public class DbInitializer
             var userRole = new IdentityUserRole<string>
             {
                 RoleId = "ID1",
-                UserId = "ID1"
+                UserId = "8126108d-3c21-4508-b8fc-2c6720fbffbe"
             };
             var userRole2 = new IdentityUserRole<string>
             {
                 RoleId = "ID2",
-                UserId = "ID2"
+                UserId = "7fc44614-9f88-4076-84d8-1e439a1943fe"
             };
             var userRole3 = new IdentityUserRole<string>
             {
                 RoleId = "ID2",
-                UserId = "ID3"
+                UserId = "935f6194-5165-4dcb-a087-d6d82d25629e"
             };
 
             context.UserRoles.AddRange(userRole, userRole2, userRole3);

@@ -271,12 +271,7 @@ namespace WebApp.Controllers.Api
         {
             try
             {
-                _logger.LogInformation("Adding anonymous device: {@Device}", device);
-                var tempDevice = device;
-                tempDevice.Name = StringProcessHelper.RemoveDiacritics(device.Name);
-                // var tbDevice = _thingsboardService.CreateDevice(tempDevice);
-                // var root = JsonDocument.Parse(tbDevice.ToString()).RootElement;
-                // device.TbDeviceId = root.GetProperty("id").GetProperty("id").GetString();
+                _logger.LogInformation("Adding anonymous device: {@Device}", device.ToString());
                 var deviceCreated = _deviceService.CreateDevice(device);
                 return Ok(deviceCreated);
             }
